@@ -34,7 +34,7 @@ Trách nhiệm:
 | Datasets | "Old blog scrape" (web-mixed, Size 1, Quality 2) |
 | Models / Streams / Contracts | none |
 | Active project | none |
-| Flags | none |
+| Flags | freelance_idx=0 |
 
 ## Opening narration (theme — the engine may embellish; facts are fixed)
 

@@ -24,7 +24,7 @@ Trách nhiệm:
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Cash +$2,000 + $100 × floor(Fame ÷ 500). |
+| 💼 **Freelance** | Triggers the next client in the Freelance Rotation (Content). Pauses to ask the Player to choose between two approaches. Applies the chosen modifiers to the Base Pay, then increments the `freelance_idx`. |
 | 🔬 **Research** | RP +(1000 + 500 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
 | 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
