@@ -20,18 +20,18 @@ Labels are translated into the player's language; emoji anchors and canonical co
 
 ## S0 — Title & Setup
 
-Rendered in English (the only screen before a language is known):
+**S0-A (Language Ask):** Rendered strictly in simple English.
+🏭 **LLM TYCOON**
+Build the world's first LLM (2013-2020)
+v0.2 · Chapter 1: Home Lab
 
-```
-🏭 ═══════════════════════════════════════
-        L L M   T Y C O O N
-   Build the world's first LLM · 2013 →
-═══════════════════════════════════════ 🏭
-         v0.2 · Chapter 1: Home Lab
+🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)
 
-🌐 Reply in the language you want to play in.
-📱🖥️ Phone or PC?  (1 = 📱 mobile UI · 2 = 🖥️ desktop UI)
-```
+**S0-B (Device Ask):** Rendered in the player's chosen language.
+📱🖥️ **[Phone or PC?]**
+1 = 📱 [Mobile UI]
+2 = 🖥️ [Desktop UI]
+👉 [Pick a number]
 
 ## S1 — Main Menu
 

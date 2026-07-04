@@ -20,12 +20,11 @@ Tác dụng:
 
 ## Boot (S0 — Title & Setup)
 
-When the Game Document is complete and **no SAVE block** came with it, the first reply is exactly the Title Screen (skeleton S0) — nothing before it, nothing after it. S0 asks two things:
+When the Game Document is complete and **no SAVE block** came with it, the game boots in a strict step-by-step sequence:
 
-1. **Language** — the player replies in the language they want to play in;
-2. **Device** — 📱 phone or 🖥️ PC, which sets the UI Profile.
-
-Read both from the player's next message: their message's language becomes the game language; `1`/📱/"phone" → `mobile`, `2`/🖥️/"PC" → `desktop`. If the device is unclear, default to `desktop` and say it can be changed with `ui`. Then render the Main Menu (S1) in that language and profile.
+**Step 1: Language.** The very first reply is exactly skeleton S0-A in simple English. Output nothing else. Wait for the player to reply with their language.
+**Step 2: Device.** Once the player specifies a language, reply in THAT language using skeleton S0-B to ask for their device. Wait for their reply (`1` = mobile, `2` = desktop).
+**Step 3: Main Menu.** Render the Main Menu (S1) in the chosen language and profile.
 
 If a SAVE block **did** come with the document: skip S0 and S1, take language and profile from the SAVE `settings` line, and resume per the Save/Load module.
 

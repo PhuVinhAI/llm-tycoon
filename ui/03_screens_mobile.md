@@ -19,21 +19,7 @@ Hard shape rules: one item per line · ≤ ~40 characters per line · never a ta
 
 ## S0 — Title & Setup
 
-Rendered in English (the only screen before a language is known):
-
-```
-🏭 LLM TYCOON
-──────────────────
-Build the world's
-first LLM · 2013 →
-v0.2 · Ch.1: Home Lab
-──────────────────
-🌐 Reply in the language
-   you want to play in.
-📱🖥️ Phone or PC?
-   1 = 📱 mobile UI
-   2 = 🖥️ desktop UI
-```
+*(Mobile uses the exact same S0-A and S0-B steps as Desktop, since the profile is not yet chosen when booting).*
 
 ## S1 — Main Menu
 

@@ -133,6 +133,8 @@ Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Archit
 
 End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request, OR when answering out-of-character/game-related questions. If the player asks "What is an N-gram?", explain it, then immediately render the dashboard and action menu again so they don't lose their place.
 
+**CRITICAL UI RULE:** NEVER wrap your UI output in markdown code blocks (` ``` `). Output tables and text directly as normal markdown so it renders properly in the chat UI. The ONLY exception is the SAVE block, which must be in a code block.
+
 Recompute the dashboard from the current Game State every turn. Never copy a previous dashboard.
 
 Whenever you compute Model Quality, payments, or scores, show the calculation — one line per component, following the formulas in the Rules exactly.
@@ -1421,6 +1423,7 @@ The game renders through **UI Profiles** — fixed markdown skeletons defined in
 
 Rendering rules:
 
+- **CRITICAL:** NEVER output UI screens inside Markdown code blocks (` ``` `). Render tables, text, and emojis directly as raw markdown so the chat interface formats them natively. The ONLY exception is the SAVE block (S8), which must use a code block.
 - The profile is chosen on the Title Screen (S0), stored in the Game State, and written into every SAVE block.
 - The player may switch profile or language **at any time** — the commands `ui` and `lang`, or simply asking. After a switch, re-render the current screen in the new form.
 - Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors. Translate labels into the player's language; never translate canonical codes (RP, REP, CU, Q, R-Lv, E-Lv, technology and contract IDs, SAVE field names).
@@ -1434,12 +1437,11 @@ Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboar
 
 ## Boot (S0 — Title & Setup)
 
-When the Game Document is complete and **no SAVE block** came with it, the first reply is exactly the Title Screen (skeleton S0) — nothing before it, nothing after it. S0 asks two things:
+When the Game Document is complete and **no SAVE block** came with it, the game boots in a strict step-by-step sequence:
 
-1. **Language** — the player replies in the language they want to play in;
-2. **Device** — 📱 phone or 🖥️ PC, which sets the UI Profile.
-
-Read both from the player's next message: their message's language becomes the game language; `1`/📱/"phone" → `mobile`, `2`/🖥️/"PC" → `desktop`. If the device is unclear, default to `desktop` and say it can be changed with `ui`. Then render the Main Menu (S1) in that language and profile.
+**Step 1: Language.** The very first reply is exactly skeleton S0-A in simple English. Output nothing else. Wait for the player to reply with their language.
+**Step 2: Device.** Once the player specifies a language, reply in THAT language using skeleton S0-B to ask for their device. Wait for their reply (`1` = mobile, `2` = desktop).
+**Step 3: Main Menu.** Render the Main Menu (S1) in the chosen language and profile.
 
 If a SAVE block **did** come with the document: skip S0 and S1, take language and profile from the SAVE `settings` line, and resume per the Save/Load module.
 
@@ -1471,18 +1473,18 @@ Labels are translated into the player's language; emoji anchors and canonical co
 
 ## S0 — Title & Setup
 
-Rendered in English (the only screen before a language is known):
+**S0-A (Language Ask):** Rendered strictly in simple English.
+🏭 **LLM TYCOON**
+Build the world's first LLM (2013-2020)
+v0.2 · Chapter 1: Home Lab
 
-```
-🏭 ═══════════════════════════════════════
-        L L M   T Y C O O N
-   Build the world's first LLM · 2013 →
-═══════════════════════════════════════ 🏭
-         v0.2 · Chapter 1: Home Lab
+🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)
 
-🌐 Reply in the language you want to play in.
-📱🖥️ Phone or PC?  (1 = 📱 mobile UI · 2 = 🖥️ desktop UI)
-```
+**S0-B (Device Ask):** Rendered in the player's chosen language.
+📱🖥️ **[Phone or PC?]**
+1 = 📱 [Mobile UI]
+2 = 🖥️ [Desktop UI]
+👉 [Pick a number]
 
 ## S1 — Main Menu
 
@@ -1588,21 +1590,7 @@ Hard shape rules: one item per line · ≤ ~40 characters per line · never a ta
 
 ## S0 — Title & Setup
 
-Rendered in English (the only screen before a language is known):
-
-```
-🏭 LLM TYCOON
-──────────────────
-Build the world's
-first LLM · 2013 →
-v0.2 · Ch.1: Home Lab
-──────────────────
-🌐 Reply in the language
-   you want to play in.
-📱🖥️ Phone or PC?
-   1 = 📱 mobile UI
-   2 = 🖥️ desktop UI
-```
+*(Mobile uses the exact same S0-A and S0-B steps as Desktop, since the profile is not yet chosen when booting).*
 
 ## S1 — Main Menu
 

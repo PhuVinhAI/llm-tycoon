@@ -42,6 +42,8 @@ giải thích, sau đó render lại ngay Dashboard và Action Menu ở cuối).
 -->
 End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request, OR when answering out-of-character/game-related questions. If the player asks "What is an N-gram?", explain it, then immediately render the dashboard and action menu again so they don't lose their place.
 
+**CRITICAL UI RULE:** NEVER wrap your UI output in markdown code blocks (` ``` `). Output tables and text directly as normal markdown so it renders properly in the chat UI. The ONLY exception is the SAVE block, which must be in a code block.
+
 <!--
 Ý nghĩa:
 Dashboard phải được tính lại từ Game State hiện tại.
