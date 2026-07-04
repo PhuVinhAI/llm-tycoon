@@ -47,7 +47,7 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 | **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
 | **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
-## Domain fit lists (Datasets rule: fit +3; web-mixed 0 except AUTO +3 / TRANS −3; other mismatch −3)
+## Domain fit lists (Refer to the Datasets rule for exact matching mechanics)
 
 | Task | Fit Domains |
 |---|---|

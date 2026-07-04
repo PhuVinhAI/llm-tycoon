@@ -15,7 +15,7 @@ completion chỉ bắt đầu có giá gần 2019–20.
 
 # Market Demand
 
-Demand multiplies sale income (Model Projects rule): License = Q × $60 × Demand; Product = Q × Demand × $6/mo.
+Demand multiplies sale income (refer to the Model Projects rule for the exact formulas).
 
 | Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 |
 |---|---|---|---|---|

@@ -1233,7 +1233,7 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 | **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
 | **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
-## Domain fit lists (Datasets rule: fit +3; web-mixed 0 except AUTO +3 / TRANS −3; other mismatch −3)
+## Domain fit lists (Refer to the Datasets rule for exact matching mechanics)
 
 | Task | Fit Domains |
 |---|---|
@@ -1247,7 +1247,7 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 
 # Market Demand
 
-Demand multiplies sale income (Model Projects rule): License = Q × $60 × Demand; Product = Q × Demand × $6/mo.
+Demand multiplies sale income (refer to the Model Projects rule for the exact formulas).
 
 | Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 |
 |---|---|---|---|---|
@@ -1279,7 +1279,7 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
 | ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
 
-Upkeep $25 per occupied slot per month; sell-back 50% (Hardware rule).
+*(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 
 # Datasets
 
@@ -1310,7 +1310,7 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed.
 
 # Contracts
 
-| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech (pay ×1.2) |
+| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech |
 |---|---|---|---|---|---|---|
 | C01 | 0 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
 | C02 | 0 | News site — keyword tagger | BOW | 1 | $1,500 | — |
@@ -1370,7 +1370,7 @@ Maximum 2 hired at a time (Employees rule).
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
-Discount stacking follows the Research rule (multiply, round up to 5). Track every fired event and lasting effect as a flag.
+*(Discount stacking and event tracking follow the Research and Events rules).*
 
 # Score Titles
 

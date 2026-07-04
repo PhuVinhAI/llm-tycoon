@@ -57,7 +57,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
-Discount stacking follows the Research rule (multiply, round up to 5). Track every fired event and lasting effect as a flag.
+*(Discount stacking and event tracking follow the Research and Events rules).*
 
 <!--
 Tiếng Việt (tóm tắt):

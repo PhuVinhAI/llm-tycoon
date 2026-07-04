@@ -30,7 +30,7 @@ mới ngốn CU hơn.
 | 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
 | ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
 
-Upkeep $25 per occupied slot per month; sell-back 50% (Hardware rule).
+*(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 
 <!--
 Tiếng Việt (tóm tắt):

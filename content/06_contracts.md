@@ -15,7 +15,7 @@ Nguồn tiền ổn định giữa các dự án; nhu cầu khách hàng leo tha
 
 # Contracts
 
-| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech (pay ×1.2) |
+| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech |
 |---|---|---|---|---|---|---|
 | C01 | 0 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
 | C02 | 0 | News site — keyword tagger | BOW | 1 | $1,500 | — |
