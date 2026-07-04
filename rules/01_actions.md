@@ -24,7 +24,7 @@ Trách nhiệm:
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Triggers the next client in the Freelance Rotation (Content). Pauses to ask the Player to choose between two approaches. Applies the chosen modifiers to the Base Pay, then increments the `freelance_idx`. |
+| 💼 **Freelance** | Generates a Dilemma using the Freelance Events Matrix (Content) based on the current Turn number. Pauses to ask the Player to choose between Choice 1 and Choice 2. Applies the outcome. |
 | 🔬 **Research** | RP +(1000 + 500 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
 | 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |

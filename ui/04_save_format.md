@@ -30,7 +30,7 @@ streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
 project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
-flags: [freelance_idx=x, fired events, discounts in force, hype windows]
+flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===
 ```
 
