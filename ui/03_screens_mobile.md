@@ -23,63 +23,53 @@ Hard shape rules: one item per line · ≤ ~40 characters per line · never a ta
 
 ## S1 — Main Menu
 
-```
-🏭 LLM TYCOON
-──────────────────
+🏭 **LLM TYCOON**
 1 🎮 New game
 2 📂 Continue
 3 📖 How to play
 4 ℹ️ About
 5 🚪 Exit
-──────────────────
+
 👉 Pick a number.
-```
 
 ## S2 — Info (How to play / About)
 
 Same content as desktop, one short line each. End with:
 
-```
-↩ 0 — main menu
-```
+0 🏠 Main Menu
 
 ## S3 — Dashboard
 
-```
-📊 [Company]
+📊 **[Company]**
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
 🔬 RP [x] · ⭐ REP [x]/50
 🧠 R-Lv [x] · E-Lv [x]
 🖥️ [total] CU/mo · slots [u]/[t]
-   [hardware, short list]
+[hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
 🛠️ [owned tech IDs]
 📦 [idle / project / contract]
 💵 [streams or "no streams"]
 📉 Fixed $[x]/mo
-```
 
 ## S4 — Turn Report
 
 Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu (S5). Narrow cards:
 
-```
-📰 [Month YYYY]
+📰 **[Month YYYY]**
 [Event title]
 [1–2 flavor lines]
 ▸ [mechanical effect]
 
-📅 [action taken]
+📅 **[action taken]**
 [one change per line]
 💰 $[after] · 🔬 RP [after]
-```
 
 ## S5 — Action Menu
 
-```
-This month?
+**This month?**
 1 💼 Freelance
 2 🔬 Research
 3 🏗️ New model
@@ -90,18 +80,16 @@ This month?
 8 ⏩ Repeat ×N
 9 💾 Save
 0 🏠 Main Menu
-```
 
 **Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (REP ≥ 8 or Neural Tech owned), keeping the early game menu simple.
 
 ## S6 — Model Completion Report
 
-```
-🏁 [Model]
+🏁 **[Model]**
 [Architecture] × [Task]
 on [Dataset]
-──────────────────
-Q breakdown:
+
+**Q breakdown:**
 + [x] base
 + [x] match
 + [x] data quality ×2
@@ -112,21 +100,20 @@ Q breakdown:
 + [x] E-Lv ×2
 ± [x] bonuses/penalties
 = Q [total]
-──────────────────
+
 [reception emoji + tier]
 ⭐ REP [±x] · 🔬 RP +[x]
-Release?
+
+**Release?**
 1 🌐 Open-source
 2 💼 License $[x]
 3 📈 Product $[x]/mo ×8
 4 🗄️ Shelve
-[locked: why]
-```
+*[locked: why]*
 
 ## S7 — Market List
 
-```
-🛒 [List title]
+🛒 **[List title]**
 📅 [Month YYYY]
 1 [name]
   [key numbers] · $[price]
@@ -134,21 +121,18 @@ Release?
   [key numbers] · $[price]
 …
 💰 $[cash]
-↩ 0 — back
-```
+0 ↩ Back
 
 ## S8 — SAVE
 
-Profile-independent — exact format in the Save Format module.
+Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
 
 ## S9 — Ending
 
-```
-🏆 [ENDING NAME]
-──────────────────
+🏆 **[ENDING NAME]**
 [3–5 short lines]
-──────────────────
-Score:
+
+**Score:**
 + [x] 3×REP
 + [x] best Q
 + [x] 5×models
@@ -157,10 +141,9 @@ Score:
 + [x] extras
 = [total]
 🎖️ [score title]
-──────────────────
+
 1 🔁 New game
 2 📖 Run recap
-```
 
 <!--
 Tiếng Việt (tóm tắt):

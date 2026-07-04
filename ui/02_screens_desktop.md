@@ -35,26 +35,22 @@ v0.2 · Chapter 1: Home Lab
 
 ## S1 — Main Menu
 
-```
 | 🏭 LLM TYCOON — Main Menu | |
 |---|---|
 | 1 🎮 New game | 2 📂 Continue |
 | 3 📖 How to play | 4 ℹ️ About |
 | 5 🚪 Exit | |
-```
+
 👉 Pick a number.
 
 ## S2 — Info (How to play / About)
 
 Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Always end with:
 
-```
-↩ 0 — back to the Main Menu
-```
+0 🏠 Main Menu
 
 ## S3 — Dashboard
 
-```
 | 📊 [Company] | 📅 [Month YYYY] (Turn [N]) |
 |---|---|
 | **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ REP [x]/50 |
@@ -62,27 +58,24 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | **Assets** | 🖥️ [total] CU/mo ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned IDs] |
 | **Status** | 📦 [idle / project / contract]  ·  📉 Fixed: $[x]/mo |
-```
+
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
 ## S4 — Turn Report
 
 Structure of every resolved turn, in this order: event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
 
-```
-📰 ── [Month YYYY] ─────────────────
-   [Event title]
-   [1–3 flavor lines]
-   ▸ [mechanical effect, plainly stated]
+📰 **[Month YYYY]**
+[Event title]
+[1–3 flavor lines]
+▸ [mechanical effect, plainly stated]
 
-📅 [Month YYYY] — [main action taken]
-   [one line per change: +/− cash, RP, REP, …]
-   💰 [cash after] | 🔬 RP [after]
-```
+📅 **[Month YYYY] — [main action taken]**
+[one line per change: +/− cash, RP, REP, …]
+💰 [cash after] | 🔬 RP [after]
 
 ## S5 — Action Menu
 
-```
 | What will you do this month? | |
 |---|---|
 | 1 💼 Freelance | 2 🔬 Research |
@@ -90,7 +83,6 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 5 📜 Contracts | 6 🛒 Shop |
 | 7 👥 Team | 8 ⏩ Repeat ×N |
 | 9 💾 Save | 0 🏠 Main Menu |
-```
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until REP ≥ 8.
@@ -99,37 +91,35 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 ## S6 — Model Completion Report
 
-```
-🏁 [Model] — [Architecture] × [Task] on [Dataset]
-   Q = [Base] + [Match] + [2×DataQ] + [Size] + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
-   [reception emoji + tier] → REP [±x], RP +[x]
-   Release?  1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
-   [locked options: state the unmet Requirement]
-```
+🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
+Q = [Base] + [Match] + [2×DataQ] + [Size] + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
+[reception emoji + tier] → REP [±x], RP +[x]
+
+**Release?**
+1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
+*[locked options: state the unmet Requirement]*
 
 ## S7 — Market List (shop, datasets, contracts, candidates)
 
-```
-🛒 [List title] — [Month YYYY]
-   1 [name] — [key numbers] — $[price]
-   2 [name] — [key numbers] — $[price]
-   …
-💰 $[cash] · ↩ 0 — back
-```
+🛒 **[List title] — [Month YYYY]**
+1 [name] — [key numbers] — $[price]
+2 [name] — [key numbers] — $[price]
+…
+💰 $[cash] · 0 ↩ Back
 
 ## S8 — SAVE
 
-Profile-independent — exact format in the Save Format module.
+Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
 
 ## S9 — Ending
 
-```
-🏆 ═══════════ [ENDING NAME] ═══════════
-   [3–6 lines: how this run ends]
-   Score = [3×REP] + [best Q] + [5×models] + [⌊cash/1000⌋] + [win bonus] + [extras] = [total]
-   🎖️ Title: [score title]
-   1 🔁 New game · 2 📖 Run recap
-```
+🏆 **[ENDING NAME]**
+[3–6 lines: how this run ends]
+
+Score = [3×REP] + [best Q] + [5×models] + [⌊cash/1000⌋] + [win bonus] + [extras] = [total]
+🎖️ Title: [score title]
+
+1 🔁 New game · 2 📖 Run recap
 
 <!--
 Tiếng Việt (tóm tắt):
