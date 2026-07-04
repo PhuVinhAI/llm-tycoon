@@ -31,6 +31,7 @@ The game has two layers.
 The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and how much creative text is required. When you see this keyword, you MUST replace it with freshly invented text. You are encouraged to improvise, in the player's language, within the turn structure and word budget:
 
 - **Micro-scenes & Action Flavor** — a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling, or a brief description of the month's work.
+- **Scientific Explanations** — When an event is about a real-world AI paper (e.g., word2vec, Attention, Transformer), do not just state that it was published. Use the flavor text to explain *what the breakthrough actually means* in simple, layman's terms so players without an AI background can understand it.
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.

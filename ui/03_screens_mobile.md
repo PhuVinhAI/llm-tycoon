@@ -60,7 +60,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 📰 **[Month YYYY]**
 [Event title]
-[1–2 flavor lines]
+*[FLAVOR: 2–3 lines. Explain the tech simply if it's a paper]*
 ▸ [mechanical effect]
 
 📅 **[action taken]**

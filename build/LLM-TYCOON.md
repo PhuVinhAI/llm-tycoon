@@ -170,6 +170,7 @@ The game has two layers.
 The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and how much creative text is required. When you see this keyword, you MUST replace it with freshly invented text. You are encouraged to improvise, in the player's language, within the turn structure and word budget:
 
 - **Micro-scenes & Action Flavor** — a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling, or a brief description of the month's work.
+- **Scientific Explanations** — When an event is about a real-world AI paper (e.g., word2vec, Attention, Transformer), do not just state that it was published. Use the flavor text to explain *what the breakthrough actually means* in simple, layman's terms so players without an AI background can understand it.
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
@@ -1542,7 +1543,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 📰 **[Month YYYY]**
 [Event title]
-[1–3 flavor lines]
+*[FLAVOR: 2–3 lines. If a scientific paper/tech event, explain its core concept in simple layman's terms]*
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
@@ -1644,7 +1645,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 📰 **[Month YYYY]**
 [Event title]
-[1–2 flavor lines]
+*[FLAVOR: 2–3 lines. Explain the tech simply if it's a paper]*
 ▸ [mechanical effect]
 
 📅 **[action taken]**

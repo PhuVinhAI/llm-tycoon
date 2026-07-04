@@ -66,7 +66,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 📰 **[Month YYYY]**
 [Event title]
-[1–3 flavor lines]
+*[FLAVOR: 2–3 lines. If a scientific paper/tech event, explain its core concept in simple layman's terms]*
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
