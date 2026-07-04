@@ -4,8 +4,8 @@ FILE: 07_hardware.md
 MODULE: Rules / Hardware
 
 Mục đích:
-Định nghĩa slot garage, tổng CU, mua bán phần cứng, thuê cloud và cách
-Project tiêu thụ compute.
+Định nghĩa slot của home lab, tổng CU, mua bán phần cứng, thuê cloud và
+cách Project tiêu thụ compute.
 
 Tác dụng:
 Compute là nút thắt vật lý của game: kiến trúc càng mạnh càng đói GPU,
@@ -22,7 +22,7 @@ Trách nhiệm:
 
 ## Slots
 
-- The garage has **4 slots**. A one-time upgrade — *Rewire garage*, $2,000, available any time — raises it to **8 slots**.
+- The home lab has **4 slots**. A one-time upgrade — *Rewire the lab*, $2,000, available any time — raises it to **8 slots**.
 - Each piece of Hardware occupies the slots listed in the Content.
 
 ## Compute
@@ -43,8 +43,8 @@ Trách nhiệm:
 
 <!--
 Tiếng Việt (tóm tắt):
-Slot: garage có 4 slot; nâng cấp "Đi lại dây điện" $2,000 (một lần, mua lúc
-nào cũng được) → 8 slot. Mỗi phần cứng chiếm số slot ghi trong Content.
+Slot: home lab có 4 slot; nâng cấp "Đi lại dây điện" $2,000 (một lần, mua
+lúc nào cũng được) → 8 slot. Mỗi phần cứng chiếm số slot ghi trong Content.
 
 Compute: tổng CU/tháng = tổng CU phần cứng + cloud đang bật. Trong dự án,
 mỗi tháng cộng dồn: CU-month += CU/tháng hiện tại. Kiến trúc neural (yêu cầu

@@ -5,7 +5,7 @@
  *
  * Mục đích:
  * Ghép toàn bộ Game Documentation (các file .md dạng module) thành MỘT file
- * Markdown duy nhất để dán vào ChatGPT Web và chơi ngay.
+ * Markdown duy nhất để GỬI THẲNG cho một LLM chạy làm Game Engine.
  *
  * Cách hoạt động:
  * 1. Đọc MANIFEST bên dưới — mỗi mục là một PART của file build, trỏ tới một
@@ -15,12 +15,15 @@
  *    theo tên file. Vì vậy các file cần đúng thứ tự phải có tiền tố số
  *    (00_, 01_, ...).
  * 3. Mặc định loại bỏ toàn bộ HTML comment (<!-- ... -->) — phần giải thích
- *    tiếng Việt dành cho người phát triển — để file build gọn, tiết kiệm
- *    context của ChatGPT. Chạy `npm run build:full` nếu muốn giữ comment.
- * 4. Ghi kết quả ra build/LLM-TYCOON-MVP.md kèm thống kê kích thước.
+ *    tiếng Việt dành cho người phát triển. File build là sản phẩm gửi cho
+ *    LLM nên TUYỆT ĐỐI không chứa comment hay lời nói về dự án/repo; script
+ *    cũng không tự chèn thêm bất kỳ ghi chú nào vào output.
+ * 4. Ghi kết quả ra build/LLM-TYCOON.md kèm thống kê kích thước (in ra
+ *    console, không in vào file).
  *
- * Chạy:  npm run build          (bản gọn — khuyên dùng để chơi)
- *        npm run build:full     (giữ nguyên comment tiếng Việt)
+ * Chạy:  npm run build          (bản chuẩn để gửi cho LLM)
+ *        npm run build:full     (giữ comment tiếng Việt — CHỈ để review,
+ *                                không dùng để chơi)
  * ============================================================================
  */
 
@@ -30,13 +33,13 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = join(ROOT, 'build');
-const OUT_FILE = join(OUT_DIR, 'LLM-TYCOON-MVP.md');
+const OUT_FILE = join(OUT_DIR, 'LLM-TYCOON.md');
 const KEEP_COMMENTS = process.argv.includes('--keep-comments');
 
 /**
  * MANIFEST — thứ tự lắp ráp file build.
  *
- * - `title: null`  → không chèn banner PART (dùng cho header/footer).
+ * - `title: null`  → không chèn banner PART (dùng cho header/game info/footer).
  * - `dir`          → lấy mọi file .md trong thư mục (trừ README.md), sort theo tên.
  * - `file`         → lấy đúng một file.
  *
@@ -44,15 +47,16 @@ const KEEP_COMMENTS = process.argv.includes('--keep-comments');
  * thư mục đã có sẵn trong manifest).
  */
 const MANIFEST = [
-  { title: null, file: 'meta/header.md' },
+  { title: null, file: 'meta/00_header.md' },
+  { title: null, file: 'meta/01_game_info.md' },
   { title: 'PART 0 — GAME ENGINE (SYSTEM)', dir: 'system' },
   { title: 'PART 1 — GLOSSARY', file: 'shared/glossary.md' },
   { title: 'PART 2 — DEFINITIONS', dir: 'definitions' },
   { title: 'PART 3 — RULES', dir: 'rules' },
   { title: 'PART 4 — CONTENT (GAME DATA)', dir: 'content' },
   { title: 'PART 5 — SCENARIO', dir: 'scenarios' },
-  { title: 'PART 6 — OUTPUT TEMPLATES', dir: 'templates' },
-  { title: null, file: 'meta/footer.md' },
+  { title: 'PART 6 — USER INTERFACE (SCREENS)', dir: 'ui' },
+  { title: null, file: 'meta/99_footer.md' },
 ];
 
 /** Đọc một file markdown và chuẩn hóa xuống dòng về \n. */
@@ -102,18 +106,19 @@ for (const entry of MANIFEST) {
   }
 }
 
-const output =
-  `<!-- File này được sinh tự động từ các module trong repo llm-tycoon (v${version}).\n` +
-  `     ĐỪNG SỬA TRỰC TIẾP — hãy sửa file nguồn rồi chạy: npm run build -->\n\n` +
-  pieces.join('\n\n') +
-  '\n';
+// Output thuần nội dung game — KHÔNG chèn notice/comment nào (file được gửi
+// thẳng cho LLM; mọi thông tin build chỉ in ra console bên dưới).
+const output = pieces.join('\n\n') + '\n';
 
 mkdirSync(OUT_DIR, { recursive: true });
 writeFileSync(OUT_FILE, output, 'utf8');
 
-// Thống kê để theo dõi "ngân sách context" khi dán vào ChatGPT.
+// Thống kê để theo dõi "ngân sách context" khi gửi cho LLM.
 const bytes = Buffer.byteLength(output, 'utf8');
 const words = output.split(/\s+/).length;
-console.log(`✅ Build xong: build/LLM-TYCOON-MVP.md`);
+console.log(`✅ Build xong: build/LLM-TYCOON.md (nguồn v${version})`);
 console.log(`   ${fileCount} module | ${(bytes / 1024).toFixed(1)} KB | ~${words.toLocaleString()} từ | ~${Math.round(bytes / 4).toLocaleString()} token (ước lượng)`);
-console.log(`   Chế độ: ${KEEP_COMMENTS ? 'giữ comment (build:full)' : 'đã loại comment tiếng Việt (bản gọn để chơi)'}`);
+console.log(`   Chế độ: ${KEEP_COMMENTS ? 'GIỮ comment (chỉ để review — đừng gửi bản này cho LLM)' : 'sạch comment (bản chuẩn để gửi cho LLM)'}`);
+if (!KEEP_COMMENTS && output.includes('<!--')) {
+  console.warn('⚠ Cảnh báo: output vẫn còn chuỗi "<!--" — kiểm tra lại nguồn.');
+}

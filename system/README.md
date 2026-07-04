@@ -20,6 +20,8 @@ The documents in this directory define:
 * The workflow for processing Player Actions.
 * Conflict resolution between instructions.
 * Authority and responsibility boundaries.
+* Language mirroring, output discipline, and save/load duties.
+* The creative license boundary between narration and mechanics.
 
 These documents describe how the Game Engine should interpret and apply the rest of the Game Documentation.
 
@@ -38,7 +40,7 @@ Other directories provide the knowledge used by the Game Engine.
 * `rules/` defines game mechanics.
 * `content/` defines game data.
 * `scenarios/` defines initial Game States.
-* `templates/` defines the exact output formats the Game Engine must produce.
+* `ui/` defines the boot sequence and the exact screens the Game Engine must render.
 
 The Game Engine applies these documents according to the instructions defined in this directory.
 

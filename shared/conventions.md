@@ -37,8 +37,8 @@ Each directory has a distinct purpose.
 * `rules/` describes game mechanics and behavior.
 * `content/` contains game data.
 * `scenarios/` defines initial Game States.
-* `templates/` defines the exact output formats the Game Engine must produce.
-* `meta/` contains build-file wrappers (header, footer) that are not game knowledge.
+* `ui/` defines the boot sequence, UI Profiles, and the exact screens the Game Engine must render.
+* `meta/` contains the build-file wrappers (header, footer) and the game's identity card (Game Info).
 * `scripts/` contains the build tooling (not part of the Game Documentation).
 
 Information should only appear in the directory responsible for that information.
@@ -57,7 +57,7 @@ The build strips HTML comments by default, so the playable build stays lean whil
 
 # File Naming and Ordering
 
-When the order of documents matters (system, rules, content, templates), prefix file names with two digits (`00_`, `01_`, …).
+When the order of documents matters (system, rules, content, ui, meta), prefix file names with two digits (`00_`, `01_`, …).
 
 The build assembles each directory's `.md` files sorted by name, excluding `README.md`. A `README.md` describes its directory for developers and never enters the build.
 
@@ -65,7 +65,9 @@ The build assembles each directory's `.md` files sorted by name, excluding `READ
 
 # Build
 
-`scripts/build.js` assembles the Game Documentation into a single playable file, `build/LLM-TYCOON-MVP.md`, following the MANIFEST declared in the script.
+`scripts/build.js` assembles the Game Documentation into a single playable file, `build/LLM-TYCOON.md`, following the MANIFEST declared in the script.
+
+The build output is sent directly to an LLM to run. It must therefore contain **no HTML comments** and **no text about the repository, the build process, or how to use the file** — document bodies address the Game Engine and the player only.
 
 Run `npm run build` after any documentation change. Never edit the build output directly.
 

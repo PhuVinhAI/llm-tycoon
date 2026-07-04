@@ -4,11 +4,11 @@ FILE: 10_employees.md
 MODULE: Rules / Employees
 
 Mục đích:
-Định nghĩa cơ chế tuyển dụng trong giai đoạn garage.
+Định nghĩa cơ chế tuyển dụng trong chương Home Lab.
 
 Tác dụng:
-Garage chỉ chứa được một đội nhỏ — tối đa 2 người — mỗi người một thế mạnh
-rõ rệt, buộc người chơi chọn hướng build.
+Home lab chỉ chứa được một đội nhỏ — tối đa 2 người — mỗi người một thế
+mạnh rõ rệt, buộc người chơi chọn hướng build.
 
 Trách nhiệm:
 - Định nghĩa giới hạn, thuê, sa thải, lương.
@@ -21,7 +21,7 @@ Trách nhiệm:
 ## Hiring
 
 - Candidates become available at REP thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
-- Maximum **2** Employees at a time — it is a garage.
+- Maximum **2** Employees at a time — the lab is one small room.
 - Hiring is instant. Salary is paid from the month of hire (Economy rule).
 
 ## Firing
@@ -35,8 +35,8 @@ Trách nhiệm:
 <!--
 Tiếng Việt (tóm tắt):
 Tuyển: ứng viên mở theo ngưỡng REP (Content), engine thông báo đúng tháng
-chạm ngưỡng. Tối đa 2 nhân viên — garage mà. Thuê là tức thời; trả lương từ
-tháng thuê.
+chạm ngưỡng. Tối đa 2 nhân viên — phòng lab tại gia mà. Thuê là tức thời;
+trả lương từ tháng thuê.
 
 Sa thải: tức thời, hiệu lực ngay, không phạt, không trợ cấp; ứng viên vẫn
 có thể thuê lại sau.

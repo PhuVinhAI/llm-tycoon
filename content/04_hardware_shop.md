@@ -27,7 +27,7 @@ mới ngốn CU hơn.
 
 | Item | Price | Effect |
 |---|---|---|
-| 🔌 Rewire garage (once) | $2,000 | slots 4 → 8 |
+| 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
 | ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +10 CU/mo per unit, max 2 units, project months only |
 
 Upkeep $25 per occupied slot per month; sell-back 50% (Hardware rule).
@@ -37,7 +37,7 @@ Tiếng Việt (tóm tắt):
 Shop phần cứng theo lịch thật: GTX 780 (có từ đầu, $600, 1 CU) → GTX 980
 (9/2014, $550, 2 CU) → GTX 1080 (6/2016, $700, 4 CU) → server K80 cũ
 (10/2017, $1,500, 6 CU, chiếm 2 slot) → RTX 2080 (9/2018, $800, 8 CU).
-Mua thêm: Đi lại dây điện garage $2,000 (4 → 8 slot, một lần); Cloud từ
+Mua thêm: Đi lại dây điện home lab $2,000 (4 → 8 slot, một lần); Cloud từ
 1/2017 — $1,000/tháng cho mỗi đơn vị +10 CU, tối đa 2 đơn vị, chỉ trong
 tháng có dự án. Vận hành $25/slot/tháng; bán lại 50% giá.
 -->

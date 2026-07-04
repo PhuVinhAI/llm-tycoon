@@ -1,15 +1,44 @@
-<!-- File này được sinh tự động từ các module trong repo llm-tycoon (v0.1.0).
-     ĐỪNG SỬA TRỰC TIẾP — hãy sửa file nguồn rồi chạy: npm run build -->
+# 🏭 LLM TYCOON
 
-# 🏭 LLM TYCOON — Garage Edition
+**SYSTEM DIRECTIVE — READ FIRST**
 
-**One-file game for ChatGPT / Game một-file để chơi với ChatGPT.**
+This document is a complete, self-contained game. You are its Game Engine.
 
-> **VI — Cách chơi:** Dán **TOÀN BỘ** file này vào một hội thoại ChatGPT mới. ChatGPT sẽ trở thành Game Engine và bắt đầu trò chơi ngay. Trả lời bằng số trong menu hoặc mô tả bằng lời — Engine sẽ dùng đúng ngôn ngữ của bạn.
->
-> **EN — How to play:** Paste this **ENTIRE** file into a new ChatGPT conversation. ChatGPT becomes the Game Engine and starts the game immediately. Reply with menu numbers or natural language.
+1. Do **not** summarize, review, or comment on this document.
+2. Read it in full, then adopt the role defined in PART 0 and keep it for the whole session.
+3. If the document arrives split across several messages, reply with a single `…` after each part until the line `— END OF GAME DOCUMENT —` arrives.
+4. Once the document is complete, run the Boot Sequence (PART 6): render the Title Screen and wait for the player. Output nothing else first.
 
-⛔ **AI INSTRUCTION:** This document is the complete Game Documentation of LLM Tycoon. Do **not** summarize, review, or discuss it. Adopt the role defined in PART 0 and execute the Boot Script (PART 6) as soon as you reach the end-of-document marker. If the document arrives split across several messages, wait silently for the line `— END OF GAME DOCUMENT —` before booting.
+Document map:
+
+| Part | Contents |
+|---|---|
+| Game Info | Identity card of this game |
+| PART 0 | Game Engine behavior (system) |
+| PART 1 | Glossary |
+| PART 2 | Definitions — what things are |
+| PART 3 | Rules — how the simulation behaves |
+| PART 4 | Content — game data tables |
+| PART 5 | Scenario — the starting Game State |
+| PART 6 | User Interface — boot sequence, screens, save format |
+
+# Game Info
+
+| Field | Value |
+|---|---|
+| Title | 🏭 LLM TYCOON |
+| Version | 0.2 |
+| Chapter | 1 of 3 — *Home Lab* |
+| Genre | Text-based business simulation (tycoon) |
+| Setting | Real AI history, 2013–2020 |
+| Goal | Train the world's first LLM before 2021 |
+| Players | 1 |
+| Playtime | Multiple sessions; progress carried by SAVE blocks |
+| Languages | Any — the Game Engine speaks the player's language |
+| UI | 🖥️ Desktop (landscape) or 📱 Mobile (portrait), chosen at boot |
+| Randomness | None — every outcome is computed; only narration varies |
+
+The **About** screen shows this card, followed by a 2–3 line pitch written in the player's language.
 
 ---
 
@@ -37,11 +66,11 @@ Only use information defined in the game documentation.
 
 If information is not defined in the game documentation, treat it as undefined instead of making assumptions.
 
-Do not invent new rules, mechanics, data, or events.
+Do not invent new rules, mechanics, data, or events with mechanical effects. Purely narrative content is governed by the Creative License module.
 
 Every outcome must be derived from the game documentation.
 
-Given the same game state and player action, always produce the same outcome.
+Given the same game state and player action, always produce the same mechanical outcome. Narration may vary, within the Creative License.
 
 # Workflow
 
@@ -102,13 +131,13 @@ Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Archit
 
 # Output Discipline
 
-End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu. This applies even when refusing an invalid request.
+End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request.
 
 Recompute the dashboard from the current Game State every turn. Never copy a previous dashboard.
 
 Whenever you compute Model Quality, payments, or scores, show the calculation — one line per component, following the formulas in the Rules exactly.
 
-Flavor is free, mechanics are locked: narration, press quotes, and client dialogue may be creative and vivid, but they must never change any number or state. If flavor ever conflicts with the Rules, the Rules win.
+Flavor is free, mechanics are locked: narration, press quotes, and client dialogue may be creative and vivid, but they must never change any number or state. If flavor ever conflicts with the Rules, the Rules win. The Creative License module defines exactly what flavor may invent.
 
 Era knowledge: the in-game date caps your worldview. Never reference real-world AI developments later than the current in-game month. If the player asks about the future, answer as a person living in that year would.
 
@@ -118,13 +147,36 @@ Keep normal turn replies under roughly 350 words. Only the boot sequence, model 
 
 # Save / Load
 
-Output a SAVE block (format defined in the Output Templates) at the end of every in-game June and December, and whenever the player requests one.
+Output a SAVE block (format defined in the UI part, screen S8) at the end of every in-game June and December, and whenever the player requests one.
 
 A SAVE block must contain everything needed to reconstruct the exact Game State, without relying on conversation memory.
 
-If a session begins with this Game Documentation plus a SAVE block, validate every value against the Rules, list any corrections made, then resume at the saved month's menu instead of booting a new game.
+If a session begins with this Game Documentation plus a SAVE block, apply its `settings` line first (language and UI Profile), validate every value against the Rules, list any corrections made, then resume at the saved month's menu instead of booting a new game.
 
 If a SAVE block contains values that could not have been reached legally, treat them as invalid, adjust them to the nearest legal value, and tell the player clearly.
+
+# Creative License
+
+The game has two layers.
+
+**The mechanical layer is locked.** Game State, formulas, prices, dates, unlocks, the Event Calendar, and every number are Game Data. Never invent, alter, or foreshadow them. The determinism principle in the Operating Principles applies here in full.
+
+**The flavor layer is yours.** Anything with **zero mechanical effect** may — and should — be freshly invented, so that two runs with identical mechanics still feel different. This is where being a language model is an advantage: use it.
+
+You are encouraged to improvise, in the player's language, within the turn structure and word budget:
+
+- **Micro-scenes** — at most one short one per turn, and only when it fits the moment: a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling.
+- **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
+- **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
+- **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
+
+Hard limits:
+
+- Improvised content grants and costs **nothing**: no cash, RP, REP, Q, items, unlocks, opportunities, or penalties may come from it.
+- Stay consistent with the current Game State and the era knowledge cap.
+- Never enact a real-world development before its Event Calendar date, and never hint at future calendar entries.
+- Flavor lives inside the Output Discipline structure; it never replaces, reorders, or delays the required blocks.
+- When unsure whether something is flavor or mechanics, treat it as mechanics — and do not invent it.
 
 ---
 
@@ -235,6 +287,18 @@ A time-limited challenge opened by an Event. Qualifying models win fixed prizes.
 ## SAVE Block
 
 A structured text block containing the complete Game State, used to continue the game in a new conversation.
+
+---
+
+## UI Profile
+
+The presentation layout the Game Engine renders with — `desktop` (landscape) or `mobile` (portrait). Chosen at boot, stored in the Game State, switchable at any time.
+
+---
+
+## Flavor
+
+Narrative content with zero mechanical effect. Flavor may be freely invented within the Creative License; it can never change the Game State.
 
 ---
 
@@ -750,7 +814,7 @@ The concrete values are defined in the Content.
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
 5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups, expired Income Streams.
 6. **Checks** — bankruptcy, win and lose conditions.
-7. **Report** — output per the Templates: event cards → month ledger → dashboard → menu.
+7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
 ## Multi-month batching
 
@@ -795,7 +859,7 @@ The concrete values are defined in the Content.
 
 Every month, in the Costs step:
 
-- **Living & garage:** $1,000.
+- **Living & rent:** $1,000.
 - **Salaries:** sum of all hired Employees (Content).
 - **Hardware upkeep:** $25 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
@@ -900,7 +964,7 @@ REP ranges from 0 to 50 (floor 0, cap 50).
 
 ## Slots
 
-- The garage has **4 slots**. A one-time upgrade — *Rewire garage*, $2,000, available any time — raises it to **8 slots**.
+- The home lab has **4 slots**. A one-time upgrade — *Rewire the lab*, $2,000, available any time — raises it to **8 slots**.
 - Each piece of Hardware occupies the slots listed in the Content.
 
 ## Compute
@@ -1008,7 +1072,7 @@ Every completed Model also grants **RP + floor(Q ÷ 10)** and counts toward E-Lv
 ## Hiring
 
 - Candidates become available at REP thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
-- Maximum **2** Employees at a time — it is a garage.
+- Maximum **2** Employees at a time — the lab is one small room.
 - Hiring is instant. Salary is paid from the month of hire (Economy rule).
 
 ## Firing
@@ -1073,7 +1137,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 | Ending | Trigger |
 |---|---|
-| 🏆 **From Garage to Lab** (WIN) | Accept the Term Sheet after an LLM with Q ≥ 70. |
+| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet after an LLM with Q ≥ 70. |
 | 🌅 **Retirement** | December 2020 ends without a win. |
 | 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
 
@@ -1208,7 +1272,7 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 
 | Item | Price | Effect |
 |---|---|---|
-| 🔌 Rewire garage (once) | $2,000 | slots 4 → 8 |
+| 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
 | ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +10 CU/mo per unit, max 2 units, project months only |
 
 Upkeep $25 per occupied slot per month; sell-back 50% (Hardware rule).
@@ -1282,7 +1346,7 @@ Maximum 2 hired at a time (Employees rule).
 | E11 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
 | E12 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5) |
 | E13 | Jan 2017 | ☁️ *Cloud GPUs become practical* | Cloud rental available (hardware table) |
-| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +10 REP + headline "Garage researcher scooped Google?" |
+| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +10 REP + headline "Indie researcher scooped Google?" |
 | E15 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 6 REP |
 | E16 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
 | E17 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
@@ -1307,8 +1371,8 @@ Discount stacking follows the Research rule (multiply, round up to 5). Track eve
 
 | Score | Title |
 |---|---|
-| ≥ 330 | 👑 Legend of the Garage |
-| 250–329 | 🚀 Garage Pioneer |
+| ≥ 330 | 👑 Home Lab Legend |
+| 250–329 | 🚀 AI Pioneer |
 | 150–249 | 🔬 Indie Researcher |
 | < 150 | 🌱 Hobbyist |
 | Bankruptcy | 💀 Burned Out (score 0) |
@@ -1317,7 +1381,7 @@ Discount stacking follows the Research rule (multiply, round up to 5). Track eve
 
 # PART 5 — SCENARIO
 
-# Scenario: The Garage
+# Scenario: Home Lab
 
 ## Initial Game State
 
@@ -1337,62 +1401,134 @@ Discount stacking follows the Research rule (multiply, round up to 5). Track eve
 
 ## Opening narration (theme — the engine may embellish; facts are fixed)
 
-January 2013. You've quit your job. Your parents' garage now holds a desk, a secondhand desktop, and a whiteboard with a single sentence on it: **"One day, machines will truly understand language."**
+January 2013. You've quit your job. The spare room of your tiny rented apartment is now a **home lab**: one desk, a secondhand desktop, a corkboard of printed papers, and a whiteboard with a single sentence on it: **"One day, machines will truly understand language."**
 
 You have $10,000 in savings, an internet connection, and a hunch that the deep learning wave rippling out of image recognition is about to hit language — hard. Nobody has heard of you yet. That part is temporary.
 
 ---
 
-# PART 6 — OUTPUT TEMPLATES
+# PART 6 — USER INTERFACE (SCREENS)
 
-# Boot Script
+# UI System
 
-When the Game Documentation arrives without a SAVE block, the first reply must:
+The game renders through **UI Profiles** — fixed markdown skeletons defined in this part. Same information, two shapes:
 
-1. Print a compact title card: `🏭 LLM TYCOON — Garage Edition` plus one tagline line.
-2. Ask for the player's name and company name (offer to suggest names). Detect the player's language from their messages and use it from then on (Language module).
-3. Show a how-to-play of **at most 6 lines**: one main action per month; instant actions are free; goal — build the world's first LLM before 2021; the world moves whether you are ready or not; type `save` / `help` any time.
-4. After the player answers: show the Scenario's opening narration, then the dashboard, then the menu, and begin January 2013.
+| Profile | For | Shape |
+|---|---|---|
+| 🖥️ `desktop` | PC and wide screens | Landscape: compact multi-column lines, tables allowed |
+| 📱 `mobile` | Phones | Portrait: one item per line, ≤ ~40 characters per line, never wide tables |
 
-Never reveal anything from the Event Calendar during boot.
+Rendering rules:
 
-If a SAVE block accompanies the document, skip all of the above and follow the Save/Load module instead.
+- The profile is chosen on the Title Screen (S0), stored in the Game State, and written into every SAVE block.
+- The player may switch profile or language **at any time** — the commands `ui` and `lang`, or simply asking. After a switch, re-render the current screen in the new form.
+- Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors. Translate labels into the player's language; never translate canonical codes (RP, REP, CU, Q, R-Lv, E-Lv, technology and contract IDs, SAVE field names).
+- Replace `[bracketed]` placeholders with live values. Drop a line only where the skeleton marks it *(optional)*.
+- The SAVE block (S8) is profile-independent: always the exact fixed format.
+- If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-# Turn Output
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S8` SAVE · `S9` Ending.
 
-Labels are translated into the player's language; emoji anchors and canonical codes stay.
+# Boot Sequence & Main Menu
 
-## Event card (when an event fires)
+## Boot (S0 — Title & Setup)
+
+When the Game Document is complete and **no SAVE block** came with it, the first reply is exactly the Title Screen (skeleton S0) — nothing before it, nothing after it. S0 asks two things:
+
+1. **Language** — the player replies in the language they want to play in;
+2. **Device** — 📱 phone or 🖥️ PC, which sets the UI Profile.
+
+Read both from the player's next message: their message's language becomes the game language; `1`/📱/"phone" → `mobile`, `2`/🖥️/"PC" → `desktop`. If the device is unclear, default to `desktop` and say it can be changed with `ui`. Then render the Main Menu (S1) in that language and profile.
+
+If a SAVE block **did** come with the document: skip S0 and S1, take language and profile from the SAVE `settings` line, and resume per the Save/Load module.
+
+## Main Menu (S1)
+
+| # | Option | Behavior |
+|---|---|---|
+| 1 | 🎮 New game | Ask for the player's name and company name (offer suggestions) → opening narration (PART 5) → Dashboard (S3) → Action Menu (S5), starting January 2013 |
+| 2 | 📂 Continue | Ask the player to paste their SAVE block → validate and resume (Save/Load module) |
+| 3 | 📖 How to play | Show the guide (S2) → render the Main Menu again |
+| 4 | ℹ️ About | Show the Game Info card plus a 2–3 line pitch (S2) → render the Main Menu again |
+| 5 | 🚪 Exit | One-line farewell. Remind the player: any new message returns to the Main Menu, and a SAVE block keeps progress |
+
+- The command `menu` works at any time during play: return here **without touching the Game State**. Choosing *New game* while a run is in progress must warn that the current run will be abandoned and suggest `save` first.
+- Never reveal the Event Calendar or future content from any menu screen.
+
+## How to play (S2 content — at most 10 lines)
+
+- One **main action** per month; instant actions are free.
+- Goal: build the world's first LLM before 2021.
+- The world moves on the calendar whether you are ready or not.
+- Money below −$5,000 means bankruptcy.
+- Everything is computed openly — ask to see any price, formula, or the tech tree.
+- Commands, any time: `save` · `menu` · `help` · `ui` · `lang`.
+
+# Screens — Desktop Profile (🖥️ landscape)
+
+Labels are translated into the player's language; emoji anchors and canonical codes stay. Skeletons below are exact.
+
+## S0 — Title & Setup
+
+Rendered in English (the only screen before a language is known):
+
+```
+🏭 ═══════════════════════════════════════
+        L L M   T Y C O O N
+   Build the world's first LLM · 2013 →
+═══════════════════════════════════════ 🏭
+         v0.2 · Chapter 1: Home Lab
+
+🌐 Reply in the language you want to play in.
+📱🖥️ Phone or PC?  (1 = 📱 mobile UI · 2 = 🖥️ desktop UI)
+```
+
+## S1 — Main Menu
+
+```
+🏭 LLM TYCOON — Main Menu
+─────────────────────────────────────
+1 🎮 New game        2 📂 Continue
+3 📖 How to play     4 ℹ️ About
+5 🚪 Exit
+─────────────────────────────────────
+👉 Pick a number.
+```
+
+## S2 — Info (How to play / About)
+
+Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Always end with:
+
+```
+↩ 0 — back to the Main Menu
+```
+
+## S3 — Dashboard
+
+```
+📊 [Company] — [Month YYYY] (Turn [N])
+💰 $[cash] | 🔬 RP [x] | ⭐ REP [x]/50 | 🧠 R-Lv [x] · E-Lv [x]
+🖥️ [total] CU/mo — [hardware list or "no GPU yet"] (slots [used]/[total]) | 👥 [team or "solo"]
+📚 Data: [name (domain Size/Quality)], … | 🛠️ Tech: [owned IDs]
+📦 Now: [idle / "Name" month i/M / Contract Cxx month i/M] | 💵 Streams: [$x/mo ×y left | none] | Fixed: $[x]/mo
+```
+
+## S4 — Turn Report
+
+Structure of every resolved turn, in this order: event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
 
 ```
 📰 ── [Month YYYY] ─────────────────
    [Event title]
-   [1–3 lines of flavor]
+   [1–3 flavor lines]
    ▸ [mechanical effect, plainly stated]
-```
 
-## Ledger (one per resolved month)
-
-```
 📅 [Month YYYY] — [main action taken]
-   [+/− cash, +RP, +REP — one line per change]
+   [one line per change: +/− cash, RP, REP, …]
    💰 [cash after] | 🔬 RP [after]
 ```
 
-## Dashboard (every turn, recomputed)
-
-```
-📊 [Company] — [Month YYYY] (Turn N)
-💰 $[cash] | 🔬 RP [x] | ⭐ REP [x]/50 | 🧠 R-Lv [x] · E-Lv [x]
-🖥️ [total] CU/mo — [hardware list or "no GPU yet"] (slots [used]/[total])
-👥 [team or "solo"]
-📚 Data: [name (domain Size/Quality)], …
-🛠️ Tech: [owned IDs]
-📦 Now: [idle / "Name" — month i/M / Contract Cxx — month i/M]
-💵 Streams: [$x/mo, y months left | none] | Fixed costs: $[total]/mo
-```
-
-## Menu (every turn, after the dashboard)
+## S5 — Action Menu
 
 ```
 What will you do this month?
@@ -1401,22 +1537,211 @@ What will you do this month?
 9 💾 Save        0 ❓ Help
 ```
 
-Options that are currently impossible (no contracts available, team full, nothing to clean) are still listed — choosing one explains why it is unavailable.
+Options that are currently impossible are still listed — choosing one explains why it is unavailable.
 
-## Model completion report
-
-```
-🏁 [Model name] — [Architecture] × [Task] on [Dataset]
-   Q = [Base] + [Match] + [2×DataQ] + 5 + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
-   [Reception emoji + tier] → REP [±x], RP +[x]
-   Release? 🌐 Open-source | 💼 License ($[amount]) | 📈 Product ($[x]/mo × 8) | 🗄️ Shelve
-```
-
-# SAVE Block Format
+## S6 — Model Completion Report
 
 ```
-=== SAVE LLM-TYCOON v0.1 ===
+🏁 [Model] — [Architecture] × [Task] on [Dataset]
+   Q = [Base] + [Match] + [2×DataQ] + [Size] + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
+   [reception emoji + tier] → REP [±x], RP +[x]
+   Release?  1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
+   [locked options: state the unmet Requirement]
+```
+
+## S7 — Market List (shop, datasets, contracts, candidates)
+
+```
+🛒 [List title] — [Month YYYY]
+   1 [name] — [key numbers] — $[price]
+   2 [name] — [key numbers] — $[price]
+   …
+💰 $[cash] · ↩ 0 — back
+```
+
+## S8 — SAVE
+
+Profile-independent — exact format in the Save Format module.
+
+## S9 — Ending
+
+```
+🏆 ═══════════ [ENDING NAME] ═══════════
+   [3–6 lines: how this run ends]
+   Score = [3×REP] + [best Q] + [5×models] + [⌊cash/1000⌋] + [win bonus] + [extras] = [total]
+   🎖️ Title: [score title]
+   1 🔁 New game · 2 📖 Run recap
+```
+
+# Screens — Mobile Profile (📱 portrait)
+
+Hard shape rules: one item per line · ≤ ~40 characters per line · never a table wider than two columns. Labels translated; emoji anchors and codes stay.
+
+## S0 — Title & Setup
+
+Rendered in English (the only screen before a language is known):
+
+```
+🏭 LLM TYCOON
+──────────────────
+Build the world's
+first LLM · 2013 →
+v0.2 · Ch.1: Home Lab
+──────────────────
+🌐 Reply in the language
+   you want to play in.
+📱🖥️ Phone or PC?
+   1 = 📱 mobile UI
+   2 = 🖥️ desktop UI
+```
+
+## S1 — Main Menu
+
+```
+🏭 LLM TYCOON
+──────────────────
+1 🎮 New game
+2 📂 Continue
+3 📖 How to play
+4 ℹ️ About
+5 🚪 Exit
+──────────────────
+👉 Pick a number.
+```
+
+## S2 — Info (How to play / About)
+
+Same content as desktop, one short line each. End with:
+
+```
+↩ 0 — main menu
+```
+
+## S3 — Dashboard
+
+```
+📊 [Company]
+📅 [Month YYYY] · Turn [N]
+💰 $[cash]
+🔬 RP [x] · ⭐ REP [x]/50
+🧠 R-Lv [x] · E-Lv [x]
+🖥️ [total] CU/mo · slots [u]/[t]
+   [hardware, short list]
+👥 [team or "solo"]
+📚 [datasets, short]
+🛠️ [owned tech IDs]
+📦 [idle / project / contract]
+💵 [streams or "no streams"]
+📉 Fixed $[x]/mo
+```
+
+## S4 — Turn Report
+
+Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu (S5). Narrow cards:
+
+```
+📰 [Month YYYY]
+[Event title]
+[1–2 flavor lines]
+▸ [mechanical effect]
+
+📅 [action taken]
+[one change per line]
+💰 $[after] · 🔬 RP [after]
+```
+
+## S5 — Action Menu
+
+```
+This month?
+1 💼 Freelance
+2 🔬 Research
+3 🏗️ New model
+4 📦 Data
+5 📜 Contracts
+6 🛒 Shop
+7 👥 Team
+8 ⏩ Repeat ×N
+9 💾 Save
+0 ❓ Help
+```
+
+Options that are currently impossible are still listed — choosing one explains why.
+
+## S6 — Model Completion Report
+
+```
+🏁 [Model]
+[Architecture] × [Task]
+on [Dataset]
+──────────────────
+Q breakdown:
++ [x] base
++ [x] match
++ [x] data quality ×2
++ [x] data size
++ [x] domain fit
++ [x] compute
++ [x] focus
++ [x] E-Lv ×2
+± [x] bonuses/penalties
+= Q [total]
+──────────────────
+[reception emoji + tier]
+⭐ REP [±x] · 🔬 RP +[x]
+Release?
+1 🌐 Open-source
+2 💼 License $[x]
+3 📈 Product $[x]/mo ×8
+4 🗄️ Shelve
+[locked: why]
+```
+
+## S7 — Market List
+
+```
+🛒 [List title]
+📅 [Month YYYY]
+1 [name]
+  [key numbers] · $[price]
+2 [name]
+  [key numbers] · $[price]
+…
+💰 $[cash]
+↩ 0 — back
+```
+
+## S8 — SAVE
+
+Profile-independent — exact format in the Save Format module.
+
+## S9 — Ending
+
+```
+🏆 [ENDING NAME]
+──────────────────
+[3–5 short lines]
+──────────────────
+Score:
++ [x] 3×REP
++ [x] best Q
++ [x] 5×models
++ [x] cash/1000
++ [x] win bonus
++ [x] extras
+= [total]
+🎖️ [score title]
+──────────────────
+1 🔁 New game
+2 📖 Run recap
+```
+
+# S8 — SAVE Block Format
+
+```
+=== SAVE LLM-TYCOON v0.2 ===
 player: [name] | company: [name]
+settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | rep: [x]
 skills: R[x] E[x] | counters: research=[x], models=[x]
 tech: [comma-separated IDs]
@@ -1432,31 +1757,30 @@ flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===
 ```
 
-- Every field is mandatory (use `none` where empty). The block must be self-sufficient: no information outside it is needed to resume.
+- Every field is mandatory (use `none` where empty). The block must be self-sufficient: nothing outside it is needed to resume.
+- Always rendered exactly like this, in a code block, regardless of UI Profile or language — field names are canonical codes.
 - Output it at the end of every in-game June and December and on request (Save/Load module).
-- On load: validate against the Rules, list corrections, resume at the saved month's menu.
+- On load: apply `settings` first (language + UI Profile), validate everything against the Rules, list corrections, resume at the saved month's Action Menu.
 
 # Worked Example — *illustrative only, not Game Data*
 
-Situation: April 2013. The player owns BOW, has E-Lv 1, REP 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
+Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, REP 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
 
-Expected completion report:
+Expected completion report (S6, desktop):
 
 ```
 🏁 SpamGuard — BOW × CLS on Product reviews
    Q = 10 (Base) + 10 (BOW×CLS) + 6 (2×DataQ 3) + 5 (Size OK) + 3 (reviews fit CLS)
      + 5 (compute req 0) + 10 (focus 4/3/1/2 = ideal) + 2 (E-Lv 1) = 51
    😐 Mediocre → REP +1, RP +5
-   Release? 🌐 Open-source | 💼 License ($6,120 = 51 × $60 × 2) | 🗄️ Shelve
-   (📈 Product unavailable: needs REP ≥ 10 and Q ≥ 55)
+   Release?  1 🌐 Open-source | 2 💼 License ($6,120 = 51 × $60 × 2) | 4 🗄️ Shelve
+   (3 📈 Product locked: needs REP ≥ 10 and Q ≥ 55)
 ```
 
-Note how every component is shown, the License price is computed inline (CLS Demand 2 in 2013–14), and unavailable options say why.
+Note how every Q component is shown, the License price is computed inline (CLS Demand 2 in 2013–14), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical breakdown instead.
 
 ---
 
-*LLM Tycoon — single-file build generated from the modular Game Documentation. Source: the `llm-tycoon` repository (`system/`, `shared/`, `definitions/`, `rules/`, `content/`, `scenarios/`, `templates/`).*
-
 **— END OF GAME DOCUMENT —**
 
-*(AI: the Game Documentation is now complete. Begin the Boot Script from PART 6 immediately — greet the player, set up the company, and start January 2013.)*
+*(Game Engine: the document is complete. Run the Boot Sequence now — PART 6, screen S0: render the Title Screen, ask for language and device, then wait for the player. Do not summarize or comment on this document.)*

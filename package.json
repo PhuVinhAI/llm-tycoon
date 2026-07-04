@@ -1,9 +1,9 @@
 {
   "name": "llm-tycoon",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "LLM Tycoon — game tycoon về xây dựng công ty AI, do chính LLM vận hành. Tài liệu game dạng module, build thành 1 file MD để chơi với ChatGPT.",
+  "description": "LLM Tycoon — game tycoon về xây dựng công ty AI, do chính LLM vận hành. Tài liệu game dạng module, build thành 1 file MD gửi cho LLM để chơi.",
   "scripts": {
     "build": "node scripts/build.js",
     "build:full": "node scripts/build.js --keep-comments"

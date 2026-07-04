@@ -23,7 +23,7 @@ Trách nhiệm:
 
 | Ending | Trigger |
 |---|---|
-| 🏆 **From Garage to Lab** (WIN) | Accept the Term Sheet after an LLM with Q ≥ 70. |
+| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet after an LLM with Q ≥ 70. |
 | 🌅 **Retirement** | December 2020 ends without a win. |
 | 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
 
@@ -42,7 +42,8 @@ Present the ending as a short narrated epilogue, then the score breakdown line b
 
 <!--
 Tiếng Việt (tóm tắt):
-Ba kết cục: THẮNG "From Garage to Lab" (nhận Term Sheet sau LLM Q ≥ 70);
+Ba kết cục: THẮNG "From Home Lab to Headquarters" (nhận Term Sheet sau LLM
+Q ≥ 70);
 "Retirement" (hết 12/2020 chưa thắng); "Burned Out" (phá sản, điểm = 0).
 
 Điểm = 3×REP + Q của model tốt nhất + 5×số dự án/hợp đồng hoàn thành

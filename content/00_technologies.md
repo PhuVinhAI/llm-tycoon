@@ -4,7 +4,7 @@ FILE: 00_technologies.md
 MODULE: Content / Technologies
 
 Mục đích:
-Cây công nghệ của Garage Edition — xương sống tiến trình của cả game.
+Cây công nghệ của chương Home Lab — xương sống tiến trình của cả game.
 
 Tác dụng:
 Mô phỏng lộ trình NLP ngoài đời thực 2013–2018: từ n-gram và túi từ, qua

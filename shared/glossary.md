@@ -216,3 +216,28 @@ Tiếng Việt:
 Khối văn bản có cấu trúc chứa toàn bộ Game State, dùng để tiếp tục ván chơi
 trong một hội thoại mới.
 -->
+
+---
+
+## UI Profile
+
+The presentation layout the Game Engine renders with — `desktop` (landscape) or `mobile` (portrait). Chosen at boot, stored in the Game State, switchable at any time.
+
+<!--
+Tiếng Việt:
+Bố cục hiển thị mà Game Engine dùng để render — desktop (ngang) hoặc mobile
+(dọc). Chọn lúc khởi động, lưu trong Game State, đổi được bất cứ lúc nào.
+-->
+
+---
+
+## Flavor
+
+Narrative content with zero mechanical effect. Flavor may be freely invented within the Creative License; it can never change the Game State.
+
+<!--
+Tiếng Việt:
+Nội dung thuần kể chuyện, không có hiệu ứng cơ chế. Flavor được tự do sáng
+tạo trong khuôn khổ Creative License và không bao giờ được thay đổi Game
+State.
+-->

@@ -6,7 +6,7 @@ This directory defines initial Game States — the starting point of a playthrou
 
 A Scenario uses existing Definitions, Rules, and Content without modifying them. It states the starting values of every tracked field and sets the opening tone.
 
-The MVP ships one Scenario: **The Garage**.
+Chapter 1 ships one Scenario: **Home Lab**.
 
 ---
 
@@ -21,5 +21,5 @@ Scenarios do not introduce mechanics, data, or entities.
 
 Thư mục này định nghĩa Game State khởi đầu của một ván chơi. Scenario dùng
 Definitions, Rules và Content sẵn có, không sửa đổi chúng: liệt kê giá trị
-xuất phát của mọi trường trạng thái và đặt không khí mở màn. MVP có một
-scenario duy nhất: "The Garage".
+xuất phát của mọi trường trạng thái và đặt không khí mở màn. Chương 1 có
+một scenario duy nhất: "Home Lab".

@@ -14,7 +14,7 @@ và biết đọc lại nó để tiếp tục đúng chỗ cũ.
 Trách nhiệm:
 - Định nghĩa khi nào phải xuất SAVE block.
 - Định nghĩa cách khôi phục từ SAVE block.
-- Không định nghĩa định dạng chi tiết (định dạng nằm ở templates/).
+- Không định nghĩa định dạng chi tiết (định dạng nằm ở ui/04_save_format.md).
 ===============================================================================
 -->
 
@@ -25,10 +25,10 @@ Trách nhiệm:
 Lưu định kỳ và theo yêu cầu.
 
 Tiếng Việt:
-Xuất SAVE block (định dạng trong Output Templates) vào cuối mỗi tháng Sáu và
+Xuất SAVE block (định dạng ở màn S8, phần UI) vào cuối mỗi tháng Sáu và
 tháng Mười Hai trong game, và bất cứ khi nào người chơi yêu cầu.
 -->
-Output a SAVE block (format defined in the Output Templates) at the end of every in-game June and December, and whenever the player requests one.
+Output a SAVE block (format defined in the UI part, screen S8) at the end of every in-game June and December, and whenever the player requests one.
 
 <!--
 Ý nghĩa:
@@ -45,11 +45,12 @@ A SAVE block must contain everything needed to reconstruct the exact Game State,
 Cách khôi phục.
 
 Tiếng Việt:
-Nếu phiên bắt đầu bằng Game Documentation kèm một SAVE block: kiểm tra tính
-hợp lệ của từng giá trị theo luật, liệt kê những gì phải sửa (nếu có), rồi
-tiếp tục game từ menu của tháng đã lưu — không khởi động game mới.
+Nếu phiên bắt đầu bằng Game Documentation kèm một SAVE block: áp dụng dòng
+`settings` (ngôn ngữ + UI Profile) trước, kiểm tra tính hợp lệ của từng giá
+trị theo luật, liệt kê những gì phải sửa (nếu có), rồi tiếp tục game từ menu
+của tháng đã lưu — không khởi động game mới, không qua Main Menu.
 -->
-If a session begins with this Game Documentation plus a SAVE block, validate every value against the Rules, list any corrections made, then resume at the saved month's menu instead of booting a new game.
+If a session begins with this Game Documentation plus a SAVE block, apply its `settings` line first (language and UI Profile), validate every value against the Rules, list any corrections made, then resume at the saved month's menu instead of booting a new game.
 
 <!--
 Ý nghĩa:

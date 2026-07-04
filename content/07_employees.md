@@ -4,12 +4,12 @@ FILE: 07_employees.md
 MODULE: Content / Employees
 
 Mục đích:
-Danh sách ứng viên có thể tuyển trong giai đoạn garage.
+Danh sách ứng viên có thể tuyển trong chương Home Lab.
 
 Tác dụng:
 Ba ứng viên = ba hướng build: Linh (dữ liệu + nghiên cứu), Tuấn (tiết kiệm
-compute), Dr. Phạm (nghiên cứu sâu + chất lượng model). Garage chỉ chứa 2
-người nên phải chọn.
+compute), Dr. Phạm (nghiên cứu sâu + chất lượng model). Home lab chỉ chứa
+2 người nên phải chọn.
 ===============================================================================
 -->
 

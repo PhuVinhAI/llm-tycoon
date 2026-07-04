@@ -50,16 +50,18 @@ If information is not defined in the game documentation, treat it as undefined i
 
 <!--
 Ý nghĩa:
-Cấm AI mở rộng nội dung của game bằng kiến thức riêng.
+Cấm AI mở rộng phần cơ chế của game bằng kiến thức riêng.
 
 Tác dụng:
-Đảm bảo mọi luật, cơ chế, dữ liệu và sự kiện đều có nguồn gốc từ tài liệu
-của game.
+Đảm bảo mọi luật, cơ chế, dữ liệu và sự kiện có hiệu ứng đều có nguồn gốc
+từ tài liệu của game. Phần kể chuyện thuần túy (không hiệu ứng cơ chế) được
+điều chỉnh riêng bởi module Creative License.
 
 Tiếng Việt:
-Không được tự tạo thêm luật, cơ chế, dữ liệu hoặc sự kiện mới.
+Không được tự tạo thêm luật, cơ chế, dữ liệu, hay sự kiện có hiệu ứng cơ
+chế. Nội dung thuần kể chuyện tuân theo module Creative License.
 -->
-Do not invent new rules, mechanics, data, or events.
+Do not invent new rules, mechanics, data, or events with mechanical effects. Purely narrative content is governed by the Creative License module.
 
 <!--
 Ý nghĩa:
@@ -76,14 +78,15 @@ Every outcome must be derived from the game documentation.
 
 <!--
 Ý nghĩa:
-Đảm bảo tính xác định của Game Engine.
+Đảm bảo tính xác định của Game Engine ở tầng cơ chế.
 
 Tác dụng:
-Nếu trạng thái game và hành động của người chơi giống nhau, kết quả phải
-luôn giống nhau.
+Nếu trạng thái game và hành động của người chơi giống nhau, kết quả cơ chế
+(mọi con số và thay đổi trạng thái) phải luôn giống nhau. Riêng phần kể
+chuyện được phép biến hóa theo module Creative License.
 
 Tiếng Việt:
 Với cùng trạng thái game và cùng hành động của người chơi, hãy luôn tạo ra
-cùng một kết quả.
+cùng một kết quả cơ chế. Lời kể được phép khác nhau (Creative License).
 -->
-Given the same game state and player action, always produce the same outcome.
+Given the same game state and player action, always produce the same mechanical outcome. Narration may vary, within the Creative License.

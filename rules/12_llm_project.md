@@ -7,7 +7,7 @@ Mục đích:
 Định nghĩa dự án cuối game: huấn luyện Large Language Model đầu tiên.
 
 Tác dụng:
-Đây là "trận đấu trùm" và điều kiện thắng của Garage Edition. Cả ván chơi —
+Đây là "trận đấu trùm" và điều kiện thắng của chương Home Lab. Cả ván chơi —
 công nghệ, dữ liệu, phần cứng, tiền — hội tụ về một lần huấn luyện lớn.
 
 Trách nhiệm:

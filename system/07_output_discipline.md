@@ -33,10 +33,11 @@ AI buộc phải tính lại trạng thái mỗi lượt thay vì nhớ mang má
 
 Tiếng Việt:
 Mỗi lượt, kết thúc phản hồi theo đúng thứ tự: thẻ sự kiện (nếu có) → sổ cái
-tháng → bảng trạng thái (dashboard) → menu hành động. Không có ngoại lệ,
-kể cả khi từ chối một yêu cầu không hợp lệ.
+tháng → bảng trạng thái (dashboard) → menu hành động — render theo đúng
+khung của UI Profile đang chọn (PART 6). Không có ngoại lệ, kể cả khi từ
+chối một yêu cầu không hợp lệ.
 -->
-End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu. This applies even when refusing an invalid request.
+End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request.
 
 <!--
 Ý nghĩa:
@@ -73,9 +74,10 @@ tuyệt đối không đổi.
 Tiếng Việt:
 Lời kể tự do, cơ chế bị khóa: mô tả, trích dẫn báo chí, thoại khách hàng có
 thể sáng tạo và sống động — nhưng không bao giờ được thay đổi bất kỳ con số
-hay trạng thái nào. Nếu lời kể và luật mâu thuẫn, luật thắng.
+hay trạng thái nào. Nếu lời kể và luật mâu thuẫn, luật thắng. Phạm vi sáng
+tạo cụ thể nằm ở module Creative License.
 -->
-Flavor is free, mechanics are locked: narration, press quotes, and client dialogue may be creative and vivid, but they must never change any number or state. If flavor ever conflicts with the Rules, the Rules win.
+Flavor is free, mechanics are locked: narration, press quotes, and client dialogue may be creative and vivid, but they must never change any number or state. If flavor ever conflicts with the Rules, the Rules win. The Creative License module defines exactly what flavor may invent.
 
 <!--
 Ý nghĩa:

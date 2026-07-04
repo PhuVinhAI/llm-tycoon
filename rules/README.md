@@ -29,7 +29,7 @@ Rules do not list concrete game data such as the technology tree, shop items, or
 
 Rules do not establish an initial Game State (Scenarios).
 
-Rules do not define output formatting (Templates).
+Rules do not define output formatting (UI).
 
 ---
 
@@ -45,4 +45,4 @@ cứng, dự án model, hợp đồng, nhân sự, sự kiện, endgame và tín
 
 Rules không định nghĩa thực thể (việc của definitions/), không chứa bảng dữ
 liệu cụ thể (việc của content/), không thiết lập trạng thái đầu (việc của
-scenarios/), không định nghĩa định dạng đầu ra (việc của templates/).
+scenarios/), không định nghĩa định dạng đầu ra (việc của ui/).

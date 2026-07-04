@@ -37,7 +37,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 | E11 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
 | E12 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5) |
 | E13 | Jan 2017 | ☁️ *Cloud GPUs become practical* | Cloud rental available (hardware table) |
-| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +10 REP + headline "Garage researcher scooped Google?" |
+| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +10 REP + headline "Indie researcher scooped Google?" |
 | E15 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 6 REP |
 | E16 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
 | E17 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |

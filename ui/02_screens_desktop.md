@@ -1,0 +1,137 @@
+<!--
+===============================================================================
+FILE: 02_screens_desktop.md
+MODULE: UI / Desktop Screens
+
+Mục đích:
+Khung markdown cố định của từng màn hình ở profile DESKTOP (UI ngang cho
+PC): dòng gộp nhiều cột, tận dụng chiều rộng, được dùng bảng.
+
+Tác dụng:
+Engine chỉ việc điền giá trị vào khung — mọi lượt trông giống hệt nhau,
+người chơi luôn biết nhìn vào đâu. Nhãn dịch theo ngôn ngữ người chơi, mỏ
+neo emoji và mã chuẩn giữ nguyên (ui/00_ui_system.md).
+===============================================================================
+-->
+
+# Screens — Desktop Profile (🖥️ landscape)
+
+Labels are translated into the player's language; emoji anchors and canonical codes stay. Skeletons below are exact.
+
+## S0 — Title & Setup
+
+Rendered in English (the only screen before a language is known):
+
+```
+🏭 ═══════════════════════════════════════
+        L L M   T Y C O O N
+   Build the world's first LLM · 2013 →
+═══════════════════════════════════════ 🏭
+         v0.2 · Chapter 1: Home Lab
+
+🌐 Reply in the language you want to play in.
+📱🖥️ Phone or PC?  (1 = 📱 mobile UI · 2 = 🖥️ desktop UI)
+```
+
+## S1 — Main Menu
+
+```
+🏭 LLM TYCOON — Main Menu
+─────────────────────────────────────
+1 🎮 New game        2 📂 Continue
+3 📖 How to play     4 ℹ️ About
+5 🚪 Exit
+─────────────────────────────────────
+👉 Pick a number.
+```
+
+## S2 — Info (How to play / About)
+
+Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Always end with:
+
+```
+↩ 0 — back to the Main Menu
+```
+
+## S3 — Dashboard
+
+```
+📊 [Company] — [Month YYYY] (Turn [N])
+💰 $[cash] | 🔬 RP [x] | ⭐ REP [x]/50 | 🧠 R-Lv [x] · E-Lv [x]
+🖥️ [total] CU/mo — [hardware list or "no GPU yet"] (slots [used]/[total]) | 👥 [team or "solo"]
+📚 Data: [name (domain Size/Quality)], … | 🛠️ Tech: [owned IDs]
+📦 Now: [idle / "Name" month i/M / Contract Cxx month i/M] | 💵 Streams: [$x/mo ×y left | none] | Fixed: $[x]/mo
+```
+
+## S4 — Turn Report
+
+Structure of every resolved turn, in this order: event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
+
+```
+📰 ── [Month YYYY] ─────────────────
+   [Event title]
+   [1–3 flavor lines]
+   ▸ [mechanical effect, plainly stated]
+
+📅 [Month YYYY] — [main action taken]
+   [one line per change: +/− cash, RP, REP, …]
+   💰 [cash after] | 🔬 RP [after]
+```
+
+## S5 — Action Menu
+
+```
+What will you do this month?
+1 💼 Freelance   2 🔬 Research   3 🏗️ New model   4 📦 Data
+5 📜 Contracts   6 🛒 Shop       7 👥 Team        8 ⏩ Repeat ×N
+9 💾 Save        0 ❓ Help
+```
+
+Options that are currently impossible are still listed — choosing one explains why it is unavailable.
+
+## S6 — Model Completion Report
+
+```
+🏁 [Model] — [Architecture] × [Task] on [Dataset]
+   Q = [Base] + [Match] + [2×DataQ] + [Size] + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
+   [reception emoji + tier] → REP [±x], RP +[x]
+   Release?  1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
+   [locked options: state the unmet Requirement]
+```
+
+## S7 — Market List (shop, datasets, contracts, candidates)
+
+```
+🛒 [List title] — [Month YYYY]
+   1 [name] — [key numbers] — $[price]
+   2 [name] — [key numbers] — $[price]
+   …
+💰 $[cash] · ↩ 0 — back
+```
+
+## S8 — SAVE
+
+Profile-independent — exact format in the Save Format module.
+
+## S9 — Ending
+
+```
+🏆 ═══════════ [ENDING NAME] ═══════════
+   [3–6 lines: how this run ends]
+   Score = [3×REP] + [best Q] + [5×models] + [⌊cash/1000⌋] + [win bonus] + [extras] = [total]
+   🎖️ Title: [score title]
+   1 🔁 New game · 2 📖 Run recap
+```
+
+<!--
+Tiếng Việt (tóm tắt):
+Khung desktop cho 10 màn hình: S0 tiêu đề + hỏi ngôn ngữ/thiết bị (màn duy
+nhất bằng tiếng Anh); S1 main menu 5 mục xếp 2 cột; S2 màn thông tin, kết
+thúc bằng "0 quay về menu"; S3 dashboard 5 dòng gộp cột; S4 cấu trúc lượt
+(thẻ sự kiện → sổ cái → dashboard → menu hành động); S5 menu hành động 10
+mục 2 hàng — mục chưa khả dụng vẫn liệt kê, chọn thì giải thích; S6 báo cáo
+hoàn thành model (hiện đủ phép cộng Q, 4 lựa chọn phát hành đánh số, lựa
+chọn khóa phải nêu điều kiện thiếu); S7 danh sách chợ/shop đánh số + giá;
+S8 SAVE dùng định dạng cố định; S9 màn kết (điểm cộng công khai + danh
+hiệu + chơi lại/recap).
+-->

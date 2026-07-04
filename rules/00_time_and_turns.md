@@ -34,7 +34,7 @@ Trách nhiệm:
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
 5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups, expired Income Streams.
 6. **Checks** — bankruptcy, win and lose conditions.
-7. **Report** — output per the Templates: event cards → month ledger → dashboard → menu.
+7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
 ## Multi-month batching
 
@@ -49,7 +49,7 @@ Game chạy từ 01/2013 đến muộn nhất 12/2020; 1 Turn = 1 tháng; mỗi 
 
 Trình tự mỗi tháng (bắt buộc đúng thứ tự): 1 Sự kiện → 2 Hành động → 3 Dòng
 thu nhập → 4 Chi phí cố định → 5 Hoàn tất (tính Quality, trả tiền hợp đồng,
-lên cấp) → 6 Kiểm tra thắng/thua/phá sản → 7 Báo cáo theo Templates.
+lên cấp) → 6 Kiểm tra thắng/thua/phá sản → 7 Báo cáo theo khung UI.
 
 Các tháng đã cam kết (dự án/hợp đồng/lặp ×N) tự chạy từng tháng, chỉ dừng
 khi: sự kiện cần lựa chọn, dự án/hợp đồng xong, có cảnh báo, hoặc hết chuỗi.
