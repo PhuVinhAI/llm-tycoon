@@ -131,7 +131,7 @@ Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Archit
 
 # Output Discipline
 
-End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request.
+End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request, OR when answering out-of-character/game-related questions. If the player asks "What is an N-gram?", explain it, then immediately render the dashboard and action menu again so they don't lose their place.
 
 Recompute the dashboard from the current Game State every turn. Never copy a previous dashboard.
 
@@ -1165,7 +1165,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | ID | Technology | RP cost | Requires | Grants |
 |---|---|---|---|---|
 | BTP | Basic Text Processing | owned at start | — | foundation for everything |
-| NGRAM | N-gram Language Model | owned at start | — | Architecture NGRAM |
+| NGRAM | N-gram Language Model | 10 | BTP | Architecture NGRAM |
 | BOW | Bag-of-Words + Classic ML | 20 | BTP | Architecture BOW |
 | SCRAPE | Web Scraping Toolkit | 15 | BTP | Collect action yields Size 3 |
 | EMB | Word Embeddings | 40 | BOW | Architecture EMB |
@@ -1333,6 +1333,7 @@ Maximum 2 hired at a time (Employees rule).
 
 | # | Date | Event | Effect |
 |---|---|---|---|
+| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that to build models, the Player needs an Architecture. Guide them to use the **Research** action this month to earn RP and unlock **NGRAM**. |
 | E1 | Mar 2013 | 📄 *word2vec published (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +5 REP ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl in the spotlight* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
 | E3 | Jun 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +5 REP |
@@ -1391,7 +1392,7 @@ Discount stacking follows the Research rule (multiply, round up to 5). Track eve
 | Cash | $10,000 |
 | RP / REP | 0 / 0 |
 | Skills | R-Lv 1, E-Lv 1 (counters: research 0, models 0) |
-| Technologies | BTP, NGRAM |
+| Technologies | BTP |
 | Hardware | old desktop PC (0 CU, occupies no slot); 4 empty slots; not rewired |
 | Team | solo |
 | Datasets | "Old blog scrape" (web-mixed, Size 1, Quality 2) |
@@ -1506,12 +1507,15 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 ## S3 — Dashboard
 
 ```
-📊 [Company] — [Month YYYY] (Turn [N])
-💰 $[cash] | 🔬 RP [x] | ⭐ REP [x]/50 | 🧠 R-Lv [x] · E-Lv [x]
-🖥️ [total] CU/mo — [hardware list or "no GPU yet"] (slots [used]/[total]) | 👥 [team or "solo"]
-📚 Data: [name (domain Size/Quality)], … | 🛠️ Tech: [owned IDs]
-📦 Now: [idle / "Name" month i/M / Contract Cxx month i/M] | 💵 Streams: [$x/mo ×y left | none] | Fixed: $[x]/mo
+| 📊 [Company] | 📅 [Month YYYY] (Turn [N]) |
+|---|---|
+| **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ REP [x]/50 |
+| **Skills** | 🧠 R-Lv [x]  ·  E-Lv [x] |
+| **Assets** | 🖥️ [total] CU/mo ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned IDs] |
+| **Status** | 📦 [idle / project / contract]  ·  📉 Fixed: $[x]/mo |
 ```
+*(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
 ## S4 — Turn Report
 
@@ -1531,13 +1535,19 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S5 — Action Menu
 
 ```
-What will you do this month?
-1 💼 Freelance   2 🔬 Research   3 🏗️ New model   4 📦 Data
-5 📜 Contracts   6 🛒 Shop       7 👥 Team        8 ⏩ Repeat ×N
-9 💾 Save        0 ❓ Help
+| What will you do this month? | |
+|---|---|
+| 1 💼 Freelance | 2 🔬 Research |
+| 3 🏗️ New model | 4 📦 Data |
+| 5 📜 Contracts | 6 🛒 Shop |
+| 7 👥 Team | 8 ⏩ Repeat ×N |
+| 9 💾 Save | 0 ❓ Help |
 ```
 
-Options that are currently impossible are still listed — choosing one explains why it is unavailable.
+**Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
+- Hide `Contracts` and `Team` entirely until REP ≥ 8.
+- Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
+- Always show Freelance, Research, New model, Data, Save, and Help.
 
 ## S6 — Model Completion Report
 
@@ -1666,7 +1676,7 @@ This month?
 0 ❓ Help
 ```
 
-Options that are currently impossible are still listed — choosing one explains why.
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (REP ≥ 8 or Neural Tech owned), keeping the early game menu simple.
 
 ## S6 — Model Completion Report
 

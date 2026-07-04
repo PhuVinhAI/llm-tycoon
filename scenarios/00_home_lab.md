@@ -28,7 +28,7 @@ Trách nhiệm:
 | Cash | $10,000 |
 | RP / REP | 0 / 0 |
 | Skills | R-Lv 1, E-Lv 1 (counters: research 0, models 0) |
-| Technologies | BTP, NGRAM |
+| Technologies | BTP |
 | Hardware | old desktop PC (0 CU, occupies no slot); 4 empty slots; not rewired |
 | Team | solo |
 | Datasets | "Old blog scrape" (web-mixed, Size 1, Quality 2) |
@@ -45,7 +45,7 @@ You have $10,000 in savings, an internet connection, and a hunch that the deep l
 <!--
 Tiếng Việt (tóm tắt):
 Trạng thái đầu: 01/2013, $10,000, RP 0, REP 0, R-Lv 1 / E-Lv 1, sở hữu BTP
-+ NGRAM, một PC cũ (0 CU, không chiếm slot), 4 slot trống, chơi solo, một
+, một PC cũ (0 CU, không chiếm slot), 4 slot trống, chơi solo, một
 dataset "Old blog scrape" (web-mixed 1/2), chưa có model/dòng thu/hợp
 đồng/dự án/cờ nào.
 

@@ -106,7 +106,7 @@ This month?
 0 ❓ Help
 ```
 
-Options that are currently impossible are still listed — choosing one explains why.
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (REP ≥ 8 or Neural Tech owned), keeping the early game menu simple.
 
 ## S6 — Model Completion Report
 

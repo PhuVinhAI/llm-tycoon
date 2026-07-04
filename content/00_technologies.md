@@ -27,7 +27,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | ID | Technology | RP cost | Requires | Grants |
 |---|---|---|---|---|
 | BTP | Basic Text Processing | owned at start | — | foundation for everything |
-| NGRAM | N-gram Language Model | owned at start | — | Architecture NGRAM |
+| NGRAM | N-gram Language Model | 10 | BTP | Architecture NGRAM |
 | BOW | Bag-of-Words + Classic ML | 20 | BTP | Architecture BOW |
 | SCRAPE | Web Scraping Toolkit | 15 | BTP | Collect action yields Size 3 |
 | EMB | Word Embeddings | 40 | BOW | Architecture EMB |
@@ -45,7 +45,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 <!--
 Tiếng Việt (tóm tắt):
 Cây công nghệ luôn hiển thị đầy đủ cho người chơi (tên, giá RP, điều kiện,
-hiệu ứng). Hai công nghệ khởi điểm: BTP và NGRAM. Nhánh xương sống:
+hiệu ứng). Một công nghệ khởi điểm: BTP. NGRAM giá 10 RP. Nhánh xương sống:
 BOW → EMB → (cùng GPUT) → RNN → LSTM → S2S → ATTN → TRF → PRET → SCALE.
 Nhánh phụ: SCRAPE (thu thập dữ liệu tốt hơn), BPE (+5 Q cho các kiến trúc
 seq2seq trở lên), FINE (giảm 1 tháng tối thiểu + 5 Q cho PTRF).
