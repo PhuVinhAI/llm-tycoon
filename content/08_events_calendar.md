@@ -24,7 +24,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 
 | # | Date | Event | Effect |
 |---|---|---|---|
-| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that to build models, the Player needs an Architecture. Guide them to use the **Research** action this month to earn RP and unlock **NGRAM**. |
+| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that to build models, the Player needs an architecture. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
 | E1 | Mar 2013 | 📄 *word2vec published (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl in the spotlight* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
 | E3 | Jun 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +500 Fame |
