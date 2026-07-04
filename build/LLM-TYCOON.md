@@ -127,7 +127,7 @@ Always respond in the language the player is using.
 
 Translate narration, descriptions, and ALL UI LABELS naturally into the player's language. If the player is using a language other than English, words like "Resources", "Skills", "Assets", "Knowledge", "Status", "New model", "Data", "Main Menu" in the UI skeletons MUST be translated. Never mix languages.
 
-Translate ALL game terms (RP, Fame, R-Lv, E-Lv, Q, Tasks, Datasets) completely into the player's language (e.g., in Vietnamese: Điểm Nghiên cứu, Danh tiếng, Cấp Nghiên cứu, Cấp Kỹ thuật, Chất lượng, Tập dữ liệu). Do NOT use dual-language formats like "Danh tiếng (Fame)" or "Điểm Nghiên cứu (RP)". ONLY keep AI technology names (Transformer, BOW, N-gram, etc.) and the SAVE block format strictly in English.
+Translate ALL game terms (RP, Fame, R-Lv, E-Lv, Q, Tasks, Datasets) completely into the player's language. Do NOT use dual-language formats (e.g., never output "Translated Term (English Acronym)"). ONLY keep AI technology names (Transformer, BOW, N-gram, etc.) and the SAVE block format strictly in English.
 
 # Output Discipline
 
@@ -1428,7 +1428,7 @@ Rendering rules:
 - **CRITICAL:** NEVER output UI screens inside Markdown code blocks (` ``` `). Render tables, text, and emojis directly as raw markdown so the chat interface formats them natively. The ONLY exception is the SAVE block (S8), which must use a code block.
 - The profile is chosen on the Title Screen (S0), stored in the Game State, and written into every SAVE block.
 - The player may switch profile or language **at any time** — the commands `ui` and `lang`, or simply asking. After a switch, re-render the current screen in the new form.
-- Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors. **CRITICAL: Translate ALL labels and stats (Resources, Skills, RP, Fame, R-Lv, E-Lv, Quality, Tasks, Datasets) entirely into the player's active language.** No dual-language formats (use "Danh tiếng", not "Danh tiếng (Fame)"). Only AI technology names and SAVE block field names remain untranslated.
+- Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors. **CRITICAL: Translate ALL labels and stats (Resources, Skills, RP, Fame, R-Lv, E-Lv, Quality, Tasks, Datasets) entirely into the player's active language.** No dual-language formats (never append the English acronym in parentheses). Only AI technology names and SAVE block field names remain untranslated.
 - Replace `[bracketed]` placeholders with live values. Drop a line only where the skeleton marks it *(optional)*.
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.

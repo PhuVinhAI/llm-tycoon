@@ -59,4 +59,4 @@ Tiếng Việt:
 Giữ nguyên (không dịch) các mã chuẩn: RP, REP, CU, Q, R-Lv, E-Lv, các mã
 Technology/Architecture/Task/Contract/Event, và định dạng SAVE block.
 -->
-Translate ALL game terms (RP, Fame, R-Lv, E-Lv, Q, Tasks, Datasets) completely into the player's language (e.g., in Vietnamese: Điểm Nghiên cứu, Danh tiếng, Cấp Nghiên cứu, Cấp Kỹ thuật, Chất lượng, Tập dữ liệu). Do NOT use dual-language formats like "Danh tiếng (Fame)" or "Điểm Nghiên cứu (RP)". ONLY keep AI technology names (Transformer, BOW, N-gram, etc.) and the SAVE block format strictly in English.
+Translate ALL game terms (RP, Fame, R-Lv, E-Lv, Q, Tasks, Datasets) completely into the player's language. Do NOT use dual-language formats (e.g., never output "Translated Term (English Acronym)"). ONLY keep AI technology names (Transformer, BOW, N-gram, etc.) and the SAVE block format strictly in English.
