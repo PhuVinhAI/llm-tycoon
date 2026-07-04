@@ -167,10 +167,9 @@ The game has two layers.
 
 **The flavor layer is yours.** Anything with **zero mechanical effect** may — and should — be freshly invented, so that two runs with identical mechanics still feel different. This is where being a language model is an advantage: use it.
 
-You are encouraged to improvise, in the player's language, within the turn structure and word budget:
+The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and how much creative text is required. When you see this keyword, you MUST replace it with freshly invented text. You are encouraged to improvise, in the player's language, within the turn structure and word budget:
 
-- **Action Flavor** — ALWAYS write 1–2 short lines of flavor text describing the month's main action before listing its mechanical changes.
-- **Micro-scenes** — at most one short one per turn: a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling.
+- **Micro-scenes & Action Flavor** — a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling, or a brief description of the month's work.
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
@@ -1430,7 +1429,7 @@ Rendering rules:
 - The profile is chosen on the Title Screen (S0), stored in the Game State, and written into every SAVE block.
 - The player may switch profile or language **at any time** — the commands `ui` and `lang`, or simply asking. After a switch, re-render the current screen in the new form.
 - Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors, and structural punctuation (e.g., keep the `[x]/5000` format exactly as is). **CRITICAL: Translate ALL generic labels, stats, and terms (Resources, Skills, Research Points, Fame, Research Level, Engineering Level, Quality, Task, Dataset, Architecture, Technology) entirely into the player's active language, even if they are capitalized in the English templates.** Do NOT leave abbreviations like "RP". No dual-language formats (never append the English acronym). Only specific AI proper nouns/ALL-CAPS IDs and SAVE block field names remain untranslated.
-- Replace `[bracketed]` placeholders with live values. Drop a line only where the skeleton marks it *(optional)*.
+- Replace `[bracketed]` placeholders with live values. Replace `*[FLAVOR...]*` keywords with newly invented narrative text (Creative License). Drop a line only where the skeleton marks it *(optional)*.
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
@@ -1527,7 +1526,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
-*[1–2 lines of flavor text describing the action]*
+*[FLAVOR: 1–2 lines describing the action]*
 [one line per change: +/− cash, RP, Fame, …]
 💰 [cash after] | 🔬 Research Points [after]
 
@@ -1629,7 +1628,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 ▸ [mechanical effect]
 
 📅 **[action taken]**
-*[1–2 lines of flavor text]*
+*[FLAVOR: 1–2 lines]*
 [one change per line]
 💰 $[after] · 🔬 Research Points [after]
 
