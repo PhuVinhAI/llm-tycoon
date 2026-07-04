@@ -24,7 +24,7 @@ Trách nhiệm:
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Generates a Dilemma using the Freelance Events Matrix (Content) based on the current Turn number. Pauses to ask the Player to choose between Choice 1 and Choice 2. Applies the outcome. |
+| 💼 **Freelance** | Generates a Dilemma using the Freelance Events Matrix (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Select Archetype `X` = Turn % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 4) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | RP +(1000 + 500 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
 | 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
