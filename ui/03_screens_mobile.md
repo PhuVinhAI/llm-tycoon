@@ -44,12 +44,12 @@ Same content as desktop, one short line each. End with:
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
 🔬 Research Points [x] · ⭐ Fame [x]/5000
-🧠 Research Level [x] · Engineering Level [x]
+🧠 Research Lv [x] · Engineering Lv [x]
 🖥️ [total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
-🛠️ [owned tech IDs]
+🛠️ Tech: [owned tech names]
 📦 [idle / project / contract]
 💵 [streams or "no streams"]
 📉 Fixed $[x]/mo

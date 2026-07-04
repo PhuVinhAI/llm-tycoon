@@ -1509,9 +1509,9 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | 📊 [Company] | 📅 [Month YYYY] (Turn [N]) |
 |---|---|
 | **Resources** | 💰 $[cash]  ·  🔬 Research Points [x]  ·  ⭐ Fame [x]/5000 |
-| **Skills** | 🧠 Research Level [x]  ·  Engineering Level [x] |
+| **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
-| **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned IDs] |
+| **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
 | **Status** | 📦 [idle / project / contract]  ·  📉 Fixed: $[x]/mo |
 
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
@@ -1607,12 +1607,12 @@ Same content as desktop, one short line each. End with:
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
 🔬 Research Points [x] · ⭐ Fame [x]/5000
-🧠 Research Level [x] · Engineering Level [x]
+🧠 Research Lv [x] · Engineering Lv [x]
 🖥️ [total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
-🛠️ [owned tech IDs]
+🛠️ Tech: [owned tech names]
 📦 [idle / project / contract]
 💵 [streams or "no streams"]
 📉 Fixed $[x]/mo
