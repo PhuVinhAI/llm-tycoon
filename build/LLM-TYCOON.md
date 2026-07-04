@@ -1487,14 +1487,13 @@ Rendered in English (the only screen before a language is known):
 ## S1 — Main Menu
 
 ```
-🏭 LLM TYCOON — Main Menu
-─────────────────────────────────────
-1 🎮 New game        2 📂 Continue
-3 📖 How to play     4 ℹ️ About
-5 🚪 Exit
-─────────────────────────────────────
-👉 Pick a number.
+| 🏭 LLM TYCOON — Main Menu | |
+|---|---|
+| 1 🎮 New game | 2 📂 Continue |
+| 3 📖 How to play | 4 ℹ️ About |
+| 5 🚪 Exit | |
 ```
+👉 Pick a number.
 
 ## S2 — Info (How to play / About)
 
