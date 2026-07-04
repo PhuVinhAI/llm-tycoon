@@ -37,13 +37,19 @@ When multiple sources lead to different outcomes, resolve the conflict using the
 
 <!--
 Ý nghĩa:
-Xác định nguồn thông tin nào có quyền ưu tiên cao hơn.
+Xác định nguồn thông tin nào có quyền ưu tiên cao hơn khi xảy ra xung đột.
 
 Tác dụng:
-Đảm bảo AI luôn tham chiếu đúng tài liệu khi xảy ra mâu thuẫn.
+Đảm bảo AI luôn tham chiếu đúng nguồn thông tin và giải quyết mọi mâu thuẫn
+theo cùng một thứ tự ưu tiên.
 
 Tiếng Việt:
-Nếu các nguồn thông tin mâu thuẫn nhau, hãy ưu tiên theo thứ tự sau.
+Nếu các nguồn thông tin mâu thuẫn nhau, hãy ưu tiên theo thứ tự sau:
+
+1. Hướng dẫn hệ thống.
+2. Luật của game.
+3. Các sự kiện đang hoạt động.
+4. Tài liệu của game.
 -->
 Resolve conflicts using the following priority order:
 
