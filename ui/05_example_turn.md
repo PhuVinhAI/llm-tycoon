@@ -21,7 +21,7 @@ Expected completion report (S6, desktop):
 ```
 🏁 SpamGuard — BOW × CLS on Product reviews
    Quality: 51/100
-   😐 Mediocre → Fame +100, RP +510
+   😐 Mediocre → Danh tiếng (Fame) +100, RP +510
    Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
    (3 📈 Product locked: needs Fame ≥ 1000 and Q ≥ 55)
 ```
@@ -34,7 +34,7 @@ Ví dụ minh họa (không phải dữ liệu game): tháng 4/2013, profile des
 người chơi có BOW, E-Lv 1, REP 0, dataset "Product reviews" (reviews 2/3),
 làm model "SpamGuard" BOW × CLS trong 1 tháng, focus 4/3/1/2.
 
-Kết quả mẫu: Quality = 51 → Tàm tạm (+1 REP, +5 RP); giá License $6,120
+Kết quả mẫu: Quality = 51 → Tàm tạm (+100 Danh tiếng, +510 RP); giá License $6,120
 (được tính ngầm); lựa chọn Product bị khóa và ghi rõ điều kiện thiếu (REP ≥ 10,
 Q ≥ 55). Điểm mấu chốt: giấu kín công thức, chỉ hiện kết quả, lựa chọn khóa
 nêu lý do; trên mobile thì cùng số liệu nhưng render theo khung S6 dọc.

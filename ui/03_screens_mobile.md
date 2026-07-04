@@ -92,7 +92,7 @@ on [Dataset]
 **Quality: [total]/100**
 
 [reception emoji + tier]
-⭐ Fame [±x] · 🔬 RP +[x]
+⭐ Danh tiếng (Fame) [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source

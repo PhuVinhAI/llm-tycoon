@@ -93,7 +93,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 **Quality: [Q]/100**
-[reception emoji + tier] → Fame [±x], RP +[x]
+[reception emoji + tier] → Danh tiếng (Fame) [±x], RP +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve

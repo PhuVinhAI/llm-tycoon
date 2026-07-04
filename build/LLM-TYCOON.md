@@ -1548,7 +1548,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 **Quality: [Q]/100**
-[reception emoji + tier] → Fame [±x], RP +[x]
+[reception emoji + tier] → Danh tiếng (Fame) [±x], RP +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
@@ -1655,7 +1655,7 @@ on [Dataset]
 **Quality: [total]/100**
 
 [reception emoji + tier]
-⭐ Fame [±x] · 🔬 RP +[x]
+⭐ Danh tiếng (Fame) [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source
@@ -1726,7 +1726,7 @@ Expected completion report (S6, desktop):
 ```
 🏁 SpamGuard — BOW × CLS on Product reviews
    Quality: 51/100
-   😐 Mediocre → Fame +100, RP +510
+   😐 Mediocre → Danh tiếng (Fame) +100, RP +510
    Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
    (3 📈 Product locked: needs Fame ≥ 1000 and Q ≥ 55)
 ```
