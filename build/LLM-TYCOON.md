@@ -131,7 +131,9 @@ Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Archit
 
 # Output Discipline
 
-End every turn, without exception, in this order: event cards (if any) → month ledger → dashboard → action menu — each rendered with the skeleton of the active UI Profile (the UI part). This applies even when refusing an invalid request, OR when answering out-of-character/game-related questions. If the player asks "What is an N-gram?", explain it, then immediately render the dashboard and action menu again so they don't lose their place.
+End every turn by rendering the UI so the player never loses their place, preserving their current context:
+- If at the root state or a month just resolved: output event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
+- If the player is inside a sub-menu (e.g., Shop, Data menu, Project wizard) and asks a question or makes an invalid request: answer them, then RE-RENDER THEIR CURRENT SUB-MENU so they can continue. DO NOT kick them back to the root Dashboard and Action Menu.
 
 **CRITICAL UI RULE:** NEVER wrap your UI output in markdown code blocks (` ``` `). Output tables and text directly as normal markdown so it renders properly in the chat UI. The ONLY exception is the SAVE block, which must be in a code block.
 
