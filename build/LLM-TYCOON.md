@@ -1508,8 +1508,8 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 
 | 📊 [Company] | 📅 [Month YYYY] (Turn [N]) |
 |---|---|
-| **Resources** | 💰 $[cash]  ·  🔬 [RP] [x]  ·  ⭐ [Fame] [x]/5000 |
-| **Skills** | 🧠 [R-Lv] [x]  ·  [E-Lv] [x] |
+| **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ Fame [x]/5000 |
+| **Skills** | 🧠 R-Lv [x]  ·  E-Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned IDs] |
 | **Status** | 📦 [idle / project / contract]  ·  📉 Fixed: $[x]/mo |
@@ -1526,8 +1526,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
-[one line per change: +/− cash, [RP], [Fame], …]
-💰 [cash after] | 🔬 [RP] [after]
+[one line per change: +/− cash, RP, Fame, …]
+💰 [cash after] | 🔬 RP [after]
 
 ## S5 — Action Menu
 
@@ -1547,8 +1547,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S6 — Model Completion Report
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
-**[Quality]: [Q]/100**
-[reception emoji + tier] → [Fame] [±x], [RP] +[x]
+**Quality: [Q]/100**
+[reception emoji + tier] → Fame [±x], RP +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
@@ -1606,8 +1606,8 @@ Same content as desktop, one short line each. End with:
 📊 **[Company]**
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
-🔬 [RP] [x] · ⭐ [Fame] [x]/5000
-🧠 [R-Lv] [x] · [E-Lv] [x]
+🔬 RP [x] · ⭐ Fame [x]/5000
+🧠 R-Lv [x] · E-Lv [x]
 🖥️ [total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
@@ -1628,7 +1628,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 📅 **[action taken]**
 [one change per line]
-💰 $[after] · 🔬 [RP] [after]
+💰 $[after] · 🔬 RP [after]
 
 ## S5 — Action Menu
 
@@ -1652,10 +1652,10 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 [Architecture] × [Task]
 on [Dataset]
 
-**[Quality]: [total]/100**
+**Quality: [total]/100**
 
 [reception emoji + tier]
-⭐ [Fame] [±x] · 🔬 [RP] +[x]
+⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source
