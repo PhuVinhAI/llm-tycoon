@@ -1,0 +1,54 @@
+<!--
+===============================================================================
+FILE: 13_endings_and_scoring.md
+MODULE: Rules / Endings and Scoring
+
+Mục đích:
+Định nghĩa các kết cục của game và công thức tính điểm.
+
+Tác dụng:
+Khép ván chơi lại bằng một màn tổng kết có điểm số và danh hiệu — tạo lý do
+chơi lại để phá kỷ lục.
+
+Trách nhiệm:
+- Định nghĩa 3 kết cục.
+- Định nghĩa công thức điểm (duy nhất tại đây).
+- Không định nghĩa bảng danh hiệu (nằm ở content/).
+===============================================================================
+-->
+
+# Endings and Scoring
+
+## Endings
+
+| Ending | Trigger |
+|---|---|
+| 🏆 **From Garage to Lab** (WIN) | Accept the Term Sheet after an LLM with Q ≥ 70. |
+| 🌅 **Retirement** | December 2020 ends without a win. |
+| 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
+
+## Score
+
+```
+Score = 3 × REP
+      + Best Model Q
+      + 5 × models completed (Projects + Contracts)
+      + floor(Cash ÷ $1,000)
+      + WIN only: 40 + 2 × full months remaining until December 2020
+      + LLM released during 2019: +10 (perfect timing)
+```
+
+Present the ending as a short narrated epilogue, then the score breakdown line by line, then the title from the Content's titles table.
+
+<!--
+Tiếng Việt (tóm tắt):
+Ba kết cục: THẮNG "From Garage to Lab" (nhận Term Sheet sau LLM Q ≥ 70);
+"Retirement" (hết 12/2020 chưa thắng); "Burned Out" (phá sản, điểm = 0).
+
+Điểm = 3×REP + Q của model tốt nhất + 5×số dự án/hợp đồng hoàn thành
++ ⌊Cash/1000⌋ + (chỉ khi THẮNG: 40 + 2×số tháng còn lại đến 12/2020)
++ (+10 nếu phát hành LLM trong năm 2019 — đúng thời điểm vàng).
+
+Trình bày kết cục: đoạn kết ngắn có kể chuyện → bảng điểm từng dòng → danh
+hiệu theo bảng trong Content.
+-->

@@ -38,6 +38,7 @@ Other directories provide the knowledge used by the Game Engine.
 * `rules/` defines game mechanics.
 * `content/` defines game data.
 * `scenarios/` defines initial Game States.
+* `templates/` defines the exact output formats the Game Engine must produce.
 
 The Game Engine applies these documents according to the instructions defined in this directory.
 

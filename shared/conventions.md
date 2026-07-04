@@ -37,8 +37,37 @@ Each directory has a distinct purpose.
 * `rules/` describes game mechanics and behavior.
 * `content/` contains game data.
 * `scenarios/` defines initial Game States.
+* `templates/` defines the exact output formats the Game Engine must produce.
+* `meta/` contains build-file wrappers (header, footer) that are not game knowledge.
+* `scripts/` contains the build tooling (not part of the Game Documentation).
 
 Information should only appear in the directory responsible for that information.
+
+---
+
+# Bilingual Documentation
+
+The canonical body of every document is written in English.
+
+Vietnamese explanations live inside HTML comments (`<!-- ... -->`), following the established header style (`Mục đích / Tác dụng / Trách nhiệm`) and inline notes (`Tiếng Việt:`).
+
+The build strips HTML comments by default, so the playable build stays lean while the source stays fully documented for Vietnamese maintainers. At runtime the Game Engine speaks the player's language regardless (see `system/06_language.md`).
+
+---
+
+# File Naming and Ordering
+
+When the order of documents matters (system, rules, content, templates), prefix file names with two digits (`00_`, `01_`, …).
+
+The build assembles each directory's `.md` files sorted by name, excluding `README.md`. A `README.md` describes its directory for developers and never enters the build.
+
+---
+
+# Build
+
+`scripts/build.js` assembles the Game Documentation into a single playable file, `build/LLM-TYCOON-MVP.md`, following the MANIFEST declared in the script.
+
+Run `npm run build` after any documentation change. Never edit the build output directly.
 
 ---
 

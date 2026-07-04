@@ -79,10 +79,15 @@ The following are examples of concepts that belong in this directory.
 * Player
 * Company
 * Employee
-* Model
+* Resource
+* Skill
 * Technology
-* GPU
+* Architecture
+* Task
 * Dataset
-* Event
+* Hardware
+* Model
+* Project
+* Contract
 
 These examples illustrate the types of entities that may be defined here. They do not represent the complete set of possible definitions.

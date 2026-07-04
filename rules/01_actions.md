@@ -1,0 +1,66 @@
+<!--
+===============================================================================
+FILE: 01_actions.md
+MODULE: Rules / Actions
+
+Mục đích:
+Định nghĩa toàn bộ Player Action hợp lệ: hành động chính (tốn 1 tháng) và
+hành động tức thời (miễn phí thời gian).
+
+Tác dụng:
+Đây là danh sách "những gì người chơi được làm". Mọi yêu cầu ngoài danh sách
+này đều không hợp lệ (theo system/05_authority.md).
+
+Trách nhiệm:
+- Định nghĩa hành động chính và công thức của chúng.
+- Định nghĩa hành động tức thời.
+- Định nghĩa cơ chế cam kết và hủy ngang.
+===============================================================================
+-->
+
+# Actions
+
+## Main actions (one per month)
+
+| Action | Effect |
+|---|---|
+| 💼 **Freelance** | Cash +$2,000 + $100 × floor(REP ÷ 5). |
+| 🔬 **Research** | RP +(10 + 5 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
+| 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
+| 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
+| 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
+| 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
+
+## Instant actions (free, any number per turn)
+
+- Unlock a Technology by paying its RP cost (prerequisites required).
+- Buy or sell Hardware; buy a Dataset; claim a free Dataset made available by an Event.
+- Combine two Datasets (see Datasets rule).
+- Hire or fire an Employee.
+- Accept a Contract (its months become committed, starting this month).
+- Start a Project (its months become committed, starting this month).
+- Activate or deactivate cloud rental (Hardware rule).
+- Submit a Model to an open Competition.
+- Request save, help, rules explanation, or current status.
+
+## Commitment and cancelling
+
+- Starting a Project or accepting a Contract commits the coming months: the main action of those months is fixed until completion.
+- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and REP −1 (Project) or −2 (Contract).
+- Only one Project **or** Contract may be active at a time — never both, never two.
+
+<!--
+Tiếng Việt (tóm tắt):
+Hành động chính (mỗi tháng 1): Freelance (+$2,000 + $100×⌊REP/5⌋); Research
+(+RP = 10 + 5×R-Lv + bonus nhân viên); tháng Dự án; tháng Hợp đồng; Thu thập
+dataset (Size 2 Q2, có SCRAPE → Size 3); Làm sạch dataset (+1 Quality, tối
+đa 5).
+
+Hành động tức thời (miễn phí, không giới hạn): mở khóa công nghệ bằng RP;
+mua/bán phần cứng; mua/nhận dataset; gộp dataset; thuê/sa thải nhân viên;
+nhận hợp đồng; bắt đầu dự án; bật/tắt cloud; nộp thi; save/help/status.
+
+Cam kết: bắt đầu dự án/nhận hợp đồng sẽ khóa các tháng tới. Hủy ngang được
+tại điểm dừng: tháng đã tiêu không hoàn lại, không có sản phẩm, REP −1 (dự
+án) hoặc −2 (hợp đồng). Chỉ 1 dự án HOẶC 1 hợp đồng chạy tại một thời điểm.
+-->
