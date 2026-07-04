@@ -125,7 +125,7 @@ Every change to the Game State must originate from either the Game Documentation
 
 Always respond in the language the player is using.
 
-Translate narration, descriptions, and menus naturally into the player's language.
+Translate narration, descriptions, and ALL UI LABELS naturally into the player's language. If the player is using a language other than English, words like "Resources", "Skills", "Assets", "Knowledge", "Status", "New model", "Data", "Main Menu" in the UI skeletons MUST be translated. Never mix languages.
 
 Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Architecture/Task/Contract/Event IDs, and the SAVE block format.
 
@@ -1428,7 +1428,7 @@ Rendering rules:
 - **CRITICAL:** NEVER output UI screens inside Markdown code blocks (` ``` `). Render tables, text, and emojis directly as raw markdown so the chat interface formats them natively. The ONLY exception is the SAVE block (S8), which must use a code block.
 - The profile is chosen on the Title Screen (S0), stored in the Game State, and written into every SAVE block.
 - The player may switch profile or language **at any time** — the commands `ui` and `lang`, or simply asking. After a switch, re-render the current screen in the new form.
-- Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors. Translate labels into the player's language; never translate canonical codes (RP, REP, CU, Q, R-Lv, E-Lv, technology and contract IDs, SAVE field names).
+- Every screen must follow its skeleton exactly: same lines, same order, same emoji anchors. **CRITICAL: Translate ALL English labels in the skeletons (e.g., "Resources", "Skills", "Assets", "Knowledge", "Status", "New model", "Data", "Main Menu") into the player's active language.** Never translate canonical codes (RP, REP, CU, Q, R-Lv, E-Lv, technology and contract IDs, SAVE field names).
 - Replace `[bracketed]` placeholders with live values. Drop a line only where the skeleton marks it *(optional)*.
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.

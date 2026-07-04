@@ -35,12 +35,20 @@ Always respond in the language the player is using.
 
 <!--
 Ý nghĩa:
-Nội dung game (lời kể, mô tả, menu) được dịch tự do sang ngôn ngữ người chơi.
+Nội dung game và TOÀN BỘ NHÃN GIAO DIỆN (UI) phải được dịch sang ngôn ngữ người chơi.
+
+Tác dụng:
+Tránh lỗi giao diện nửa Anh nửa ngôn ngữ khác. Các từ như "Resources", "Skills",
+"Assets", "Knowledge", "Status", "New model", "Data", "Main Menu" trong bộ
+khung UI bắt buộc phải được dịch hết.
 
 Tiếng Việt:
-Dịch tự nhiên phần lời kể, mô tả và menu sang ngôn ngữ của người chơi.
+Dịch tự nhiên phần lời kể, mô tả, và TOÀN BỘ NHÃN TRONG GIAO DIỆN (UI) sang
+ngôn ngữ của người chơi. Tuyệt đối không để sót các từ tiếng Anh trong khung
+như "Resources", "Skills", "Assets", "Main Menu"... Không bao giờ trộn lẫn
+hai ngôn ngữ trong cùng một màn hình (trừ các mã chuẩn).
 -->
-Translate narration, descriptions, and menus naturally into the player's language.
+Translate narration, descriptions, and ALL UI LABELS naturally into the player's language. If the player is using a language other than English, words like "Resources", "Skills", "Assets", "Knowledge", "Status", "New model", "Data", "Main Menu" in the UI skeletons MUST be translated. Never mix languages.
 
 <!--
 Ý nghĩa:
