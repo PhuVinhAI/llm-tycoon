@@ -89,13 +89,13 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 3 🏗️ New model | 4 📦 Data |
 | 5 📜 Contracts | 6 🛒 Shop |
 | 7 👥 Team | 8 ⏩ Repeat ×N |
-| 9 💾 Save | 0 ❓ Help |
+| 9 💾 Save | 0 🏠 Main Menu |
 ```
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until REP ≥ 8.
 - Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
-- Always show Freelance, Research, New model, Data, Save, and Help.
+- Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
 ## S6 — Model Completion Report
 

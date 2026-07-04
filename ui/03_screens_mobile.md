@@ -89,7 +89,7 @@ This month?
 7 👥 Team
 8 ⏩ Repeat ×N
 9 💾 Save
-0 ❓ Help
+0 🏠 Main Menu
 ```
 
 **Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (REP ≥ 8 or Neural Tech owned), keeping the early game menu simple.
