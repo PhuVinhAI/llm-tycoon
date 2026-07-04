@@ -30,12 +30,12 @@ Trách nhiệm:
 ## Score
 
 ```
-Score = 3 × REP
-      + Best Model Q
-      + 5 × models completed (Projects + Contracts)
-      + floor(Cash ÷ $1,000)
-      + WIN only: 40 + 2 × full months remaining until December 2020
-      + LLM released during 2019: +10 (perfect timing)
+Score = 3 × Fame
+      + 100 × Best Model Q
+      + 500 × models completed (Projects + Contracts)
+      + 100 × floor(Cash ÷ $1,000)
+      + WIN only: 4000 + 200 × full months remaining until December 2020
+      + LLM released during 2019: +1000 (perfect timing)
 ```
 
 Present the ending as a short narrated epilogue, then the final total score, then the title from the Content's titles table. Do not show the score breakdown.
@@ -46,9 +46,9 @@ Ba kết cục: THẮNG "From Home Lab to Headquarters" (nhận Term Sheet sau L
 Q ≥ 70);
 "Retirement" (hết 12/2020 chưa thắng); "Burned Out" (phá sản, điểm = 0).
 
-Điểm = 3×REP + Q của model tốt nhất + 5×số dự án/hợp đồng hoàn thành
-+ ⌊Cash/1000⌋ + (chỉ khi THẮNG: 40 + 2×số tháng còn lại đến 12/2020)
-+ (+10 nếu phát hành LLM trong năm 2019 — đúng thời điểm vàng).
+Điểm = 3×Fame + 100×Q của model tốt nhất + 500×số dự án/hợp đồng hoàn thành
++ 100×⌊Cash/1000⌋ + (chỉ khi THẮNG: 4000 + 200×số tháng còn lại đến 12/2020)
++ (+1000 nếu phát hành LLM trong năm 2019 — đúng thời điểm vàng).
 
 Trình bày kết cục: đoạn kết ngắn có kể chuyện → tổng điểm cuối cùng → danh
 hiệu theo bảng trong Content. Không hiển thị bảng phân rã điểm.

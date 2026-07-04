@@ -25,9 +25,9 @@ Trách nhiệm:
 
 Hardware is physical computing equipment owned by a Company, primarily GPUs.
 
-Each piece of Hardware occupies one or more slots in the Company's facility and provides Compute Units per month (CU/mo). The Company's total CU/mo is the sum over all installed Hardware, plus any rented cloud compute.
+Each piece of Hardware occupies one or more slots in the Company's facility and provides TeraFLOPS per month (TFLOPS/mo). The Company's total TFLOPS/mo is the sum over all installed Hardware, plus any rented cloud compute.
 
-Training Models consumes compute measured in CU-months.
+Training Models consumes compute measured in TFLOPS-months.
 
 ---
 
@@ -37,7 +37,7 @@ A piece of Hardware may be associated with information such as:
 
 * Name
 * Price
-* CU provided per month
+* TFLOPS provided per month
 * Slots occupied
 * Upkeep cost
 * Availability date
@@ -58,12 +58,12 @@ Tiếng Việt:
 Hardware là thiết bị tính toán vật lý của Company, chủ yếu là GPU.
 
 Mỗi Hardware chiếm một hoặc nhiều slot trong cơ sở của Company và cung cấp
-CU mỗi tháng (CU/mo). Tổng CU/mo của Company = tổng của mọi Hardware đã lắp
+TFLOPS mỗi tháng (TFLOPS/mo). Tổng TFLOPS/mo của Company = tổng của mọi Hardware đã lắp
 + cloud thuê thêm (nếu có).
 
-Huấn luyện Model tiêu thụ compute tính bằng CU-month.
+Huấn luyện Model tiêu thụ compute tính bằng TFLOPS-month.
 
-Thuộc tính: tên; giá; CU cung cấp mỗi tháng; số slot chiếm; chi phí vận
+Thuộc tính: tên; giá; TFLOPS cung cấp mỗi tháng; số slot chiếm; chi phí vận
 hành; ngày có bán. Giá trị cụ thể nằm ở Content.
 
 Quan hệ: thuộc sở hữu Company, lắp vào slot; cung cấp compute cho Project;

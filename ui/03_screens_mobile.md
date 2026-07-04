@@ -43,9 +43,9 @@ Same content as desktop, one short line each. End with:
 📊 **[Company]**
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
-🔬 RP [x] · ⭐ REP [x]/50
+🔬 RP [x] · ⭐ Danh tiếng (Fame) [x]/5000
 🧠 R-Lv [x] · E-Lv [x]
-🖥️ [total] CU/mo · slots [u]/[t]
+🖥️ [total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
@@ -81,7 +81,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 9 💾 Save
 0 🏠 Main Menu
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (REP ≥ 8 or Neural Tech owned), keeping the early game menu simple.
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.
 
 ## S6 — Model Completion Report
 
@@ -92,7 +92,7 @@ on [Dataset]
 **Quality: [total]/100**
 
 [reception emoji + tier]
-⭐ REP [±x] · 🔬 RP +[x]
+⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source

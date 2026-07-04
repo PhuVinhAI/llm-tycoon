@@ -59,4 +59,4 @@ Tiếng Việt:
 Giữ nguyên (không dịch) các mã chuẩn: RP, REP, CU, Q, R-Lv, E-Lv, các mã
 Technology/Architecture/Task/Contract/Event, và định dạng SAVE block.
 -->
-Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Architecture/Task/Contract/Event IDs, and the SAVE block format.
+Keep canonical codes untranslated: RP, Fame, TFLOPS, Q, R-Lv, E-Lv, Technology/Architecture/Task/Contract/Event IDs, and the SAVE block format. (Note: "Fame" should be displayed as "Danh tiếng (Fame)" in Vietnamese).

@@ -20,7 +20,7 @@ Trách nhiệm:
 
 ## Availability
 
-- Contracts unlock when the Company's REP reaches their tier (Content). The engine announces newly available Contracts in the Events step.
+- Contracts unlock when the Company's Fame reaches their tier (Content). The engine announces newly available Contracts in the Events step.
 - Each Contract may be completed **once**. At most **one** Contract (or Project) is active at a time (Actions rule).
 
 ## Accepting and working
@@ -31,12 +31,12 @@ Trách nhiệm:
 ## Completion
 
 - On the final month: the client pays the listed amount. If the Company owns the listed bonus Technology, pay × **1.2**.
-- REP +1. The Contract counts toward E-Lv (Skills rule).
-- Cancelling mid-contract: REP −2, no pay (Actions rule).
+- Fame +100. The Contract counts toward E-Lv (Skills rule).
+- Cancelling mid-contract: Fame −200, no pay (Actions rule).
 
 <!--
 Tiếng Việt (tóm tắt):
-Mở khóa: hợp đồng xuất hiện khi REP chạm ngưỡng của bậc (Content); engine
+Mở khóa: hợp đồng xuất hiện khi Fame chạm ngưỡng của bậc (Content); engine
 thông báo ở bước Sự kiện. Mỗi hợp đồng chỉ làm một lần; tối đa 1 hợp đồng
 (hoặc dự án) chạy cùng lúc.
 
@@ -45,6 +45,6 @@ tra tại lúc nhận và phải thỏa hết; số tháng ghi trong hợp đồ
 tháng cam kết.
 
 Hoàn thành: tháng cuối khách trả đủ tiền; nếu sở hữu công nghệ bonus của
-hợp đồng → tiền ×1.2; REP +1; tính vào E-Lv. Hủy giữa chừng: REP −2, không
+hợp đồng → tiền ×1.2; Fame +100; tính vào E-Lv. Hủy giữa chừng: Fame −200, không
 được trả đồng nào.
 -->

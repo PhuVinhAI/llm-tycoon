@@ -15,11 +15,11 @@ compute), Dr. Phạm (nghiên cứu sâu + chất lượng model). Home lab ch�
 
 # Employee Candidates
 
-| Name | REP ≥ | Salary/mo | Effects |
-|---|---|---|---|
-| **Linh** — data wrangler | 8 | $1,200 | Collected Datasets +1 Quality; Research +2 RP |
-| **Tuấn** — CUDA wizard | 15 | $1,800 | All compute requirements ×0.75 (round up) |
-| **Dr. Phạm** — ex-professor | 22 | $2,500 | Research +8 RP; all Models +3 Q |
+| Name | Fame ≥ | Salary/mo | Effects |
+|---|---|---|---|---|
+| **Linh** — data wrangler | 800 | $1,200 | Collected Datasets +1 Quality; Research +200 RP |
+| **Tuấn** — CUDA wizard | 1500 | $1,800 | All compute requirements ×0.75 (round up) |
+| **Dr. Phạm** — ex-professor | 2200 | $2,500 | Research +800 RP; all Models +3 Q |
 
 Maximum 2 hired at a time (Employees rule).
 

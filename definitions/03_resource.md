@@ -28,7 +28,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 
 * **Cash** — money, measured in US dollars. Used for purchases, salaries, and fixed costs.
 * **RP (Research Points)** — accumulated research insight. Spent to unlock Technologies. RP is a single pool and can be banked without limit.
-* **REP (Reputation)** — the Company's public standing, an integer from 0 to 50. REP is never spent; it gates opportunities.
+* **Fame (Danh tiếng)** — the Company's public standing, an integer from 0 to 5000. Fame is never spent; it gates opportunities.
 * **Income Stream** — recurring monthly Cash income with a fixed monthly amount and a fixed number of remaining months.
 
 ---
@@ -37,7 +37,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
-* REP: current value (0–50).
+* Fame: current value (0–5000).
 * Income Stream: source name, amount per month, months remaining.
 
 ---
@@ -55,7 +55,7 @@ Resource là tài sản định lượng được của Company. LLM Tycoon có 
 * Cash — tiền mặt (USD), dùng để mua sắm, trả lương và chi phí cố định.
 * RP (Research Points) — điểm nghiên cứu tích lũy, dùng để mở khóa
   Technology. RP là một quỹ chung, tích trữ không giới hạn.
-* REP (Reputation) — danh tiếng của Company, số nguyên từ 0 đến 50. REP
+* Fame (Danh tiếng) — danh tiếng của Company, số nguyên từ 0 đến 5000. Fame
   không bị tiêu — nó mở khóa cơ hội.
 * Income Stream — dòng thu nhập định kỳ: số tiền cố định mỗi tháng và số
   tháng còn lại.

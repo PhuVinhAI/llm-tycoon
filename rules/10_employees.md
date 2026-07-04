@@ -20,7 +20,7 @@ Trách nhiệm:
 
 ## Hiring
 
-- Candidates become available at REP thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
+- Candidates become available at Fame thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
 - Maximum **2** Employees at a time — the lab is one small room.
 - Hiring is instant. Salary is paid from the month of hire (Economy rule).
 
@@ -34,7 +34,7 @@ Trách nhiệm:
 
 <!--
 Tiếng Việt (tóm tắt):
-Tuyển: ứng viên mở theo ngưỡng REP (Content), engine thông báo đúng tháng
+Tuyển: ứng viên mở theo ngưỡng Fame (Content), engine thông báo đúng tháng
 chạm ngưỡng. Tối đa 2 nhân viên — phòng lab tại gia mà. Thuê là tức thời;
 trả lương từ tháng thuê.
 

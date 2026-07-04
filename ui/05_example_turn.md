@@ -14,16 +14,16 @@ Theo shared/conventions.md: ví dụ CHỈ minh họa, không phải Game Data.
 
 # Worked Example — *illustrative only, not Game Data*
 
-Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, REP 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
+Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
 
 Expected completion report (S6, desktop):
 
 ```
 🏁 SpamGuard — BOW × CLS on Product reviews
    Quality: 51/100
-   😐 Mediocre → REP +1, RP +5
+   😐 Mediocre → Fame +100, RP +510
    Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
-   (3 📈 Product locked: needs REP ≥ 10 and Q ≥ 55)
+   (3 📈 Product locked: needs Fame ≥ 1000 and Q ≥ 55)
 ```
 
 Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead.

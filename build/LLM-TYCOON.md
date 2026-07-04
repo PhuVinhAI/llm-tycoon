@@ -127,7 +127,7 @@ Always respond in the language the player is using.
 
 Translate narration, descriptions, and ALL UI LABELS naturally into the player's language. If the player is using a language other than English, words like "Resources", "Skills", "Assets", "Knowledge", "Status", "New model", "Data", "Main Menu" in the UI skeletons MUST be translated. Never mix languages.
 
-Keep canonical codes untranslated: RP, REP, CU, Q, R-Lv, E-Lv, Technology/Architecture/Task/Contract/Event IDs, and the SAVE block format.
+Keep canonical codes untranslated: RP, Fame, TFLOPS, Q, R-Lv, E-Lv, Technology/Architecture/Task/Contract/Event IDs, and the SAVE block format. (Note: "Fame" should be displayed as "Danh tiếng (Fame)" in Vietnamese).
 
 # Output Discipline
 
@@ -246,15 +246,15 @@ The resource earned through research and spent to unlock Technologies.
 
 ---
 
-## REP (Reputation)
+## Fame (Danh tiếng)
 
-The Company's public standing, ranging from 0 to 50. REP gates contracts, hires, and investor interest.
+The Company's public standing, ranging from 0 to 5000. Fame gates contracts, hires, and investor interest. (Formerly REP).
 
 ---
 
-## CU (Compute Units)
+## TFLOPS (TeraFLOPS)
 
-The measure of computing power. Hardware provides CU per month; training consumes CU-months (CU per month × months trained).
+The measure of computing power. Hardware provides TFLOPS per month; training consumes TFLOPS-months.
 
 ---
 
@@ -452,7 +452,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 
 * **Cash** — money, measured in US dollars. Used for purchases, salaries, and fixed costs.
 * **RP (Research Points)** — accumulated research insight. Spent to unlock Technologies. RP is a single pool and can be banked without limit.
-* **REP (Reputation)** — the Company's public standing, an integer from 0 to 50. REP is never spent; it gates opportunities.
+* **Fame (Danh tiếng)** — the Company's public standing, an integer from 0 to 5000. Fame is never spent; it gates opportunities.
 * **Income Stream** — recurring monthly Cash income with a fixed monthly amount and a fixed number of remaining months.
 
 ---
@@ -461,7 +461,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
-* REP: current value (0–50).
+* Fame: current value (0–5000).
 * Income Stream: source name, amount per month, months remaining.
 
 ---
@@ -662,9 +662,9 @@ A Dataset exists as part of the Game State.
 
 Hardware is physical computing equipment owned by a Company, primarily GPUs.
 
-Each piece of Hardware occupies one or more slots in the Company's facility and provides Compute Units per month (CU/mo). The Company's total CU/mo is the sum over all installed Hardware, plus any rented cloud compute.
+Each piece of Hardware occupies one or more slots in the Company's facility and provides TeraFLOPS per month (TFLOPS/mo). The Company's total TFLOPS/mo is the sum over all installed Hardware, plus any rented cloud compute.
 
-Training Models consumes compute measured in CU-months.
+Training Models consumes compute measured in TFLOPS-months.
 
 ---
 
@@ -674,7 +674,7 @@ A piece of Hardware may be associated with information such as:
 
 * Name
 * Price
-* CU provided per month
+* TFLOPS provided per month
 * Slots occupied
 * Upkeep cost
 * Availability date
@@ -832,8 +832,8 @@ The concrete values are defined in the Content.
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Cash +$2,000 + $100 × floor(REP ÷ 5). |
-| 🔬 **Research** | RP +(10 + 5 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
+| 💼 **Freelance** | Cash +$2,000 + $100 × floor(Fame ÷ 500). |
+| 🔬 **Research** | RP +(1000 + 500 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
 | 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
@@ -854,7 +854,7 @@ The concrete values are defined in the Content.
 ## Commitment and cancelling
 
 - Starting a Project or accepting a Contract commits the coming months: the main action of those months is fixed until completion.
-- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and REP −1 (Project) or −2 (Contract).
+- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
 - Only one Project **or** Contract may be active at a time — never both, never two.
 
 # Economy
@@ -883,8 +883,8 @@ Every month, in the Costs step:
 
 ## Earning RP
 
-- The **Research** main action yields RP = 10 + 5 × R-Lv + staff bonuses (Content).
-- Completed Models grant RP = floor(Q ÷ 10) (Model Projects rule).
+- The **Research** main action yields RP = 1000 + 500 × R-Lv + staff bonuses (Content).
+- Completed Models grant RP = floor(Q) × 10 (Model Projects rule).
 - Events may grant RP directly (Content).
 - RP accumulates in a single pool with no cap.
 
@@ -917,28 +917,28 @@ Every month, in the Costs step:
 - R-Lv increases Research yield (Research rule).
 - E-Lv adds +2 × E-Lv to Model Quality (Model Projects rule).
 
-# Reputation
+# Fame (Danh tiếng)
 
 ## Scale
 
-REP ranges from 0 to 50 (floor 0, cap 50).
+Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 ## Sources
 
-| Source | REP change |
+| Source | Fame change |
 |---|---|
-| Model reception: Breakthrough / Great / Good / Mediocre / Failure | +8 / +5 / +3 / +1 / −2 |
-| Open-source release | reception REP × 2 (replaces the normal reception REP) |
-| Contract completed / cancelled | +1 / −2 |
-| Project cancelled | −1 |
+| Model reception: Breakthrough / Great / Good / Mediocre / Failure | +800 / +500 / +300 / +100 / −200 |
+| Open-source release | reception Fame × 2 (replaces the normal reception Fame) |
+| Contract completed / cancelled | +100 / −200 |
+| Project cancelled | −100 |
 | Competition won | per the competition (Content) |
 | Event-granted | per the event (Content) |
 
 ## Thresholds
 
-- Contracts, Employee candidates, and the angel investor unlock at REP thresholds defined in the Content.
+- Contracts, Employee candidates, and the angel investor unlock at Fame thresholds defined in the Content.
 - The engine announces a threshold unlock in the Events step of the first month the condition holds.
-- Unlocks never revert: once announced, an offer stays available even if REP later drops.
+- Unlocks never revert: once announced, an offer stays available even if Fame later drops.
 
 # Datasets
 
@@ -973,9 +973,9 @@ REP ranges from 0 to 50 (floor 0, cap 50).
 
 ## Compute
 
-- Total **CU/mo** = sum of installed Hardware CU + active cloud units.
-- During a Project, compute accumulates monthly: **CU-months += current CU/mo**.
-- Neural Architectures (compute requirement > 0 in the Content) cannot start with total CU/mo = 0, and require the GPUT technology.
+- Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
+- During a Project, compute accumulates monthly: **TFLOPS-months += current TFLOPS/mo**.
+- Neural Architectures (compute requirement > 0 in the Content) cannot start with total TFLOPS/mo = 0, and require the GPUT technology.
 
 ## Buying and selling
 
@@ -984,7 +984,7 @@ REP ranges from 0 to 50 (floor 0, cap 50).
 
 ## Cloud rental (available per the Event Calendar)
 
-- $1,000 per month per **+10 CU** unit; maximum 2 units.
+- $1,000 per month per **+1000 TFLOPS** unit; maximum 2 units.
 - May only be active during Project months; deactivates automatically when the Project ends.
 
 # Model Projects
@@ -993,7 +993,7 @@ REP ranges from 0 to 50 (floor 0, cap 50).
 
 The Player declares, in one instant action:
 
-1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and total CU/mo ≥ 1 (Hardware rule).
+1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and total TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Task** — one of the Tasks in the Content.
 3. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
 4. **Months (M)** — at least the Architecture's minimum months.
@@ -1034,30 +1034,30 @@ A requirement of 0 always scores +5.
 
 ## Reception
 
-| Q | Reception | REP |
-|---|---|---|
-| ≥ 85 | 🌟 Breakthrough | +8 |
-| 70–84 | 🔥 Great | +5 |
-| 55–69 | 👍 Good | +3 |
-| 40–54 | 😐 Mediocre | +1 |
-| < 40 | 💔 Failure | −2 |
+| Q | Reception | Fame |
+|---|---|---|---|
+| ≥ 85 | 🌟 Breakthrough | +800 |
+| 70–84 | 🔥 Great | +500 |
+| 55–69 | 👍 Good | +300 |
+| 40–54 | 😐 Mediocre | +100 |
+| < 40 | 💔 Failure | −200 |
 
-Every completed Model also grants **RP + floor(Q ÷ 10)** and counts toward E-Lv.
+Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-Lv.
 
 ## Release (the Player picks exactly one; a Failure model may only be open-sourced or shelved)
 
 | Release | Effect |
 |---|---|
-| 🌐 **Open-source** | REP = reception REP × 2 (replaces normal reception REP); RP +5 extra. No cash. |
+| 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires REP ≥ 10 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. Reception REP applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. (Flavor: Engine announces ~[Q × Demand × 10,000] active users). Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
 
 # Contracts
 
 ## Availability
 
-- Contracts unlock when the Company's REP reaches their tier (Content). The engine announces newly available Contracts in the Events step.
+- Contracts unlock when the Company's Fame reaches their tier (Content). The engine announces newly available Contracts in the Events step.
 - Each Contract may be completed **once**. At most **one** Contract (or Project) is active at a time (Actions rule).
 
 ## Accepting and working
@@ -1068,14 +1068,14 @@ Every completed Model also grants **RP + floor(Q ÷ 10)** and counts toward E-Lv
 ## Completion
 
 - On the final month: the client pays the listed amount. If the Company owns the listed bonus Technology, pay × **1.2**.
-- REP +1. The Contract counts toward E-Lv (Skills rule).
-- Cancelling mid-contract: REP −2, no pay (Actions rule).
+- Fame +100. The Contract counts toward E-Lv (Skills rule).
+- Cancelling mid-contract: Fame −200, no pay (Actions rule).
 
 # Employees
 
 ## Hiring
 
-- Candidates become available at REP thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
+- Candidates become available at Fame thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
 - Maximum **2** Employees at a time — the lab is one small room.
 - Hiring is instant. Salary is paid from the month of hire (Economy rule).
 
@@ -1091,7 +1091,7 @@ Every completed Model also grants **RP + floor(Q ÷ 10)** and counts toward E-Lv
 
 ## Firing events
 
-- In the Events step of every month, fire all Event Calendar entries (Content) matching the current month, plus all threshold events whose condition just became true (REP thresholds, model releases).
+- In the Events step of every month, fire all Event Calendar entries (Content) matching the current month, plus all threshold events whose condition just became true (Fame thresholds, model releases).
 - Events fire exactly once each. Track fired events and lasting effects as flags in the Game State.
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
@@ -1115,12 +1115,12 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A `web-mixed` Dataset with **Size 5** and **Quality ≥ 3**.
-- Committed months **M ≥ 4**, with projected compute CU/mo × M ≥ **40 CU-months** (staff compute reductions apply). The engine validates the projection before starting.
+- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **4000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$5,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
-- Use the PTRF row of the architectures table, but with compute requirement **40** CU-months.
+- Use the PTRF row of the architectures table, but with compute requirement **4000** TFLOPS-months.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
 - Add a **+10 scale bonus** to the formula.
 
@@ -1128,9 +1128,9 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 | Q | Outcome |
 |---|---|
-| ≥ 70 | 🚀 The **Term Sheet** event fires (Content): accept → **WIN ending**; decline → +5 REP and the sandbox continues. |
-| 55–69 | It works, but demos underwhelm: REP +10, and the Model may be released normally (Model Projects rule). |
-| < 55 | A very expensive lesson: REP −3, RP +20. |
+| ≥ 70 | 🚀 The **Term Sheet** event fires (Content): accept → **WIN ending**; decline → +500 Fame and the sandbox continues. |
+| 55–69 | It works, but demos underwhelm: Fame +1000, and the Model may be released normally (Model Projects rule). |
+| < 55 | A very expensive lesson: Fame −300, RP +2000. |
 
 - The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual if the same Dataset is reused.
 - Name the model — this is the game's namesake moment.
@@ -1148,12 +1148,12 @@ The LLM Project is a special Model Project: pretraining a large language model o
 ## Score
 
 ```
-Score = 3 × REP
-      + Best Model Q
-      + 5 × models completed (Projects + Contracts)
-      + floor(Cash ÷ $1,000)
-      + WIN only: 40 + 2 × full months remaining until December 2020
-      + LLM released during 2019: +10 (perfect timing)
+Score = 3 × Fame
+      + 100 × Best Model Q
+      + 500 × models completed (Projects + Contracts)
+      + 100 × floor(Cash ÷ $1,000)
+      + WIN only: 4000 + 200 × full months remaining until December 2020
+      + LLM released during 2019: +1000 (perfect timing)
 ```
 
 Present the ending as a short narrated epilogue, then the final total score, then the title from the Content's titles table. Do not show the score breakdown.
@@ -1186,20 +1186,20 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 
 # Architectures
 
-| ID | Architecture | Base Q | CU-months req | Min months | Min Dataset Size | Ideal Focus D/M/T/E |
-|---|---|---|---|---|---|---|
+| ID | Architecture | Base Q | TFLOPS-months req | Min months | Min Dataset Size | Ideal Focus D/M/T/E |
+|---|---|---|---|---|---|---|---|
 | NGRAM | N-gram LM | 5 | 0 | 1 | 1 | 4/2/1/3 |
 | BOW | Bag-of-Words + Classic ML | 10 | 0 | 1 | 1 | 4/3/1/2 |
-| EMB | Embedding-based | 18 | 1 | 1 | 2 | 3/3/2/2 |
-| RNN | Recurrent NN | 22 | 2 | 2 | 2 | 2/3/3/2 |
-| LSTM | LSTM / GRU | 26 | 4 | 2 | 2 | 2/3/3/2 |
-| S2S | Seq2Seq | 30 | 8 | 2 | 3 | 2/3/4/1 |
-| S2SA | Seq2Seq + Attention | 38 | 12 | 3 | 3 | 2/3/3/2 |
-| TRF | Transformer | 45 | 20 | 3 | 3 | 2/2/4/2 |
-| PTRF | Pretrained Transformer | 55 | 30 | 4 | 5 | 3/2/4/1 |
+| EMB | Embedding-based | 18 | 100 | 1 | 2 | 3/3/2/2 |
+| RNN | Recurrent NN | 22 | 200 | 2 | 2 | 2/3/3/2 |
+| LSTM | LSTM / GRU | 26 | 400 | 2 | 2 | 2/3/3/2 |
+| S2S | Seq2Seq | 30 | 800 | 2 | 3 | 2/3/4/1 |
+| S2SA | Seq2Seq + Attention | 38 | 1200 | 3 | 3 | 2/3/3/2 |
+| TRF | Transformer | 45 | 2000 | 3 | 3 | 2/2/4/2 |
+| PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
-- Architectures with CU-months req 0 train on the starting desktop PC; all others are neural (GPUT + CU ≥ 1 required).
-- The LLM Project overrides PTRF's compute requirement to 40 CU-months (Rules).
+- Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
+- The LLM Project overrides PTRF's compute requirement to 4000 TFLOPS-months (Rules).
 
 # Tasks and Matching
 
@@ -1264,20 +1264,20 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 
 # Hardware Shop
 
-| Available from | Item | Price | CU/mo | Slots |
-|---|---|---|---|---|
-| start | GTX 780 | $600 | 1 | 1 |
-| Sep 2014 | GTX 980 | $550 | 2 | 1 |
-| Jun 2016 | GTX 1080 | $700 | 4 | 1 |
-| Oct 2017 | Used K80 server | $1,500 | 6 | 2 |
-| Sep 2018 | RTX 2080 | $800 | 8 | 1 |
+| Available from | Item | Price | TFLOPS/mo | Slots |
+|---|---|---|---|---|---|
+| start | GTX 780 | $600 | 100 | 1 |
+| Sep 2014 | GTX 980 | $550 | 200 | 1 |
+| Jun 2016 | GTX 1080 | $700 | 400 | 1 |
+| Oct 2017 | Used K80 server | $1,500 | 600 | 2 |
+| Sep 2018 | RTX 2080 | $800 | 800 | 1 |
 
 **Other purchases:**
 
 | Item | Price | Effect |
 |---|---|---|
 | 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
-| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +10 CU/mo per unit, max 2 units, project months only |
+| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
 
 Upkeep $25 per occupied slot per month; sell-back 50% (Hardware rule).
 
@@ -1310,24 +1310,24 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed.
 
 # Contracts
 
-| ID | REP ≥ | Client — job | Requires | Months | Pay | Bonus tech (pay ×1.2) |
+| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech (pay ×1.2) |
 |---|---|---|---|---|---|---|
 | C01 | 0 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
 | C02 | 0 | News site — keyword tagger | BOW | 1 | $1,500 | — |
-| C11 | 8 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
-| C12 | 8 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
-| C21 | 15 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
-| C22 | 15 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
-| C31 | 22 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
-| C32 | 22 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
+| C11 | 800 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
+| C12 | 800 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
+| C21 | 1500 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
+| C22 | 1500 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
+| C31 | 2200 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
+| C32 | 2200 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
 
 # Employee Candidates
 
-| Name | REP ≥ | Salary/mo | Effects |
-|---|---|---|---|
-| **Linh** — data wrangler | 8 | $1,200 | Collected Datasets +1 Quality; Research +2 RP |
-| **Tuấn** — CUDA wizard | 15 | $1,800 | All compute requirements ×0.75 (round up) |
-| **Dr. Phạm** — ex-professor | 22 | $2,500 | Research +8 RP; all Models +3 Q |
+| Name | Fame ≥ | Salary/mo | Effects |
+|---|---|---|---|---|
+| **Linh** — data wrangler | 800 | $1,200 | Collected Datasets +1 Quality; Research +200 RP |
+| **Tuấn** — CUDA wizard | 1500 | $1,800 | All compute requirements ×0.75 (round up) |
+| **Dr. Phạm** — ex-professor | 2200 | $2,500 | Research +800 RP; all Models +3 Q |
 
 Maximum 2 hired at a time (Employees rule).
 
@@ -1338,37 +1338,37 @@ Maximum 2 hired at a time (Employees rule).
 | # | Date | Event | Effect |
 |---|---|---|---|
 | E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that to build models, the Player needs an Architecture. Guide them to use the **Research** action this month to earn RP and unlock **NGRAM**. |
-| E1 | Mar 2013 | 📄 *word2vec published (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +5 REP ("prior art!") |
+| E1 | Mar 2013 | 📄 *word2vec published (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl in the spotlight* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
-| E3 | Jun 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +5 REP |
+| E3 | Jun 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +500 Fame |
 | E4 | Sep 2014 | 🛒 *GTX 980 launches* | Shop update (hardware table) |
 | E5 | Nov 2014 | 🌐 *WMT corpora released* | Free Dataset claimable: WMT parallel (3/4) |
-| E6 | Feb 2015 | 📄 *Attention paper (Bahdanau et al.)* | ATTN cost ×0.5 if locked; owned: +5 REP |
-| E7 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55, 3-month window → $2,000 + 4 REP |
+| E6 | Feb 2015 | 📄 *Attention paper (Bahdanau et al.)* | ATTN cost ×0.5 if locked; owned: +500 Fame |
+| E7 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55, 3-month window → $2,000 + 400 Fame |
 | E8 | Nov 2015 | 🔧 *TensorFlow open-sourced* | All research costs ×0.8, permanent |
-| E9 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +5 (inspiration) |
+| E9 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +500 (inspiration) |
 | E10 | Mar 2016 | 🔥 *AlphaGo beats Lee Sedol* | AI hype: license & product income ×1.5 during Mar–Aug 2016 |
 | E11 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
 | E12 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5) |
 | E13 | Jan 2017 | ☁️ *Cloud GPUs become practical* | Cloud rental available (hardware table) |
-| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +10 REP + headline "Indie researcher scooped Google?" |
-| E15 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 6 REP |
+| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +1000 Fame + headline "Indie researcher scooped Google?" |
+| E15 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 600 Fame |
 | E16 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
 | E17 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
-| E18 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +10 REP |
+| E18 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
 | E19 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
-| E20 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +5 REP (vindicated!) |
-| E21 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +10 Score at the end |
-| E22 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player REP ≥ 15, the article namechecks them |
+| E20 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame (vindicated!) |
+| E21 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end |
+| E22 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player Fame ≥ 1500, the article namechecks them |
 | E23 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
 ## Threshold events
 
 | # | Trigger | Event | Effect |
 |---|---|---|---|
-| T1 | First month REP ≥ 8 / 15 / 22 | 👥 Candidate available / 📜 new Contract tier | Announce per Content tables |
-| T2 | First month REP ≥ 25 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +2 REP (bootstrapped pride) |
-| T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +5 REP, sandbox continues |
+| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Candidate available / 📜 new Contract tier | Announce per Content tables |
+| T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
+| T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
 Discount stacking follows the Research rule (multiply, round up to 5). Track every fired event and lasting effect as a flag.
 
@@ -1376,10 +1376,10 @@ Discount stacking follows the Research rule (multiply, round up to 5). Track eve
 
 | Score | Title |
 |---|---|
-| ≥ 330 | 👑 Home Lab Legend |
-| 250–329 | 🚀 AI Pioneer |
-| 150–249 | 🔬 Indie Researcher |
-| < 150 | 🌱 Hobbyist |
+| ≥ 33000 | 👑 Home Lab Legend |
+| 25000–32999 | 🚀 AI Pioneer |
+| 15000–24999 | 🔬 Indie Researcher |
+| < 15000 | 🌱 Hobbyist |
 | Bankruptcy | 💀 Burned Out (score 0) |
 
 ---
@@ -1394,10 +1394,10 @@ Discount stacking follows the Research rule (multiply, round up to 5). Track eve
 |---|---|
 | Date | January 2013 (Turn 1) |
 | Cash | $10,000 |
-| RP / REP | 0 / 0 |
+| RP / Fame | 0 / 0 |
 | Skills | R-Lv 1, E-Lv 1 (counters: research 0, models 0) |
 | Technologies | BTP |
-| Hardware | old desktop PC (0 CU, occupies no slot); 4 empty slots; not rewired |
+| Hardware | old desktop PC (0 TFLOPS, occupies no slot); 4 empty slots; not rewired |
 | Team | solo |
 | Datasets | "Old blog scrape" (web-mixed, Size 1, Quality 2) |
 | Models / Streams / Contracts | none |
@@ -1508,9 +1508,9 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 
 | 📊 [Company] | 📅 [Month YYYY] (Turn [N]) |
 |---|---|
-| **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ REP [x]/50 |
+| **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ Danh tiếng (Fame) [x]/5000 |
 | **Skills** | 🧠 R-Lv [x]  ·  E-Lv [x] |
-| **Assets** | 🖥️ [total] CU/mo ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned IDs] |
 | **Status** | 📦 [idle / project / contract]  ·  📉 Fixed: $[x]/mo |
 
@@ -1540,7 +1540,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 9 💾 Save | 0 🏠 Main Menu |
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
-- Hide `Contracts` and `Team` entirely until REP ≥ 8.
+- Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
@@ -1548,7 +1548,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 **Quality: [Q]/100**
-[reception emoji + tier] → REP [±x], RP +[x]
+[reception emoji + tier] → Fame [±x], RP +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
@@ -1606,9 +1606,9 @@ Same content as desktop, one short line each. End with:
 📊 **[Company]**
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
-🔬 RP [x] · ⭐ REP [x]/50
+🔬 RP [x] · ⭐ Danh tiếng (Fame) [x]/5000
 🧠 R-Lv [x] · E-Lv [x]
-🖥️ [total] CU/mo · slots [u]/[t]
+🖥️ [total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
@@ -1644,7 +1644,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 9 💾 Save
 0 🏠 Main Menu
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (REP ≥ 8 or Neural Tech owned), keeping the early game menu simple.
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.
 
 ## S6 — Model Completion Report
 
@@ -1655,7 +1655,7 @@ on [Dataset]
 **Quality: [total]/100**
 
 [reception emoji + tier]
-⭐ REP [±x] · 🔬 RP +[x]
+⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source
@@ -1697,7 +1697,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 === SAVE LLM-TYCOON v0.2 ===
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
-date: YYYY-MM | cash: [x] | rp: [x] | rep: [x]
+date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
 skills: R[x] E[x] | counters: research=[x], models=[x]
 tech: [comma-separated IDs]
 hw: [item xN, …] | slots_used: [x]/[4|8] | rewired: [yes/no]
@@ -1706,7 +1706,7 @@ data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Q[x],release)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
-project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, cu_acc=x | none]
+project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===
@@ -1719,16 +1719,16 @@ flags: [fired events with lasting effects, discounts in force, hype windows]
 
 # Worked Example — *illustrative only, not Game Data*
 
-Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, REP 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
+Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
 
 Expected completion report (S6, desktop):
 
 ```
 🏁 SpamGuard — BOW × CLS on Product reviews
    Quality: 51/100
-   😐 Mediocre → REP +1, RP +5
+   😐 Mediocre → Fame +100, RP +510
    Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
-   (3 📈 Product locked: needs REP ≥ 10 and Q ≥ 55)
+   (3 📈 Product locked: needs Fame ≥ 1000 and Q ≥ 55)
 ```
 
 Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead.

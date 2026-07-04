@@ -125,26 +125,25 @@ Tiếng Việt:
 
 ---
 
-## REP (Reputation)
+## Fame (Danh tiếng)
 
-The Company's public standing, ranging from 0 to 50. REP gates contracts, hires, and investor interest.
+The Company's public standing, ranging from 0 to 5000. Fame gates contracts, hires, and investor interest. (Formerly REP).
 
 <!--
 Tiếng Việt:
-Danh tiếng của Company, từ 0 đến 50. REP mở khóa hợp đồng, ứng viên tuyển dụng
+Danh tiếng của Company, từ 0 đến 5000. Fame mở khóa hợp đồng, ứng viên tuyển dụng
 và sự chú ý của nhà đầu tư.
 -->
 
 ---
 
-## CU (Compute Units)
+## TFLOPS (TeraFLOPS)
 
-The measure of computing power. Hardware provides CU per month; training consumes CU-months (CU per month × months trained).
+The measure of computing power. Hardware provides TFLOPS per month; training consumes TFLOPS-months.
 
 <!--
 Tiếng Việt:
-Đơn vị sức mạnh tính toán. Phần cứng cung cấp CU mỗi tháng; việc huấn luyện
-tiêu thụ CU-month (CU mỗi tháng × số tháng huấn luyện).
+Đơn vị sức mạnh tính toán (hàng nghìn tỷ phép tính mỗi giây). Phần cứng cung cấp TFLOPS mỗi tháng; việc huấn luyện tiêu thụ TFLOPS-month.
 -->
 
 ---

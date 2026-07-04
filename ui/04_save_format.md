@@ -19,7 +19,7 @@ khối văn bản gọn; người chơi dán nó cùng Game Document vào hội 
 === SAVE LLM-TYCOON v0.2 ===
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
-date: YYYY-MM | cash: [x] | rp: [x] | rep: [x]
+date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
 skills: R[x] E[x] | counters: research=[x], models=[x]
 tech: [comma-separated IDs]
 hw: [item xN, …] | slots_used: [x]/[4|8] | rewired: [yes/no]
@@ -28,7 +28,7 @@ data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Q[x],release)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
-project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, cu_acc=x | none]
+project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===

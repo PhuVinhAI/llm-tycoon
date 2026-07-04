@@ -27,9 +27,9 @@ Trách nhiệm:
 
 ## Compute
 
-- Total **CU/mo** = sum of installed Hardware CU + active cloud units.
-- During a Project, compute accumulates monthly: **CU-months += current CU/mo**.
-- Neural Architectures (compute requirement > 0 in the Content) cannot start with total CU/mo = 0, and require the GPUT technology.
+- Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
+- During a Project, compute accumulates monthly: **TFLOPS-months += current TFLOPS/mo**.
+- Neural Architectures (compute requirement > 0 in the Content) cannot start with total TFLOPS/mo = 0, and require the GPUT technology.
 
 ## Buying and selling
 
@@ -38,7 +38,7 @@ Trách nhiệm:
 
 ## Cloud rental (available per the Event Calendar)
 
-- $1,000 per month per **+10 CU** unit; maximum 2 units.
+- $1,000 per month per **+1000 TFLOPS** unit; maximum 2 units.
 - May only be active during Project months; deactivates automatically when the Project ends.
 
 <!--
@@ -46,13 +46,13 @@ Tiếng Việt (tóm tắt):
 Slot: home lab có 4 slot; nâng cấp "Đi lại dây điện" $2,000 (một lần, mua
 lúc nào cũng được) → 8 slot. Mỗi phần cứng chiếm số slot ghi trong Content.
 
-Compute: tổng CU/tháng = tổng CU phần cứng + cloud đang bật. Trong dự án,
-mỗi tháng cộng dồn: CU-month += CU/tháng hiện tại. Kiến trúc neural (yêu cầu
-compute > 0) không thể khởi động khi CU = 0 và cần công nghệ GPUT.
+Compute: tổng TFLOPS/tháng = tổng TFLOPS phần cứng + cloud đang bật. Trong dự án,
+mỗi tháng cộng dồn: TFLOPS-month += TFLOPS/tháng hiện tại. Kiến trúc neural (yêu cầu
+compute > 0) không thể khởi động khi TFLOPS = 0 và cần công nghệ GPUT.
 
 Mua/bán: mua tức thời các món đã đến ngày bán; phí vận hành tính từ tháng
 mua. Bán lại thu 50% giá gốc; không được bán khi đang chạy dự án.
 
-Cloud (mở theo Event Calendar): $1,000/tháng cho mỗi đơn vị +10 CU, tối đa
+Cloud (mở theo Event Calendar): $1,000/tháng cho mỗi đơn vị +1000 TFLOPS, tối đa
 2 đơn vị; chỉ bật được trong các tháng có dự án; tự tắt khi dự án kết thúc.
 -->

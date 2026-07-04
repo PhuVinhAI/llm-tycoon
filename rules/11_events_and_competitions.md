@@ -22,7 +22,7 @@ Trách nhiệm:
 
 ## Firing events
 
-- In the Events step of every month, fire all Event Calendar entries (Content) matching the current month, plus all threshold events whose condition just became true (REP thresholds, model releases).
+- In the Events step of every month, fire all Event Calendar entries (Content) matching the current month, plus all threshold events whose condition just became true (Fame thresholds, model releases).
 - Events fire exactly once each. Track fired events and lasting effects as flags in the Game State.
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
@@ -41,7 +41,7 @@ Trách nhiệm:
 <!--
 Tiếng Việt (tóm tắt):
 Kích hoạt: ở bước Sự kiện mỗi tháng, nổ mọi sự kiện đúng tháng trong Event
-Calendar + mọi sự kiện ngưỡng vừa thỏa (REP, phát hành model). Mỗi sự kiện
+Calendar + mọi sự kiện ngưỡng vừa thỏa (Fame, phát hành model). Mỗi sự kiện
 nổ đúng một lần; lưu cờ (flag) trong Game State. Sự kiện cần lựa chọn thì
 tạm dừng chuỗi tháng đang chạy. Không bao giờ tiết lộ trước sự kiện.
 

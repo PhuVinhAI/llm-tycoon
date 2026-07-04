@@ -24,8 +24,8 @@ Trách nhiệm:
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Cash +$2,000 + $100 × floor(REP ÷ 5). |
-| 🔬 **Research** | RP +(10 + 5 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
+| 💼 **Freelance** | Cash +$2,000 + $100 × floor(Fame ÷ 500). |
+| 🔬 **Research** | RP +(1000 + 500 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
 | 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
@@ -46,13 +46,13 @@ Trách nhiệm:
 ## Commitment and cancelling
 
 - Starting a Project or accepting a Contract commits the coming months: the main action of those months is fixed until completion.
-- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and REP −1 (Project) or −2 (Contract).
+- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
 - Only one Project **or** Contract may be active at a time — never both, never two.
 
 <!--
 Tiếng Việt (tóm tắt):
-Hành động chính (mỗi tháng 1): Freelance (+$2,000 + $100×⌊REP/5⌋); Research
-(+RP = 10 + 5×R-Lv + bonus nhân viên); tháng Dự án; tháng Hợp đồng; Thu thập
+Hành động chính (mỗi tháng 1): Freelance (+$2,000 + $100×⌊Fame/500⌋); Research
+(+RP = 1000 + 500×R-Lv + bonus nhân viên); tháng Dự án; tháng Hợp đồng; Thu thập
 dataset (Size 2 Q2, có SCRAPE → Size 3); Làm sạch dataset (+1 Quality, tối
 đa 5).
 
@@ -61,6 +61,6 @@ mua/bán phần cứng; mua/nhận dataset; gộp dataset; thuê/sa thải nhân
 nhận hợp đồng; bắt đầu dự án; bật/tắt cloud; nộp thi; save/help/status.
 
 Cam kết: bắt đầu dự án/nhận hợp đồng sẽ khóa các tháng tới. Hủy ngang được
-tại điểm dừng: tháng đã tiêu không hoàn lại, không có sản phẩm, REP −1 (dự
-án) hoặc −2 (hợp đồng). Chỉ 1 dự án HOẶC 1 hợp đồng chạy tại một thời điểm.
+tại điểm dừng: tháng đã tiêu không hoàn lại, không có sản phẩm, Fame −100 (dự
+án) hoặc −200 (hợp đồng). Chỉ 1 dự án HOẶC 1 hợp đồng chạy tại một thời điểm.
 -->

@@ -53,9 +53,9 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 
 | 📊 [Company] | 📅 [Month YYYY] (Turn [N]) |
 |---|---|
-| **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ REP [x]/50 |
+| **Resources** | 💰 $[cash]  ·  🔬 RP [x]  ·  ⭐ Danh tiếng (Fame) [x]/5000 |
 | **Skills** | 🧠 R-Lv [x]  ·  E-Lv [x] |
-| **Assets** | 🖥️ [total] CU/mo ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned IDs] |
 | **Status** | 📦 [idle / project / contract]  ·  📉 Fixed: $[x]/mo |
 
@@ -85,7 +85,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 9 💾 Save | 0 🏠 Main Menu |
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
-- Hide `Contracts` and `Team` entirely until REP ≥ 8.
+- Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
@@ -93,7 +93,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 **Quality: [Q]/100**
-[reception emoji + tier] → REP [±x], RP +[x]
+[reception emoji + tier] → Fame [±x], RP +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve

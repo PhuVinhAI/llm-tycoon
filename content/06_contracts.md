@@ -15,16 +15,16 @@ Nguồn tiền ổn định giữa các dự án; nhu cầu khách hàng leo tha
 
 # Contracts
 
-| ID | REP ≥ | Client — job | Requires | Months | Pay | Bonus tech (pay ×1.2) |
+| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech (pay ×1.2) |
 |---|---|---|---|---|---|---|
 | C01 | 0 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
 | C02 | 0 | News site — keyword tagger | BOW | 1 | $1,500 | — |
-| C11 | 8 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
-| C12 | 8 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
-| C21 | 15 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
-| C22 | 15 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
-| C31 | 22 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
-| C32 | 22 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
+| C11 | 800 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
+| C12 | 800 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
+| C21 | 1500 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
+| C22 | 1500 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
+| C31 | 2200 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
+| C32 | 2200 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
 
 <!--
 Tiếng Việt (tóm tắt):

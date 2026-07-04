@@ -16,10 +16,10 @@ hiệu cao nhất đòi hỏi vừa thắng sớm vừa chơi tròn trịa.
 
 | Score | Title |
 |---|---|
-| ≥ 330 | 👑 Home Lab Legend |
-| 250–329 | 🚀 AI Pioneer |
-| 150–249 | 🔬 Indie Researcher |
-| < 150 | 🌱 Hobbyist |
+| ≥ 33000 | 👑 Home Lab Legend |
+| 25000–32999 | 🚀 AI Pioneer |
+| 15000–24999 | 🔬 Indie Researcher |
+| < 15000 | 🌱 Hobbyist |
 | Bankruptcy | 💀 Burned Out (score 0) |
 
 <!--
