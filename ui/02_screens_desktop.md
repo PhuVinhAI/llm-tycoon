@@ -70,7 +70,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
-*[FLAVOR: 1–2 lines describing the action]*
+*[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
 [one line per change: +/− cash, RP, Fame, …]
 💰 [cash after] | 🔬 Research Points [after]
 

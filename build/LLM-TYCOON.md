@@ -171,6 +171,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 
 - **Micro-scenes & Action Flavor** — a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling, or a brief description of the month's work.
 - **Scientific Explanations** — When an event is about a real-world AI paper (e.g., word2vec, Attention, Transformer), do not just state that it was published. Use the flavor text to explain *what the breakthrough actually means* in simple, layman's terms so players without an AI background can understand it.
+- **Technology Unlocks** — Whenever the player spends RP to unlock a new Technology (an instant action), use flavor text in the turn report to briefly explain what this tech actually does and how it upgrades their capabilities (e.g., "You unlocked RNNs: Models can now remember context from previous words!").
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
@@ -1429,7 +1430,7 @@ This table provides the raw data for Freelance events. The logic and formulas fo
 
 January 2013. You've quit your job. The spare room of your tiny rented apartment is now a **home lab**: one desk, a secondhand desktop, a corkboard of printed papers, and a whiteboard with a single sentence on it: **"One day, machines will truly understand language."**
 
-You have $10,000 in savings, an internet connection, and a hunch that the deep learning wave rippling out of image recognition is about to hit language — hard. Nobody has heard of you yet. That part is temporary.
+You have $10,000 in savings, an internet connection, and a hunch that the deep learning wave rippling out of image recognition is about to hit language — hard. Your only asset is your knowledge of **Basic Text Processing (BTP)** — the old-school art of writing regex rules, counting word frequencies, and cleaning messy text. It is primitive, but it is a foundation. Nobody has heard of you yet. That part is temporary.
 
 ---
 
@@ -1547,7 +1548,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
-*[FLAVOR: 1–2 lines describing the action]*
+*[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
 [one line per change: +/− cash, RP, Fame, …]
 💰 [cash after] | 🔬 Research Points [after]
 
@@ -1649,7 +1650,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 ▸ [mechanical effect]
 
 📅 **[action taken]**
-*[FLAVOR: 1–2 lines]*
+*[FLAVOR: 1–2 lines. Explain unlocked Techs if any.]*
 [one change per line]
 💰 $[after] · 🔬 Research Points [after]
 
