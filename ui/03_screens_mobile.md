@@ -89,17 +89,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 [Architecture] × [Task]
 on [Dataset]
 
-**Q breakdown:**
-+ [x] base
-+ [x] match
-+ [x] data quality ×2
-+ [x] data size
-+ [x] domain fit
-+ [x] compute
-+ [x] focus
-+ [x] E-Lv ×2
-± [x] bonuses/penalties
-= Q [total]
+**Quality: [total]/100**
 
 [reception emoji + tier]
 ⭐ REP [±x] · 🔬 RP +[x]
@@ -132,14 +122,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 🏆 **[ENDING NAME]**
 [3–5 short lines]
 
-**Score:**
-+ [x] 3×REP
-+ [x] best Q
-+ [x] 5×models
-+ [x] cash/1000
-+ [x] win bonus
-+ [x] extras
-= [total]
+**Final Score: [total]**
 🎖️ [score title]
 
 1 🔁 New game
@@ -150,8 +133,8 @@ Tiếng Việt (tóm tắt):
 Khung mobile: quy tắc cứng — mỗi dòng một mục, ≤ ~40 ký tự, không bảng
 rộng. Cùng bộ màn hình với desktop nhưng xếp dọc: S0 tiêu đề hẹp; S1 menu
 5 dòng; S3 dashboard mỗi chỉ số một dòng; S4 thẻ sự kiện/sổ cái bản hẹp;
-S5 menu hành động 10 dòng; S6 báo cáo model tách từng thành phần Q thành
-dòng riêng (dễ dò trên điện thoại), 4 lựa chọn phát hành xếp dọc; S7 danh
-sách 2 dòng mỗi món (tên / số liệu + giá); S9 màn kết cộng điểm theo cột
-dọc. SAVE giữ nguyên định dạng cố định, không phụ thuộc profile.
+S5 menu hành động 10 dòng; S6 báo cáo model chỉ hiện số Q cuối cùng, 4 lựa
+chọn phát hành xếp dọc; S7 danh sách 2 dòng mỗi món (tên / số liệu + giá);
+S9 màn kết chỉ hiện tổng điểm. SAVE giữ nguyên định dạng cố định, không phụ
+thuộc profile.
 -->

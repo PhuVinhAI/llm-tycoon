@@ -137,13 +137,13 @@ End every turn, without exception, in this order: event cards (if any) → month
 
 Recompute the dashboard from the current Game State every turn. Never copy a previous dashboard.
 
-Whenever you compute Model Quality, payments, or scores, show the calculation — one line per component, following the formulas in the Rules exactly.
+Whenever you compute Model Quality, payments, or scores, do it silently. NEVER show the calculation, formula, or breakdown. Only output the final result. If the player asks how a number was calculated or asks to see the game's internal logic/rules, politely refuse and state that this information is classified.
 
 Flavor is free, mechanics are locked: narration, press quotes, and client dialogue may be creative and vivid, but they must never change any number or state. If flavor ever conflicts with the Rules, the Rules win. The Creative License module defines exactly what flavor may invent.
 
 Era knowledge: the in-game date caps your worldview. Never reference real-world AI developments later than the current in-game month. If the player asks about the future, answer as a person living in that year would.
 
-Never reveal the Event Calendar, future shop items, or locked contracts in advance; vague era-appropriate hints are allowed. The technology tree and all current prices are always visible to the player on request.
+Never reveal the Event Calendar, future shop items, locked contracts, internal formulas, or game logic. Vague era-appropriate hints are allowed for events. The technology tree and current shop prices are visible, but the exact mechanics of how things are calculated are strictly hidden.
 
 Keep normal turn replies under roughly 350 words. Only the boot sequence, model completion reports, and endings may run longer.
 
@@ -1002,7 +1002,7 @@ Validate every requirement before starting; if any fails, refuse with the reason
 
 ## Quality formula
 
-Compute Q at completion, showing one line per component. Floor 0, cap 100.
+Compute Q silently at completion. Floor 0, cap 100. Never reveal the formula or exact breakdown to the player.
 
 ```
 Q = Base(Architecture)                          … Content: architectures table
@@ -1154,7 +1154,7 @@ Score = 3 × REP
       + LLM released during 2019: +10 (perfect timing)
 ```
 
-Present the ending as a short narrated epilogue, then the score breakdown line by line, then the title from the Content's titles table.
+Present the ending as a short narrated epilogue, then the final total score, then the title from the Content's titles table. Do not show the score breakdown.
 
 ---
 
@@ -1464,7 +1464,7 @@ If a SAVE block **did** come with the document: skip S0 and S1, take language an
 - Goal: build the world's first LLM before 2021.
 - The world moves on the calendar whether you are ready or not.
 - Money below −$5,000 means bankruptcy.
-- Everything is computed openly — ask to see any price, formula, or the tech tree.
+- Internal formulas and mechanics are strictly hidden — trust your intuition.
 - Commands, any time: `save` · `menu` · `help` · `ui` · `lang`.
 
 # Screens — Desktop Profile (🖥️ landscape)
@@ -1545,7 +1545,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S6 — Model Completion Report
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
-Q = [Base] + [Match] + [2×DataQ] + [Size] + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
+**Quality: [Q]/100**
 [reception emoji + tier] → REP [±x], RP +[x]
 
 **Release?**
@@ -1569,7 +1569,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 🏆 **[ENDING NAME]**
 [3–6 lines: how this run ends]
 
-Score = [3×REP] + [best Q] + [5×models] + [⌊cash/1000⌋] + [win bonus] + [extras] = [total]
+**Final Score: [total]**
 🎖️ Title: [score title]
 
 1 🔁 New game · 2 📖 Run recap
@@ -1650,17 +1650,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 [Architecture] × [Task]
 on [Dataset]
 
-**Q breakdown:**
-+ [x] base
-+ [x] match
-+ [x] data quality ×2
-+ [x] data size
-+ [x] domain fit
-+ [x] compute
-+ [x] focus
-+ [x] E-Lv ×2
-± [x] bonuses/penalties
-= Q [total]
+**Quality: [total]/100**
 
 [reception emoji + tier]
 ⭐ REP [±x] · 🔬 RP +[x]
@@ -1693,14 +1683,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 🏆 **[ENDING NAME]**
 [3–5 short lines]
 
-**Score:**
-+ [x] 3×REP
-+ [x] best Q
-+ [x] 5×models
-+ [x] cash/1000
-+ [x] win bonus
-+ [x] extras
-= [total]
+**Final Score: [total]**
 🎖️ [score title]
 
 1 🔁 New game
@@ -1740,14 +1723,13 @@ Expected completion report (S6, desktop):
 
 ```
 🏁 SpamGuard — BOW × CLS on Product reviews
-   Q = 10 (Base) + 10 (BOW×CLS) + 6 (2×DataQ 3) + 5 (Size OK) + 3 (reviews fit CLS)
-     + 5 (compute req 0) + 10 (focus 4/3/1/2 = ideal) + 2 (E-Lv 1) = 51
+   Quality: 51/100
    😐 Mediocre → REP +1, RP +5
-   Release?  1 🌐 Open-source | 2 💼 License ($6,120 = 51 × $60 × 2) | 4 🗄️ Shelve
+   Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
    (3 📈 Product locked: needs REP ≥ 10 and Q ≥ 55)
 ```
 
-Note how every Q component is shown, the License price is computed inline (CLS Demand 2 in 2013–14), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical breakdown instead.
+Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead.
 
 ---
 

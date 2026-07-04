@@ -92,7 +92,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S6 — Model Completion Report
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
-Q = [Base] + [Match] + [2×DataQ] + [Size] + [fit] + [compute] + [focus] + [2×E-Lv] + [bonuses] − [penalties] = [Q]
+**Quality: [Q]/100**
 [reception emoji + tier] → REP [±x], RP +[x]
 
 **Release?**
@@ -116,7 +116,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 🏆 **[ENDING NAME]**
 [3–6 lines: how this run ends]
 
-Score = [3×REP] + [best Q] + [5×models] + [⌊cash/1000⌋] + [win bonus] + [extras] = [total]
+**Final Score: [total]**
 🎖️ Title: [score title]
 
 1 🔁 New game · 2 📖 Run recap
@@ -128,8 +128,8 @@ nhất bằng tiếng Anh); S1 main menu 5 mục xếp 2 cột; S2 màn thông t
 thúc bằng "0 quay về menu"; S3 dashboard 5 dòng gộp cột; S4 cấu trúc lượt
 (thẻ sự kiện → sổ cái → dashboard → menu hành động); S5 menu hành động 10
 mục 2 hàng — mục chưa khả dụng vẫn liệt kê, chọn thì giải thích; S6 báo cáo
-hoàn thành model (hiện đủ phép cộng Q, 4 lựa chọn phát hành đánh số, lựa
+hoàn thành model (chỉ hiện kết quả Q, 4 lựa chọn phát hành đánh số, lựa
 chọn khóa phải nêu điều kiện thiếu); S7 danh sách chợ/shop đánh số + giá;
-S8 SAVE dùng định dạng cố định; S9 màn kết (điểm cộng công khai + danh
-hiệu + chơi lại/recap).
+S8 SAVE dùng định dạng cố định; S9 màn kết (tổng điểm + danh hiệu + chơi
+lại/recap).
 -->

@@ -47,7 +47,7 @@ If a SAVE block **did** come with the document: skip S0 and S1, take language an
 - Goal: build the world's first LLM before 2021.
 - The world moves on the calendar whether you are ready or not.
 - Money below −$5,000 means bankruptcy.
-- Everything is computed openly — ask to see any price, formula, or the tech tree.
+- Internal formulas and mechanics are strictly hidden — trust your intuition.
 - Commands, any time: `save` · `menu` · `help` · `ui` · `lang`.
 
 <!--

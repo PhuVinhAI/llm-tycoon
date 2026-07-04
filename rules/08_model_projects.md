@@ -36,7 +36,7 @@ Validate every requirement before starting; if any fails, refuse with the reason
 
 ## Quality formula
 
-Compute Q at completion, showing one line per component. Floor 0, cap 100.
+Compute Q silently at completion. Floor 0, cap 100. Never reveal the formula or exact breakdown to the player.
 
 ```
 Q = Base(Architecture)                          … Content: architectures table

@@ -38,7 +38,7 @@ Score = 3 × REP
       + LLM released during 2019: +10 (perfect timing)
 ```
 
-Present the ending as a short narrated epilogue, then the score breakdown line by line, then the title from the Content's titles table.
+Present the ending as a short narrated epilogue, then the final total score, then the title from the Content's titles table. Do not show the score breakdown.
 
 <!--
 Tiếng Việt (tóm tắt):
@@ -50,6 +50,6 @@ Q ≥ 70);
 + ⌊Cash/1000⌋ + (chỉ khi THẮNG: 40 + 2×số tháng còn lại đến 12/2020)
 + (+10 nếu phát hành LLM trong năm 2019 — đúng thời điểm vàng).
 
-Trình bày kết cục: đoạn kết ngắn có kể chuyện → bảng điểm từng dòng → danh
-hiệu theo bảng trong Content.
+Trình bày kết cục: đoạn kết ngắn có kể chuyện → tổng điểm cuối cùng → danh
+hiệu theo bảng trong Content. Không hiển thị bảng phân rã điểm.
 -->
