@@ -59,4 +59,4 @@ Tiếng Việt:
 Giữ nguyên (không dịch) các mã chuẩn: RP, REP, CU, Q, R-Lv, E-Lv, các mã
 Technology/Architecture/Task/Contract/Event, và định dạng SAVE block.
 -->
-Translate ALL game terms (Research Points, Fame, Research Level, Engineering Level, Quality, Tasks, Datasets) completely into the player's language. Do NOT leave abbreviations like "RP". Do NOT use dual-language formats (e.g., never output "Translated Term (English Acronym)"). ONLY keep AI technology names (Transformer, BOW, N-gram, etc.) and the SAVE block format strictly in English.
+Translate ALL generic game terms (Research Points, Fame, Research Level, Engineering Level, Quality, Task, Dataset, Architecture, Technology, Domain) completely into the player's language. Do NOT leave abbreviations like "RP". Do NOT use dual-language formats (e.g., never output "Translated Term (English Acronym)"). ONLY keep specific AI proper nouns and IDs (Transformer, BOW, NGRAM, word2vec, etc.) and the SAVE block format strictly in English.
