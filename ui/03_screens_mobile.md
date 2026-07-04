@@ -15,7 +15,7 @@ profile này xếp mọi thứ theo chiều dọc để đọc mượt trên đi
 
 # Screens — Mobile Profile (📱 portrait)
 
-Hard shape rules: one item per line · ≤ ~40 characters per line · never a table wider than two columns. Labels translated; emoji anchors and codes stay.
+Hard shape rules: one item per line · ≤ ~40 characters per line · never a table wider than two columns. All labels and stats translated entirely; emoji anchors stay. AI technology names remain untranslated.
 
 ## S0 — Title & Setup
 
@@ -43,8 +43,8 @@ Same content as desktop, one short line each. End with:
 📊 **[Company]**
 📅 [Month YYYY] · Turn [N]
 💰 $[cash]
-🔬 RP [x] · ⭐ Danh tiếng (Fame) [x]/5000
-🧠 R-Lv [x] · E-Lv [x]
+🔬 [RP] [x] · ⭐ [Fame] [x]/5000
+🧠 [R-Lv] [x] · [E-Lv] [x]
 🖥️ [total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
@@ -65,7 +65,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 📅 **[action taken]**
 [one change per line]
-💰 $[after] · 🔬 RP [after]
+💰 $[after] · 🔬 [RP] [after]
 
 ## S5 — Action Menu
 
@@ -89,10 +89,10 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 [Architecture] × [Task]
 on [Dataset]
 
-**Quality: [total]/100**
+**[Quality]: [total]/100**
 
 [reception emoji + tier]
-⭐ Danh tiếng (Fame) [±x] · 🔬 RP +[x]
+⭐ [Fame] [±x] · 🔬 [RP] +[x]
 
 **Release?**
 1 🌐 Open-source
