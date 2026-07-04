@@ -4,12 +4,19 @@
  * MODULE: Build
  *
  * Mục đích:
- * Ghép toàn bộ Game Documentation (các file .md dạng module) thành MỘT file
+ * Ghép toàn bộ Game Documentation (các file .md dạng module) thành các file
  * Markdown duy nhất để GỬI THẲNG cho một LLM chạy làm Game Engine.
+ *
+ * Build xuất HAI file:
+ * 1. build/LLM-TYCOON.md      — bản chuẩn cho NGƯỜI CHƠI: không chứa bất kỳ
+ *    module dev nào, không nhắc gì đến Dev Mode.
+ * 2. build/LLM-TYCOON-DEV.md  — bản cho NGƯỜI PHÁT TRIỂN: bản chuẩn + các
+ *    module trong thư mục dev/ (đánh dấu devOnly trong MANIFEST), dùng để
+ *    chạy Dev Mode (autoplay + báo cáo cân bằng).
  *
  * Cách hoạt động:
  * 1. Đọc MANIFEST bên dưới — mỗi mục là một PART của file build, trỏ tới một
- *    thư mục (hoặc một file cụ thể).
+ *    thư mục (hoặc một file cụ thể). Mục có `devOnly: true` chỉ vào bản DEV.
  * 2. Với mỗi thư mục: tự động lấy tất cả file .md (trừ README.md — README chỉ
  *    mô tả thư mục cho người phát triển, không phải nội dung game), sắp xếp
  *    theo tên file. Vì vậy các file cần đúng thứ tự phải có tiền tố số
@@ -18,8 +25,8 @@
  *    tiếng Việt dành cho người phát triển. File build là sản phẩm gửi cho
  *    LLM nên TUYỆT ĐỐI không chứa comment hay lời nói về dự án/repo; script
  *    cũng không tự chèn thêm bất kỳ ghi chú nào vào output.
- * 4. Ghi kết quả ra build/LLM-TYCOON.md kèm thống kê kích thước (in ra
- *    console, không in vào file).
+ * 4. Ghi kết quả ra build/ kèm thống kê kích thước (in ra console, không in
+ *    vào file).
  *
  * Chạy:  npm run build          (bản chuẩn để gửi cho LLM)
  *        npm run build:full     (giữ comment tiếng Việt — CHỈ để review,
@@ -33,15 +40,16 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = join(ROOT, 'build');
-const OUT_FILE = join(OUT_DIR, 'LLM-TYCOON.md');
 const KEEP_COMMENTS = process.argv.includes('--keep-comments');
 
 /**
  * MANIFEST — thứ tự lắp ráp file build.
  *
- * - `title: null`  → không chèn banner PART (dùng cho header/game info/footer).
- * - `dir`          → lấy mọi file .md trong thư mục (trừ README.md), sort theo tên.
- * - `file`         → lấy đúng một file.
+ * - `title: null`   → không chèn banner PART (dùng cho header/game info/footer
+ *                     và cho module dev — module dev nối tiếp PART 0).
+ * - `dir`           → lấy mọi file .md trong thư mục (trừ README.md), sort theo tên.
+ * - `file`          → lấy đúng một file.
+ * - `devOnly: true` → mục CHỈ vào bản LLM-TYCOON-DEV.md, bản chuẩn bỏ qua.
  *
  * Thêm thư mục/file mới vào game = thêm một dòng vào đây (hoặc bỏ file vào
  * thư mục đã có sẵn trong manifest).
@@ -50,6 +58,7 @@ const MANIFEST = [
   { title: null, file: 'meta/00_header.md' },
   { title: null, file: 'meta/01_game_info.md' },
   { title: 'PART 0 — GAME ENGINE (SYSTEM)', dir: 'system' },
+  { title: null, dir: 'dev', devOnly: true },
   { title: 'PART 1 — GLOSSARY', file: 'shared/glossary.md' },
   { title: 'PART 2 — DEFINITIONS', dir: 'definitions' },
   { title: 'PART 3 — RULES', dir: 'rules' },
@@ -57,6 +66,12 @@ const MANIFEST = [
   { title: 'PART 5 — SCENARIO', dir: 'scenarios' },
   { title: 'PART 6 — USER INTERFACE (SCREENS)', dir: 'ui' },
   { title: null, file: 'meta/99_footer.md' },
+];
+
+/** Hai bản build: bản chuẩn (không dev) và bản DEV (kèm thư mục dev/). */
+const TARGETS = [
+  { file: 'LLM-TYCOON.md', includeDev: false, label: 'bản chuẩn (người chơi)' },
+  { file: 'LLM-TYCOON-DEV.md', includeDev: true, label: 'bản DEV (kèm Dev Mode)' },
 ];
 
 /** Đọc một file markdown và chuẩn hóa xuống dòng về \n. */
@@ -83,42 +98,52 @@ function clean(markdown) {
   return text.replace(/\n{3,}/g, '\n\n').trim();
 }
 
+/** Lắp ráp một bản build theo MANIFEST. */
+function assemble(includeDev) {
+  const pieces = [];
+  let fileCount = 0;
+  for (const entry of MANIFEST) {
+    if (entry.devOnly && !includeDev) continue;
+    const files = entry.dir ? listDir(entry.dir) : [entry.file];
+    if (files.length === 0) {
+      console.warn(`⚠ Thư mục rỗng, bỏ qua: ${entry.dir}`);
+      continue;
+    }
+    if (entry.title) {
+      pieces.push(`---\n\n# ${entry.title}`);
+    }
+    for (const f of files) {
+      pieces.push(clean(read(f)));
+      fileCount++;
+    }
+  }
+  // Output thuần nội dung game — KHÔNG chèn notice/comment nào (file được gửi
+  // thẳng cho LLM; mọi thông tin build chỉ in ra console).
+  return { output: pieces.join('\n\n') + '\n', fileCount };
+}
+
 // ---------------------------------------------------------------------------
 // Lắp ráp
 // ---------------------------------------------------------------------------
 
 const version = JSON.parse(read('package.json')).version;
-const pieces = [];
-let fileCount = 0;
-
-for (const entry of MANIFEST) {
-  const files = entry.dir ? listDir(entry.dir) : [entry.file];
-  if (files.length === 0) {
-    console.warn(`⚠ Thư mục rỗng, bỏ qua: ${entry.dir}`);
-    continue;
-  }
-  if (entry.title) {
-    pieces.push(`---\n\n# ${entry.title}`);
-  }
-  for (const f of files) {
-    pieces.push(clean(read(f)));
-    fileCount++;
-  }
-}
-
-// Output thuần nội dung game — KHÔNG chèn notice/comment nào (file được gửi
-// thẳng cho LLM; mọi thông tin build chỉ in ra console bên dưới).
-const output = pieces.join('\n\n') + '\n';
-
 mkdirSync(OUT_DIR, { recursive: true });
-writeFileSync(OUT_FILE, output, 'utf8');
 
-// Thống kê để theo dõi "ngân sách context" khi gửi cho LLM.
-const bytes = Buffer.byteLength(output, 'utf8');
-const words = output.split(/\s+/).length;
-console.log(`✅ Build xong: build/LLM-TYCOON.md (nguồn v${version})`);
-console.log(`   ${fileCount} module | ${(bytes / 1024).toFixed(1)} KB | ~${words.toLocaleString()} từ | ~${Math.round(bytes / 4).toLocaleString()} token (ước lượng)`);
-console.log(`   Chế độ: ${KEEP_COMMENTS ? 'GIỮ comment (chỉ để review — đừng gửi bản này cho LLM)' : 'sạch comment (bản chuẩn để gửi cho LLM)'}`);
-if (!KEEP_COMMENTS && output.includes('<!--')) {
-  console.warn('⚠ Cảnh báo: output vẫn còn chuỗi "<!--" — kiểm tra lại nguồn.');
+console.log(`✅ Build xong (nguồn v${version}) — chế độ: ${KEEP_COMMENTS ? 'GIỮ comment (chỉ để review — đừng gửi bản này cho LLM)' : 'sạch comment (bản chuẩn để gửi cho LLM)'}`);
+
+for (const target of TARGETS) {
+  const { output, fileCount } = assemble(target.includeDev);
+  writeFileSync(join(OUT_DIR, target.file), output, 'utf8');
+
+  // Thống kê để theo dõi "ngân sách context" khi gửi cho LLM.
+  const bytes = Buffer.byteLength(output, 'utf8');
+  const words = output.split(/\s+/).length;
+  console.log(`   build/${target.file} — ${target.label}`);
+  console.log(`     ${fileCount} module | ${(bytes / 1024).toFixed(1)} KB | ~${words.toLocaleString()} từ | ~${Math.round(bytes / 4).toLocaleString()} token (ước lượng)`);
+  if (!KEEP_COMMENTS && output.includes('<!--')) {
+    console.warn(`   ⚠ Cảnh báo: build/${target.file} vẫn còn chuỗi "<!--" — kiểm tra lại nguồn.`);
+  }
+  if (!target.includeDev && /dev mode|devstate|DEV REPORT/i.test(output)) {
+    console.warn(`   ⚠ Cảnh báo: build/${target.file} (bản chuẩn) vẫn nhắc đến Dev Mode — kiểm tra lại nguồn.`);
+  }
 }

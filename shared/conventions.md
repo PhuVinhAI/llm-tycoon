@@ -39,6 +39,7 @@ Each directory has a distinct purpose.
 * `scenarios/` defines initial Game States.
 * `ui/` defines the boot sequence, UI Profiles, and the exact screens the Game Engine must render.
 * `meta/` contains the build-file wrappers (header, footer) and the game's identity card (Game Info).
+* `dev/` contains developer-only modules (Dev Mode) that enter only the development build, never the player build. Dev modules must be self-contained; shared documents never reference them.
 * `scripts/` contains the build tooling (not part of the Game Documentation).
 
 Information should only appear in the directory responsible for that information.
@@ -65,7 +66,7 @@ The build assembles each directory's `.md` files sorted by name, excluding `READ
 
 # Build
 
-`scripts/build.js` assembles the Game Documentation into a single playable file, `build/LLM-TYCOON.md`, following the MANIFEST declared in the script.
+`scripts/build.js` assembles the Game Documentation into two playable files, following the MANIFEST declared in the script: `build/LLM-TYCOON.md` (the player build — contains nothing from `dev/` and never mentions Dev Mode) and `build/LLM-TYCOON-DEV.md` (the development build — the player build plus the `dev/` modules).
 
 The build output is sent directly to an LLM to run. It must therefore contain **no HTML comments** and **no text about the repository, the build process, or how to use the file** — document bodies address the Game Engine and the player only.
 

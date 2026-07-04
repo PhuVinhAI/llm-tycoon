@@ -22,7 +22,14 @@ npm run build        # bản chuẩn gửi cho LLM: sạch mọi comment
 npm run build:full   # giữ comment tiếng Việt (CHỈ để review, không dùng để chơi)
 ```
 
-Output: `build/LLM-TYCOON.md`. The assembly order is the `MANIFEST` in [`scripts/build.js`](./scripts/build.js). Never edit the build output directly — edit the source modules and rebuild.
+Every build produces **two files**:
+
+| Output | Contents | For |
+|---|---|---|
+| [`build/LLM-TYCOON.md`](./build/LLM-TYCOON.md) | The game, clean — zero mention of Dev Mode | Players: send this one to the LLM |
+| `build/LLM-TYCOON-DEV.md` | Same game **+ the `dev/` modules** (hidden `dev` command) | Developers: autoplay simulations & balance reports |
+
+The assembly order is the `MANIFEST` in [`scripts/build.js`](./scripts/build.js); entries flagged `devOnly` go only into the DEV file. Never edit the build outputs directly — edit the source modules and rebuild.
 
 ## 🎮 v0.2 — Chapter 1: Home Lab
 
@@ -32,12 +39,14 @@ Output: `build/LLM-TYCOON.md`. The assembly order is the `MANIFEST` in [`scripts
 - **Game-like shell:** title screen, language + device setup, main menu (New / Continue / How to play / About / Exit), in-game commands `save` `menu` `help` `ui` `lang`.
 - **Multi-UI:** every screen has two pre-configured markdown skeletons — 🖥️ desktop (landscape) and 📱 mobile (portrait) — switchable at any time.
 - **Deterministic core, creative shell:** every number derives from formulas, tables, and the calendar (portable across chats via SAVE blocks) — while the **Creative License** system lets the AI improvise flavor scenes, recurring characters, and era-true world color that never touch the mechanics.
+- **🧪 Dev Mode (separate DEV build only):** in a session running `build/LLM-TYCOON-DEV.md`, type `dev` to make the AI **play the game against itself** — a Simulated Player makes every choice with a deterministic dice protocol (LCG, reproducible per seed), one log line per month, up to 5 runs per batch — then outputs a **balance report** (economy curve, tech progress, action distribution, auto-detected balance flags, tuning suggestions). Config: `runs= seed= policy=random|human until=`; control with `dev report` / `dev continue` / `dev exit`. The player build contains no trace of it. See [`dev/00_dev_mode.md`](./dev/00_dev_mode.md).
 
 ## 📁 Repository structure
 
 | Directory | Purpose |
 |---|---|
 | `system/` | How the Game Engine (the LLM) must behave: role, principles, workflow, conflicts, authority, language, output discipline, save/load, creative license |
+| `dev/` | Developer-only modules — Dev Mode (dice-driven autoplay + balance report). Assembled **only** into `LLM-TYCOON-DEV.md` |
 | `shared/` | Canonical glossary and documentation conventions |
 | `definitions/` | What each entity **is**: Player, Company, Employee, Resource, Skill, Technology, Architecture, Task, Dataset, Hardware, Model, Project, Contract |
 | `rules/` | How the simulation **behaves**: turns, actions, economy, research, skills, REP, datasets, hardware, model projects, contracts, employees, events, the LLM endgame, scoring |
@@ -58,6 +67,7 @@ Authoring conventions (bilingual English body + Vietnamese comments, one idea pe
 - [x] Game shell: title screen, main menu, Game Info card
 - [x] Multi-UI system (desktop landscape / mobile portrait)
 - [x] Creative License — bounded AI improvisation on top of the deterministic core
-- [ ] Balance pass from real playthroughs
+- [x] Dev Mode — hidden `dev` command in the separate DEV build: dice-driven autoplay simulation + statistics + balance report
+- [ ] Balance pass from real playthroughs (use Dev Mode reports)
 - [ ] Chapter 2: the Office era (bigger teams, products, API business, safety incidents)
 - [ ] Chapter 3: frontier lab era (scaling laws, alignment, compute wars)
