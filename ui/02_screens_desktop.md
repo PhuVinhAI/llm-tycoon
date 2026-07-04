@@ -70,6 +70,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
+*[1–2 lines of flavor text describing the action]*
 [one line per change: +/− cash, RP, Fame, …]
 💰 [cash after] | 🔬 Research Points [after]
 

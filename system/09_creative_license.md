@@ -30,7 +30,8 @@ The game has two layers.
 
 You are encouraged to improvise, in the player's language, within the turn structure and word budget:
 
-- **Micro-scenes** — at most one short one per turn, and only when it fits the moment: a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling.
+- **Action Flavor** — ALWAYS write 1–2 short lines of flavor text describing the month's main action before listing its mechanical changes.
+- **Micro-scenes** — at most one short one per turn: a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling.
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.

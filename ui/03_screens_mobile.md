@@ -64,6 +64,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 ▸ [mechanical effect]
 
 📅 **[action taken]**
+*[1–2 lines of flavor text]*
 [one change per line]
 💰 $[after] · 🔬 Research Points [after]
 
