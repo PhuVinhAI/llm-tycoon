@@ -282,7 +282,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 5. Neural tech is owned and Cash > 4 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant action), then continue down the list.
 6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 4000, turn on Cloud rental first).
 7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
-8. An eligible Model exists for a Paper → start **Paper** (instant action), then continue down the list.
+8. An eligible Model exists for a Paper AND its Release type is NOT "License" → start **Paper** (instant action), then continue down the list.
 9. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
 10. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
 11. Releases: Product if legal; otherwise License if Q ≥ 50; otherwise Open-source.
@@ -1470,10 +1470,10 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | BPE | Subword Tokenization (BPE) | 4000 | EMB | +5 Q on S2S, S2SA, TRF, PTRF models |
 | S2S | Sequence-to-Sequence | 7000 | LSTM | Architecture S2S |
 | ATTN | Attention Mechanism | 9000 | S2S | Architecture S2SA |
-| TRF | Transformer | 12000 | ATTN | Architecture TRF |
-| PRET | Unsupervised Pre-training | 14000 | TRF | Architecture PTRF |
-| FINE | Fine-tuning Toolkit | 6000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 12000 | PRET | unlocks The LLM Project |
+| TRF | Transformer | 9000 | ATTN | Architecture TRF |
+| PRET | Unsupervised Pre-training | 11000 | TRF | Architecture PTRF |
+| FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
+| SCALE | Scaling Recipe | 10000 | PRET | unlocks The LLM Project |
 
 # Architectures
 
@@ -1684,7 +1684,7 @@ These events fire exactly once per playthrough when their condition is met. The 
 | M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
 | M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
-| M6 | First Model achieves **Q ≥ 55** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +1500 |
+| M6 | First Model achieves **Q ≥ 55** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +2500 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*
 

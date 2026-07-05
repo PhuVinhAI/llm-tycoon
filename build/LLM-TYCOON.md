@@ -1307,10 +1307,10 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | BPE | Subword Tokenization (BPE) | 4000 | EMB | +5 Q on S2S, S2SA, TRF, PTRF models |
 | S2S | Sequence-to-Sequence | 7000 | LSTM | Architecture S2S |
 | ATTN | Attention Mechanism | 9000 | S2S | Architecture S2SA |
-| TRF | Transformer | 12000 | ATTN | Architecture TRF |
-| PRET | Unsupervised Pre-training | 14000 | TRF | Architecture PTRF |
-| FINE | Fine-tuning Toolkit | 6000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 12000 | PRET | unlocks The LLM Project |
+| TRF | Transformer | 9000 | ATTN | Architecture TRF |
+| PRET | Unsupervised Pre-training | 11000 | TRF | Architecture PTRF |
+| FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
+| SCALE | Scaling Recipe | 10000 | PRET | unlocks The LLM Project |
 
 # Architectures
 
@@ -1521,7 +1521,7 @@ These events fire exactly once per playthrough when their condition is met. The 
 | M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
 | M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
-| M6 | First Model achieves **Q ≥ 55** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +1500 |
+| M6 | First Model achieves **Q ≥ 55** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +2500 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*
 
