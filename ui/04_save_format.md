@@ -20,12 +20,12 @@ khối văn bản gọn; người chơi dán nó cùng Game Document vào hội 
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
-skills: R[x] E[x] | counters: research=[x], models=[x]
+counters: research=[x], models=[x]
 tech: [comma-separated IDs]
-hw: [item xN, …] | slots_used: [x]/[4|8] | rewired: [yes/no]
+hw: [item xN, …] | cloud: [0-2] | slots_used: [x]/[4|8] | rewired: [yes/no]
 team: [names or none]
 data: [Name(domain,Size,Quality)]; …
-models: [Name(Arch,Task,Dataset,Q[x],release)]; …
+models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
 project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
