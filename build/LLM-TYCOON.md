@@ -835,7 +835,7 @@ The concrete values are defined in the Content.
 | Action | Effect |
 |---|---|
 | 💼 **Freelance** | Generates a Dilemma using the Freelance Events Matrix (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Select Archetype `X` = Turn % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 4) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
-| 🔬 **Research** | RP +(1000 + 500 × R-Lv + staff bonuses). Increments the research counter (Skills rule). |
+| 🔬 **Research** | Generates a Dilemma using the Research Events Matrix (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Select Focus `X` = (Turn + 1) % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 3) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
@@ -885,7 +885,7 @@ Every month, in the Costs step:
 
 ## Earning RP
 
-- The **Research** main action yields RP = 1000 + 500 × R-Lv + staff bonuses (Content).
+- The **Research** main action generates a Dilemma (Actions rule) with a base yield of RP = 1000 + 500 × R-Lv + staff bonuses (Content).
 - Completed Models grant RP = floor(Q) × 10 (Model Projects rule).
 - Events may grant RP directly (Content).
 - RP accumulates in a single pool with no cap.
@@ -1403,6 +1403,26 @@ This table provides the raw data for Freelance events. The logic and formulas fo
 | 1 | **The Shortcut** | Build it properly.<br>Yield: `Base Pay` | Use a dirty, unstable hack.<br>Yield: `Base Pay × 1.3`, `Fame −80` |
 | 2 | **Rabbit Hole** | Stick to the spec.<br>Yield: `Base Pay` | Deep dive into the underlying math.<br>Yield: `Base Pay × 0.6`, `RP +400` |
 | 3 | **Scope Creep** | Refuse extra work.<br>Yield: `Base Pay` | Accept the heavy extra workload.<br>Yield: `Base Pay × 1.2`, `E-Lv counter +1` |
+
+# Research Events Matrix
+
+This table provides the raw data for Research events. The logic and formulas for selecting these coordinates are defined in the Actions rule.
+
+**Axis 1: Research Focus (Flavor only)**
+| X | Focus | Flavor direction |
+|---|---|---|
+| 0 | **Algorithm** | Math, matrix multiplication, weights, neural network theory. |
+| 1 | **Data Structure** | Tokenization, vectors, embeddings, parsing efficiency. |
+| 2 | **Hardware** | CUDA cores, memory management, parallelism, overheating. |
+| 3 | **Literature** | ArXiv papers, replicating old experiments, finding prior art. |
+
+**Axis 2: The Complication (Mechanics)**
+| Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
+|---|---|---|---|
+| 0 | **The Rabbit Hole** | Stick to the goal.<br>Yield: `Base RP` | Go deep into the theory.<br>Yield: `Base RP × 0.8`, `R-Lv counter +1` |
+| 1 | **The Shortcut** | Do it right.<br>Yield: `Base RP` | Skip the math, use a pre-built library.<br>Yield: `Base RP × 1.3`, `Fame −50` |
+| 2 | **Side Discovery** | Ignore it and focus.<br>Yield: `Base RP` | Publish a minor paper.<br>Yield: `Base RP × 0.6`, `Fame +150` |
+| 3 | **Compute Hog** | Optimize the code first.<br>Yield: `Base RP` | Brute force it with rented cloud.<br>Yield: `Base RP × 1.4`, `Cash −$1,000` |
 
 ---
 
