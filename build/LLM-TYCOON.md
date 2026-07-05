@@ -1118,16 +1118,20 @@ The overall `Q` tier determines the Fame reward:
 
 Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-Lv.
 
-## Release (the Player picks exactly one; a Failure model may only be open-sourced or shelved)
+## Release (from Completion or Portfolio)
 
-*SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark, it gains the **SOTA Hype** status.
+A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40) may only be open-sourced or shelved.
+
+*SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release.
+*Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
+*Paper Limitation:* If a `Shelved` model has been published via an Academic Paper (`pub=yes`), it may **only** be released as Open-source (proprietary tech is already leaked).
 
 | Release | Effect |
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
-| 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
 
@@ -2014,7 +2018,7 @@ Provide your configuration to start:
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
-👉 *Reply with 'Analyze [ID]' for a review, 'Paper [ID]' to publish (Q≥60), or 0 to go back.*
+👉 *Reply 'Analyze [ID]' for a review, 'Release [ID]' to launch a shelved model, 'Paper [ID]' to write a paper, or 0 back.*
 
 ## S16 — Team & Interviews
 
@@ -2288,7 +2292,7 @@ Configuration:
 ▸ [Arch]×[Task] · Q[Q] · [Status] · Anz:[Y/N] · Pub:[Y/N]
 *(or "No models")*
 
-👉 *Reply 'Analyze [ID]', 'Paper [ID]', or 0 back.*
+👉 *Reply 'Analyze', 'Release', 'Paper' + ID, or 0 back.*
 
 ## S16 — Team & Interviews
 

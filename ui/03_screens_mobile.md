@@ -225,7 +225,7 @@ Configuration:
 ▸ [Arch]×[Task] · Q[Q] · [Status] · Anz:[Y/N] · Pub:[Y/N]
 *(or "No models")*
 
-👉 *Reply 'Analyze [ID]', 'Paper [ID]', or 0 back.*
+👉 *Reply 'Analyze', 'Release', 'Paper' + ID, or 0 back.*
 
 ## S16 — Team & Interviews
 

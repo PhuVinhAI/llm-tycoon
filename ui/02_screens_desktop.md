@@ -221,7 +221,7 @@ Provide your configuration to start:
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
-👉 *Reply with 'Analyze [ID]' for a review, 'Paper [ID]' to publish (Q≥60), or 0 to go back.*
+👉 *Reply 'Analyze [ID]' for a review, 'Release [ID]' to launch a shelved model, 'Paper [ID]' to write a paper, or 0 back.*
 
 ## S16 — Team & Interviews
 
