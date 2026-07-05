@@ -21,13 +21,16 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Year | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
 |---|---|---|---|
 | 2013 | F1-Score (IMDB/Reuters) | SVM / Naive Bayes Baselines | 60 |
+| 2013 | SST-2 (Stanford Sentiment) | Recursive Neural Tensor Net | 85 |
 | 2013 | Perplexity (Penn Treebank) | KenLM (N-gram baseline) | 50 |
 | 2013 | BLEU Score | Moses (Statistical MT) | 40 |
-| 2014 | BLEU Score | Seq2Seq (Google) | 55 |
+| 2014 | WMT14 En-De Translation | Seq2Seq (Google) | 55 |
 | 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75 |
-| 2016 | BLEU Score | GNMT (Google Neural MT) | 65 |
+| 2015 | SNLI (Stanford Inference) | LSTM with Attention | 83 |
+| 2015 | Winograd Schema (WSC) | Statistical Co-occurrence | 52 |
+| 2016 | WMT14 En-De Translation | GNMT (Google Neural MT) | 65 |
 | 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77 |
-| 2017 | BLEU Score | Transformer (Google) | 75 |
+| 2017 | WMT14 En-De Translation | Transformer (Google) | 75 |
 | 2018 | SQuAD 2.0 | BERT (Google) | 86 |
 | 2018 | GLUE Benchmark | BERT (Google) | 82 |
 | 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |

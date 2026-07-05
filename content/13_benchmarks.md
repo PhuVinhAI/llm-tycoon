@@ -24,11 +24,14 @@ If the total number of applicable Benchmarks is less than 4, the Engine must fil
 | Benchmark / Dataset | Available From | Applicable Tasks | Target Domains (Domain Fit) |
 |---|---|---|---|
 | F1-Score (IMDB/Reuters) | 2013 | CLS | reviews, news, social |
+| SST-2 (Stanford Sentiment) | 2013 | CLS | reviews, social, dialogue |
 | Perplexity (Penn Treebank) | 2013 | AUTO | news, books, encyclopedic |
 | BLEU Score | 2013 | TRANS | parallel |
 | ROUGE Score | 2013 | SUMM | news, encyclopedic, books |
 | Human Evaluation | 2013 | CHAT | dialogue, social |
-| WMT Translation Task | Nov 2014 | TRANS | parallel |
+| WMT14 En-De Translation | Nov 2014 | TRANS | parallel |
+| SNLI (Stanford Inference) | May 2015 | CLS, LLM (general) | encyclopedic, news, dialogue |
+| Winograd Schema (WSC) | Jul 2015 | AUTO, LLM (general) | books, encyclopedic, dialogue |
 | CNN/DailyMail | Jun 2015 | SUMM | news |
 | BLEU (Code domain) | Jan 2015 | CODE | code |
 | WikiText | Sep 2016 | AUTO, LLM (general) | encyclopedic, books |
