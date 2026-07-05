@@ -824,7 +824,7 @@ The concrete values are defined in the Content.
 
 ## Multi-month batching
 
-- Committed months (Projects, Contracts, an explicit "repeat ×N") resolve automatically month by month, each with a one-line ledger.
+- Committed months (Projects, Contracts) resolve automatically month by month, each with a one-line ledger.
 - **Pause a batch only when:** an Event requires a Player choice, a Project or Contract completes, a warning triggers (e.g., negative cash), or the batch ends.
 - Do not ask for input during routine committed months.
 
@@ -1559,8 +1559,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 1 💼 Freelance | 2 🔬 Research |
 | 3 🏗️ New model | 4 📦 Data |
 | 5 📜 Contracts | 6 🛒 Shop |
-| 7 👥 Team | 8 ⏩ Repeat ×N |
-| 9 💾 Save | 0 🏠 Main Menu |
+| 7 👥 Team | 8 💾 Save |
+| 0 🏠 Main Menu | |
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
@@ -1664,8 +1664,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 5 📜 Contracts
 6 🛒 Shop
 7 👥 Team
-8 ⏩ Repeat ×N
-9 💾 Save
+8 💾 Save
 0 🏠 Main Menu
 
 **Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.

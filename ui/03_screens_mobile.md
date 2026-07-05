@@ -78,8 +78,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 5 📜 Contracts
 6 🛒 Shop
 7 👥 Team
-8 ⏩ Repeat ×N
-9 💾 Save
+8 💾 Save
 0 🏠 Main Menu
 
 **Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.

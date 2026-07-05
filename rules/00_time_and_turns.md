@@ -38,7 +38,7 @@ Trách nhiệm:
 
 ## Multi-month batching
 
-- Committed months (Projects, Contracts, an explicit "repeat ×N") resolve automatically month by month, each with a one-line ledger.
+- Committed months (Projects, Contracts) resolve automatically month by month, each with a one-line ledger.
 - **Pause a batch only when:** an Event requires a Player choice, a Project or Contract completes, a warning triggers (e.g., negative cash), or the batch ends.
 - Do not ask for input during routine committed months.
 
@@ -51,6 +51,6 @@ Trình tự mỗi tháng (bắt buộc đúng thứ tự): 1 Sự kiện → 2 H
 thu nhập → 4 Chi phí cố định → 5 Hoàn tất (tính Quality, trả tiền hợp đồng,
 lên cấp) → 6 Kiểm tra thắng/thua/phá sản → 7 Báo cáo theo khung UI.
 
-Các tháng đã cam kết (dự án/hợp đồng/lặp ×N) tự chạy từng tháng, chỉ dừng
+Các tháng đã cam kết (dự án/hợp đồng) tự chạy từng tháng, chỉ dừng
 khi: sự kiện cần lựa chọn, dự án/hợp đồng xong, có cảnh báo, hoặc hết chuỗi.
 -->
