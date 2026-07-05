@@ -26,11 +26,13 @@ Trách nhiệm:
 The Player declares, in one instant action:
 
 1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and total TFLOPS/mo ≥ 100 (Hardware rule).
-2. **Task** — one of the Tasks in the Content.
-3. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
-4. **Months (M)** — at least the Architecture's minimum months.
-5. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
-6. **Name** — the Model's name.
+2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
+3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
+4. **Task** — one of the Tasks in the Content.
+5. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
+6. **Months (M)** — at least the adjusted minimum months.
+7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
+8. **Name** — the Model's name.
 
 **Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously completed a Model with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have used a Domain for a Task before, reveal the Domain fit. Otherwise, keep it strictly hidden.
 
@@ -64,6 +66,7 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 **Step 1: Calculate Base Points**
 ```
 Base Points = Base(Architecture)                … Content: architectures table
+            + Scale Modifier                    … Small: −5 | Base: 0 | Large: +10
             + (2 × Dataset Quality)
             + 5                                 … dataset Size meets the minimum
             + Compute score                     … see below
@@ -95,6 +98,7 @@ Review Score = Base Points
 
 **Step 3: Final Quality (Q) & UI Display**
 - **Q** = Average of all `Review Scores` (floor 0, cap 100).
+- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15)`.
 - When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
 - For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison between the Player's Score and the SOTA Score.
 - The Engine uses Creative License to write a 1–2 sentence flavor quote. **Crucially**, this quote MUST do two things: 1) Briefly explain what the benchmark actually measures in simple layman's terms (so non-experts understand it), and 2) React to the comparison (hyping a new world record if beating SOTA, or pointing out the gap if losing).

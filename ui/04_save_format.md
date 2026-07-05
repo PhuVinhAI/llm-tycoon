@@ -28,7 +28,7 @@ data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
-project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
+project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===

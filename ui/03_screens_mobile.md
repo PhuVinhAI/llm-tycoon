@@ -182,6 +182,8 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 🏗️ **New Model**
 Configuration:
 - **Arch:** [Owned]
+- **Scale:** Small / Base / Large
+- **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously tested)*
 - **Data:** [Owned] *(show known fit ONLY if previously tested)*
 - **Months:** (min [X])

@@ -1171,11 +1171,13 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 The Player declares, in one instant action:
 
 1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and total TFLOPS/mo ≥ 100 (Hardware rule).
-2. **Task** — one of the Tasks in the Content.
-3. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
-4. **Months (M)** — at least the Architecture's minimum months.
-5. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
-6. **Name** — the Model's name.
+2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
+3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
+4. **Task** — one of the Tasks in the Content.
+5. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
+6. **Months (M)** — at least the adjusted minimum months.
+7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
+8. **Name** — the Model's name.
 
 **Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously completed a Model with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have used a Domain for a Task before, reveal the Domain fit. Otherwise, keep it strictly hidden.
 
@@ -1209,6 +1211,7 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 **Step 1: Calculate Base Points**
 ```
 Base Points = Base(Architecture)                … Content: architectures table
+            + Scale Modifier                    … Small: −5 | Base: 0 | Large: +10
             + (2 × Dataset Quality)
             + 5                                 … dataset Size meets the minimum
             + Compute score                     … see below
@@ -1240,6 +1243,7 @@ Review Score = Base Points
 
 **Step 3: Final Quality (Q) & UI Display**
 - **Q** = Average of all `Review Scores` (floor 0, cap 100).
+- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15)`.
 - When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
 - For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison between the Player's Score and the SOTA Score.
 - The Engine uses Creative License to write a 1–2 sentence flavor quote. **Crucially**, this quote MUST do two things: 1) Briefly explain what the benchmark actually measures in simple layman's terms (so non-experts understand it), and 2) React to the comparison (hyping a new world record if beating SOTA, or pointing out the gap if losing).
@@ -2040,9 +2044,11 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏗️ **New Model Project**
 Provide your configuration to start:
 - **Architecture:** [List owned]
+- **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
+- **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously paired with the chosen Architecture*]
 - **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously paired with the chosen Task*]
-- **Months:** (min [X] for chosen Architecture)
+- **Months:** (min [X] for chosen Architecture, -1 if Inheriting)
 - **Focus:** 10 points split across exactly 4 categories *(No hints!)*:
   - **Data (D):** Preparation, formatting, and cleaning.
   - **Model (M):** Architecture design and hyperparameters.
@@ -2050,7 +2056,7 @@ Provide your configuration to start:
   - **Eval (E):** Testing, benchmarking, and quality assurance.
 - **Name:** [Player's choice]
 
-👉 *Reply with your choices (Arch, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
+👉 *Reply with your choices (Arch, Scale, Inherit, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
 *(CRITICAL: If you provide a formatting example for the player, you MUST use generic placeholders like `Focus: A/B/C/D` or `Task: [Task ID]`. NEVER leak the actual optimal Focus numbers or best Task in your examples!)*
 
 ## S8 — SAVE
@@ -2236,6 +2242,8 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 🏗️ **New Model**
 Configuration:
 - **Arch:** [Owned]
+- **Scale:** Small / Base / Large
+- **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously tested)*
 - **Data:** [Owned] *(show known fit ONLY if previously tested)*
 - **Months:** (min [X])
@@ -2279,7 +2287,7 @@ data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
-project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
+project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===

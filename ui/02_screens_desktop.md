@@ -178,9 +178,11 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏗️ **New Model Project**
 Provide your configuration to start:
 - **Architecture:** [List owned]
+- **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
+- **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously paired with the chosen Architecture*]
 - **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously paired with the chosen Task*]
-- **Months:** (min [X] for chosen Architecture)
+- **Months:** (min [X] for chosen Architecture, -1 if Inheriting)
 - **Focus:** 10 points split across exactly 4 categories *(No hints!)*:
   - **Data (D):** Preparation, formatting, and cleaning.
   - **Model (M):** Architecture design and hyperparameters.
@@ -188,7 +190,7 @@ Provide your configuration to start:
   - **Eval (E):** Testing, benchmarking, and quality assurance.
 - **Name:** [Player's choice]
 
-👉 *Reply with your choices (Arch, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
+👉 *Reply with your choices (Arch, Scale, Inherit, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
 *(CRITICAL: If you provide a formatting example for the player, you MUST use generic placeholders like `Focus: A/B/C/D` or `Task: [Task ID]`. NEVER leak the actual optimal Focus numbers or best Task in your examples!)*
 
 ## S8 — SAVE
