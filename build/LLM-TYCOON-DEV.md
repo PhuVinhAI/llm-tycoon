@@ -177,7 +177,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
-- **Era-accurate Benchmarks & Reviews (S6)** — When a model completes, generate 4 GDT-style reviews. At least one reviewer MUST be a real historical AI benchmark appropriate for the current in-game year and Task (e.g., BLEU score for translation in 2014, SQuAD for QA in 2016, GLUE/SuperGLUE in 2018-2020). The other reviewers can be tech communities (e.g., r/MachineLearning, HackerNews), academic peer reviewers, or industry testers. Generate a short quote and a score out of 10 (the 4 scores must average roughly to `Q ÷ 10`).
+- **Review Quotes (S6)** — When a model completes, generate 4 GDT-style reviews with scores averaging `Q ÷ 10`. You may invent the names of the Academic, Media, and User reviewers, and write a 1-sentence flavor quote for all 4 reviewers. However, the name of the 1st reviewer (the Benchmark) MUST be pulled directly from the Content rules, not invented.
 
 Hard limits:
 
@@ -1221,7 +1221,12 @@ A requirement of 0 always scores +5.
 
 ## Reception & Reviews
 
-When a model completes, the Engine translates its `Q` score into 4 reviews out of 10 (averaging `Q ÷ 10`), using era-accurate benchmarks and communities (see Creative License). The overall reception tier still determines the Fame reward:
+When a model completes, the Engine translates its `Q` score into 4 reviews out of 10 (averaging `Q ÷ 10`).
+- **Reviewer 1 (Benchmark):** Selected strictly from the **Historical Benchmarks** table (Content), matching the Task and current Year.
+- **Reviewers 2, 3, 4:** Archetypes (Academic, Tech Media, User/Client). The Engine invents their specific names (e.g., ArXiv, TechCrunch, r/MachineLearning).
+- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer.
+
+The overall reception tier still determines the Fame reward:
 
 | Q | Reception | Fame |
 |---|---|---|
@@ -1643,6 +1648,25 @@ Flavor direction determined by `Turn % 4`:
 | 1. **Accept Flaws** (Ignore it and push through) | `q_mod -8` |
 | 2. **Refactor** (Delay the project to fix the architecture/data) | `M (total months) +1`, `q_mod +0` |
 
+# Historical Benchmarks
+
+When generating reviews for a completed Model, the Game Engine must select Reviewer 1 from this table. The Benchmark must match the Model's Task and must be available in the current in-game year. If multiple match, pick the most recent one.
+
+| Benchmark / Metric | Available From | Applicable Tasks |
+|---|---|---|
+| F1-Score / Accuracy | 2013 (Start) | CLS |
+| Perplexity (PPL) | 2013 (Start) | AUTO, LLM (general) |
+| BLEU Score | 2013 (Start) | TRANS |
+| ROUGE Score | 2013 (Start) | SUMM |
+| Human Turing Test | 2013 (Start) | CHAT |
+| SQuAD 1.0 | Jun 2016 | QA |
+| SQuAD 2.0 | Jun 2018 | QA |
+| GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) |
+| SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) |
+| HumanEval | Jul 2020 | CODE |
+
+*(The other 3 reviewers in the Completion Report are generated using archetypes: an Academic source, a Tech Media outlet, and a User/Client community).*
+
 ---
 
 # PART 5 — SCENARIO
@@ -1812,10 +1836,10 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Reviews:**
-* **[Score]/10** — [Era-accurate Benchmark] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Tech Community / ArXiv] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Industry Media] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Beta Tester / Client] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Benchmark from Content] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Academic/Research] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Tech Media] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [User/Client] (*"[1-sentence flavor quote]"*)
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]

@@ -36,7 +36,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
-- **Era-accurate Benchmarks & Reviews (S6)** — When a model completes, generate 4 GDT-style reviews. At least one reviewer MUST be a real historical AI benchmark appropriate for the current in-game year and Task (e.g., BLEU score for translation in 2014, SQuAD for QA in 2016, GLUE/SuperGLUE in 2018-2020). The other reviewers can be tech communities (e.g., r/MachineLearning, HackerNews), academic peer reviewers, or industry testers. Generate a short quote and a score out of 10 (the 4 scores must average roughly to `Q ÷ 10`).
+- **Review Quotes (S6)** — When a model completes, generate 4 GDT-style reviews with scores averaging `Q ÷ 10`. You may invent the names of the Academic, Media, and User reviewers, and write a 1-sentence flavor quote for all 4 reviewers. However, the name of the 1st reviewer (the Benchmark) MUST be pulled directly from the Content rules, not invented.
 
 Hard limits:
 
