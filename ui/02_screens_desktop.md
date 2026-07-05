@@ -189,6 +189,7 @@ Provide your configuration to start:
 - **Name:** [Player's choice]
 
 👉 *Reply with your choices (Arch, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
+*(CRITICAL: If you provide a formatting example for the player, you MUST use generic placeholders like `Focus: A/B/C/D` or `Task: [Task ID]`. NEVER leak the actual optimal Focus numbers or best Task in your examples!)*
 
 ## S8 — SAVE
 

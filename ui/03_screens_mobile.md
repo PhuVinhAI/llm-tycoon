@@ -193,6 +193,7 @@ Configuration:
 - **Name:** [Player's choice]
 
 👉 *Reply choices, or 0 to cancel.*
+*(CRITICAL: If providing a format example, use placeholders like `Focus: A/B/C/D`. NEVER leak optimal numbers!)*
 
 ## S8 — SAVE
 
