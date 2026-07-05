@@ -1122,8 +1122,8 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 | Release | Effect |
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $10 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
+| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -2339,11 +2339,11 @@ Overall Quality: 55/100 (👍 Good)
 
 Release?
 🔥 SOTA Hype! License and Product payouts are ×1.5
-1 🌐 Open-source | 2 💼 License ($9,180) | 4 🗄️ Shelve
+1 🌐 Open-source | 2 💼 License ($24,750) | 4 🗄️ Shelve
 *(3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (55 × $60 × Demand 2 × 1.5 SOTA Hype = $9,180), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
+Note how the exact formula is hidden, the License price is computed silently (55 × $150 × Demand 2 × 1.5 SOTA Hype = $24,750), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
 
 ---
 
