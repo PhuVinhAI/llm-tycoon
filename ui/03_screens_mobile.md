@@ -107,17 +107,17 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 on [Dataset]
 *(⚠️ [Art] artifacts)*
 
-**Benchmarks:**
+**Local Benchmarks:**
 **[Benchmark 1]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Explain metric simply + React to Player vs SOTA]"*
+*"[Explain metric + internal reaction]"*
 **[Benchmark 2]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Explain metric simply + React to Player vs SOTA]"*
-*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
+*"[Explain metric + internal reaction]"*
+*(List ALL applicable Benchmarks. No fillers).*
 
 **Quality: [Q]/100** ([tier])
-⭐ Fame [±x] · 🔬 RP +[x]
+⭐ Est. Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 *(If SOTA: "🔥 SOTA Hype: Payouts ×1.5")*
@@ -125,7 +125,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 1 🌐 Open-source
 2 💼 License $[x]
 3 📈 Product $[x]/mo ×8
-4 🗄️ Shelve
+4 🗄️ Shelve (0 Fame)
 *[locked: why]*
 
 ## S7 — Market List

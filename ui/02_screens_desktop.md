@@ -107,24 +107,24 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
-**Benchmark Results:**
-| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
+**Local Evaluation (Benchmarks):**
+| Benchmark | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | [Benchmark 1] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
 | [Benchmark 2] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
-*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
+*(List ALL applicable Benchmarks. Do NOT pad with fillers).*
 
-**Quotes:**
-* [Benchmark 1]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
-* [Benchmark 2]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
+**Internal Analysis:**
+* [Benchmark 1]: *"[1-2 sentences: Explain what this benchmark measures + technical reaction to Player vs SOTA]"*
+* [Benchmark 2]: *"[1-2 sentences: Explain what this benchmark measures + technical reaction to Player vs SOTA]"*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
-⭐ Fame [±x]  ·  🔬 Research Points +[x]
+⭐ Est. Fame [±x] (Awarded ONLY on Release)  ·  🔬 Research Points +[x]
 
 **Release?**
 *(If SOTA Hype: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
 *(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
-1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
+1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
 
 ## S7 — Market List (shop, datasets, contracts, candidates)

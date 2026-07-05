@@ -82,33 +82,32 @@ Base Points = Base(Architecture)                … Content: architectures table
 *Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
 *Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
-**Step 2: Calculate Individual Review Scores**
-Identify ALL applicable Reviewers (Benchmarks matching Task & Year). If < 4, pad with AI Communities (Content). For EACH Reviewer, calculate its specific score (0-100):
+**Step 2: Calculate Individual Benchmark Scores**
+Identify ALL applicable Benchmarks (matching Task & Year). For EACH Benchmark, calculate its specific score (0-100):
 ```
-Review Score = Base Points
-             + Match(Architecture × Task)       … Content: match matrix
-             + Domain Fit                       … see below
+Benchmark Score = Base Points
+                + Match(Architecture × Task)       … Content: match matrix
+                + Domain Fit                       … see below
 ```
-*Domain Fit logic for each Reviewer:*
+*Domain Fit logic for each Benchmark:*
 - If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
 - If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
-- If Reviewer is a Filler (AI Community/Media): **+5** (They judge general utility)
 - Any other mismatch: **−15**
 
-*Clamp each Review Score between 0 and 100.*
+*Clamp each Benchmark Score between 0 and 100.*
 
 **Step 3: Final Quality (Q) & UI Display**
-- **Q** = Average of all `Review Scores` (floor 0, cap 100).
+- **Q** = Average of all `Benchmark Scores` (floor 0, cap 100).
 - *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15)`.
-- When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
-- For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison between the Player's Score and the SOTA Score.
-- The Engine uses Creative License to write a 1–2 sentence flavor quote. **Crucially**, this quote MUST do two things: 1) Briefly explain what the benchmark actually measures in simple layman's terms (so non-experts understand it), and 2) React to the comparison (hyping a new world record if beating SOTA, or pointing out the gap if losing).
+- When rendering the UI (S6), display each Benchmark's score.
+- Identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison.
+- The Engine uses Creative License to write a 1–2 sentence **Internal Analysis** quote. **Crucially**, this quote MUST: 1) Briefly explain what the benchmark actually measures in simple layman's terms, and 2) Provide a technical analysis comparing the Player's local test results against the public SOTA.
 
-## Reception
+## Reception & Fame
 
-The overall `Q` tier determines the Fame reward:
+The overall `Q` tier determines the **Estimated Reception Fame**:
 
-| Q | Reception | Fame |
+| Q | Reception | Est. Fame |
 |---|---|---|
 | ≥ 85 | 🌟 Breakthrough | +800 |
 | 70–84 | 🔥 Great | +500 |
@@ -116,7 +115,8 @@ The overall `Q` tier determines the Fame reward:
 | 40–54 | 😐 Mediocre | +100 |
 | < 40 | 💔 Failure | −100 |
 
-Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-Lv.
+**CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
+Every completed Model immediately grants **RP + (floor(Q) × 10)** (knowledge gained from building it) and counts toward E-Lv.
 
 ## Release (from Completion or Portfolio)
 

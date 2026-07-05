@@ -1082,33 +1082,32 @@ Base Points = Base(Architecture)                … Content: architectures table
 *Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
 *Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
-**Step 2: Calculate Individual Review Scores**
-Identify ALL applicable Reviewers (Benchmarks matching Task & Year). If < 4, pad with AI Communities (Content). For EACH Reviewer, calculate its specific score (0-100):
+**Step 2: Calculate Individual Benchmark Scores**
+Identify ALL applicable Benchmarks (matching Task & Year). For EACH Benchmark, calculate its specific score (0-100):
 ```
-Review Score = Base Points
-             + Match(Architecture × Task)       … Content: match matrix
-             + Domain Fit                       … see below
+Benchmark Score = Base Points
+                + Match(Architecture × Task)       … Content: match matrix
+                + Domain Fit                       … see below
 ```
-*Domain Fit logic for each Reviewer:*
+*Domain Fit logic for each Benchmark:*
 - If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
 - If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
-- If Reviewer is a Filler (AI Community/Media): **+5** (They judge general utility)
 - Any other mismatch: **−15**
 
-*Clamp each Review Score between 0 and 100.*
+*Clamp each Benchmark Score between 0 and 100.*
 
 **Step 3: Final Quality (Q) & UI Display**
-- **Q** = Average of all `Review Scores` (floor 0, cap 100).
+- **Q** = Average of all `Benchmark Scores` (floor 0, cap 100).
 - *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15)`.
-- When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
-- For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison between the Player's Score and the SOTA Score.
-- The Engine uses Creative License to write a 1–2 sentence flavor quote. **Crucially**, this quote MUST do two things: 1) Briefly explain what the benchmark actually measures in simple layman's terms (so non-experts understand it), and 2) React to the comparison (hyping a new world record if beating SOTA, or pointing out the gap if losing).
+- When rendering the UI (S6), display each Benchmark's score.
+- Identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison.
+- The Engine uses Creative License to write a 1–2 sentence **Internal Analysis** quote. **Crucially**, this quote MUST: 1) Briefly explain what the benchmark actually measures in simple layman's terms, and 2) Provide a technical analysis comparing the Player's local test results against the public SOTA.
 
-## Reception
+## Reception & Fame
 
-The overall `Q` tier determines the Fame reward:
+The overall `Q` tier determines the **Estimated Reception Fame**:
 
-| Q | Reception | Fame |
+| Q | Reception | Est. Fame |
 |---|---|---|
 | ≥ 85 | 🌟 Breakthrough | +800 |
 | 70–84 | 🔥 Great | +500 |
@@ -1116,7 +1115,8 @@ The overall `Q` tier determines the Fame reward:
 | 40–54 | 😐 Mediocre | +100 |
 | < 40 | 💔 Failure | −100 |
 
-Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-Lv.
+**CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
+Every completed Model immediately grants **RP + (floor(Q) × 10)** (knowledge gained from building it) and counts toward E-Lv.
 
 ## Release (from Completion or Portfolio)
 
@@ -1609,13 +1609,13 @@ Flavor direction determined by `Turn % 4`:
 | 1. **Accept Flaws** (Ignore it and push through) | `q_mod -8` |
 | 2. **Refactor** (Delay the project to fix the architecture/data) | `M (total months) +1`, `q_mod +0` |
 
-# Historical Benchmarks & AI Communities
+# Historical Benchmarks
 
-When generating reviews for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
+When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-If the total number of applicable Benchmarks is less than 4, the Engine must fill the remaining slots using entries from the **AI Communities & Platforms** list until there are exactly 4 reviews. If there are more than 4 applicable Benchmarks, display ALL of them (do not use fillers).
+Do not pad or fill the list. If only 1 or 2 Benchmarks exist for that Task at the current date, simply evaluate those. This accurately reflects how early AI had fewer standardized tests.
 
-## 1. Official Benchmarks
+## Official Benchmarks
 
 | Benchmark / Dataset | Available From | Applicable Tasks | Target Domains (Domain Fit) |
 |---|---|---|---|
@@ -1644,16 +1644,6 @@ If the total number of applicable Benchmarks is less than 4, the Engine must fil
 | HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
 | MBPP (Google) | Aug 2020 | CODE | code, math |
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
-
-## 2. AI Communities & Platforms (Fillers)
-Use these to pad the review list up to 4 if there aren't enough benchmarks:
-- **ArXiv Peer Review** (Available: Always)
-- **r/MachineLearning** (Available: Always)
-- **HackerNews** (Available: Always)
-- **Kaggle Community** (Available: Always)
-- **TechCrunch / Tech Media** (Available: Always)
-- **Hugging Face Community** (Available: From 2017)
-- **PapersWithCode** (Available: From 2018)
 
 # Historical SOTA (Rival Models)
 
@@ -1904,24 +1894,24 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
-**Benchmark Results:**
-| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
+**Local Evaluation (Benchmarks):**
+| Benchmark | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | [Benchmark 1] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
 | [Benchmark 2] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
-*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
+*(List ALL applicable Benchmarks. Do NOT pad with fillers).*
 
-**Quotes:**
-* [Benchmark 1]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
-* [Benchmark 2]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
+**Internal Analysis:**
+* [Benchmark 1]: *"[1-2 sentences: Explain what this benchmark measures + technical reaction to Player vs SOTA]"*
+* [Benchmark 2]: *"[1-2 sentences: Explain what this benchmark measures + technical reaction to Player vs SOTA]"*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
-⭐ Fame [±x]  ·  🔬 Research Points +[x]
+⭐ Est. Fame [±x] (Awarded ONLY on Release)  ·  🔬 Research Points +[x]
 
 **Release?**
 *(If SOTA Hype: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
 *(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
-1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
+1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
 
 ## S7 — Market List (shop, datasets, contracts, candidates)
@@ -2174,17 +2164,17 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 on [Dataset]
 *(⚠️ [Art] artifacts)*
 
-**Benchmarks:**
+**Local Benchmarks:**
 **[Benchmark 1]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Explain metric simply + React to Player vs SOTA]"*
+*"[Explain metric + internal reaction]"*
 **[Benchmark 2]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Explain metric simply + React to Player vs SOTA]"*
-*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
+*"[Explain metric + internal reaction]"*
+*(List ALL applicable Benchmarks. No fillers).*
 
 **Quality: [Q]/100** ([tier])
-⭐ Fame [±x] · 🔬 RP +[x]
+⭐ Est. Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 *(If SOTA: "🔥 SOTA Hype: Payouts ×1.5")*
@@ -2192,7 +2182,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 1 🌐 Open-source
 2 💼 License $[x]
 3 📈 Product $[x]/mo ×8
-4 🗄️ Shelve
+4 🗄️ Shelve (0 Fame)
 *[locked: why]*
 
 ## S7 — Market List

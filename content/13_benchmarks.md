@@ -13,13 +13,13 @@ chọn Benchmark từ bảng này dựa trên Task và Năm hiện tại, thay v
 ===============================================================================
 -->
 
-# Historical Benchmarks & AI Communities
+# Historical Benchmarks
 
-When generating reviews for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
+When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-If the total number of applicable Benchmarks is less than 4, the Engine must fill the remaining slots using entries from the **AI Communities & Platforms** list until there are exactly 4 reviews. If there are more than 4 applicable Benchmarks, display ALL of them (do not use fillers).
+Do not pad or fill the list. If only 1 or 2 Benchmarks exist for that Task at the current date, simply evaluate those. This accurately reflects how early AI had fewer standardized tests.
 
-## 1. Official Benchmarks
+## Official Benchmarks
 
 | Benchmark / Dataset | Available From | Applicable Tasks | Target Domains (Domain Fit) |
 |---|---|---|---|
@@ -48,21 +48,3 @@ If the total number of applicable Benchmarks is less than 4, the Engine must fil
 | HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
 | MBPP (Google) | Aug 2020 | CODE | code, math |
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
-
-## 2. AI Communities & Platforms (Fillers)
-Use these to pad the review list up to 4 if there aren't enough benchmarks:
-- **ArXiv Peer Review** (Available: Always)
-- **r/MachineLearning** (Available: Always)
-- **HackerNews** (Available: Always)
-- **Kaggle Community** (Available: Always)
-- **TechCrunch / Tech Media** (Available: Always)
-- **Hugging Face Community** (Available: From 2017)
-- **PapersWithCode** (Available: From 2018)
-
-<!--
-Tiếng Việt (tóm tắt):
-Danh sách toàn diện các Benchmark lịch sử.
-Luật hiển thị: Lấy TẤT CẢ benchmark hợp lệ với Task và Năm.
-- Nếu < 4: Lấy thêm các trang cộng đồng (Hugging Face, ArXiv...) đắp vào cho đủ 4.
-- Nếu >= 4: Hiển thị toàn bộ, không giới hạn ở 4 dòng.
--->
