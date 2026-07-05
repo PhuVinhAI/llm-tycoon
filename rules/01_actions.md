@@ -25,7 +25,7 @@ Trách nhiệm:
 | Action | Effect |
 |---|---|
 | 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,500 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
-| 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
+| 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 500 + 200 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
 | 📝 **Paper month** | Advance the active Paper by one month. At `months elapsed == floor(M ÷ 2)`, pause and trigger a Paper Dilemma (see Academic Papers). |
@@ -57,7 +57,7 @@ Trách nhiệm:
 <!--
 Tiếng Việt (tóm tắt):
 Hành động chính (mỗi tháng 1): Freelance (+$3,000 + $100×⌊Fame/500⌋); Research
-(tạo Dilemma với Base RP = 1000 + 500×R-Lv + bonus nhân viên); tháng Dự án; tháng Hợp đồng; Thu thập
+(tạo Dilemma với Base RP = 500 + 200×R-Lv + bonus nhân viên); tháng Dự án; tháng Hợp đồng; Thu thập
 dataset (Size 2 Q2, có SCRAPE → Size 3); Làm sạch dataset (+1 Quality, tối
 đa 5).
 

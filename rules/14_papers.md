@@ -33,6 +33,6 @@ trả là mất độc quyền thương mại (hủy Income Stream).
 
 ## Completion
 - On the final month, the Paper is published.
-- **Yield:** The Company receives **RP = Q × 30** and **Fame +300**. (Apply any modifiers from the Dilemma).
+- **Yield:** The Company receives **RP = Q × 15** and **Fame +300**. (Apply any modifiers from the Dilemma).
 - The Model is permanently marked as `published` and cannot be used for a Paper again.
 - Cancelling mid-paper: Fame −100, no RP (Actions rule).

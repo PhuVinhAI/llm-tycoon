@@ -1021,7 +1021,7 @@ The concrete values are defined in the Content.
 | Action | Effect |
 |---|---|
 | 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,500 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
-| 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
+| 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 500 + 200 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
 | 📝 **Paper month** | Advance the active Paper by one month. At `months elapsed == floor(M ÷ 2)`, pause and trigger a Paper Dilemma (see Academic Papers). |
@@ -1076,7 +1076,7 @@ Every month, in the Costs step:
 
 ## Earning RP
 
-- The **Research** main action generates a Dilemma (Actions rule) with a base yield of RP = 1000 + 500 × R-Lv + staff bonuses (Content).
+- The **Research** main action generates a Dilemma (Actions rule) with a base yield of RP = 500 + 200 × R-Lv + staff bonuses (Content).
 - Completed Models grant RP = floor(Q) × 10 (Model Projects rule).
 - Events may grant RP directly (Content).
 - RP accumulates in a single pool with no cap.
@@ -1441,7 +1441,7 @@ Present the ending as a short narrated epilogue, then the final total score, the
 
 ## Completion
 - On the final month, the Paper is published.
-- **Yield:** The Company receives **RP = Q × 30** and **Fame +300**. (Apply any modifiers from the Dilemma).
+- **Yield:** The Company receives **RP = Q × 15** and **Fame +300**. (Apply any modifiers from the Dilemma).
 - The Model is permanently marked as `published` and cannot be used for a Paper again.
 - Cancelling mid-paper: Fame −100, no RP (Actions rule).
 
@@ -1466,10 +1466,10 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | BPE | Subword Tokenization (BPE) | 4000 | EMB | +5 Q on S2S, S2SA, TRF, PTRF models |
 | S2S | Sequence-to-Sequence | 7000 | LSTM | Architecture S2S |
 | ATTN | Attention Mechanism | 9000 | S2S | Architecture S2SA |
-| TRF | Transformer | 10000 | ATTN | Architecture TRF |
-| PRET | Unsupervised Pre-training | 11000 | TRF | Architecture PTRF |
+| TRF | Transformer | 12000 | ATTN | Architecture TRF |
+| PRET | Unsupervised Pre-training | 14000 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 6000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 10000 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 12000 | PRET | unlocks The LLM Project |
 
 # Architectures
 
