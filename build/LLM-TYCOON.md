@@ -1270,7 +1270,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | TRF | Transformer | 12000 | ATTN | Architecture TRF |
 | PRET | Unsupervised Pre-training | 14000 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 6000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 16000 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 12000 | PRET | unlocks The LLM Project |
 
 # Architectures
 
@@ -1383,8 +1383,9 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | Project Gutenberg | books | 4 | 4 | Jan 2014 (event) |
 | WMT parallel corpora | parallel | 3 | 4 | Nov 2014 (event) |
 | SQuAD | QA | 2 | 5 | Jun 2016 (event) |
+| WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (event) |
 
-Common Crawl is the only Size-5 dataset in the game — the LLM Project needs it cleaned to Quality ≥ 3 (two Clean months).
+Common Crawl and WebText are the only Size-5 datasets in the game — the LLM Project needs one of them cleaned to Quality ≥ 3.
 
 ## Collectable Domains
 
@@ -1456,7 +1457,7 @@ Maximum 2 hired at a time (Employees rule).
 | E21 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
 | E22 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
 | E23 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame |
-| E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end |
+| E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
 | E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face explodes. License income ×1.2 permanent. If PRET owned: RP +1000 |
 | E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
 | E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |

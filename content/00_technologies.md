@@ -40,13 +40,13 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | TRF | Transformer | 12000 | ATTN | Architecture TRF |
 | PRET | Unsupervised Pre-training | 14000 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 6000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 16000 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 12000 | PRET | unlocks The LLM Project |
 
 <!--
 Tiếng Việt (tóm tắt):
 Cây công nghệ luôn hiển thị đầy đủ cho người chơi (tên, giá RP, điều kiện,
 hiệu ứng). Một công nghệ khởi điểm: BTP. NGRAM giá 1000 RP. Nhánh xương sống:
-BOW → EMB → (cùng GPUT) → RNN → LSTM → S2S → ATTN → TRF → PRET → SCALE.
+BOW → EMB → (cùng GPUT) → RNN → LSTM → S2S → ATTN → TRF → PRET → SCALE (12000 RP).
 Nhánh phụ: SCRAPE (thu thập dữ liệu tốt hơn), BPE (+5 Q cho các kiến trúc
 seq2seq trở lên), FINE (giảm 1 tháng tối thiểu + 5 Q cho PTRF).
 -->

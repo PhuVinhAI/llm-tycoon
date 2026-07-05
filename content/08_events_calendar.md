@@ -48,7 +48,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 | E21 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
 | E22 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
 | E23 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame |
-| E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end |
+| E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
 | E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face explodes. License income ×1.2 permanent. If PRET owned: RP +1000 |
 | E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
 | E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
@@ -83,8 +83,8 @@ công nghệ tương ứng nếu CHƯA mở (đã mở trước thì +Fame vinh 
 GPU mở shop; dataset miễn phí xuất hiện; TensorFlow giảm 20% mọi nghiên cứu
 vĩnh viễn; AlphaGo nhân 1.5 thu nhập bán model trong 6 tháng; cơn sốt
 chatbot đẩy Demand CHAT = 3 đến hết 2017; BERT (10/2018) là cú sốc paradigm:
-model kiến trúc dưới TRF chỉ còn bán được ×0.5; GPT-2 (2/2019) tạo hype —
-phát hành LLM trong 2019 được +1000 điểm tổng kết; 12/2020 kết thúc game.
+model kiến trúc dưới TRF chỉ còn bán được ×0.5; GPT-2 (2/2019) tặng WebText 
+và tạo hype — phát hành LLM trong 2019 được +1000 điểm tổng kết; 12/2020 kết thúc game.
 
 Sự kiện ngưỡng: Fame 800/1500/2200 mở dịch vụ Headhunter; Fame 2500 — thiên thần
 đầu tư (nhận $25,000 hoặc từ chối +200 Fame); phát hành LLM Q ≥ 70 — Term Sheet

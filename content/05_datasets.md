@@ -37,8 +37,9 @@ mới dùng được, đúng như đời), WMT cho dịch máy, SQuAD cho hỏi�
 | Project Gutenberg | books | 4 | 4 | Jan 2014 (event) |
 | WMT parallel corpora | parallel | 3 | 4 | Nov 2014 (event) |
 | SQuAD | QA | 2 | 5 | Jun 2016 (event) |
+| WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (event) |
 
-Common Crawl is the only Size-5 dataset in the game — the LLM Project needs it cleaned to Quality ≥ 3 (two Clean months).
+Common Crawl and WebText are the only Size-5 datasets in the game — the LLM Project needs one of them cleaned to Quality ≥ 3.
 
 ## Collectable Domains
 
@@ -52,10 +53,10 @@ $800 (social 3/2); crawl mã nguồn mở $700 (code 3/2, từ 1/2015).
 
 Miễn phí (nhận 1 lần/món khi mở): Wikipedia dump (encyclopedic 3/4, từ đầu);
 Common Crawl thô (web-mixed 5/1, sự kiện 12/2013); WMT song ngữ (parallel
-3/4, sự kiện 11/2014); SQuAD (QA 2/5, sự kiện 6/2016).
+3/4, sự kiện 11/2014); SQuAD (QA 2/5, sự kiện 6/2016); WebText (web-mixed 5/2, sự kiện 2/2019).
 
-Common Crawl là dataset Size 5 duy nhất — dự án LLM cần nó được làm sạch
-lên Quality ≥ 3 (tức 2 tháng Clean).
+Common Crawl và WebText là 2 dataset Size 5 duy nhất — dự án LLM cần 1 trong 
+2 được làm sạch lên Quality ≥ 3.
 
 Domain thu thập được: news, social, dialogue, reviews, code, encyclopedic,
 web-mixed.
