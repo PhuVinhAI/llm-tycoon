@@ -82,6 +82,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 8 🌳 Tech Tree
 9 📁 Portfolio
 10 💾 Save
+11 🎓 Publish Paper
 0 🏠 Main Menu
 
 *(If PROJECT/CONTRACT/PAPER active):*
@@ -97,7 +98,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60, unpublished).
 
 ## S6 — Model Completion Report
 
@@ -259,6 +260,18 @@ $[x]/mo · [Effects]
 *[1-line background]*
 
 👉 *Reply 1, 2, 3 to hire, or 0 to pass.*
+
+## S17 — Academic Publishing
+
+🎓 **Publish a Paper**
+*Warning: Cancels active Income Stream.*
+
+**Eligible (Q ≥ 60, Unpub):**
+**M1** [Name]
+▸ [Arch]×[Task] · Q[Q] · Stream:[Y/N]
+*(or "No eligible models")*
+
+👉 *Reply ID to write paper (3 mos), or 0 back.*
 
 ## S8 — SAVE
 

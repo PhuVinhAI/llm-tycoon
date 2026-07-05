@@ -84,7 +84,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 5 📜 Contracts | 6 🛒 Shop |
 | 7 👥 Team | 8 🌳 Tech Tree |
 | 9 📁 Portfolio | 10 💾 Save |
-| 0 🏠 Main Menu | |
+| 11 🎓 Publish Paper | 0 🏠 Main Menu |
 
 *(If a PROJECT, CONTRACT, or PAPER is active):*
 | Active: [Project Name, Contract ID, or Paper on Model] | Month [X] of [M] |
@@ -99,6 +99,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
+- Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60, unpublished).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
 ## S6 — Model Completion Report
@@ -253,6 +254,19 @@ Provide your configuration to start:
 | 3 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
 
 👉 *Reply 1, 2, or 3 to hire, or 0 to pass.*
+
+## S17 — Academic Publishing
+
+🎓 **Publish a Paper**
+*Publishing reveals your tech: any active Income Stream for the chosen model will be immediately cancelled. Takes 3 months.*
+
+**Eligible Models (Q ≥ 60, Unpublished):**
+| ID | Name | Arch × Task | Q | Active Stream? |
+|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Yes/No] |
+*(If none: "No eligible models.")*
+
+👉 *Reply with the ID to start writing a paper, or 0 to go back.*
 
 ## S8 — SAVE
 
