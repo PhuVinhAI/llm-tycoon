@@ -84,6 +84,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 7 👥 Team | 8 🌳 Tech Tree |
 | 9 💾 Save | 0 🏠 Main Menu |
 
+💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
+
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
