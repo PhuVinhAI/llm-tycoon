@@ -28,6 +28,7 @@ Trách nhiệm:
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
+| 📝 **Paper month** | Advance the active Paper by one month. At month 1, pause and trigger the Reviewer 2 Dilemma (see Research). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
 | 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
 
@@ -39,6 +40,7 @@ Trách nhiệm:
 - Pay a Headhunter to search for Employees, or fire an Employee.
 - Accept a Contract (its months become committed, starting this month).
 - Start a Project (its months become committed, starting this month).
+- Start a Paper on a completed Model (requires Q ≥ 60, not yet published). Commits 2 months. Immediately cancels any active Income Stream for that Model.
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
@@ -49,8 +51,8 @@ Trách nhiệm:
 
 - Starting a Project or accepting a Contract commits the coming months. While active, the Player's main action is restricted to "Continue Project" or "Continue Contract" until completion.
 - Because the game pauses at the Dashboard every month, the Player can perform instant actions (like buying Hardware or claiming Datasets) mid-project.
-- The Player may **cancel** from the Action Menu at any time: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
-- Only one Project **or** Contract may be active at a time — never both, never two.
+- The Player may **cancel** from the Action Menu at any time: months already spent stay spent, nothing is produced, and Fame −100 (Project/Paper) or −200 (Contract).
+- Only one Project, Contract, **or** Paper may be active at a time.
 
 <!--
 Tiếng Việt (tóm tắt):

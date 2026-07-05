@@ -1022,6 +1022,7 @@ The concrete values are defined in the Content.
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
+| 📝 **Paper month** | Advance the active Paper by one month. At month 1, pause and trigger the Reviewer 2 Dilemma (see Research). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
 | 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
 
@@ -1033,6 +1034,7 @@ The concrete values are defined in the Content.
 - Pay a Headhunter to search for Employees, or fire an Employee.
 - Accept a Contract (its months become committed, starting this month).
 - Start a Project (its months become committed, starting this month).
+- Start a Paper on a completed Model (requires Q ≥ 60, not yet published). Commits 2 months. Immediately cancels any active Income Stream for that Model.
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
@@ -1043,8 +1045,8 @@ The concrete values are defined in the Content.
 
 - Starting a Project or accepting a Contract commits the coming months. While active, the Player's main action is restricted to "Continue Project" or "Continue Contract" until completion.
 - Because the game pauses at the Dashboard every month, the Player can perform instant actions (like buying Hardware or claiming Datasets) mid-project.
-- The Player may **cancel** from the Action Menu at any time: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
-- Only one Project **or** Contract may be active at a time — never both, never two.
+- The Player may **cancel** from the Action Menu at any time: months already spent stay spent, nothing is produced, and Fame −100 (Project/Paper) or −200 (Contract).
+- Only one Project, Contract, **or** Paper may be active at a time.
 
 # Economy
 
@@ -1087,6 +1089,15 @@ Every month, in the Costs step:
 
 - Events may discount a Technology's cost. A discount applies only if the Technology is still locked when the event fires, and it persists until unlocked.
 - Multiple discounts multiply; round the final cost **up** to the nearest 5 (Economy rule).
+
+## Publishing Papers
+
+- **Starting:** The Player may start a Paper (instant action from the Portfolio) on any completed Model that has **Q ≥ 60** and has not been published yet.
+- **Commitment:** It takes **2 committed months**. Starting a Paper immediately **cancels any active Income Stream** for that Model (the proprietary tech is now public).
+- **Reviewer 2 Dilemma:** When `months elapsed == 1`, the engine pauses for a Dilemma. Reviewer 2 demands extensive additional ablations.
+  - *Choice 1 (Appease):* Add 1 month to the commitment (`M` becomes 3). Yield: Final RP +1000.
+  - *Choice 2 (Argue):* Keep the 2-month schedule. Yield: Fame −100 immediately (for being combative).
+- **Completion:** On the final month, the Paper is published. The Model is marked as `published`. Yield: **RP = Q × 30** and **Fame +200**.
 
 # Skills
 
@@ -1998,10 +2009,10 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 9 📁 Portfolio | 10 💾 Save |
 | 0 🏠 Main Menu | |
 
-*(If a PROJECT or CONTRACT is active):*
-| Active: [Project Name or Contract ID] | Month [X] of [M] |
+*(If a PROJECT, CONTRACT, or PAPER is active):*
+| Active: [Project Name, Contract ID, or Paper on Model] | Month [X] of [M] |
 |---|---|
-| **1 ⏩ Continue [Project/Contract]** | **2 🛑 Cancel** |
+| **1 ⏩ Continue [Project/Contract/Paper]** | **2 🛑 Cancel** |
 | 6 🛒 Shop | 7 👥 Team |
 | 8 🌳 Tech Tree | 9 📁 Portfolio |
 | 10 💾 Save | 0 🏠 Main Menu |
@@ -2127,12 +2138,12 @@ Provide your configuration to start:
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
-| ID | Name | Arch × Task | Q | Status (Release) | Analyzed? |
-|---|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] |
+| ID | Name | Arch × Task | Q | Status (Release) | Analyzed? | Published? |
+|---|---|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
-👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
+👉 *Reply with 'Analyze [ID]' for a review, 'Paper [ID]' to publish (Q≥60), or 0 to go back.*
 
 ## S16 — Team & Interviews
 
@@ -2251,7 +2262,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 10 💾 Save
 0 🏠 Main Menu
 
-*(If PROJECT/CONTRACT active):*
+*(If PROJECT/CONTRACT/PAPER active):*
 **Active: [Name] ([X]/[M])**
 1 ⏩ Continue
 2 🛑 Cancel
@@ -2388,10 +2399,10 @@ Configuration:
 
 **Models:**
 **M1** [Name]
-▸ [Arch]×[Task] · Q[Q] · [Status] · Analyzed:[Y/N]
+▸ [Arch]×[Task] · Q[Q] · [Status] · Anz:[Y/N] · Pub:[Y/N]
 *(or "No models")*
 
-👉 *Reply 'Analyze [ID]', or 0 back.*
+👉 *Reply 'Analyze [ID]', 'Paper [ID]', or 0 back.*
 
 ## S16 — Team & Interviews
 
@@ -2455,9 +2466,9 @@ hw: [item xN, …] | cloud: [0-2] | slots_used: [x]/[4|8] | rewired: [yes/no]
 team: [Name($Salary, Effects) | none]
 candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
-models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,analyzed=yes/no)]; …
+models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | none]
+contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M | none]
 project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]

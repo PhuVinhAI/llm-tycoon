@@ -84,7 +84,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 10 💾 Save
 0 🏠 Main Menu
 
-*(If PROJECT/CONTRACT active):*
+*(If PROJECT/CONTRACT/PAPER active):*
 **Active: [Name] ([X]/[M])**
 1 ⏩ Continue
 2 🛑 Cancel
@@ -221,10 +221,10 @@ Configuration:
 
 **Models:**
 **M1** [Name]
-▸ [Arch]×[Task] · Q[Q] · [Status] · Analyzed:[Y/N]
+▸ [Arch]×[Task] · Q[Q] · [Status] · Anz:[Y/N] · Pub:[Y/N]
 *(or "No models")*
 
-👉 *Reply 'Analyze [ID]', or 0 back.*
+👉 *Reply 'Analyze [ID]', 'Paper [ID]', or 0 back.*
 
 ## S16 — Team & Interviews
 

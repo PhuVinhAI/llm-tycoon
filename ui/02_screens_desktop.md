@@ -86,10 +86,10 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 9 📁 Portfolio | 10 💾 Save |
 | 0 🏠 Main Menu | |
 
-*(If a PROJECT or CONTRACT is active):*
-| Active: [Project Name or Contract ID] | Month [X] of [M] |
+*(If a PROJECT, CONTRACT, or PAPER is active):*
+| Active: [Project Name, Contract ID, or Paper on Model] | Month [X] of [M] |
 |---|---|
-| **1 ⏩ Continue [Project/Contract]** | **2 🛑 Cancel** |
+| **1 ⏩ Continue [Project/Contract/Paper]** | **2 🛑 Cancel** |
 | 6 🛒 Shop | 7 👥 Team |
 | 8 🌳 Tech Tree | 9 📁 Portfolio |
 | 10 💾 Save | 0 🏠 Main Menu |
@@ -215,12 +215,12 @@ Provide your configuration to start:
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
-| ID | Name | Arch × Task | Q | Status (Release) | Analyzed? |
-|---|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] |
+| ID | Name | Arch × Task | Q | Status (Release) | Analyzed? | Published? |
+|---|---|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
-👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
+👉 *Reply with 'Analyze [ID]' for a review, 'Paper [ID]' to publish (Q≥60), or 0 to go back.*
 
 ## S16 — Team & Interviews
 

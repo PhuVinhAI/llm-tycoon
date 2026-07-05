@@ -37,6 +37,15 @@ Trách nhiệm:
 - Events may discount a Technology's cost. A discount applies only if the Technology is still locked when the event fires, and it persists until unlocked.
 - Multiple discounts multiply; round the final cost **up** to the nearest 5 (Economy rule).
 
+## Publishing Papers
+
+- **Starting:** The Player may start a Paper (instant action from the Portfolio) on any completed Model that has **Q ≥ 60** and has not been published yet.
+- **Commitment:** It takes **2 committed months**. Starting a Paper immediately **cancels any active Income Stream** for that Model (the proprietary tech is now public).
+- **Reviewer 2 Dilemma:** When `months elapsed == 1`, the engine pauses for a Dilemma. Reviewer 2 demands extensive additional ablations.
+  - *Choice 1 (Appease):* Add 1 month to the commitment (`M` becomes 3). Yield: Final RP +1000.
+  - *Choice 2 (Argue):* Keep the 2-month schedule. Yield: Fame −100 immediately (for being combative).
+- **Completion:** On the final month, the Paper is published. The Model is marked as `published`. Yield: **RP = Q × 30** and **Fame +200**.
+
 <!--
 Tiếng Việt (tóm tắt):
 Kiếm RP: hành động Research tạo ra một tình huống Dilemma với mức nền là 1000 + 500×R-Lv + bonus nhân viên; mỗi Model
