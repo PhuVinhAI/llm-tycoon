@@ -19,9 +19,9 @@ Instead of fixed characters, the Player must pay a Headhunter Fee to search for 
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
-| **The Data Specialist** | 800 | $1,000 | $800 – $1,200 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
-| **The Hardware Optimizer** | 1500 | $2,000 | $1,500 – $2,200 | All compute requirements ×0.75 (round up) |
-| **The Research Scientist** | 2200 | $3,000 | $2,500 – $3,800 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
+| **The Data Specialist** | 800 | $1,000 | $600 – $1,000 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $2,000 | $1,200 – $1,800 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $3,000 | $2,000 – $3,000 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 

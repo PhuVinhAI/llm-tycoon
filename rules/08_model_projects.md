@@ -116,7 +116,7 @@ The overall `Q` tier determines the **Estimated Reception Fame**:
 | < 40 | 💔 Failure | −100 |
 
 **CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
-Every completed Model immediately grants **RP + (floor(Q) × 10)** (knowledge gained from building it) and counts toward E-Lv.
+Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge gained from building it) and counts toward E-Lv.
 
 ## Release (from Completion or Portfolio)
 

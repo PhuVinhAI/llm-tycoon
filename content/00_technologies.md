@@ -38,9 +38,9 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | S2S | Sequence-to-Sequence | 7000 | LSTM | Architecture S2S |
 | ATTN | Attention Mechanism | 9000 | S2S | Architecture S2SA |
 | TRF | Transformer | 9000 | ATTN | Architecture TRF |
-| PRET | Unsupervised Pre-training | 11000 | TRF | Architecture PTRF |
+| PRET | Unsupervised Pre-training | 9500 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 10000 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 8500 | PRET | unlocks The LLM Project |
 
 <!--
 Tiếng Việt (tóm tắt):

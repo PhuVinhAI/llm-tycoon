@@ -1024,7 +1024,7 @@ The concrete values are defined in the Content.
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,500 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
+| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,800 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 400 + 200 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Start/Continue Project** | Start a new Project (advances month 1) or advance an active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Accept/Continue Contract** | Accept a new Contract (advances month 1) or advance an active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
@@ -1059,7 +1059,7 @@ Every month, in the Costs step:
 
 - **Living & rent:** $800.
 - **Salaries:** sum of all hired Employees (Content).
-- **Hardware upkeep:** $50 per occupied slot.
+- **Hardware upkeep:** $25 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
 
 ## Rounding
@@ -1078,7 +1078,7 @@ Every month, in the Costs step:
 ## Earning RP
 
 - The **Research** main action generates a Dilemma (Actions rule) with a base yield of RP = 400 + 200 × R-Lv + staff bonuses (Content).
-- Completed Models grant RP = floor(Q) × 10 (Model Projects rule).
+- Completed Models grant RP = floor(Q) × 15 (Model Projects rule).
 - Events may grant RP directly (Content).
 - RP accumulates in a single pool with no cap.
 
@@ -1276,7 +1276,7 @@ The overall `Q` tier determines the **Estimated Reception Fame**:
 | < 40 | 💔 Failure | −100 |
 
 **CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
-Every completed Model immediately grants **RP + (floor(Q) × 10)** (knowledge gained from building it) and counts toward E-Lv.
+Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge gained from building it) and counts toward E-Lv.
 
 ## Release (from Completion or Portfolio)
 
@@ -1468,9 +1468,9 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | S2S | Sequence-to-Sequence | 7000 | LSTM | Architecture S2S |
 | ATTN | Attention Mechanism | 9000 | S2S | Architecture S2SA |
 | TRF | Transformer | 9000 | ATTN | Architecture TRF |
-| PRET | Unsupervised Pre-training | 11000 | TRF | Architecture PTRF |
+| PRET | Unsupervised Pre-training | 9500 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 10000 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 8500 | PRET | unlocks The LLM Project |
 
 # Architectures
 
@@ -1621,9 +1621,9 @@ Instead of fixed characters, the Player must pay a Headhunter Fee to search for 
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
-| **The Data Specialist** | 800 | $1,000 | $800 – $1,200 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
-| **The Hardware Optimizer** | 1500 | $2,000 | $1,500 – $2,200 | All compute requirements ×0.75 (round up) |
-| **The Research Scientist** | 2200 | $3,000 | $2,500 – $3,800 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
+| **The Data Specialist** | 800 | $1,000 | $600 – $1,000 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $2,000 | $1,200 – $1,800 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $3,000 | $2,000 – $3,000 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 
