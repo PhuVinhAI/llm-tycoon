@@ -1552,14 +1552,14 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 
 | ID | Fame ≥ | Date ≥ | Client — job | Requires | Months | Pay | Bonus tech |
 |---|---|---|---|---|---|---|---|
-| C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
-| C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $1,500 | — |
-| C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
-| C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
-| C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
-| C22 | 1500 | Aug 2016 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
-| C31 | 2200 | Jan 2017 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
-| C32 | 2200 | Jan 2018 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
+| C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $7,500 | EMB |
+| C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $4,000 | — |
+| C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $9,000 | LSTM |
+| C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $8,500 | — |
+| C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $15,000 | ATTN |
+| C22 | 1500 | Aug 2016 | Telecom — support ticket routing | LSTM | 2 | $11,000 | — |
+| C31 | 2200 | Jan 2017 | Bank — chatbot pilot | ATTN | 3 | $20,000 | TRF |
+| C32 | 2200 | Jan 2018 | Search portal — snippet QA | TRF | 3 | $24,000 | PRET |
 
 ## Mid-Contract Dilemmas
 
