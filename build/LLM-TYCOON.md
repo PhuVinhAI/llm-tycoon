@@ -1371,31 +1371,34 @@ Maximum 2 hired at a time (Employees rule).
 
 | # | Date | Event | Effect |
 |---|---|---|---|
-| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**—the primitive art of regex and word counts. To build real models, they need an AI architecture. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
+| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
 | E1 | Mar 2013 | 📄 *word2vec published (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl in the spotlight* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
 | E3 | Jun 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +500 Fame |
-| E4 | Sep 2014 | 🛒 *GTX 980 launches* | Shop update (hardware table) |
-| E5 | Nov 2014 | 🌐 *WMT corpora released* | Free Dataset claimable: WMT parallel (3/4) |
-| E6 | Feb 2015 | 📄 *Attention paper (Bahdanau et al.)* | ATTN cost ×0.5 if locked; owned: +500 Fame |
-| E7 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55, 3-month window → $2,000 + 400 Fame |
-| E8 | Nov 2015 | 🔧 *TensorFlow open-sourced* | All research costs ×0.8, permanent |
-| E9 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +500 (inspiration) |
-| E10 | Mar 2016 | 🔥 *AlphaGo beats Lee Sedol* | AI hype: license & product income ×1.5 during Mar–Aug 2016 |
-| E11 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
-| E12 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5). Triggers **SQuAD Challenge**: Competition for QA, Q ≥ 60, 3-month window → $3,000 + 500 Fame |
-| E13 | Jan 2017 | ☁️ *Cloud GPUs become practical* | Cloud rental available (hardware table) |
-| E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +1000 Fame + headline "Indie researcher scooped Google?" |
-| E15 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 600 Fame |
-| E16 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
-| E17 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
-| E17b| May 2018 | 🏆 **GLUE Benchmark Introduced** | The ultimate NLU test is born. Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75, 3-month window → $5,000 + 800 Fame |
-| E18 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame. (Sets new SOTA on WikiText) |
-| E19 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
-| E20 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame. (BERT shatters the GLUE leaderboard) |
-| E21 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end. (Sets Zero-shot SOTA on LAMBADA) |
-| E22 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player Fame ≥ 1500, the article namechecks them |
-| E23 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
+| E4 | Aug 2014 | 📄 *GloVe Embeddings (Stanford)* | EMB cost ×0.75 if locked |
+| E5 | Sep 2014 | 🛒 *GTX 980 launches* | Shop update (hardware table) |
+| E6 | Nov 2014 | 🌐 *WMT corpora released* | Free Dataset claimable: WMT parallel (3/4) |
+| E7 | Feb 2015 | 📄 *Attention paper (Bahdanau et al.)* | ATTN cost ×0.5 if locked; owned: +500 Fame |
+| E8 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55, 3-month window → $2,000 + 400 Fame |
+| E9 | Nov 2015 | 🔧 *TensorFlow open-sourced* | All research costs ×0.8, permanent |
+| E10 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +500 (inspiration) |
+| E11 | Mar 2016 | 🔥 *AlphaGo beats Lee Sedol* | AI hype: license & product income ×1.5 during Mar–Aug 2016 |
+| E12 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
+| E13 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5). Triggers **SQuAD Challenge**: QA, Q ≥ 60, 3-mo window → $3,000 + 500 Fame |
+| E14 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player Fame ≥ 1500, the article namechecks them |
+| E15 | Jan 2017 | ☁️ *Cloud GPUs & PyTorch* | Cloud rental available (hardware). PyTorch released: All research costs ×0.9 (stacks with TF), permanent |
+| E16 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +1000 Fame + headline "Indie researcher scooped Google?" |
+| E17 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 600 Fame |
+| E18 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
+| E19 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
+| E20 | May 2018 | 🏆 **GLUE Benchmark Introduced** | Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75, 3-month window → $5,000 + 800 Fame |
+| E21 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
+| E22 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
+| E23 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame |
+| E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end |
+| E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face explodes. License income ×1.2 permanent. If PRET owned: RP +1000 |
+| E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
+| E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
 ## Threshold events
 
