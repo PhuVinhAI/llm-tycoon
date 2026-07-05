@@ -1054,7 +1054,7 @@ Every month, in the Costs step:
 
 - **Living & rent:** $800.
 - **Salaries:** sum of all hired Employees (Content).
-- **Hardware upkeep:** $25 per occupied slot.
+- **Hardware upkeep:** $100 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
 
 ## Rounding
@@ -1507,18 +1507,18 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 
 | Available from | Item | Price | TFLOPS/mo | Slots |
 |---|---|---|---|---|---|
-| start | GTX 780 | $600 | 100 | 1 |
-| Sep 2014 | GTX 980 | $550 | 200 | 1 |
-| Jun 2016 | GTX 1080 | $700 | 400 | 1 |
-| Oct 2017 | Used K80 server | $1,500 | 600 | 2 |
-| Sep 2018 | RTX 2080 | $800 | 800 | 1 |
+| start | GTX 780 | $1,500 | 100 | 1 |
+| Sep 2014 | GTX 980 | $2,500 | 200 | 1 |
+| Jun 2016 | GTX 1080 | $4,000 | 400 | 1 |
+| Oct 2017 | Used K80 server | $5,000 | 600 | 2 |
+| Sep 2018 | RTX 2080 | $7,000 | 800 | 1 |
 
 **Other purchases:**
 
 | Item | Price | Effect |
 |---|---|---|
-| 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
-| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
+| 🔌 Rewire the lab (once) | $5,000 | slots 4 → 8 |
+| ☁️ Cloud rental (from Jan 2017) | $2,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
 
 *(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 
@@ -1558,14 +1558,14 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 
 | ID | Fame ≥ | Date ≥ | Client — job | Requires | Months | Pay | Bonus tech |
 |---|---|---|---|---|---|---|---|
-| C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $7,500 | EMB |
-| C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $4,000 | — |
-| C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $9,000 | LSTM |
-| C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $8,500 | — |
-| C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $15,000 | ATTN |
-| C22 | 1500 | Aug 2016 | Telecom — support ticket routing | LSTM | 2 | $11,000 | — |
-| C31 | 2200 | Jan 2017 | Bank — chatbot pilot | ATTN | 3 | $20,000 | TRF |
-| C32 | 2200 | Jan 2018 | Search portal — snippet QA | TRF | 3 | $24,000 | PRET |
+| C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $10,000 | EMB |
+| C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $6,000 | — |
+| C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $14,000 | LSTM |
+| C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $12,000 | — |
+| C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $22,000 | ATTN |
+| C22 | 1500 | Aug 2016 | Telecom — support ticket routing | LSTM | 2 | $16,000 | — |
+| C31 | 2200 | Jan 2017 | Bank — chatbot pilot | ATTN | 3 | $30,000 | TRF |
+| C32 | 2200 | Jan 2018 | Search portal — snippet QA | TRF | 3 | $36,000 | PRET |
 
 ## Mid-Contract Dilemmas
 
@@ -1584,9 +1584,9 @@ Instead of fixed characters, the Player must pay a Headhunter Fee to search for 
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
-| **The Data Specialist** | 800 | $1,000 | $1,000 – $1,400 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
-| **The Hardware Optimizer** | 1500 | $2,000 | $1,600 – $2,000 | All compute requirements ×0.75 (round up) |
-| **The Research Scientist** | 2200 | $3,000 | $2,300 – $2,800 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
+| **The Data Specialist** | 800 | $1,500 | $1,500 – $2,200 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $3,000 | $2,800 – $4,000 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $5,000 | $5,000 – $8,000 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 
