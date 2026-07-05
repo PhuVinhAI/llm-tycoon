@@ -1475,7 +1475,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -1579,8 +1579,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 1 💼 Freelance | 2 🔬 Research |
 | 3 🏗️ New model | 4 📦 Data |
 | 5 📜 Contracts | 6 🛒 Shop |
-| 7 👥 Team | 8 💾 Save |
-| 0 🏠 Main Menu | |
+| 7 👥 Team | 8 🌳 Tech Tree |
+| 9 💾 Save | 0 🏠 Main Menu |
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
@@ -1639,6 +1639,20 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 1 📦 Collect dataset (1 month) | 2 🧹 Clean dataset (1 month) |
 | 3 🔗 Combine datasets (instant) | 4 🛒 Data Market (instant) |
 | 0 ↩ Back | |
+
+## S14 — Tech Tree
+
+🌳 **Technology Tree**
+🔬 **Available RP:** [x]
+
+**Owned:** [Comma-separated list of owned Tech IDs]
+
+**Available to Unlock:**
+| ID | Technology | Cost | Requires | Effect |
+|---|---|---|---|---|
+| [ID] | [Name] | [Cost] RP | [Req] | [Effect] |
+
+👉 *Reply with the ID to unlock (instant), or 0 to go back.*
 
 ## S12 — Project Wizard
 
@@ -1732,7 +1746,8 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 5 📜 Contracts
 6 🛒 Shop
 7 👥 Team
-8 💾 Save
+8 🌳 Tech Tree
+9 💾 Save
 0 🏠 Main Menu
 
 **Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.
@@ -1803,6 +1818,20 @@ on [Dataset]
 3 🔗 Combine (free)
 4 🛒 Market (free)
 0 ↩ Back
+
+## S14 — Tech Tree
+
+🌳 **Tech Tree**
+🔬 **RP:** [x]
+
+**Owned:** [IDs]
+
+**Available:**
+**[ID]** [Name]
+▸ [Cost] RP (Req: [Req])
+▸ [Effect]
+
+👉 *Reply ID to unlock, or 0 back.*
 
 ## S12 — Project Wizard
 

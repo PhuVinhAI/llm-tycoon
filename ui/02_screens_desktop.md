@@ -81,8 +81,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 1 💼 Freelance | 2 🔬 Research |
 | 3 🏗️ New model | 4 📦 Data |
 | 5 📜 Contracts | 6 🛒 Shop |
-| 7 👥 Team | 8 💾 Save |
-| 0 🏠 Main Menu | |
+| 7 👥 Team | 8 🌳 Tech Tree |
+| 9 💾 Save | 0 🏠 Main Menu |
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
@@ -142,6 +142,20 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 3 🔗 Combine datasets (instant) | 4 🛒 Data Market (instant) |
 | 0 ↩ Back | |
 
+## S14 — Tech Tree
+
+🌳 **Technology Tree**
+🔬 **Available RP:** [x]
+
+**Owned:** [Comma-separated list of owned Tech IDs]
+
+**Available to Unlock:**
+| ID | Technology | Cost | Requires | Effect |
+|---|---|---|---|---|
+| [ID] | [Name] | [Cost] RP | [Req] | [Effect] |
+
+👉 *Reply with the ID to unlock (instant), or 0 to go back.*
+
 ## S12 — Project Wizard
 
 🏗️ **New Model Project**
@@ -179,7 +193,7 @@ mục 2 hàng — mục chưa khả dụng vẫn liệt kê, chọn thì giải 
 hoàn thành model (chỉ hiện kết quả Q, 4 lựa chọn phát hành đánh số, lựa
 chọn khóa phải nêu điều kiện thiếu); S7 danh sách chợ/shop đánh số + giá;
 S10 Dilemma hiển thị tình huống 4x4; S11 Menu phụ; S12 Wizard tạo dự án;
-S13 Quản lý dữ liệu (kho + hành động); S8 SAVE dùng định dạng cố định;
+S13 Quản lý dữ liệu (kho + hành động); S14 Cây công nghệ; S8 SAVE dùng định dạng cố định;
 S9 màn kết (tổng điểm + danh hiệu + chơi
 lại/recap).
 -->

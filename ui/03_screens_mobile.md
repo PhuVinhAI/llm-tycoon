@@ -78,7 +78,8 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 5 📜 Contracts
 6 🛒 Shop
 7 👥 Team
-8 💾 Save
+8 🌳 Tech Tree
+9 💾 Save
 0 🏠 Main Menu
 
 **Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.
@@ -150,6 +151,20 @@ on [Dataset]
 4 🛒 Market (free)
 0 ↩ Back
 
+## S14 — Tech Tree
+
+🌳 **Tech Tree**
+🔬 **RP:** [x]
+
+**Owned:** [IDs]
+
+**Available:**
+**[ID]** [Name]
+▸ [Cost] RP (Req: [Req])
+▸ [Effect]
+
+👉 *Reply ID to unlock, or 0 back.*
+
 ## S12 — Project Wizard
 
 🏗️ **New Model**
@@ -186,7 +201,7 @@ rộng. Cùng bộ màn hình với desktop nhưng xếp dọc: S0 tiêu đề h
 S5 menu hành động 10 dòng; S6 báo cáo model chỉ hiện số Q cuối cùng, 4 lựa
 chọn phát hành xếp dọc; S7 danh sách 2 dòng mỗi món (tên / số liệu + giá);
 S10 Dilemma dọc; S11 Menu phụ dọc; S12 Wizard tạo dự án dọc;
-S13 Quản lý dữ liệu dọc; S9 màn kết chỉ hiện tổng điểm. SAVE giữ nguyên
+S13 Quản lý dữ liệu dọc; S14 Cây công nghệ dọc; S9 màn kết chỉ hiện tổng điểm. SAVE giữ nguyên
 định dạng cố định, không phụ
 thuộc profile.
 -->
