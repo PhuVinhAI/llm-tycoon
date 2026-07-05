@@ -176,6 +176,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 - **Technology Unlocks** — Whenever the player spends RP to unlock a new Technology (an instant action), use flavor text in the turn report to briefly explain what this tech actually does and how it upgrades their capabilities (e.g., "You unlocked RNNs: Models can now remember context from previous words!").
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Historical Tech News (S4)** — Whenever a new Benchmark or SOTA Rival is released (matching the current in-game month), act as a tech journalist. Write a catchy headline and 2-3 sentences explaining *what* this new AI/Benchmark is, *how* it works under the hood, and *why* it is a historical breakthrough. Make it highly educational for a non-expert player.
+- **Dynamic Press Coverage (S4)** — When a Milestone (M1-M5) triggers, act as a journalist covering the player's company. Write a sensational headline and a short article reacting to the player's specific achievement or failure.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
 - **Review Quotes (S6)** — When a model completes, generate 4 GDT-style reviews with scores averaging `Q ÷ 10`. You may invent the names of the Academic, Media, and User reviewers, and write a 1-sentence flavor quote for all 4 reviewers. However, the name of the 1st reviewer (the Benchmark) MUST be pulled directly from the Content rules, not invented.
@@ -1135,7 +1136,7 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 ## Firing events & Historical News
 
 - In the Events step of every month, the Engine fires events from two sources:
-  1. **The Event Calendar (Content):** Fire entries matching the current month, plus threshold events (Fame, releases). Track these as flags in the Game State. Apply their mechanical effects.
+  1. **The Event Calendar (Content):** Fire entries matching the current month, plus threshold events (Fame, releases), and Dynamic Press Coverage (M1-M5) if their conditions are met. Track these as flags in the Game State so they fire exactly once. Apply their mechanical effects.
   2. **Auto-generated Historical News:** The Engine monitors the **Historical Benchmarks** and **Historical SOTA (Rival Models)** tables. If the current in-game Month and Year exactly matches the release date of a Benchmark or SOTA model, the Engine automatically fires a News Event for it. (These have no mechanical effects unless they also appear in the Event Calendar).
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
@@ -1411,6 +1412,18 @@ Maximum 2 hired at a time (Employees rule).
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Candidate available / 📜 new Contract tier | Announce per Content tables |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
+
+## Dynamic Press Coverage (Milestones & Twists)
+
+These events fire exactly once per playthrough when their condition is met. The Engine acts as a tech journalist covering the Player's company.
+
+| # | Trigger | Headline Theme | Effect |
+|---|---|---|---|
+| M1 | First Model achieves **SOTA Hype** | 📰 **David vs Goliath!** Indie lab beats Big Tech on global benchmarks. | Fame +200 |
+| M2 | First Model achieves **Q ≥ 90** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
+| M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
+| M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
+| M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*
 

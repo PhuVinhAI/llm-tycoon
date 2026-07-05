@@ -61,6 +61,18 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
+## Dynamic Press Coverage (Milestones & Twists)
+
+These events fire exactly once per playthrough when their condition is met. The Engine acts as a tech journalist covering the Player's company.
+
+| # | Trigger | Headline Theme | Effect |
+|---|---|---|---|
+| M1 | First Model achieves **SOTA Hype** | 📰 **David vs Goliath!** Indie lab beats Big Tech on global benchmarks. | Fame +200 |
+| M2 | First Model achieves **Q ≥ 90** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
+| M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
+| M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
+| M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
+
 *(Discount stacking and event tracking follow the Research and Events rules).*
 
 <!--
