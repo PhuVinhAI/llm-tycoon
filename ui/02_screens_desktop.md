@@ -107,7 +107,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
-## S10 — Dilemma (Freelance & Research)
+## S10 — Dilemma (Freelance, Research & Projects)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story combining the matrix coordinates]*

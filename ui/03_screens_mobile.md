@@ -114,7 +114,7 @@ on [Dataset]
 💰 $[cash]
 0 ↩ Back
 
-## S10 — Dilemma (Freelance & Research)
+## S10 — Dilemma (Freelance, Research & Projects)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story]*

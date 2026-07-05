@@ -36,6 +36,17 @@ The Player declares, in one instant action:
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
+## Project Dilemmas (Mid-Project)
+
+When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine calculates its **Synergy Score**:
+`Synergy = Match(Arch × Task) + Domain fit + Focus score`
+
+- If **Synergy ≥ 16**, trigger a **Breakthrough** dilemma (Content / Project Dilemmas).
+- If **Synergy ≤ 8**, trigger a **Complication** dilemma (Content).
+- If 9–15, the project proceeds smoothly with no interruption.
+
+When triggered, pause the game, render the Dilemma (S10), and wait for the Player's choice. The resulting `q_mod` is added to the Project's state and applied at completion. `M +1` increases the total committed months.
+
 ## Quality formula
 
 Compute Q silently at completion. Floor 0, cap 100. Never reveal the formula or exact breakdown to the player.
@@ -50,6 +61,7 @@ Q = Base(Architecture)                          … Content: architectures table
   + Focus score                                 … see below
   + 2 × E-Lv
   + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
+  + q_mod                                       … from Project Dilemma (default 0)
   − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
 ```
 

@@ -995,7 +995,7 @@ The concrete values are defined in the Content.
 |---|---|
 | 💼 **Freelance** | Generates a Dilemma using the Freelance Events Matrix (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Select Archetype `X` = Turn % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 4) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | Generates a Dilemma using the Research Events Matrix (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Select Focus `X` = (Turn + 1) % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 3) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
-| 🏗️ **Project month** | Advance the active Project by one month (see Model Projects). |
+| 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
 | 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
@@ -1165,6 +1165,17 @@ The Player declares, in one instant action:
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
+## Project Dilemmas (Mid-Project)
+
+When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine calculates its **Synergy Score**:
+`Synergy = Match(Arch × Task) + Domain fit + Focus score`
+
+- If **Synergy ≥ 16**, trigger a **Breakthrough** dilemma (Content / Project Dilemmas).
+- If **Synergy ≤ 8**, trigger a **Complication** dilemma (Content).
+- If 9–15, the project proceeds smoothly with no interruption.
+
+When triggered, pause the game, render the Dilemma (S10), and wait for the Player's choice. The resulting `q_mod` is added to the Project's state and applied at completion. `M +1` increases the total committed months.
+
 ## Quality formula
 
 Compute Q silently at completion. Floor 0, cap 100. Never reveal the formula or exact breakdown to the player.
@@ -1179,6 +1190,7 @@ Q = Base(Architecture)                          … Content: architectures table
   + Focus score                                 … see below
   + 2 × E-Lv
   + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
+  + q_mod                                       … from Project Dilemma (default 0)
   − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
 ```
 
@@ -1585,6 +1597,38 @@ This table provides the raw data for Research events. The logic and formulas for
 | 2 | **Side Discovery** | Ignore it and focus.<br>Yield: `Base RP` | Publish a minor paper.<br>Yield: `Base RP × 0.6`, `Fame +150` |
 | 3 | **Compute Hog** | Optimize the code first.<br>Yield: `Base RP` | Brute force it with rented cloud.<br>Yield: `Base RP × 1.4`, `Cash −$1,000` |
 
+# Project Dilemmas
+
+Triggered mid-project based on the Synergy score (see Model Projects rule).
+
+## Breakthrough (Synergy ≥ 16)
+Flavor direction determined by `Turn % 4`:
+| X | Flavor direction |
+|---|---|
+| 0 | **Loss dropping beautifully** (Math is perfectly aligned, gradients flow smoothly). |
+| 1 | **Emergent property** (The model is learning unexpected, high-level patterns early). |
+| 2 | **Compute efficiency** (Training is running much faster and cooler than expected). |
+| 3 | **Data harmony** (The dataset structure fits the architecture's assumptions perfectly). |
+
+| Option | Yield / Effect |
+|---|---|
+| 1. **The Polish** (Spend extra time to perfect it) | `M (total months) +1`, `q_mod +5` |
+| 2. **The Spin-off** (Publish intermediate findings) | `RP +800`, `q_mod +0` |
+
+## Complication (Synergy ≤ 8)
+Flavor direction determined by `Turn % 4`:
+| X | Flavor direction |
+|---|---|
+| 0 | **Exploding gradients** (Loss is spiking to NaN, math is unstable). |
+| 1 | **OOM Errors** (Out of memory, architecture is too heavy for the batch size). |
+| 2 | **Data mismatch** (Tokenization/parsing errors are degrading quality). |
+| 3 | **Severe overfitting** (Memorizing the training set, failing validation). |
+
+| Option | Yield / Effect |
+|---|---|
+| 1. **Accept Flaws** (Ignore it and push through) | `q_mod -8` |
+| 2. **Refactor** (Delay the project to fix the architecture/data) | `M (total months) +1`, `q_mod +0` |
+
 ---
 
 # PART 5 — SCENARIO
@@ -1766,7 +1810,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
-## S10 — Dilemma (Freelance & Research)
+## S10 — Dilemma (Freelance, Research & Projects)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story combining the matrix coordinates]*
@@ -1947,7 +1991,7 @@ on [Dataset]
 💰 $[cash]
 0 ↩ Back
 
-## S10 — Dilemma (Freelance & Research)
+## S10 — Dilemma (Freelance, Research & Projects)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story]*
@@ -2045,7 +2089,7 @@ data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Q[x],release)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
-project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x | none]
+project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===
