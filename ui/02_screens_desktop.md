@@ -127,6 +127,21 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 0 ↩ Back
 
+## S13 — Data Menu
+
+📦 **Data Management**
+
+**Owned Datasets:**
+| ID | Name | Domain | Size | Quality |
+|---|---|---|---|---|
+| D1 | [Name] | [Domain] | [Size] | [Q] |
+*(If none: "No datasets owned.")*
+
+**Actions:**
+| 1 📦 Collect dataset (1 month) | 2 🧹 Clean dataset (1 month) |
+| 3 🔗 Combine datasets (instant) | 4 🛒 Data Market (instant) |
+| 0 ↩ Back | |
+
 ## S12 — Project Wizard
 
 🏗️ **New Model Project**
@@ -164,6 +179,7 @@ mục 2 hàng — mục chưa khả dụng vẫn liệt kê, chọn thì giải 
 hoàn thành model (chỉ hiện kết quả Q, 4 lựa chọn phát hành đánh số, lựa
 chọn khóa phải nêu điều kiện thiếu); S7 danh sách chợ/shop đánh số + giá;
 S10 Dilemma hiển thị tình huống 4x4; S11 Menu phụ; S12 Wizard tạo dự án;
-S8 SAVE dùng định dạng cố định; S9 màn kết (tổng điểm + danh hiệu + chơi
+S13 Quản lý dữ liệu (kho + hành động); S8 SAVE dùng định dạng cố định;
+S9 màn kết (tổng điểm + danh hiệu + chơi
 lại/recap).
 -->

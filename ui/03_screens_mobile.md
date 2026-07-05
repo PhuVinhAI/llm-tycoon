@@ -134,6 +134,22 @@ on [Dataset]
   ▸ [Cost/Time]
 0 ↩ Back
 
+## S13 — Data Menu
+
+📦 **Data**
+
+**Owned:**
+- [Name] ([Domain] · S[Size] Q[Q])
+- [Name] ([Domain] · S[Size] Q[Q])
+*(or "None")*
+
+**Actions:**
+1 📦 Collect (1 mo)
+2 🧹 Clean (1 mo)
+3 🔗 Combine (free)
+4 🛒 Market (free)
+0 ↩ Back
+
 ## S12 — Project Wizard
 
 🏗️ **New Model**
@@ -170,6 +186,7 @@ rộng. Cùng bộ màn hình với desktop nhưng xếp dọc: S0 tiêu đề h
 S5 menu hành động 10 dòng; S6 báo cáo model chỉ hiện số Q cuối cùng, 4 lựa
 chọn phát hành xếp dọc; S7 danh sách 2 dòng mỗi món (tên / số liệu + giá);
 S10 Dilemma dọc; S11 Menu phụ dọc; S12 Wizard tạo dự án dọc;
-S9 màn kết chỉ hiện tổng điểm. SAVE giữ nguyên định dạng cố định, không phụ
+S13 Quản lý dữ liệu dọc; S9 màn kết chỉ hiện tổng điểm. SAVE giữ nguyên
+định dạng cố định, không phụ
 thuộc profile.
 -->

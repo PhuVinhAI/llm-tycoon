@@ -1632,7 +1632,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -1782,6 +1782,21 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 0 ↩ Back
 
+## S13 — Data Menu
+
+📦 **Data Management**
+
+**Owned Datasets:**
+| ID | Name | Domain | Size | Quality |
+|---|---|---|---|---|
+| D1 | [Name] | [Domain] | [Size] | [Q] |
+*(If none: "No datasets owned.")*
+
+**Actions:**
+| 1 📦 Collect dataset (1 month) | 2 🧹 Clean dataset (1 month) |
+| 3 🔗 Combine datasets (instant) | 4 🛒 Data Market (instant) |
+| 0 ↩ Back | |
+
 ## S12 — Project Wizard
 
 🏗️ **New Model Project**
@@ -1928,6 +1943,22 @@ on [Dataset]
   ▸ [Cost/Time]
 2 [Action 2]
   ▸ [Cost/Time]
+0 ↩ Back
+
+## S13 — Data Menu
+
+📦 **Data**
+
+**Owned:**
+- [Name] ([Domain] · S[Size] Q[Q])
+- [Name] ([Domain] · S[Size] Q[Q])
+*(or "None")*
+
+**Actions:**
+1 📦 Collect (1 mo)
+2 🧹 Clean (1 mo)
+3 🔗 Combine (free)
+4 🛒 Market (free)
 0 ↩ Back
 
 ## S12 — Project Wizard
