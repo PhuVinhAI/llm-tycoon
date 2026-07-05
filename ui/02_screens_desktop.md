@@ -56,7 +56,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
-| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  📉 Fixed: $[x]/mo |
+| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
@@ -82,7 +82,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 3 🏗️ New model | 4 📦 Data |
 | 5 📜 Contracts | 6 🛒 Shop |
 | 7 👥 Team | 8 🌳 Tech Tree |
-| 9 💾 Save | 0 🏠 Main Menu |
+| 9 📁 Portfolio | 10 💾 Save |
+| 0 🏠 Main Menu | |
 
 💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
 
@@ -192,6 +193,24 @@ Provide your configuration to start:
 
 👉 *Reply with your choices (Arch, Scale, Inherit, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
 *(CRITICAL: If you provide a formatting example for the player, you MUST use generic placeholders like `Focus: A/B/C/D` or `Task: [Task ID]`. NEVER leak the actual optimal Focus numbers or best Task in your examples!)*
+
+## S15 — Portfolio & Streams
+
+📁 **Model Portfolio & Income**
+
+**Active Income Streams:**
+| Product | Income | Months Left |
+|---|---|---|
+| [Model Name] | +$[x]/mo | [y] mos |
+*(If none: "No active income streams.")*
+
+**Completed Models (Inventory):**
+| ID | Name | Arch × Task | Q | Status (Release) |
+|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] |
+*(If none: "No models completed yet.")*
+
+👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
 
 ## S8 — SAVE
 

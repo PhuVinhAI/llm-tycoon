@@ -1028,6 +1028,8 @@ The concrete values are defined in the Content.
 - Start a Project (its months become committed, starting this month).
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
+- View Portfolio (check released/shelved models and active income streams).
+- Analyze a completed Model (ask the engine for a post-mortem review).
 - Request save, help, rules explanation, or current status.
 
 ## Commitment and cancelling
@@ -1272,6 +1274,16 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 | 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
 | 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
+
+## Post-Mortem Analysis (Portfolio)
+
+The Player can view their Portfolio (S15) and ask to **Analyze** any completed Model.
+- This is an instant, free action.
+- The Engine acts as a senior AI researcher reviewing the project.
+- **Format:** Output a 3-4 paragraph analysis.
+- **Content:** Discuss the *Synergy* (how well the Architecture fit the Task, and if the Dataset Domain was appropriate) and the *Focus allocation* (what they did right or wrong).
+- **Constraint:** NEVER reveal the exact numerical formulas, ideal focus numbers, or exact match scores. Use qualitative, educational feedback (e.g., "Transformers are massive overkill and data-starved for simple spam filtering," or "You spent too much time on Model design when N-grams just need pure Data cleaning").
+- After the analysis, re-render the Portfolio (S15).
 
 # Contracts
 
@@ -1843,7 +1855,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -1922,7 +1934,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
-| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  📉 Fixed: $[x]/mo |
+| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
@@ -1948,7 +1960,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 3 🏗️ New model | 4 📦 Data |
 | 5 📜 Contracts | 6 🛒 Shop |
 | 7 👥 Team | 8 🌳 Tech Tree |
-| 9 💾 Save | 0 🏠 Main Menu |
+| 9 📁 Portfolio | 10 💾 Save |
+| 0 🏠 Main Menu | |
 
 💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
 
@@ -2059,6 +2072,24 @@ Provide your configuration to start:
 👉 *Reply with your choices (Arch, Scale, Inherit, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
 *(CRITICAL: If you provide a formatting example for the player, you MUST use generic placeholders like `Focus: A/B/C/D` or `Task: [Task ID]`. NEVER leak the actual optimal Focus numbers or best Task in your examples!)*
 
+## S15 — Portfolio & Streams
+
+📁 **Model Portfolio & Income**
+
+**Active Income Streams:**
+| Product | Income | Months Left |
+|---|---|---|
+| [Model Name] | +$[x]/mo | [y] mos |
+*(If none: "No active income streams.")*
+
+**Completed Models (Inventory):**
+| ID | Name | Arch × Task | Q | Status (Release) |
+|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] |
+*(If none: "No models completed yet.")*
+
+👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -2139,7 +2170,8 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 6 🛒 Shop
 7 👥 Team
 8 🌳 Tech Tree
-9 💾 Save
+9 📁 Portfolio
+10 💾 Save
 0 🏠 Main Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
@@ -2256,6 +2288,21 @@ Configuration:
 
 👉 *Reply choices, or 0 to cancel.*
 *(CRITICAL: If providing a format example, use placeholders like `Focus: A/B/C/D`. NEVER leak optimal numbers!)*
+
+## S15 — Portfolio & Streams
+
+📁 **Portfolio & Income**
+
+**Streams:**
+- [Model]: +$[x]/mo ([y] left)
+*(or "No active streams")*
+
+**Models:**
+**M1** [Name]
+▸ [Arch]×[Task] · Q[Q] · [Status]
+*(or "No models")*
+
+👉 *Reply 'Analyze [ID]', or 0 back.*
 
 ## S8 — SAVE
 

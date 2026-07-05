@@ -79,7 +79,8 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 6 🛒 Shop
 7 👥 Team
 8 🌳 Tech Tree
-9 💾 Save
+9 📁 Portfolio
+10 💾 Save
 0 🏠 Main Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
@@ -196,6 +197,21 @@ Configuration:
 
 👉 *Reply choices, or 0 to cancel.*
 *(CRITICAL: If providing a format example, use placeholders like `Focus: A/B/C/D`. NEVER leak optimal numbers!)*
+
+## S15 — Portfolio & Streams
+
+📁 **Portfolio & Income**
+
+**Streams:**
+- [Model]: +$[x]/mo ([y] left)
+*(or "No active streams")*
+
+**Models:**
+**M1** [Name]
+▸ [Arch]×[Task] · Q[Q] · [Status]
+*(or "No models")*
+
+👉 *Reply 'Analyze [ID]', or 0 back.*
 
 ## S8 — SAVE
 

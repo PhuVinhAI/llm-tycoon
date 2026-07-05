@@ -41,6 +41,8 @@ Trách nhiệm:
 - Start a Project (its months become committed, starting this month).
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
+- View Portfolio (check released/shelved models and active income streams).
+- Analyze a completed Model (ask the engine for a post-mortem review).
 - Request save, help, rules explanation, or current status.
 
 ## Commitment and cancelling

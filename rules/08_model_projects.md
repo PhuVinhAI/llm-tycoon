@@ -128,6 +128,16 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 | 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
 
+## Post-Mortem Analysis (Portfolio)
+
+The Player can view their Portfolio (S15) and ask to **Analyze** any completed Model.
+- This is an instant, free action.
+- The Engine acts as a senior AI researcher reviewing the project.
+- **Format:** Output a 3-4 paragraph analysis.
+- **Content:** Discuss the *Synergy* (how well the Architecture fit the Task, and if the Dataset Domain was appropriate) and the *Focus allocation* (what they did right or wrong).
+- **Constraint:** NEVER reveal the exact numerical formulas, ideal focus numbers, or exact match scores. Use qualitative, educational feedback (e.g., "Transformers are massive overkill and data-starved for simple spam filtering," or "You spent too much time on Model design when N-grams just need pure Data cleaning").
+- After the analysis, re-render the Portfolio (S15).
+
 <!--
 Tiếng Việt (tóm tắt):
 Khai báo dự án (tức thời): chọn Architecture (đã mở khóa; neural cần GPUT và
