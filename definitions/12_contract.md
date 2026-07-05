@@ -25,7 +25,7 @@ Trách nhiệm:
 
 A Contract is a one-time client job: the client specifies requirements, the Company commits months of work, and the client pays a fixed amount on completion.
 
-Contracts trade time for reliable money and modest reputation. They become available as the Company's REP grows.
+Contracts trade time for reliable money and modest reputation. They become available as the Company's Fame grows and time progresses.
 
 ---
 
@@ -58,10 +58,10 @@ Contract là công việc làm thuê một lần: khách hàng nêu yêu cầu, 
 kết số tháng làm việc, khách trả số tiền cố định khi hoàn thành.
 
 Contract đổi thời gian lấy tiền ổn định và chút danh tiếng. Hợp đồng xuất
-hiện dần khi REP của Company tăng.
+hiện dần khi Fame của Company tăng và thời gian trôi qua.
 
-Thuộc tính: ID; khách hàng và mô tả; ngưỡng REP; yêu cầu (Technology,
-Dataset); số tháng cam kết; tiền công; điều kiện thưởng. Giá trị cụ thể nằm
+Thuộc tính: ID; khách hàng và mô tả; ngưỡng Fame và Ngày tháng; yêu cầu 
+(Technology, Dataset); số tháng cam kết; tiền công; điều kiện thưởng. Giá trị cụ thể nằm
 ở Content.
 
 Quan hệ: được mở khi REP đạt ngưỡng; khi nhận sẽ chiếm các tháng cam kết;

@@ -950,7 +950,7 @@ A Project may be associated with information such as:
 
 A Contract is a one-time client job: the client specifies requirements, the Company commits months of work, and the client pays a fixed amount on completion.
 
-Contracts trade time for reliable money and modest reputation. They become available as the Company's REP grows.
+Contracts trade time for reliable money and modest reputation. They become available as the Company's Fame grows and time progresses.
 
 ---
 
@@ -1291,7 +1291,7 @@ The Player can view their Portfolio (S15) and ask to **Analyze** any completed M
 
 ## Availability
 
-- Contracts unlock when the Company's Fame reaches their tier (Content). The engine announces newly available Contracts in the Events step.
+- Contracts unlock when the Company's Fame reaches their threshold AND the current in-game date is ≥ their Date requirement (Content). The engine announces newly available Contracts in the Events step.
 - Each Contract may be completed **once**. At most **one** Contract (or Project) is active at a time (Actions rule).
 
 ## Accepting and working
@@ -1542,16 +1542,16 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 
 # Contracts
 
-| ID | Fame ≥ | Client — job | Requires | Months | Pay | Bonus tech |
-|---|---|---|---|---|---|---|
-| C01 | 0 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
-| C02 | 0 | News site — keyword tagger | BOW | 1 | $1,500 | — |
-| C11 | 800 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
-| C12 | 800 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
-| C21 | 1500 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
-| C22 | 1500 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
-| C31 | 2200 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
-| C32 | 2200 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
+| ID | Fame ≥ | Date ≥ | Client — job | Requires | Months | Pay | Bonus tech |
+|---|---|---|---|---|---|---|---|
+| C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $3,000 | EMB |
+| C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $1,500 | — |
+| C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $5,000 | LSTM |
+| C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $4,000 | — |
+| C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $9,000 | ATTN |
+| C22 | 1500 | Aug 2016 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
+| C31 | 2200 | Jan 2017 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
+| C32 | 2200 | Jan 2018 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
 
 # Employee Archetypes
 
@@ -1604,7 +1604,7 @@ Maximum 2 hired at a time (Employees rule).
 
 | # | Trigger | Event | Effect |
 |---|---|---|---|
-| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Candidate available / 📜 new Contract tier | Announce per Content tables |
+| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Candidate available | Announce per Content tables |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 

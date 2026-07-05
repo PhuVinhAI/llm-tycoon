@@ -20,7 +20,7 @@ Trách nhiệm:
 
 ## Availability
 
-- Contracts unlock when the Company's Fame reaches their tier (Content). The engine announces newly available Contracts in the Events step.
+- Contracts unlock when the Company's Fame reaches their threshold AND the current in-game date is ≥ their Date requirement (Content). The engine announces newly available Contracts in the Events step.
 - Each Contract may be completed **once**. At most **one** Contract (or Project) is active at a time (Actions rule).
 
 ## Accepting and working
@@ -37,8 +37,8 @@ Trách nhiệm:
 
 <!--
 Tiếng Việt (tóm tắt):
-Mở khóa: hợp đồng xuất hiện khi Fame chạm ngưỡng của bậc (Content); engine
-thông báo ở bước Sự kiện. Mỗi hợp đồng chỉ làm một lần; tối đa 1 hợp đồng
+Mở khóa: hợp đồng xuất hiện khi thỏa mãn CẢ ngưỡng Fame và Ngày tháng (Content);
+engine thông báo ở bước Sự kiện. Mỗi hợp đồng chỉ làm một lần; tối đa 1 hợp đồng
 (hoặc dự án) chạy cùng lúc.
 
 Nhận & làm: nhận là hành động tức thời; điều kiện (công nghệ, dataset) kiểm
