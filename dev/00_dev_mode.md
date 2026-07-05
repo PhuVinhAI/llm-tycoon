@@ -103,11 +103,12 @@ Every free month (no committed Project/Contract month, no forced action), after 
 1. Cash below fixed monthly costs + $1,500 → **Freelance**.
 2. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
 3. An eligible Model exists for a Paper and RP is needed for the next Tech → start **Paper** (instant action), then continue down the list.
-4. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
-5. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
-6. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
-7. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
-8. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
+4. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists → roll evenly among {Start The LLM Project, Research}.
+5. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
+6. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
+7. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
+8. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
+9. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
 
 ## Dev log — output discipline while simulating
 
