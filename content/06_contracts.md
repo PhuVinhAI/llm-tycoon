@@ -19,6 +19,7 @@ Nguồn tiền ổn định giữa các dự án; nhu cầu khách hàng leo tha
 |---|---|---|---|---|---|---|---|
 | C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $10,000 | EMB |
 | C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $6,000 | — |
+| C10 | 1000 | Jan 2015 | Startup — sentiment API | EMB | 1 | $8,000 | — |
 | C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $14,000 | LSTM |
 | C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $12,000 | — |
 | C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $22,000 | ATTN |

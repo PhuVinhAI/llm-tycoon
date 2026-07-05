@@ -280,7 +280,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 3. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
 5. Neural tech is owned and Cash > 4 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant action), then continue down the list.
-6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 4000, turn on Cloud rental first).
+6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 3200, turn on Cloud rental first).
 7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
 8. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper** (instant action), then continue down the list.
 9. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
@@ -1378,12 +1378,12 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
-- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **4000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
+- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$5,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
-- Use the PTRF row of the architectures table, but with compute requirement **4000** TFLOPS-months.
+- Use the PTRF row of the architectures table, but with compute requirement **3200** TFLOPS-months.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
 - The Scale choice is fixed to Base. Add a special **+10 LLM scale bonus** to the formula instead.
 
@@ -1487,7 +1487,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
 - Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
-- The LLM Project overrides PTRF's compute requirement to 4000 TFLOPS-months (Rules).
+- The LLM Project overrides PTRF's compute requirement to 3200 TFLOPS-months (Rules).
 
 # Tasks and Matching
 
@@ -1597,6 +1597,7 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 |---|---|---|---|---|---|---|---|
 | C01 | 800 | Jan 2013 | Local ISP — spam filter | BOW | 2 | $10,000 | EMB |
 | C02 | 800 | Jan 2014 | News site — keyword tagger | BOW | 1 | $6,000 | — |
+| C10 | 1000 | Jan 2015 | Startup — sentiment API | EMB | 1 | $8,000 | — |
 | C11 | 1200 | Jan 2015 | Phone OEM — keyboard autocomplete | EMB or RNN | 2 | $14,000 | LSTM |
 | C12 | 1200 | Jun 2015 | Marketplace — review moderation | EMB | 2 | $12,000 | — |
 | C21 | 1500 | Jan 2016 | Subtitle bureau — translation batch | S2S + a parallel Dataset Size ≥ 3 | 3 | $22,000 | ATTN |
