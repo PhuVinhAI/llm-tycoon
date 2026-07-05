@@ -107,7 +107,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 5. Neural tech is owned and Cash > 4 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant action), then continue down the list.
 6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 4000, turn on Cloud rental first).
 7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
-8. An eligible Model exists for a Paper AND its Release type is NOT "License" → start **Paper** (instant action), then continue down the list.
+8. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper** (instant action), then continue down the list.
 9. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
 10. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
 11. Releases: Product if legal; otherwise License if Q ≥ 50; otherwise Open-source.
