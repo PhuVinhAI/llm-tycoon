@@ -168,13 +168,13 @@ on [Dataset]
 ## S12 — Project Wizard
 
 🏗️ **New Model**
-Provide configuration:
+Configuration:
 - **Arch:** [Owned]
-- **Task:** [Available]
-- **Data:** [Owned]
+- **Task:** [Available] *(show known match ONLY if previously tested)*
+- **Data:** [Owned] *(show known fit ONLY if previously tested)*
 - **Months:** (min [X])
-- **Focus:** 10 pts (D/M/T/E)
-- **Name:** [Suggestion]
+- **Focus:** 10 pts (D/M/T/E) *(no hints!)*
+- **Name:** [Player's choice]
 
 👉 *Reply choices, or 0 to cancel.*
 

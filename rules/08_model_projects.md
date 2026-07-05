@@ -30,7 +30,9 @@ The Player declares, in one instant action:
 3. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
 4. **Months (M)** — at least the Architecture's minimum months.
 5. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
-6. **Name** — the Model's name (offer a suggestion if asked).
+6. **Name** — the Model's name.
+
+**Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously completed a Model with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have used a Domain for a Task before, reveal the Domain fit. Otherwise, keep it strictly hidden.
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 

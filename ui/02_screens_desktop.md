@@ -161,13 +161,13 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏗️ **New Model Project**
 Provide your configuration to start:
 - **Architecture:** [List owned]
-- **Task:** [List available Tasks]
-- **Dataset:** [List owned Datasets]
+- **Task:** [List available Tasks. *ONLY append known Match quality if this Task was previously paired with the chosen Architecture*]
+- **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously paired with the chosen Task*]
 - **Months:** (min [X] for chosen Architecture)
-- **Focus:** 10 points across Data / Model / Training / Eval
-- **Name:** [Suggest a name]
+- **Focus:** 10 points across Data / Model / Training / Eval *(No hints!)*
+- **Name:** [Player's choice]
 
-👉 *Reply with your choices, or type 0 to cancel.*
+👉 *Reply with your choices (Arch, Task, Dataset, Months, Focus, Name), or type 0 to cancel.*
 
 ## S8 — SAVE
 

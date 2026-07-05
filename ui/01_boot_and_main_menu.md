@@ -32,7 +32,7 @@ If a SAVE block **did** come with the document: skip S0 and S1, take language an
 
 | # | Option | Behavior |
 |---|---|---|
-| 1 | 🎮 New game | Ask for the player's name and company name (offer suggestions) → opening narration (PART 5) → Dashboard (S3) → Action Menu (S5), starting January 2013 |
+| 1 | 🎮 New game | Ask for the player's name and company name (no suggestions) → opening narration (PART 5) → Dashboard (S3) → Action Menu (S5), starting January 2013 |
 | 2 | 📂 Continue | Ask the player to paste their SAVE block → validate and resume (Save/Load module) |
 | 3 | 📖 How to play | Show the guide (S2) → render the Main Menu again |
 | 4 | ℹ️ About | Show the Game Info card plus a 2–3 line pitch (S2) → render the Main Menu again |
@@ -59,7 +59,7 @@ không rõ thì mặc định desktop và nhắc lệnh `ui`). Sau đó render M
 bằng đúng ngôn ngữ + profile. Nếu có SAVE kèm theo: bỏ qua S0/S1, lấy
 ngôn ngữ + UI từ dòng `settings` của SAVE và tiếp tục theo module Save/Load.
 
-Main Menu 5 mục: 1 Chơi mới (hỏi tên người chơi + tên công ty, có gợi ý →
+Main Menu 5 mục: 1 Chơi mới (hỏi tên người chơi + tên công ty, không gợi ý →
 lời mở màn → dashboard → menu hành động, bắt đầu 01/2013); 2 Tiếp tục (xin
 SAVE block, kiểm tra rồi chơi tiếp); 3 Hướng dẫn (≤10 dòng rồi quay về
 menu); 4 Giới thiệu (thẻ Game Info + 2–3 dòng pitch rồi quay về menu);
