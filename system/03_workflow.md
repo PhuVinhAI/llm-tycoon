@@ -133,3 +133,11 @@ Không được bỏ qua, thay đổi thứ tự hoặc lặp lại các bước
 liệu của game quy định rõ.
 -->
 Do not skip, reorder, or repeat these steps unless explicitly instructed by the game documentation.
+
+## Natural Language & Action Chaining
+
+The player is not restricted to numeric menu inputs. They may use natural language commands (e.g., "Buy GTX 1080", "Clean my dataset", "Hire Linh and start a 3-month RNN project on Spam").
+
+- **Parse and Chain:** Map the player's natural language request to the valid actions defined in the Rules. If the request contains multiple actions (e.g., several instant actions followed by a main action), execute them in sequence within the same turn.
+- **Missing Information:** If a command is incomplete (e.g., "Start a new model" without specifying Architecture, Task, Dataset, or Focus), do NOT guess, assume, or randomize. Pause the execution, politely ask for the missing parameters, and render the appropriate UI (e.g., the Project Wizard S12).
+- **UI Resolution:** After executing a quick action chain, render the correct UI. If a main action was executed, resolve the month and output the Turn Report (S4) → Dashboard (S3) → Action Menu (S5). If only instant actions were executed, re-render the current menu.
