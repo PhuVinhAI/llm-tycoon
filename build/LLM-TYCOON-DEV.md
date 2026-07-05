@@ -1007,8 +1007,8 @@ The concrete values are defined in the Content.
 
 ## Committed Months (Step-by-Step)
 
-- When a Project or Contract is active, it does **not** auto-advance. The Player must manually choose the "Continue Project" or "Continue Contract" main action each month.
-- Mid-way through a Project or Contract (when `months elapsed == floor(M ÷ 2)`), the game pauses for a Dilemma.
+- When a Project, Contract, or Paper is active, it does **not** auto-advance. The Player must manually choose the "Continue" main action each month.
+- Mid-way through a Project, Contract, or Paper (when `months elapsed == floor(M ÷ 2)`), the game pauses for a Dilemma.
 - This returns the Player to the Dashboard every month, allowing them to perform instant actions (buy hardware, hire staff, check the market, etc.) while the commitment is ongoing.
 - The Action Menu (S5) dynamically updates to lock out other main actions until the commitment completes or is cancelled.
 
