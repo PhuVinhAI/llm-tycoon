@@ -276,17 +276,18 @@ Every free month (no committed Project/Contract month, no forced action), after 
 **`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins):
 
 1. Cash below fixed monthly costs + $1,500 → **Freelance**.
-2. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
-3. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
-4. Neural tech is owned, an empty slot exists (or Rewire is affordable), and cash > 4 months of fixed costs + item price → **Buy** the cheapest GPU or Rewire (instant action), then continue down the list.
-5. An eligible Model exists for a Paper and RP is needed for the next Tech → start **Paper** (instant action), then continue down the list.
-6. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists → roll evenly among {Start The LLM Project, Research}.
+2. Event choices → Always accept the **Term Sheet** and **Angel Investor**. Other events roll dice.
+3. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
+4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
+5. Neural tech is owned and Cash > 4 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant action), then continue down the list.
+6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 4000, turn on Cloud rental first).
 7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
-8. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
-9. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
-10. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
-11. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
-12. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
+8. An eligible Model exists for a Paper → start **Paper** (instant action), then continue down the list.
+9. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
+10. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
+11. Releases: Product if legal; otherwise License if Q ≥ 50; otherwise Open-source.
+12. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
+13. Everything else (dilemmas, Domains, focus, months) → dice, exactly as in `policy=random`.
 
 ## Dev log — output discipline while simulating
 
