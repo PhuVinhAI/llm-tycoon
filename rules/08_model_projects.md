@@ -36,15 +36,15 @@ The Player declares, in one instant action:
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
-## Hallucinations & Polishing
+## Artifacts & Fine-Tuning
 
-During every Project month, the model generates bugs (Hallucinations).
-- **Generated per month:** `H_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `H`.
-- The UI displays current `H` in the Dashboard and `+H` in the monthly ledger.
+During every Project month, the raw training process generates output anomalies called **Artifacts**.
+- **Generated per month:** `Art_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
+- The UI displays current `Artifacts` in the Dashboard and `+Art` in the monthly ledger.
 
-When `months elapsed == M`, if `H > 0`, the Project enters the **Polishing Phase**. The engine pauses and presents a Dilemma (S10):
-- **Option 1: Finish & Release.** The project completes immediately. `Q` suffers a penalty of `-floor(H ÷ 2)`.
-- **Option 2: Polish (1 month).** Extends `M` by 1. The next month's action is dedicated to polishing, which reduces `H` by `8 + (3 × E-Lv)`. At the end of that month, if `H > 0`, this Dilemma repeats; if `H ≤ 0`, the Project completes automatically.
+When `months elapsed == M`, if `Artifacts > 0`, the Project enters the **Fine-Tuning Phase**. The engine pauses and presents a Dilemma (S10):
+- **Option 1: Release Base Model.** The project completes immediately. `Q` suffers a penalty of `-floor(Artifacts ÷ 2)` due to raw, unaligned outputs.
+- **Option 2: Fine-Tune (1 month).** Extends `M` by 1. The next month's action is dedicated to fine-tuning, which reduces `Artifacts` by `8 + (3 × E-Lv)`. At the end of that month, if `Artifacts > 0`, this Dilemma repeats; if `Artifacts ≤ 0`, the Project completes automatically.
 
 ## Project Dilemmas (Mid-Project)
 
@@ -72,7 +72,7 @@ Q = Base(Architecture)                          … Content: architectures table
   + 2 × E-Lv
   + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
   + q_mod                                       … from Project Dilemma (default 0)
-  − floor(H ÷ 2)                                … Penalty if released with remaining Hallucinations
+  − floor(Artifacts ÷ 2)                        … Penalty if released as a Base Model with remaining Artifacts
   − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
 ```
 

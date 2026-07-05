@@ -1008,15 +1008,15 @@ The Player declares, in one instant action:
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
-## Hallucinations & Polishing
+## Artifacts & Fine-Tuning
 
-During every Project month, the model generates bugs (Hallucinations).
-- **Generated per month:** `H_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `H`.
-- The UI displays current `H` in the Dashboard and `+H` in the monthly ledger.
+During every Project month, the raw training process generates output anomalies called **Artifacts**.
+- **Generated per month:** `Art_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
+- The UI displays current `Artifacts` in the Dashboard and `+Art` in the monthly ledger.
 
-When `months elapsed == M`, if `H > 0`, the Project enters the **Polishing Phase**. The engine pauses and presents a Dilemma (S10):
-- **Option 1: Finish & Release.** The project completes immediately. `Q` suffers a penalty of `-floor(H ÷ 2)`.
-- **Option 2: Polish (1 month).** Extends `M` by 1. The next month's action is dedicated to polishing, which reduces `H` by `8 + (3 × E-Lv)`. At the end of that month, if `H > 0`, this Dilemma repeats; if `H ≤ 0`, the Project completes automatically.
+When `months elapsed == M`, if `Artifacts > 0`, the Project enters the **Fine-Tuning Phase**. The engine pauses and presents a Dilemma (S10):
+- **Option 1: Release Base Model.** The project completes immediately. `Q` suffers a penalty of `-floor(Artifacts ÷ 2)` due to raw, unaligned outputs.
+- **Option 2: Fine-Tune (1 month).** Extends `M` by 1. The next month's action is dedicated to fine-tuning, which reduces `Artifacts` by `8 + (3 × E-Lv)`. At the end of that month, if `Artifacts > 0`, this Dilemma repeats; if `Artifacts ≤ 0`, the Project completes automatically.
 
 ## Project Dilemmas (Mid-Project)
 
@@ -1044,7 +1044,7 @@ Q = Base(Architecture)                          … Content: architectures table
   + 2 × E-Lv
   + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
   + q_mod                                       … from Project Dilemma (default 0)
-  − floor(H ÷ 2)                                … Penalty if released with remaining Hallucinations
+  − floor(Artifacts ÷ 2)                        … Penalty if released as a Base Model with remaining Artifacts
   − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
 ```
 
@@ -1613,7 +1613,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
-| **Status** | 📦 [idle / project (🐛 H) / contract]  ·  📉 Fixed: $[x]/mo |
+| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  📉 Fixed: $[x]/mo |
 
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
@@ -1628,7 +1628,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 📅 **[Month YYYY] — [main action taken]**
 *[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
-[one line per change: +/− cash, RP, Fame, 🐛 +x Hallucinations…]
+[one line per change: +/− cash, RP, Fame, 🧩 +x Artifacts…]
 💰 [cash after] | 🔬 Research Points [after]
 
 ## S5 — Action Menu
@@ -1649,7 +1649,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S6 — Model Completion Report
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
-*(If released with H > 0: "⚠️ Released with [H] unresolved bugs")*
+*(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 **Quality: [Q]/100**
 [reception emoji + tier] → Fame [±x], Research Points +[x]
 
@@ -1782,7 +1782,7 @@ Same content as desktop, one short line each. End with:
 👥 [team or "solo"]
 📚 [datasets, short]
 🛠️ Tech: [owned tech names]
-📦 [idle / project (🐛 H) / contract]
+📦 [idle / project (🧩 Art) / contract]
 💵 [streams or "no streams"]
 📉 Fixed $[x]/mo
 
@@ -1797,7 +1797,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 📅 **[action taken]**
 *[FLAVOR: 1–2 lines. Explain unlocked Techs if any.]*
-[one change per line, including 🐛 +x Hallucinations]
+[one change per line, including 🧩 +x Artifacts]
 💰 $[after] · 🔬 Research Points [after]
 
 ## S5 — Action Menu
@@ -1821,7 +1821,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 🏁 **[Model]**
 [Architecture] × [Task]
 on [Dataset]
-*(⚠️ [H] bugs)*
+*(⚠️ [Art] artifacts)*
 
 **Quality: [total]/100**
 
@@ -1945,7 +1945,7 @@ data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Q[x],release)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
-project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, h=z | none]
+project: [Name Arch×Task on Dataset, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
 === END SAVE ===

@@ -56,7 +56,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
-| **Status** | 📦 [idle / project (🐛 H) / contract]  ·  📉 Fixed: $[x]/mo |
+| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  📉 Fixed: $[x]/mo |
 
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
@@ -71,7 +71,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 📅 **[Month YYYY] — [main action taken]**
 *[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
-[one line per change: +/− cash, RP, Fame, 🐛 +x Hallucinations…]
+[one line per change: +/− cash, RP, Fame, 🧩 +x Artifacts…]
 💰 [cash after] | 🔬 Research Points [after]
 
 ## S5 — Action Menu
@@ -92,7 +92,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S6 — Model Completion Report
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
-*(If released with H > 0: "⚠️ Released with [H] unresolved bugs")*
+*(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 **Quality: [Q]/100**
 [reception emoji + tier] → Fame [±x], Research Points +[x]
 

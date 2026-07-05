@@ -50,7 +50,7 @@ Same content as desktop, one short line each. End with:
 👥 [team or "solo"]
 📚 [datasets, short]
 🛠️ Tech: [owned tech names]
-📦 [idle / project (🐛 H) / contract]
+📦 [idle / project (🧩 Art) / contract]
 💵 [streams or "no streams"]
 📉 Fixed $[x]/mo
 
@@ -65,7 +65,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 📅 **[action taken]**
 *[FLAVOR: 1–2 lines. Explain unlocked Techs if any.]*
-[one change per line, including 🐛 +x Hallucinations]
+[one change per line, including 🧩 +x Artifacts]
 💰 $[after] · 🔬 Research Points [after]
 
 ## S5 — Action Menu
@@ -89,7 +89,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 🏁 **[Model]**
 [Architecture] × [Task]
 on [Dataset]
-*(⚠️ [H] bugs)*
+*(⚠️ [Art] artifacts)*
 
 **Quality: [total]/100**
 
