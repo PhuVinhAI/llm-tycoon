@@ -896,7 +896,7 @@ Every month, in the Costs step:
 
 - **Living & rent:** $800.
 - **Salaries:** sum of all hired Employees (Content).
-- **Hardware upkeep:** $25 per occupied slot.
+- **Hardware upkeep:** $100 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
 
 ## Rounding
@@ -1216,7 +1216,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
-- **$5,000** upfront infrastructure cost, paid at start.
+- **$20,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
@@ -1383,15 +1383,15 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 |---|---|---|---|---|---|
 | start | GTX 780 | $1,500 | 100 | 1 |
 | Sep 2014 | GTX 980 | $2,500 | 200 | 1 |
-| Jun 2016 | GTX 1080 | $4,000 | 400 | 1 |
-| Oct 2017 | Used K80 server | $5,000 | 600 | 2 |
-| Sep 2018 | RTX 2080 | $7,000 | 800 | 1 |
+| Jun 2016 | GTX 1080 | $5,000 | 400 | 1 |
+| Oct 2017 | Used K80 server | $8,000 | 600 | 2 |
+| Sep 2018 | RTX 2080 | $12,000 | 800 | 1 |
 
 **Other purchases:**
 
 | Item | Price | Effect |
 |---|---|---|
-| 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
+| 🔌 Rewire the lab (once) | $4,000 | slots 4 → 8 |
 | ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
 
 *(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
@@ -1459,9 +1459,9 @@ Instead of fixed characters, the Player must pay a Headhunter Fee to search for 
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
-| **The Data Specialist** | 800 | $1,000 | $600 – $1,000 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
-| **The Hardware Optimizer** | 1500 | $2,000 | $1,200 – $1,800 | All compute requirements ×0.75 (round up) |
-| **The Research Scientist** | 2200 | $3,000 | $2,000 – $3,000 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
+| **The Data Specialist** | 800 | $1,000 | $800 – $1,200 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $2,500 | $1,500 – $2,200 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $5,000 | $3,000 – $4,500 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 
@@ -2049,8 +2049,8 @@ Provide your configuration to start:
 | ID | Archetype | Fee | Requires |
 |---|---|---|---|
 | 1 | 🔍 Data Specialist | $1,000 | Fame 800 |
-| 2 | 🔍 Hardware Optimizer | $2,000 | Fame 1500 |
-| 3 | 🔍 Research Scientist | $3,000 | Fame 2200 |
+| 2 | 🔍 Hardware Optimizer | $2,500 | Fame 1500 |
+| 3 | 🔍 Research Scientist | $5,000 | Fame 2200 |
 
 👉 *Reply with the ID to pay the fee and interview candidates, or 0 to go back.*
 
@@ -2335,9 +2335,9 @@ Configuration:
 **Recruit (Headhunter):**
 1 🔍 Data Spec ($1,000)
   Req: Fame 800
-2 🔍 HW Optimizer ($2,000)
+2 🔍 HW Optimizer ($2,500)
   Req: Fame 1500
-3 🔍 Scientist ($3,000)
+3 🔍 Scientist ($5,000)
   Req: Fame 2200
 
 👉 *Reply ID to pay fee, or 0 back.*

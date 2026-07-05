@@ -253,8 +253,8 @@ Provide your configuration to start:
 | ID | Archetype | Fee | Requires |
 |---|---|---|---|
 | 1 | 🔍 Data Specialist | $1,000 | Fame 800 |
-| 2 | 🔍 Hardware Optimizer | $2,000 | Fame 1500 |
-| 3 | 🔍 Research Scientist | $3,000 | Fame 2200 |
+| 2 | 🔍 Hardware Optimizer | $2,500 | Fame 1500 |
+| 3 | 🔍 Research Scientist | $5,000 | Fame 2200 |
 
 👉 *Reply with the ID to pay the fee and interview candidates, or 0 to go back.*
 

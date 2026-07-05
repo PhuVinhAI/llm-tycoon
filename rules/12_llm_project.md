@@ -24,7 +24,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
-- **$5,000** upfront infrastructure cost, paid at start.
+- **$20,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
@@ -51,7 +51,7 @@ dữ liệu quy mô web. Mọi luật Model Project vẫn áp dụng trừ phầ
 Điều kiện khởi động: sở hữu SCALE (kéo theo PRET + kiến trúc PTRF); một
 Dataset web-mixed Size 5, Quality ≥ 3; cam kết M ≥ 4 tháng với TFLOPS/tháng × M
 ≥ 3200 TFLOPS-month (đã tính giảm trừ từ nhân sự — engine kiểm tra trước khi
-chạy); trả trước $5,000 hạ tầng.
+chạy); trả trước $20,000 hạ tầng.
 
 Quality: dùng dòng PTRF nhưng yêu cầu compute = 3200 TFLOPS-month; Task = "LLM
 (general)" (Match +10, Demand theo bảng thị trường); cộng thêm +10 điểm

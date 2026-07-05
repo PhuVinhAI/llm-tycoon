@@ -26,7 +26,7 @@ Every month, in the Costs step:
 
 - **Living & rent:** $800.
 - **Salaries:** sum of all hired Employees (Content).
-- **Hardware upkeep:** $25 per occupied slot.
+- **Hardware upkeep:** $100 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
 
 ## Rounding

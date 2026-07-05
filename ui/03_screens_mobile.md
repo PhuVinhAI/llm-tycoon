@@ -254,9 +254,9 @@ Configuration:
 **Recruit (Headhunter):**
 1 🔍 Data Spec ($1,000)
   Req: Fame 800
-2 🔍 HW Optimizer ($2,000)
+2 🔍 HW Optimizer ($2,500)
   Req: Fame 1500
-3 🔍 Scientist ($3,000)
+3 🔍 Scientist ($5,000)
   Req: Fame 2200
 
 👉 *Reply ID to pay fee, or 0 back.*

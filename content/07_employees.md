@@ -19,9 +19,9 @@ Instead of fixed characters, the Player must pay a Headhunter Fee to search for 
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
-| **The Data Specialist** | 800 | $1,000 | $600 – $1,000 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
-| **The Hardware Optimizer** | 1500 | $2,000 | $1,200 – $1,800 | All compute requirements ×0.75 (round up) |
-| **The Research Scientist** | 2200 | $3,000 | $2,000 – $3,000 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
+| **The Data Specialist** | 800 | $1,000 | $800 – $1,200 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $2,500 | $1,500 – $2,200 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $5,000 | $3,000 – $4,500 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 
@@ -32,7 +32,7 @@ Engine sẽ tạo ra 3 ứng viên có sự đánh đổi khác nhau (ví dụ: 
 chỉ số thấp, lương cao thì chỉ số cao). Tên và bối cảnh được sáng tạo theo 
 ngôn ngữ người chơi. Chỉ số khóa trong trần/sàn:
 1. Chuyên gia dữ liệu (Fame 800, Phí $1000): Lương $800-$1200; Dataset +1 Q; Research +150-250 RP.
-2. Tối ưu phần cứng (Fame 1500, Phí $2000): Lương $1500-$2200; Compute req ×0.75.
-3. Nhà khoa học (Fame 2200, Phí $3000): Lương $2500-$3800; Research +600-900 RP; Model +2-4 Q.
+2. Tối ưu phần cứng (Fame 1500, Phí $2500): Lương $1500-$2200; Compute req ×0.75.
+3. Nhà khoa học (Fame 2200, Phí $5000): Lương $3000-$4500; Research +600-900 RP; Model +2-4 Q.
 Tối đa thuê 2 người cùng lúc.
 -->
