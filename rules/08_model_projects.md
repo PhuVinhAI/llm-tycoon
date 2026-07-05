@@ -36,6 +36,16 @@ The Player declares, in one instant action:
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
+## Hallucinations & Polishing
+
+During every Project month, the model generates bugs (Hallucinations).
+- **Generated per month:** `H_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `H`.
+- The UI displays current `H` in the Dashboard and `+H` in the monthly ledger.
+
+When `months elapsed == M`, if `H > 0`, the Project enters the **Polishing Phase**. The engine pauses and presents a Dilemma (S10):
+- **Option 1: Finish & Release.** The project completes immediately. `Q` suffers a penalty of `-floor(H ÷ 2)`.
+- **Option 2: Polish (1 month).** Extends `M` by 1. The next month's action is dedicated to polishing, which reduces `H` by `8 + (3 × E-Lv)`. At the end of that month, if `H > 0`, this Dilemma repeats; if `H ≤ 0`, the Project completes automatically.
+
 ## Project Dilemmas (Mid-Project)
 
 When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine calculates its **Synergy Score**:
@@ -62,6 +72,7 @@ Q = Base(Architecture)                          … Content: architectures table
   + 2 × E-Lv
   + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
   + q_mod                                       … from Project Dilemma (default 0)
+  − floor(H ÷ 2)                                … Penalty if released with remaining Hallucinations
   − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
 ```
 
