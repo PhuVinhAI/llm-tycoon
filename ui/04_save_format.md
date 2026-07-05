@@ -23,7 +23,8 @@ date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
 counters: research=[x], models=[x]
 tech: [comma-separated IDs]
 hw: [item xN, …] | cloud: [0-2] | slots_used: [x]/[4|8] | rewired: [yes/no]
-team: [names or none]
+team: [Name($Salary, Effects) | none]
+candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,analyzed=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none
@@ -43,7 +44,7 @@ flags: [fired events with lasting effects, discounts in force, hype windows]
 Tiếng Việt (tóm tắt):
 SAVE block v0.2 — thêm dòng `settings` (ngôn ngữ + UI Profile) so với bản
 trước. Gồm đủ: người chơi/công ty, cài đặt, tháng, tiền, RP, REP, kỹ năng
-+ bộ đếm, công nghệ, phần cứng + slot + rewired, đội ngũ, dataset, model,
++ bộ đếm, công nghệ, phần cứng + slot + rewired, đội ngũ, ứng viên, dataset, model,
 dòng thu, hợp đồng, dự án đang chạy, cuộc thi, cờ sự kiện.
 
 Mọi trường bắt buộc (trống ghi "none"); khối phải tự đủ; luôn render đúng

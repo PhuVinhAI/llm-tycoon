@@ -1308,19 +1308,21 @@ The Player can view their Portfolio (S15) and ask to **Analyze** any completed M
 
 # Employees
 
-## Hiring
+## Generation & Hiring
 
-- Candidates become available at Fame thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
+- **Generation:** When the Company reaches a Fame threshold (Content), the Engine generates a candidate for that Archetype during the Events step. 
+- Using Creative License, invent a name, gender, and brief background that naturally fits the player's chosen language (e.g., Vietnamese names if playing in Vietnamese). 
+- Pick an exact Salary and exact Effect values within the Archetype's bounds (Content). Once generated, these stats are permanent for this playthrough.
 - Maximum **2** Employees at a time — the lab is one small room.
 - Hiring is instant. Salary is paid from the month of hire (Economy rule).
 
 ## Firing
 
-- Firing is instant, effective immediately; no penalty, no severance. The candidate remains available for re-hire.
+- Firing is instant, effective immediately; no penalty, no severance. The candidate remains available in the candidate pool for re-hire.
 
 ## Effects
 
-- Each Employee's effects (Content) apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
+- Each Employee's generated effects apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
 
 # Events and Competitions
 
@@ -1551,13 +1553,15 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 | C31 | 2200 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
 | C32 | 2200 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
 
-# Employee Candidates
+# Employee Archetypes
 
-| Name | Fame ≥ | Salary/mo | Effects |
-|---|---|---|---|---|
-| **Linh** — data wrangler | 800 | $1,200 | Collected Datasets +1 Quality; Research +200 RP |
-| **Tuấn** — CUDA wizard | 1500 | $1,800 | All compute requirements ×0.75 (round up) |
-| **Dr. Phạm** — ex-professor | 2200 | $2,500 | Research +800 RP; all Models +3 Q |
+Instead of fixed characters, the Engine generates a unique candidate when a Fame threshold is reached. The Engine uses Creative License to invent a name and background fitting the player's language, and selects exact stats within the bounds below.
+
+| Archetype | Fame ≥ | Salary/mo Range | Stat Bounds |
+|---|---|---|---|
+| **The Data Specialist** | 800 | $1,000 – $1,400 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $1,600 – $2,000 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $2,300 – $2,800 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 
@@ -2355,7 +2359,8 @@ date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
 counters: research=[x], models=[x]
 tech: [comma-separated IDs]
 hw: [item xN, …] | cloud: [0-2] | slots_used: [x]/[4|8] | rewired: [yes/no]
-team: [names or none]
+team: [Name($Salary, Effects) | none]
+candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,analyzed=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none

@@ -18,24 +18,27 @@ Trách nhiệm:
 
 # Employees
 
-## Hiring
+## Generation & Hiring
 
-- Candidates become available at Fame thresholds (Content); the engine announces each candidate in the Events step of the month the threshold is crossed.
+- **Generation:** When the Company reaches a Fame threshold (Content), the Engine generates a candidate for that Archetype during the Events step. 
+- Using Creative License, invent a name, gender, and brief background that naturally fits the player's chosen language (e.g., Vietnamese names if playing in Vietnamese). 
+- Pick an exact Salary and exact Effect values within the Archetype's bounds (Content). Once generated, these stats are permanent for this playthrough.
 - Maximum **2** Employees at a time — the lab is one small room.
 - Hiring is instant. Salary is paid from the month of hire (Economy rule).
 
 ## Firing
 
-- Firing is instant, effective immediately; no penalty, no severance. The candidate remains available for re-hire.
+- Firing is instant, effective immediately; no penalty, no severance. The candidate remains available in the candidate pool for re-hire.
 
 ## Effects
 
-- Each Employee's effects (Content) apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
+- Each Employee's generated effects apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
 
 <!--
 Tiếng Việt (tóm tắt):
-Tuyển: ứng viên mở theo ngưỡng Fame (Content), engine thông báo đúng tháng
-chạm ngưỡng. Tối đa 2 nhân viên — phòng lab tại gia mà. Thuê là tức thời;
+Sinh & Tuyển: khi đạt ngưỡng Fame, Engine tự tạo tên, giới tính, bối cảnh
+phù hợp ngôn ngữ người chơi và chốt cứng một mức lương/chỉ số nằm trong
+giới hạn Archetype (Content). Tối đa 2 nhân viên. Thuê là tức thời;
 trả lương từ tháng thuê.
 
 Sa thải: tức thời, hiệu lực ngay, không phạt, không trợ cấp; ứng viên vẫn
