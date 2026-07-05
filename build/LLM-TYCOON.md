@@ -1066,7 +1066,9 @@ Review Score = Base Points
 
 **Step 3: Final Quality (Q) & UI Display**
 - **Q** = Average of all `Review Scores` (floor 0, cap 100).
-- When rendering the UI (S6), display each Reviewer's score as `Review Score ÷ 10` (e.g., 85 becomes 8.5/10). The Engine uses Creative License to write a 1-sentence flavor quote matching the specific score and context of that benchmark.
+- When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
+- For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). Display a comparison between the Player's Score and the SOTA Score.
+- The Engine uses Creative License to write a 1-sentence flavor quote. **Crucially**, this quote MUST react to the comparison: if the Player beats the SOTA, the quote should hype the new world record; if they lose, it should point out the gap.
 
 ## Reception
 
@@ -1529,6 +1531,30 @@ Use these to pad the review list up to 4 if there aren't enough benchmarks:
 - **Hugging Face Community** (Available: From 2017)
 - **PapersWithCode** (Available: From 2018)
 
+# Historical SOTA (Rival Models)
+
+When rendering the Benchmark comparison in the Model Completion Report (S6), the Game Engine must find the current SOTA Rival for each Benchmark. 
+**Rule:** Find the most recent entry in this table for the specific Benchmark that is ≤ the current in-game Year.
+
+| Year | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
+|---|---|---|---|
+| 2013 | F1-Score (IMDB/Reuters) | SVM / Naive Bayes Baselines | 60 |
+| 2013 | Perplexity (Penn Treebank) | KenLM (N-gram baseline) | 50 |
+| 2013 | BLEU Score | Moses (Statistical MT) | 40 |
+| 2014 | BLEU Score | Seq2Seq (Google) | 55 |
+| 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75 |
+| 2016 | BLEU Score | GNMT (Google Neural MT) | 65 |
+| 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77 |
+| 2017 | BLEU Score | Transformer (Google) | 75 |
+| 2018 | SQuAD 2.0 | BERT (Google) | 86 |
+| 2018 | GLUE Benchmark | BERT (Google) | 82 |
+| 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
+| 2019 | SuperGLUE | T5 (Google) | 89 |
+| 2020 | HumanEval (OpenAI) | GPT-3 (OpenAI) | 60 |
+| 2020 | MMLU | GPT-3 (OpenAI) | 65 |
+
+*(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50`).*
+
 ---
 
 # PART 5 — SCENARIO
@@ -1697,10 +1723,16 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
-**Reviews:**
-* **[Score]/10** — [Benchmark 1] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Benchmark 2] (*"[1-sentence flavor quote]"*)
-*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
+**Benchmark Results:**
+| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+|---|---|---|---|
+| [Benchmark 1] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
+| [Benchmark 2] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
+*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
+
+**Quotes:**
+* [Benchmark 1]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
+* [Benchmark 2]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]
@@ -1875,12 +1907,14 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 on [Dataset]
 *(⚠️ [Art] artifacts)*
 
-**Reviews:**
-[Score]/10 - [Benchmark 1]
-*"[Quote]"*
-[Score]/10 - [Benchmark 2]
-*"[Quote]"*
-*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
+**Benchmarks:**
+**[Benchmark 1]**
+You: [Score]/100 | [Rival]: [SOTA]/100
+*"[Quote reacting to Player vs SOTA]"*
+**[Benchmark 2]**
+You: [Score]/100 | [Rival]: [SOTA]/100
+*"[Quote reacting to Player vs SOTA]"*
+*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
 
 **Quality: [Q]/100** ([tier])
 ⭐ Fame [±x] · 🔬 RP +[x]
@@ -2022,11 +2056,19 @@ Expected completion report (S6, desktop) in English:
 ```
 🏁 SpamGuard — BOW × Classification on Product reviews
 
-Reviews:
-* 8.5/10 — F1-Score (IMDB/Reuters) ("Excellent precision. The 'reviews' dataset perfectly matched the target domain.")
-* 4.5/10 — r/MachineLearning ("Classic BOW approach. Good for basic spam, but fails on complex sentences.")
-* 4.0/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
-* 5.0/10 — ArXiv Peer Review ("Solid baseline, though it struggles with out-of-vocabulary tokens.")
+Benchmark Results:
+| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+|---|---|---|---|
+| F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
+| r/MachineLearning | **45/100** | Industry Avg | 50/100 |
+| TechCrunch | **40/100** | Industry Avg | 50/100 |
+| ArXiv Peer Review | **50/100** | Industry Avg | 50/100 |
+
+Quotes:
+* F1-Score: "Incredible precision! It absolutely crushed the old SVM baselines to set a new SOTA."
+* r/MachineLearning: "It's slightly below average for general text, but works fine for reviews."
+* TechCrunch: "Lacks the contextual awareness of modern embedding models."
+* ArXiv Peer Review: "A perfectly average, standard implementation of Bag-of-Words."
 
 Overall Quality: 55/100 (👍 Good)
 ⭐ Fame +300  ·  🔬 Research Points +550

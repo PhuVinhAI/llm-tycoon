@@ -21,11 +21,19 @@ Expected completion report (S6, desktop) in English:
 ```
 🏁 SpamGuard — BOW × Classification on Product reviews
 
-Reviews:
-* 8.5/10 — F1-Score (IMDB/Reuters) ("Excellent precision. The 'reviews' dataset perfectly matched the target domain.")
-* 4.5/10 — r/MachineLearning ("Classic BOW approach. Good for basic spam, but fails on complex sentences.")
-* 4.0/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
-* 5.0/10 — ArXiv Peer Review ("Solid baseline, though it struggles with out-of-vocabulary tokens.")
+Benchmark Results:
+| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+|---|---|---|---|
+| F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
+| r/MachineLearning | **45/100** | Industry Avg | 50/100 |
+| TechCrunch | **40/100** | Industry Avg | 50/100 |
+| ArXiv Peer Review | **50/100** | Industry Avg | 50/100 |
+
+Quotes:
+* F1-Score: "Incredible precision! It absolutely crushed the old SVM baselines to set a new SOTA."
+* r/MachineLearning: "It's slightly below average for general text, but works fine for reviews."
+* TechCrunch: "Lacks the contextual awareness of modern embedding models."
+* ArXiv Peer Review: "A perfectly average, standard implementation of Bag-of-Words."
 
 Overall Quality: 55/100 (👍 Good)
 ⭐ Fame +300  ·  🔬 Research Points +550

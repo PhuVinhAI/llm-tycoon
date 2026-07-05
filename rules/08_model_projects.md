@@ -95,7 +95,9 @@ Review Score = Base Points
 
 **Step 3: Final Quality (Q) & UI Display**
 - **Q** = Average of all `Review Scores` (floor 0, cap 100).
-- When rendering the UI (S6), display each Reviewer's score as `Review Score ÷ 10` (e.g., 85 becomes 8.5/10). The Engine uses Creative License to write a 1-sentence flavor quote matching the specific score and context of that benchmark.
+- When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
+- For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). Display a comparison between the Player's Score and the SOTA Score.
+- The Engine uses Creative License to write a 1-sentence flavor quote. **Crucially**, this quote MUST react to the comparison: if the Player beats the SOTA, the quote should hype the new world record; if they lose, it should point out the gap.
 
 ## Reception
 

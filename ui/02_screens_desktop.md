@@ -94,10 +94,16 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
-**Reviews:**
-* **[Score]/10** — [Benchmark 1] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Benchmark 2] (*"[1-sentence flavor quote]"*)
-*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
+**Benchmark Results:**
+| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+|---|---|---|---|
+| [Benchmark 1] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
+| [Benchmark 2] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
+*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
+
+**Quotes:**
+* [Benchmark 1]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
+* [Benchmark 2]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]

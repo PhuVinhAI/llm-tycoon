@@ -91,12 +91,14 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 on [Dataset]
 *(⚠️ [Art] artifacts)*
 
-**Reviews:**
-[Score]/10 - [Benchmark 1]
-*"[Quote]"*
-[Score]/10 - [Benchmark 2]
-*"[Quote]"*
-*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
+**Benchmarks:**
+**[Benchmark 1]**
+You: [Score]/100 | [Rival]: [SOTA]/100
+*"[Quote reacting to Player vs SOTA]"*
+**[Benchmark 2]**
+You: [Score]/100 | [Rival]: [SOTA]/100
+*"[Quote reacting to Player vs SOTA]"*
+*(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
 
 **Quality: [Q]/100** ([tier])
 ⭐ Fame [±x] · 🔬 RP +[x]
