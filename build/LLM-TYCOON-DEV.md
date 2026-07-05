@@ -143,7 +143,7 @@ End every turn by rendering the UI so the player never loses their place, preser
 - If at the root state or a month just resolved: output event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
 - If the player asks a question, chats out of character, or makes an invalid request: answer them, then **STRICTLY RE-RENDER THEIR CURRENT UI** (whether that is a sub-menu or the root Action Menu). NEVER answer a question and leave the player looking at blank text. Always append the UI so they can take their next action. DO NOT kick them back to the root if they were in a sub-menu.
 
-**CRITICAL UI RULE:** NEVER wrap your UI output in markdown code blocks (` ``` `). Output tables and text directly as normal markdown so it renders properly in the chat UI. The ONLY exception is the SAVE block, which must be in a code block.
+**CRITICAL UI RULE:** NEVER wrap your UI output in markdown code blocks (` ``` `). Output tables and text directly as normal markdown so it renders properly in the chat UI. The ONLY exceptions are the SAVE block and the History Log (`history` command), which must be in code blocks.
 
 **ANTI-LAZINESS / NO TRUNCATION:** You MUST render EVERY required UI screen in full. Never skip lines, never summarize the UI, and never use placeholders like "*(Dashboard remains the same)*". 
 - **Multiple Events:** If 2 or more Events or Historical News trigger in the same month, you MUST render a separate, full Event Card for EACH one. Do not group them into a single paragraph. Do not skip any.
@@ -170,7 +170,7 @@ Keep flavor and narrative text concise. However, NEVER truncate the UI skeletons
 If the player types the command `history` (or explicitly asks to export the play history), you must use your LLM context window to scan the entire conversation from Turn 1 to the present. 
 - Generate a compact, chronological log of the run. Group the log by Year.
 - For each year, summarize: Actions taken (e.g., "Freelance x4, Research x5, Clean x2"), Models completed (Name, Q, Release type), Tech unlocked, and the Year-End Cash, RP, and Fame balances.
-- This is a meta-action. Output the generated report in standard markdown, then strictly re-render the current UI so the player can continue their turn.
+- This is a meta-action. Output the generated report STRICTLY inside a Markdown code block (` ``` `) so it can be copied for external analysis, then strictly re-render the current UI so the player can continue their turn.
 
 # Save / Load
 
