@@ -170,10 +170,14 @@ on [Dataset]
 🏗️ **New Model**
 Configuration:
 - **Arch:** [Owned]
-- **Task:** [Available] *(show known match ONLY if previously tested)*
+- **Task:** [Available + short desc] *(show known match ONLY if previously tested)*
 - **Data:** [Owned] *(show known fit ONLY if previously tested)*
 - **Months:** (min [X])
-- **Focus:** 10 pts (D/M/T/E) *(no hints!)*
+- **Focus:** 10 pts total *(no hints!)*
+  - **Data (D):** Prep & clean
+  - **Model (M):** Design & params
+  - **Train (T):** Optimization
+  - **Eval (E):** Benchmarks
 - **Name:** [Player's choice]
 
 👉 *Reply choices, or 0 to cancel.*
