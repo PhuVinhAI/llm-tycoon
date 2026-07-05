@@ -27,7 +27,7 @@ Document map:
 | Field | Value |
 |---|---|
 | Title | 🏭 LLM TYCOON |
-| Version | 0.2 |
+| Version | 0.3 |
 | Chapter | 1 of 3 — *Home Lab* |
 | Genre | Text-based business simulation (tycoon) |
 | Setting | Real AI history, 2013–2020 |
@@ -803,10 +803,10 @@ A Contract may be associated with information such as:
 
 * Identifier (ID)
 * Client and job description
-* REP threshold
+* Fame and Date thresholds
 * Requirements (Technologies, Datasets)
-* Committed months
-* Payment
+* Committed months and months elapsed
+* Payment (and modifiers)
 * Bonus condition
 
 The concrete values are defined in the Content.
@@ -845,6 +845,7 @@ The concrete values are defined in the Content.
 ## Committed Months (Step-by-Step)
 
 - When a Project or Contract is active, it does **not** auto-advance. The Player must manually choose the "Continue Project" or "Continue Contract" main action each month.
+- Mid-way through a Project or Contract (when `months elapsed == floor(M ÷ 2)`), the game pauses for a Dilemma.
 - This returns the Player to the Dashboard every month, allowing them to perform instant actions (buy hardware, hire staff, check the market, etc.) while the commitment is ongoing.
 - The Action Menu (S5) dynamically updates to lock out other main actions until the commitment completes or is cancelled.
 
@@ -857,7 +858,7 @@ The concrete values are defined in the Content.
 | 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
-| 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
+| 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
 | 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
 
@@ -1142,10 +1143,16 @@ The Player can view their Portfolio (S15) and ask to **Analyze** any completed M
 - Accepting is instant; requirements (Technologies, Datasets) are checked at acceptance and must all hold.
 - The listed months become committed Contract months. The Player must manually execute the "Continue Contract" action each month.
 
+## Mid-Contract Dilemmas
+
+When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine pauses and presents a **Contract Dilemma** (Content). 
+- Render the Dilemma (S10) and wait for the Player's choice. 
+- The outcome may modify the total months (`M`), the final payment (`Pay`), or grant immediate Cash/Fame. Track any `Pay` modifier (`pay_mod`) in the Game State.
+
 ## Completion & Payout
 
 - **No partial payments:** The Company receives $0 during the intermediate months of a Contract.
-- **On the final month:** When the final committed month is completed, the client pays the listed amount in full. If the Company owns the listed bonus Technology, pay × **1.2**.
+- **On the final month:** When the final committed month is completed, the client pays the listed amount in full (plus or minus any modifier from the Mid-Contract Dilemma). If the Company owns the listed bonus Technology, base pay × **1.2** (calculate multiplier on base pay before adding/subtracting dilemma modifiers).
 - Fame +100. The Contract counts toward E-Lv (Skills rule).
 - Cancelling mid-contract: Fame −200, no pay (Actions rule).
 
@@ -1395,6 +1402,17 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 | C22 | 1500 | Aug 2016 | Telecom — support ticket routing | LSTM | 2 | $6,500 | — |
 | C31 | 2200 | Jan 2017 | Bank — chatbot pilot | ATTN | 3 | $14,000 | TRF |
 | C32 | 2200 | Jan 2018 | Search portal — snippet QA | TRF | 3 | $16,000 | PRET |
+
+## Mid-Contract Dilemmas
+
+Triggered when an active Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2). Flavor direction is determined by `Turn % 4`:
+
+| X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
+|---|---|---|---|
+| 0 | **Scope Creep** (Client wants a new feature mid-way) | Refuse the change.<br>Yield: `Normal` | Accept the extra work.<br>Yield: `M +1`, `Pay +30%` |
+| 1 | **Messy Client Data** (The provided data is garbage) | Train on it anyway.<br>Yield: `Pay -20%` | Clean it manually.<br>Yield: `M +1`, `Fame +50` |
+| 2 | **Integration Hell** (Legacy systems are blocking deployment) | Hack a quick fix.<br>Yield: `Normal` | Build a proper API.<br>Yield: `M +1`, `Pay +20%`, `Fame +100` |
+| 3 | **Early Delivery Request** (Client needs it ASAP) | Decline.<br>Yield: `Normal` | Crunch time.<br>Yield: `Pay +20%`, `Cash -$1,000` (cloud/coffee) |
 
 # Employee Archetypes
 
@@ -1750,7 +1768,7 @@ Labels are translated into the player's language; emoji anchors and canonical co
 **S0-A (Language Ask):** Rendered strictly in simple English.
 🏭 **LLM TYCOON**
 Build the world's first LLM (2013-2020)
-v0.2 · Chapter 1: Home Lab
+v0.3 · Chapter 1: Home Lab
 
 🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)
 
@@ -1862,7 +1880,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research & Projects)
+## S10 — Dilemma (Freelance, Research, Projects & Contracts)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story combining the matrix coordinates]*
@@ -2090,7 +2108,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 💰 $[cash]
 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research & Projects)
+## S10 — Dilemma (Freelance, Research, Projects & Contracts)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story]*
@@ -2195,7 +2213,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 # S8 — SAVE Block Format
 
 ```
-=== SAVE LLM-TYCOON v0.2 ===
+=== SAVE LLM-TYCOON v0.3 ===
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
@@ -2207,7 +2225,7 @@ candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,analyzed=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M | none]
+contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | none]
 project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]

@@ -28,10 +28,16 @@ Trách nhiệm:
 - Accepting is instant; requirements (Technologies, Datasets) are checked at acceptance and must all hold.
 - The listed months become committed Contract months. The Player must manually execute the "Continue Contract" action each month.
 
+## Mid-Contract Dilemmas
+
+When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine pauses and presents a **Contract Dilemma** (Content). 
+- Render the Dilemma (S10) and wait for the Player's choice. 
+- The outcome may modify the total months (`M`), the final payment (`Pay`), or grant immediate Cash/Fame. Track any `Pay` modifier (`pay_mod`) in the Game State.
+
 ## Completion & Payout
 
 - **No partial payments:** The Company receives $0 during the intermediate months of a Contract.
-- **On the final month:** When the final committed month is completed, the client pays the listed amount in full. If the Company owns the listed bonus Technology, pay × **1.2**.
+- **On the final month:** When the final committed month is completed, the client pays the listed amount in full (plus or minus any modifier from the Mid-Contract Dilemma). If the Company owns the listed bonus Technology, base pay × **1.2** (calculate multiplier on base pay before adding/subtracting dilemma modifiers).
 - Fame +100. The Contract counts toward E-Lv (Skills rule).
 - Cancelling mid-contract: Fame −200, no pay (Actions rule).
 
@@ -43,9 +49,9 @@ engine thông báo ở bước Sự kiện. Mỗi hợp đồng chỉ làm một
 
 Nhận & làm: nhận là hành động tức thời; điều kiện (công nghệ, dataset) kiểm
 tra tại lúc nhận và phải thỏa hết; số tháng ghi trong hợp đồng trở thành
-tháng cam kết.
+tháng cam kết. Giữa hợp đồng (tháng = ⌊M/2⌋) sẽ nổ ra sự kiện Dilemma.
 
-Hoàn thành: tháng cuối khách trả đủ tiền; nếu sở hữu công nghệ bonus của
-hợp đồng → tiền ×1.2; Fame +100; tính vào E-Lv. Hủy giữa chừng: Fame −200, không
+Hoàn thành: tháng cuối khách trả đủ tiền (đã cộng/trừ từ Dilemma); nếu sở hữu công nghệ bonus của
+hợp đồng → tiền gốc ×1.2; Fame +100; tính vào E-Lv. Hủy giữa chừng: Fame −200, không
 được trả đồng nào.
 -->

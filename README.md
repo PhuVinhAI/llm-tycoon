@@ -31,7 +31,7 @@ Every build produces **two files**:
 
 The assembly order is the `MANIFEST` in [`scripts/build.js`](./scripts/build.js); entries flagged `devOnly` go only into the DEV file. Never edit the build outputs directly — edit the source modules and rebuild.
 
-## 🎮 v0.2 — Chapter 1: Home Lab
+## 🎮 v0.3 — Chapter 1: Home Lab
 
 - **Era:** 2013–2020, from pre-LLM to the first LLM. A fixed event calendar built from real AI history (word2vec, TensorFlow, AlphaGo, *Attention Is All You Need*, BERT, GPT-2…). Follow history for research discounts — or beat the papers to it for glory.
 - **Loop:** 1 turn = 1 month. Freelance for cash, research the tech tree, collect & clean datasets, buy GPUs, hire up to 2 helpers, ship models (open-source / license / product), take contracts, win competitions.

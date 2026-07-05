@@ -22,7 +22,7 @@ Tăng phiên bản game ở đây VÀ trong package.json khi thay đổi luật/
 | Field | Value |
 |---|---|
 | Title | 🏭 LLM TYCOON |
-| Version | 0.2 |
+| Version | 0.3 |
 | Chapter | 1 of 3 — *Home Lab* |
 | Genre | Text-based business simulation (tycoon) |
 | Setting | Real AI history, 2013–2020 |
@@ -37,7 +37,7 @@ The **About** screen shows this card, followed by a 2–3 line pitch written in 
 
 <!--
 Tiếng Việt (tóm tắt):
-Thẻ game: LLM TYCOON v0.2, chương 1/3 "Home Lab"; thể loại mô phỏng kinh
+Thẻ game: LLM TYCOON v0.3, chương 1/3 "Home Lab"; thể loại mô phỏng kinh
 doanh dạng văn bản; bối cảnh lịch sử AI thật 2013–2020; mục tiêu huấn luyện
 LLM đầu tiên của thế giới trước 2021; 1 người chơi; chơi nhiều phiên nhờ
 SAVE block; mọi ngôn ngữ; 2 chế độ UI (desktop ngang / mobile dọc); không

@@ -22,7 +22,7 @@ Labels are translated into the player's language; emoji anchors and canonical co
 **S0-A (Language Ask):** Rendered strictly in simple English.
 🏭 **LLM TYCOON**
 Build the world's first LLM (2013-2020)
-v0.2 · Chapter 1: Home Lab
+v0.3 · Chapter 1: Home Lab
 
 🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)
 
@@ -134,7 +134,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research & Projects)
+## S10 — Dilemma (Freelance, Research, Projects & Contracts)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story combining the matrix coordinates]*

@@ -139,7 +139,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 💰 $[cash]
 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research & Projects)
+## S10 — Dilemma (Freelance, Research, Projects & Contracts)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story]*

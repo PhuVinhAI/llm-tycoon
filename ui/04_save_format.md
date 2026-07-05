@@ -16,7 +16,7 @@ khối văn bản gọn; người chơi dán nó cùng Game Document vào hội 
 # S8 — SAVE Block Format
 
 ```
-=== SAVE LLM-TYCOON v0.2 ===
+=== SAVE LLM-TYCOON v0.3 ===
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
@@ -28,7 +28,7 @@ candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,analyzed=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M | none]
+contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | none]
 project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
@@ -42,7 +42,7 @@ flags: [fired events with lasting effects, discounts in force, hype windows]
 
 <!--
 Tiếng Việt (tóm tắt):
-SAVE block v0.2 — thêm dòng `settings` (ngôn ngữ + UI Profile) so với bản
+SAVE block v0.3 — thêm dòng `settings` (ngôn ngữ + UI Profile) so với bản
 trước. Gồm đủ: người chơi/công ty, cài đặt, tháng, tiền, RP, REP, kỹ năng
 + bộ đếm, công nghệ, phần cứng + slot + rewired, đội ngũ, ứng viên, dataset, model,
 dòng thu, hợp đồng, dự án đang chạy, cuộc thi, cờ sự kiện.

@@ -35,10 +35,10 @@ A Contract may be associated with information such as:
 
 * Identifier (ID)
 * Client and job description
-* REP threshold
+* Fame and Date thresholds
 * Requirements (Technologies, Datasets)
-* Committed months
-* Payment
+* Committed months and months elapsed
+* Payment (and modifiers)
 * Bonus condition
 
 The concrete values are defined in the Content.
