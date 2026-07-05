@@ -26,11 +26,12 @@ Trách nhiệm:
 ## Accepting and working
 
 - Accepting is instant; requirements (Technologies, Datasets) are checked at acceptance and must all hold.
-- The listed months become committed Contract months.
+- The listed months become committed Contract months. The Player must manually execute the "Continue Contract" action each month.
 
-## Completion
+## Completion & Payout
 
-- On the final month: the client pays the listed amount. If the Company owns the listed bonus Technology, pay × **1.2**.
+- **No partial payments:** The Company receives $0 during the intermediate months of a Contract.
+- **On the final month:** When the final committed month is completed, the client pays the listed amount in full. If the Company owns the listed bonus Technology, pay × **1.2**.
 - Fame +100. The Contract counts toward E-Lv (Skills rule).
 - Cancelling mid-contract: Fame −200, no pay (Actions rule).
 
