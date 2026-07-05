@@ -1431,7 +1431,7 @@ Present the ending as a short narrated epilogue, then the final total score, the
 - Starting a Paper is an instant action from S17.
 - **Commitment:** Writing a Paper takes exactly **2 committed months** (`M = 2`).
 - **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
-  - **Product:** The active Income Stream is immediately **cancelled**.
+  - **Product:** The active Income Stream is immediately **cancelled**. Furthermore, giving away proprietary commercial IP angers investors: **Fame −300**.
   - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
   - **Open-source / Shelved:** Safe to publish. No immediate penalties.
 
@@ -2232,12 +2232,12 @@ Provide your configuration to start:
 
 🎓 **Publish a Paper**
 *Takes 2 months. Publishing reveals your tech to the world.*
-⚠️ **Product:** Active streams are cancelled. **License:** Triggers a massive lawsuit!
+⚠️ **Product:** Streams cancelled & Fame -300. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60, Unpublished):**
 | ID | Name | Arch × Task | Q | Release | Consequence |
 |---|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cancelled / Lawsuit!] |
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cut & Fame -300 / Lawsuit!] |
 *(If none: "No eligible models.")*
 
 👉 *Reply with the ID to start writing a paper, or 0 to go back.*
@@ -2523,12 +2523,12 @@ $[x]/mo · [Effects]
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper (2 mos)**
-⚠️ Prod: Stream cut. Lic: Lawsuit!
+⚠️ Prod: Stream cut & Fame -300. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60, Unpub):**
 **M1** [Name]
 ▸ [Arch]×[Task] · Q[Q]
-▸ [Release] → [Safe/Cut/Lawsuit!]
+▸ [Release] → [Safe/Cut & Fame -300/Lawsuit!]
 *(or "No eligible models")*
 
 👉 *Reply ID to write paper, or 0 back.*

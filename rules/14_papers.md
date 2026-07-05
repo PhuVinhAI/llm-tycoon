@@ -22,7 +22,7 @@ trả là mất độc quyền thương mại (hủy Income Stream).
 - Starting a Paper is an instant action from S17.
 - **Commitment:** Writing a Paper takes exactly **2 committed months** (`M = 2`).
 - **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
-  - **Product:** The active Income Stream is immediately **cancelled**.
+  - **Product:** The active Income Stream is immediately **cancelled**. Furthermore, giving away proprietary commercial IP angers investors: **Fame −300**.
   - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
   - **Open-source / Shelved:** Safe to publish. No immediate penalties.
 

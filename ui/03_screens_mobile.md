@@ -280,12 +280,12 @@ $[x]/mo · [Effects]
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper (2 mos)**
-⚠️ Prod: Stream cut. Lic: Lawsuit!
+⚠️ Prod: Stream cut & Fame -300. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60, Unpub):**
 **M1** [Name]
 ▸ [Arch]×[Task] · Q[Q]
-▸ [Release] → [Safe/Cut/Lawsuit!]
+▸ [Release] → [Safe/Cut & Fame -300/Lawsuit!]
 *(or "No eligible models")*
 
 👉 *Reply ID to write paper, or 0 back.*

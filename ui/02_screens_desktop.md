@@ -274,12 +274,12 @@ Provide your configuration to start:
 
 🎓 **Publish a Paper**
 *Takes 2 months. Publishing reveals your tech to the world.*
-⚠️ **Product:** Active streams are cancelled. **License:** Triggers a massive lawsuit!
+⚠️ **Product:** Streams cancelled & Fame -300. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60, Unpublished):**
 | ID | Name | Arch × Task | Q | Release | Consequence |
 |---|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cancelled / Lawsuit!] |
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cut & Fame -300 / Lawsuit!] |
 *(If none: "No eligible models.")*
 
 👉 *Reply with the ID to start writing a paper, or 0 to go back.*
