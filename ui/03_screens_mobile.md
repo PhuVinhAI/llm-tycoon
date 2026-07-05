@@ -50,7 +50,7 @@ Same content as desktop, one short line each. End with:
 👥 [team or "solo"]
 📚 [datasets, short]
 🛠️ Tech: [owned tech names]
-📦 [idle / project (🧩 Art) / contract]
+📦 [idle / project (🧩 Art) / contract / paper]
 💵 [streams or "no streams"]
 📉 Fixed $[x]/mo
 
@@ -98,7 +98,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60, unpublished).
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or GPUT/Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60, unpublished).
 
 ## S6 — Model Completion Report
 

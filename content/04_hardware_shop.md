@@ -27,8 +27,8 @@ mới ngốn CU hơn.
 
 | Item | Price | Effect |
 |---|---|---|
-| 🔌 Rewire the lab (once) | $5,000 | slots 4 → 8 |
-| ☁️ Cloud rental (from Jan 2017) | $2,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
+| 🔌 Rewire the lab (once) | $2,000 | slots 4 → 8 |
+| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
 
 *(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 
@@ -37,7 +37,7 @@ Tiếng Việt (tóm tắt):
 Shop phần cứng theo lịch thật: GTX 780 (có từ đầu, $1,500, 100 TFLOPS) → GTX 980
 (9/2014, $2,500, 200 TFLOPS) → GTX 1080 (6/2016, $4,000, 400 TFLOPS) → server K80 cũ
 (10/2017, $5,000, 600 TFLOPS, chiếm 2 slot) → RTX 2080 (9/2018, $7,000, 800 TFLOPS).
-Mua thêm: Đi lại dây điện home lab $5,000 (4 → 8 slot, một lần); Cloud từ
-1/2017 — $2,000/tháng cho mỗi đơn vị +1000 TFLOPS, tối đa 2 đơn vị, chỉ trong
+Mua thêm: Đi lại dây điện home lab $2,000 (4 → 8 slot, một lần); Cloud từ
+1/2017 — $1,000/tháng cho mỗi đơn vị +1000 TFLOPS, tối đa 2 đơn vị, chỉ trong
 tháng có dự án. Vận hành $100/slot/tháng; bán lại 50% giá.
 -->

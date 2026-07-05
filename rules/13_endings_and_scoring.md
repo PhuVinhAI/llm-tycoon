@@ -23,7 +23,7 @@ Trách nhiệm:
 
 | Ending | Trigger |
 |---|---|
-| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet after an LLM with Q ≥ 70. |
+| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet upon completing an LLM with Q ≥ 70. |
 | 🌅 **Retirement** | December 2020 ends without a win. |
 | 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
 

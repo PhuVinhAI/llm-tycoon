@@ -16,7 +16,7 @@ số buộc người chơi đầu tư GPU; Focus lý tưởng khác nhau tạo "
 # Architectures
 
 | ID | Architecture | Base Q | TFLOPS-months req | Min months | Min Dataset Size | Ideal Focus D/M/T/E |
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|
 | NGRAM | N-gram LM | 15 | 0 | 1 | 1 | 4/2/1/3 |
 | BOW | Bag-of-Words + Classic ML | 20 | 0 | 1 | 1 | 4/3/1/2 |
 | EMB | Embedding-based | 18 | 100 | 1 | 2 | 3/3/2/2 |

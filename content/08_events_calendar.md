@@ -59,7 +59,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
+| T3 | LLM completed with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 

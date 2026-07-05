@@ -50,7 +50,7 @@ Do not pad or fill the list. Show exactly as many Benchmarks as are available. (
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
 
 ## 2. Public Reviewers (For Release)
-When a Model is officially released (Open-source, License, or Product), the Game Engine must randomly select exactly **4** of these sources to generate the Public Reception reviews (S6-B).
+When a Model is officially released (Open-source, License, or Product), the Game Engine must deterministically select exactly **4** of these sources (based on the Model's ID or current Date) to generate the Public Reception reviews (S6-B).
 - **ArXiv Peer Review** (Academic perspective)
 - **r/MachineLearning** (Practitioner perspective)
 - **HackerNews** (Startup/Tech perspective)

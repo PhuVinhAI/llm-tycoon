@@ -30,7 +30,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 - Use the PTRF row of the architectures table, but with compute requirement **4000** TFLOPS-months.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
-- Add a **+10 scale bonus** to the formula.
+- The Scale choice is fixed to Base. Add a special **+10 LLM scale bonus** to the formula instead.
 
 ## Outcomes
 

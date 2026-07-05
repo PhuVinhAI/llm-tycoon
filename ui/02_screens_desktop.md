@@ -56,7 +56,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
 | **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
-| **Status** | 📦 [idle / project (🧩 Art) / contract]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
+| **Status** | 📦 [idle / project (🧩 Art) / contract / paper]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
 *(Expand Data/Hardware details only when the player asks to see them, keeping the dashboard clean).*
 
@@ -98,7 +98,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
-- Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
+- Hide `Shop` entirely until the player owns GPUT or a neural Architecture such as EMB.
 - Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60, unpublished).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
@@ -206,7 +206,7 @@ Provide your configuration to start:
 - **Current Compute:** [total] TFLOPS/mo
 - **Architecture:** [List owned. Include their Base Compute Req]
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
-- **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
+- **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
 - **Months:** (min [X] for chosen Architecture). *(Engine: You MUST calculate and state exactly how many months it takes to reach the 100% compute requirement at the current TFLOPS/mo, e.g., "💡 At your current 100 TFLOPS/mo, Base scale requires 2 months, Large requires 4 months").*

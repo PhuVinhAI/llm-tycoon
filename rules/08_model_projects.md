@@ -83,7 +83,7 @@ Base Points = Base(Architecture)                … Content: architectures table
 *Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
 **Step 2: Calculate Individual Benchmark Scores**
-Identify ALL applicable Benchmarks (matching Task & Year). For EACH Benchmark, calculate its specific score (0-100):
+Identify ALL applicable Benchmarks (matching Task & Date ≤ current Month/Year). For EACH Benchmark, calculate its specific score (0-100):
 ```
 Benchmark Score = Base Points
                 + Match(Architecture × Task)       … Content: match matrix

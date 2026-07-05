@@ -21,30 +21,26 @@ Expected completion report (S6, desktop) in English:
 ```
 🏁 SpamGuard — BOW × Classification on Product reviews
 
-Benchmark Results:
-| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
+Local Evaluation (Benchmarks):
+| Benchmark | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
-| r/MachineLearning | **45/100** | Industry Avg | 50/100 |
-| TechCrunch | **40/100** | Industry Avg | 50/100 |
-| ArXiv Peer Review | **50/100** | Industry Avg | 50/100 |
+| SST-2 (Stanford Sentiment) | **45/100** | RNTN (Stanford) | 85/100 |
 
-Quotes:
+Internal Analysis:
 * F1-Score: "F1-Score measures the balance between catching all spam and avoiding false alarms. Incredible precision here! It absolutely crushed the old SVM baselines to set a new SOTA."
-* r/MachineLearning: "Redditors care about general utility. It's slightly below average for general text, but works fine for reviews."
-* TechCrunch: "Tech media looks for the next big disruption. This lacks the contextual awareness of modern embedding models."
-* ArXiv Peer Review: "Academics look for novel math. This is a perfectly average, standard implementation of Bag-of-Words."
+* SST-2: "SST-2 evaluates sentiment accuracy. Our Bag-of-Words model struggles with contextual nuances compared to the Stanford RNTN."
 
-Overall Quality: 55/100 (👍 Good)
-⭐ Fame +300  ·  🔬 Research Points +550
+Overall Quality: 65/100 (👍 Good)
+⭐ Est. Fame +300 (Awarded ONLY on Release)  ·  🔬 Research Points +650
 
 Release?
 🔥 SOTA Hype! License and Product payouts are ×1.5
-1 🌐 Open-source | 2 💼 License ($24,750) | 4 🗄️ Shelve
-*(3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)*
+1 🌐 Open-source | 2 💼 License ($29,250) | 4 🗄️ Shelve
+*(3 📈 Product locked: needs Fame ≥ 1000)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (55 × $150 × Demand 2 × 1.5 SOTA Hype = $24,750), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
+Note how the exact formula is hidden, the License price is computed silently (65 × $150 × Demand 2 × 1.5 SOTA Hype = $29,250), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead. After choosing a release option, the Public Reception (S6-B) screen would then render the community reviews.
 
 <!--
 Tiếng Việt (tóm tắt):
@@ -52,8 +48,8 @@ Ví dụ minh họa (không phải dữ liệu game): tháng 4/2013, profile des
 người chơi có BOW, E-Lv 1, REP 0, dataset "Product reviews" (reviews 2/3),
 làm model "SpamGuard" BOW × CLS trong 1 tháng, focus 4/3/1/2.
 
-Kết quả mẫu: Chất lượng = 51 → Tàm tạm (+100 Danh tiếng, +510 Điểm Nghiên cứu); giá License $6,120
-(được tính ngầm); lựa chọn Product bị khóa và ghi rõ điều kiện thiếu (Danh tiếng ≥ 1000,
-Chất lượng ≥ 55). Điểm mấu chốt: giấu kín công thức, chỉ hiện kết quả, lựa chọn khóa
-nêu lý do; trên mobile thì cùng số liệu nhưng render theo khung S6 dọc.
+Kết quả mẫu: Chất lượng = 65 → Tốt (ước tính +300 Danh tiếng, +650 Điểm Nghiên cứu); giá License $29,250
+(được tính ngầm); lựa chọn Product bị khóa và ghi rõ điều kiện thiếu (Danh tiếng ≥ 1000). 
+Điểm mấu chốt: giấu kín công thức, chỉ hiện kết quả, lựa chọn khóa
+nêu lý do; trên mobile thì cùng số liệu nhưng render theo khung S6 dọc. Sau khi chọn phát hành, S6-B sẽ hiển thị các review cộng đồng.
 -->

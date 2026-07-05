@@ -35,7 +35,7 @@ Trách nhiệm:
 ===============================================================================
 -->
 
-# Dev Mode (S10 — Autoplay Simulation)
+# Dev Mode (SDEV — Autoplay Simulation)
 
 `dev` is a **hidden developer command**. It is never listed on any menu, help screen, or command list, and works at any time — at the Main Menu or mid-run. Dev Mode exists for balance testing: the engine plays the game against itself like an automated playtester, then reports statistics.
 
@@ -93,7 +93,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
    - **Technology:** roll; if < 50, unlock one affordable Technology (roll again to pick which).
    - **Hardware:** roll; if < 25 and Cash > 3000, buy one affordable item (roll to pick).
    - **Dataset market:** roll; if < 25, buy or claim one available Dataset (roll to pick).
-   - **Employees:** roll; if < 10 and the team is not full, hire one affordable Employee (roll to pick).
+   - **Employees:** roll; if < 10 and the team is not full, trigger Headhunter (roll for Archetype), then hire one affordable Candidate (roll to pick).
    - **Competition:** if an open Competition has an eligible Model, roll; if < 50, submit (roll to pick the Model).
 2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
 3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
@@ -142,7 +142,7 @@ While a simulation runs: do not render S3/S4/S5 screens, do not emit the June/De
 
 Count throughout the run: main actions by type (F/R/P/C/D/L) · dilemma picks (choice 1 vs 2) · income by source (freelance, contracts, model sales & streams, prizes/events) · costs by category (living, salaries, hardware upkeep, cloud, purchases) · cash minimum and peak with their months, months ending in the red · RP earned and spent · Technologies unlocked with dates · Models with Q values and release types · Datasets owned and their final average Quality · Contracts done/cancelled · Competitions won/entered · Fame end and peak · Events fired · total rolls drawn.
 
-## S10 — The Dev Report
+## SDEV — The Dev Report
 
 After each run ends (Ending reached, `until` month passed, or `dev report`): output the per-run report. After the last run of a multi-run batch: also output the aggregate block. Both are developer artifacts: render them inside a code block (same exception class as the SAVE block), profile-independent — and, in Dev Mode ONLY, they MAY name internal formulas, thresholds, and already-fired or future Event Calendar entries. All secrecy rules resume the moment Dev Mode ends.
 
@@ -152,9 +152,9 @@ span: 2013-01 → 2017-08 (56 turns) | ending: 💀 Burned Out | score 0 | title
 ECONOMY
   cash: end −5,210 | min −5,210 @2017-08 | peak 9,400 @2014-06 | months in red: 7
   income: freelance $41,200 · contracts $9,000 · models $6,120 · prizes $0 (total $56,320)
-  costs: living $56,000 · salaries $4,500 · hardware $1,225 · cloud $0 · purchases $3,800
+  costs: living $44,800 · salaries $4,500 · hardware $1,200 · cloud $0 · purchases $3,800
 PROGRESS
-  tech: 7/24 unlocked (last: RNN @2016-03) | RP: earned 31,400 · spent 28,600
+  tech: 7/15 unlocked (last: RNN @2016-03) | RP: earned 31,400 · spent 28,600
   models: 2 | best Q 51 · avg Q 46 | releases: OS 1 · License 1 · Product 0 · Shelve 0
   datasets: 4 (avg Quality 2.5) | contracts done: 1 | competitions: 0/2 won
   fame: end 300 | peak 400 | events fired: 14 | dilemmas: 8× choice 1 · 6× choice 2
@@ -173,7 +173,7 @@ SUGGESTIONS
 ```
 === DEV AGGREGATE — 3 runs · seeds 42–44 · policy random ===
 endings: WIN 0 · Retirement 1 · Burned Out 2 | scores: 0 / 0 / 3,900 (median 0)
-cash end: −5,210 / −5,050 / +2,100 | tech: 7 / 6 / 9 of 24 | best Q: 51 / 44 / 58
+cash end: −5,210 / −5,050 / +2,100 | tech: 7 / 6 / 9 of 15 | best Q: 51 / 44 / 58
 first bankruptcy: T56 (2017-08) | earliest LLM tech era reached: none
 common flags: [flags tripped in ≥ 2 runs]
 verdict: [2–4 lines — where the curve breaks for this policy, and the single most

@@ -27,6 +27,6 @@ This table provides the generation data for Freelance events. The Engine invents
 | 0 | **Perfectionism** | Do the bare minimum.<br>Yield: `Base Pay` | Refactor/Polish it perfectly.<br>Yield: `Base Pay × 0.8`, `Fame +80` |
 | 1 | **The Dirty Hack** | Build it properly.<br>Yield: `Base Pay` | Use an unstable, messy hack.<br>Yield: `Base Pay × 1.3`, `Fame −80` |
 | 2 | **Academic Pivot**| Stick to the spec.<br>Yield: `Base Pay` | Deep dive into the underlying math.<br>Yield: `Base Pay × 0.6`, `RP +400` |
-| 3 | **Scope Creep** | Refuse extra work.<br>Yield: `Base Pay` | Accept the heavy extra workload.<br>Yield: `Base Pay × 1.2`, `E-Lv counter +1` |
+| 3 | **Scope Creep** | Refuse extra work.<br>Yield: `Base Pay` | Accept the heavy extra workload.<br>Yield: `Base Pay × 1.2`, `Fame +100` |
 | 4 | **Hardware Crisis**| Work slowly on CPU.<br>Yield: `Base Pay` | Rent emergency cloud compute.<br>Yield: `Base Pay × 1.4`, `Cash −$500` |
 | 5 | **Open Source** | Keep it proprietary.<br>Yield: `Base Pay` | Open-source a core module.<br>Yield: `Base Pay × 0.7`, `Fame +150` |

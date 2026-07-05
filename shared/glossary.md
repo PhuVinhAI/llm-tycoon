@@ -161,7 +161,7 @@ Tiếng Việt:
 
 ## Domain
 
-The subject area of a Dataset (news, social, dialogue, reviews, code, encyclopedic, parallel, QA, web-mixed).
+The subject area of a Dataset (news, social, dialogue, reviews, code, encyclopedic, parallel, QA, web-mixed, medical, legal, math, books, logic).
 
 <!--
 Tiếng Việt:
