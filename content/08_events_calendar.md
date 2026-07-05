@@ -72,6 +72,7 @@ These events fire exactly once per playthrough when their condition is met. The 
 | M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
 | M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
+| M6 | First Model achieves **Q ≥ 55** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +1500 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*
 

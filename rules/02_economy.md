@@ -24,7 +24,7 @@ Trách nhiệm:
 
 Every month, in the Costs step:
 
-- **Living & rent:** $1,000.
+- **Living & rent:** $800.
 - **Salaries:** sum of all hired Employees (Content).
 - **Hardware upkeep:** $25 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
@@ -42,7 +42,7 @@ Every month, in the Costs step:
 
 <!--
 Tiếng Việt (tóm tắt):
-Chi phí cố định mỗi tháng: sinh hoạt + tiền thuê nhà $1,000; lương nhân
+Chi phí cố định mỗi tháng: sinh hoạt + tiền thuê nhà $800; lương nhân
 viên; vận hành phần cứng $25/slot đang dùng; tiền thuê cloud nếu bật.
 
 Làm tròn: mặc định làm tròn nửa lên. Giảm giá RP: nhân các mức giảm với
