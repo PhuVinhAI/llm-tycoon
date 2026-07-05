@@ -102,8 +102,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
 
 **Quotes:**
-* [Benchmark 1]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
-* [Benchmark 2]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
+* [Benchmark 1]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
+* [Benchmark 2]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]

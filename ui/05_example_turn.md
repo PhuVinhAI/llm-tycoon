@@ -30,10 +30,10 @@ Benchmark Results:
 | ArXiv Peer Review | **50/100** | Industry Avg | 50/100 |
 
 Quotes:
-* F1-Score: "Incredible precision! It absolutely crushed the old SVM baselines to set a new SOTA."
-* r/MachineLearning: "It's slightly below average for general text, but works fine for reviews."
-* TechCrunch: "Lacks the contextual awareness of modern embedding models."
-* ArXiv Peer Review: "A perfectly average, standard implementation of Bag-of-Words."
+* F1-Score: "F1-Score measures the balance between catching all spam and avoiding false alarms. Incredible precision here! It absolutely crushed the old SVM baselines to set a new SOTA."
+* r/MachineLearning: "Redditors care about general utility. It's slightly below average for general text, but works fine for reviews."
+* TechCrunch: "Tech media looks for the next big disruption. This lacks the contextual awareness of modern embedding models."
+* ArXiv Peer Review: "Academics look for novel math. This is a perfectly average, standard implementation of Bag-of-Words."
 
 Overall Quality: 55/100 (👍 Good)
 ⭐ Fame +300  ·  🔬 Research Points +550

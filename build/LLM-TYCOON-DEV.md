@@ -1225,7 +1225,7 @@ Review Score = Base Points
 - **Q** = Average of all `Review Scores` (floor 0, cap 100).
 - When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
 - For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). Display a comparison between the Player's Score and the SOTA Score.
-- The Engine uses Creative License to write a 1-sentence flavor quote. **Crucially**, this quote MUST react to the comparison: if the Player beats the SOTA, the quote should hype the new world record; if they lose, it should point out the gap.
+- The Engine uses Creative License to write a 1–2 sentence flavor quote. **Crucially**, this quote MUST do two things: 1) Briefly explain what the benchmark actually measures in simple layman's terms (so non-experts understand it), and 2) React to the comparison (hyping a new world record if beating SOTA, or pointing out the gap if losing).
 
 ## Reception
 
@@ -1888,8 +1888,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
 
 **Quotes:**
-* [Benchmark 1]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
-* [Benchmark 2]: *"[1-sentence flavor quote reacting to Player vs SOTA]"*
+* [Benchmark 1]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
+* [Benchmark 2]: *"[1-2 sentences: Briefly explain what this benchmark measures to a layman, THEN react to Player vs SOTA]"*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]
@@ -2067,10 +2067,10 @@ on [Dataset]
 **Benchmarks:**
 **[Benchmark 1]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Quote reacting to Player vs SOTA]"*
+*"[Explain metric simply + React to Player vs SOTA]"*
 **[Benchmark 2]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Quote reacting to Player vs SOTA]"*
+*"[Explain metric simply + React to Player vs SOTA]"*
 *(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
 
 **Quality: [Q]/100** ([tier])
@@ -2222,10 +2222,10 @@ Benchmark Results:
 | ArXiv Peer Review | **50/100** | Industry Avg | 50/100 |
 
 Quotes:
-* F1-Score: "Incredible precision! It absolutely crushed the old SVM baselines to set a new SOTA."
-* r/MachineLearning: "It's slightly below average for general text, but works fine for reviews."
-* TechCrunch: "Lacks the contextual awareness of modern embedding models."
-* ArXiv Peer Review: "A perfectly average, standard implementation of Bag-of-Words."
+* F1-Score: "F1-Score measures the balance between catching all spam and avoiding false alarms. Incredible precision here! It absolutely crushed the old SVM baselines to set a new SOTA."
+* r/MachineLearning: "Redditors care about general utility. It's slightly below average for general text, but works fine for reviews."
+* TechCrunch: "Tech media looks for the next big disruption. This lacks the contextual awareness of modern embedding models."
+* ArXiv Peer Review: "Academics look for novel math. This is a perfectly average, standard implementation of Bag-of-Words."
 
 Overall Quality: 55/100 (👍 Good)
 ⭐ Fame +300  ·  🔬 Research Points +550

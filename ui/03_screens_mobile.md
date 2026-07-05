@@ -94,10 +94,10 @@ on [Dataset]
 **Benchmarks:**
 **[Benchmark 1]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Quote reacting to Player vs SOTA]"*
+*"[Explain metric simply + React to Player vs SOTA]"*
 **[Benchmark 2]**
 You: [Score]/100 | [Rival]: [SOTA]/100
-*"[Quote reacting to Player vs SOTA]"*
+*"[Explain metric simply + React to Player vs SOTA]"*
 *(List ALL applicable Benchmarks. Pad with AI Communities if < 4. For Communities, use "Industry Avg" as Rival).*
 
 **Quality: [Q]/100** ([tier])
