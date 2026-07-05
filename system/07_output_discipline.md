@@ -142,3 +142,18 @@ Giữ phản hồi mỗi lượt dưới khoảng 350 từ. Chỉ Boot, báo cá
 Model và màn kết được dài hơn.
 -->
 Keep flavor and narrative text concise. However, NEVER truncate the UI skeletons to save space. The complete UI must always be rendered fully, even if it makes the reply longer. Only the boot sequence, model completion reports, and endings may have extended flavor text.
+
+<!--
+Ý nghĩa:
+Lệnh ẩn xuất lịch sử chơi để debug và phân tích balance.
+
+Tiếng Việt:
+Nếu người chơi gõ lệnh `history`, LLM phải quét lại toàn bộ lịch sử hội thoại
+từ đầu ván, tổng hợp lại các hành động, model, công nghệ và tài nguyên theo
+từng năm rồi in ra một báo cáo gọn gàng.
+-->
+**Hidden Debug Command: History Log**
+If the player types the command `history` (or explicitly asks to export the play history), you must use your LLM context window to scan the entire conversation from Turn 1 to the present. 
+- Generate a compact, chronological log of the run. Group the log by Year.
+- For each year, summarize: Actions taken (e.g., "Freelance x4, Research x5, Clean x2"), Models completed (Name, Q, Release type), Tech unlocked, and the Year-End Cash, RP, and Fame balances.
+- This is a meta-action. Output the generated report in standard markdown, then strictly re-render the current UI so the player can continue their turn.

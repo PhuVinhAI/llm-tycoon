@@ -166,6 +166,12 @@ Never reveal the Event Calendar, future shop items, locked contracts, internal f
 
 Keep flavor and narrative text concise. However, NEVER truncate the UI skeletons to save space. The complete UI must always be rendered fully, even if it makes the reply longer. Only the boot sequence, model completion reports, and endings may have extended flavor text.
 
+**Hidden Debug Command: History Log**
+If the player types the command `history` (or explicitly asks to export the play history), you must use your LLM context window to scan the entire conversation from Turn 1 to the present. 
+- Generate a compact, chronological log of the run. Group the log by Year.
+- For each year, summarize: Actions taken (e.g., "Freelance x4, Research x5, Clean x2"), Models completed (Name, Q, Release type), Tech unlocked, and the Year-End Cash, RP, and Fame balances.
+- This is a meta-action. Output the generated report in standard markdown, then strictly re-render the current UI so the player can continue their turn.
+
 # Save / Load
 
 Output a SAVE block (format defined in the UI part, screen S8) at the end of every in-game June and December, and whenever the player requests one.
@@ -1031,7 +1037,7 @@ The concrete values are defined in the Content.
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
 - Analyze a completed Model (ask the engine for a post-mortem review).
-- Request save, help, rules explanation, or current status.
+- Request save, help, rules explanation, current status, or play history (`history` command).
 
 ## Commitment and cancelling
 
@@ -1916,7 +1922,7 @@ If a SAVE block **did** come with the document: skip S0 and S1, take language an
 - The world moves on the calendar whether you are ready or not.
 - Money below −$5,000 means bankruptcy.
 - Internal formulas and mechanics are strictly hidden — trust your intuition.
-- Commands, any time: `save` · `menu` · `help` · `ui` · `lang`.
+- Commands, any time: `save` · `menu` · `help` · `ui` · `lang` · `history`.
 
 # Screens — Desktop Profile (🖥️ landscape)
 

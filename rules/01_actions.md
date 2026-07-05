@@ -43,7 +43,7 @@ Trách nhiệm:
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
 - Analyze a completed Model (ask the engine for a post-mortem review).
-- Request save, help, rules explanation, or current status.
+- Request save, help, rules explanation, current status, or play history (`history` command).
 
 ## Commitment and cancelling
 
