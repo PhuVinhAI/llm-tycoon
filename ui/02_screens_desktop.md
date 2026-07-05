@@ -181,7 +181,7 @@ Provide your configuration to start:
 - **Architecture:** [List owned]
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
-- **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously paired with the chosen Architecture*]
+- **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously paired with the chosen Task*]
 - **Months:** (min [X] for chosen Architecture, -1 if Inheriting)
 - **Focus:** 10 points split across exactly 4 categories *(No hints!)*:
@@ -205,9 +205,9 @@ Provide your configuration to start:
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
-| ID | Name | Arch × Task | Q | Status (Release) |
-|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] |
+| ID | Name | Arch × Task | Q | Status (Release) | Analyzed? |
+|---|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
 👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*

@@ -185,7 +185,7 @@ Configuration:
 - **Arch:** [Owned]
 - **Scale:** Small / Base / Large
 - **Inherit:** [Model Name / None]
-- **Task:** [Available + short desc] *(show known match ONLY if previously tested)*
+- **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
 - **Data:** [Owned] *(show known fit ONLY if previously tested)*
 - **Months:** (min [X])
 - **Focus:** 10 pts total *(no hints!)*
@@ -208,7 +208,7 @@ Configuration:
 
 **Models:**
 **M1** [Name]
-▸ [Arch]×[Task] · Q[Q] · [Status]
+▸ [Arch]×[Task] · Q[Q] · [Status] · Analyzed:[Y/N]
 *(or "No models")*
 
 👉 *Reply 'Analyze [ID]', or 0 back.*

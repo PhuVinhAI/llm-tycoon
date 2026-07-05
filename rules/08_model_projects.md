@@ -34,7 +34,7 @@ The Player declares, in one instant action:
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
 8. **Name** — the Model's name.
 
-**Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously completed a Model with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have used a Domain for a Task before, reveal the Domain fit. Otherwise, keep it strictly hidden.
+**Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously **analyzed** a Model (via the Portfolio action) with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have **analyzed** a Model using a specific Domain for a Task, reveal the Domain fit. Otherwise, keep it strictly hidden.
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
@@ -131,7 +131,8 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 ## Post-Mortem Analysis (Portfolio)
 
 The Player can view their Portfolio (S15) and ask to **Analyze** any completed Model.
-- This is an instant, free action.
+- This is an instant, free action. Each Model can only be analyzed once.
+- **Mechanical Effect:** Mark the model as **Analyzed** in the Game State (and SAVE block). This permanently unlocks the Match (Architecture × Task) and Fit (Task × Domain) UI hints in the Project Wizard (S12) for these specific combinations.
 - The Engine acts as a senior AI researcher reviewing the project.
 - **Format:** Output a 3-4 paragraph analysis.
 - **Content:** Discuss the *Synergy* (how well the Architecture fit the Task, and if the Dataset Domain was appropriate) and the *Focus allocation* (what they did right or wrong).

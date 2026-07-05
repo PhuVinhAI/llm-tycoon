@@ -1181,7 +1181,7 @@ The Player declares, in one instant action:
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
 8. **Name** — the Model's name.
 
-**Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously completed a Model with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have used a Domain for a Task before, reveal the Domain fit. Otherwise, keep it strictly hidden.
+**Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously **analyzed** a Model (via the Portfolio action) with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have **analyzed** a Model using a specific Domain for a Task, reveal the Domain fit. Otherwise, keep it strictly hidden.
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
@@ -1278,7 +1278,8 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 ## Post-Mortem Analysis (Portfolio)
 
 The Player can view their Portfolio (S15) and ask to **Analyze** any completed Model.
-- This is an instant, free action.
+- This is an instant, free action. Each Model can only be analyzed once.
+- **Mechanical Effect:** Mark the model as **Analyzed** in the Game State (and SAVE block). This permanently unlocks the Match (Architecture × Task) and Fit (Task × Domain) UI hints in the Project Wizard (S12) for these specific combinations.
 - The Engine acts as a senior AI researcher reviewing the project.
 - **Format:** Output a 3-4 paragraph analysis.
 - **Content:** Discuss the *Synergy* (how well the Architecture fit the Task, and if the Dataset Domain was appropriate) and the *Focus allocation* (what they did right or wrong).
@@ -2059,7 +2060,7 @@ Provide your configuration to start:
 - **Architecture:** [List owned]
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
-- **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously paired with the chosen Architecture*]
+- **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously paired with the chosen Task*]
 - **Months:** (min [X] for chosen Architecture, -1 if Inheriting)
 - **Focus:** 10 points split across exactly 4 categories *(No hints!)*:
@@ -2083,9 +2084,9 @@ Provide your configuration to start:
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
-| ID | Name | Arch × Task | Q | Status (Release) |
-|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] |
+| ID | Name | Arch × Task | Q | Status (Release) | Analyzed? |
+|---|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
 👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
@@ -2276,7 +2277,7 @@ Configuration:
 - **Arch:** [Owned]
 - **Scale:** Small / Base / Large
 - **Inherit:** [Model Name / None]
-- **Task:** [Available + short desc] *(show known match ONLY if previously tested)*
+- **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
 - **Data:** [Owned] *(show known fit ONLY if previously tested)*
 - **Months:** (min [X])
 - **Focus:** 10 pts total *(no hints!)*
@@ -2299,7 +2300,7 @@ Configuration:
 
 **Models:**
 **M1** [Name]
-▸ [Arch]×[Task] · Q[Q] · [Status]
+▸ [Arch]×[Task] · Q[Q] · [Status] · Analyzed:[Y/N]
 *(or "No models")*
 
 👉 *Reply 'Analyze [ID]', or 0 back.*
@@ -2331,7 +2332,7 @@ tech: [comma-separated IDs]
 hw: [item xN, …] | cloud: [0-2] | slots_used: [x]/[4|8] | rewired: [yes/no]
 team: [names or none]
 data: [Name(domain,Size,Quality)]; …
-models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM)]; …
+models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,analyzed=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M | none]
 project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
