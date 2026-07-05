@@ -115,11 +115,13 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 
 ## Release (the Player picks exactly one; a Failure model may only be open-sourced or shelved)
 
+*SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark, it gains the **SOTA Hype** status.
+
 | Release | Effect |
 |---|---|
-| 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. (Flavor: Engine announces ~[Q × Demand × 10,000] active users). Reception Fame applies normally. |
+| 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
+| 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
 
 <!--

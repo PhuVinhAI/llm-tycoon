@@ -109,6 +109,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]
 
 **Release?**
+*(If SOTA Hype: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
+*(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
 *[locked options: state the unmet Requirement]*
 

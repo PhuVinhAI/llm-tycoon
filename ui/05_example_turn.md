@@ -39,11 +39,12 @@ Overall Quality: 55/100 (👍 Good)
 ⭐ Fame +300  ·  🔬 Research Points +550
 
 Release?
-1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
+🔥 SOTA Hype! License and Product payouts are ×1.5
+1 🌐 Open-source | 2 💼 License ($9,180) | 4 🗄️ Shelve
 *(3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
+Note how the exact formula is hidden, the License price is computed silently (55 × $60 × Demand 2 × 1.5 SOTA Hype = $9,180), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
 
 <!--
 Tiếng Việt (tóm tắt):

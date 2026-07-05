@@ -104,6 +104,8 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
+*(If SOTA: "🔥 SOTA Hype: Payouts ×1.5")*
+*(If Art > 0: "⚠️ Art: Product income halved")*
 1 🌐 Open-source
 2 💼 License $[x]
 3 📈 Product $[x]/mo ×8

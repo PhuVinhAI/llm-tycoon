@@ -1087,11 +1087,13 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 
 ## Release (the Player picks exactly one; a Failure model may only be open-sourced or shelved)
 
+*SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark, it gains the **SOTA Hype** status.
+
 | Release | Effect |
 |---|---|
-| 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. (Flavor: Engine announces ~[Q × Demand × 10,000] active users). Reception Fame applies normally. |
+| 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
+| 💼 **License** (one-time sale) | Cash = Q × $60 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $6 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5** (user backlash against hallucinations). Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio (still eligible for Competitions). |
 
 # Contracts
@@ -1780,6 +1782,8 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]
 
 **Release?**
+*(If SOTA Hype: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
+*(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
 *[locked options: state the unmet Requirement]*
 
@@ -1962,6 +1966,8 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
+*(If SOTA: "🔥 SOTA Hype: Payouts ×1.5")*
+*(If Art > 0: "⚠️ Art: Product income halved")*
 1 🌐 Open-source
 2 💼 License $[x]
 3 📈 Product $[x]/mo ×8
@@ -2116,11 +2122,12 @@ Overall Quality: 55/100 (👍 Good)
 ⭐ Fame +300  ·  🔬 Research Points +550
 
 Release?
-1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
+🔥 SOTA Hype! License and Product payouts are ×1.5
+1 🌐 Open-source | 2 💼 License ($9,180) | 4 🗄️ Shelve
 *(3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
+Note how the exact formula is hidden, the License price is computed silently (55 × $60 × Demand 2 × 1.5 SOTA Hype = $9,180), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
 
 ---
 
