@@ -852,8 +852,8 @@ The concrete values are defined in the Content.
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Generates a Dilemma using the Freelance Events Matrix (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Select Archetype `X` = Turn % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 4) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
-| 🔬 **Research** | Generates a Dilemma using the Research Events Matrix (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Select Focus `X` = (Turn + 1) % 4.<br>3. Select Complication `Y` = floor(Turn ÷ 3) % 4.<br>4. Pause the game. Use Creative License to output a short story combining X and Y, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
+| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
+| 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month (see Contracts). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
@@ -1450,45 +1450,49 @@ These events fire exactly once per playthrough when their condition is met. The 
 | < 15000 | 🌱 Hobbyist |
 | Bankruptcy | 💀 Burned Out (score 0) |
 
-# Freelance Events Matrix
+# Freelance Era-Aware Dilemmas
 
-This table provides the raw data for Freelance events. The logic and formulas for selecting these coordinates are defined in the Actions rule.
+This table provides the generation data for Freelance events. The Engine invents a client and job fitting the **Era Theme**, then applies the mathematically selected **Complication**.
 
-**Axis 1: Client Archetype (Flavor only)**
-| X | Archetype | Flavor direction |
+**Axis 1: Era Themes (Flavor only - based on current Year)**
+| Years | Theme | Flavor direction |
 |---|---|---|
-| 0 | **Startup** | Chaotic, urgent, messy codebase, big dreams. |
-| 1 | **Academic** | Broke students/professors, complex math, theoretical. |
-| 2 | **Corporate** | Bureaucratic, legacy systems, boring but stable. |
-| 3 | **Shady** | Grey-market, aggressive web scraping, spam bots. |
+| 2013–2014 | **Rule-based & Regex** | Clients want basic spam filters, web scraping, keyword taggers. They are skeptical of "AI" and prefer hardcoded rules. |
+| 2015–2016 | **Early Deep Learning** | Word embeddings, sentiment analysis for brands, basic translation. Clients throw around the buzzword "Deep Learning" but lack data. |
+| 2017–2018 | **The Chatbot Craze** | Everyone wants a chatbot, sequence-to-sequence customer support, VC hype. Highly unrealistic expectations. |
+| 2019–2020 | **Transformer Era** | Text generation, auto-writing SEO, massive API wrappers. Clients ask for "human-like" text and massive scale. |
 
-**Axis 2: The Complication (Mechanics)**
+**Axis 2: The Complication (Mechanics - selected by Y = Turn % 6)**
 | Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
 | 0 | **Perfectionism** | Do the bare minimum.<br>Yield: `Base Pay` | Refactor/Polish it perfectly.<br>Yield: `Base Pay × 0.8`, `Fame +80` |
-| 1 | **The Shortcut** | Build it properly.<br>Yield: `Base Pay` | Use a dirty, unstable hack.<br>Yield: `Base Pay × 1.3`, `Fame −80` |
-| 2 | **Rabbit Hole** | Stick to the spec.<br>Yield: `Base Pay` | Deep dive into the underlying math.<br>Yield: `Base Pay × 0.6`, `RP +400` |
+| 1 | **The Dirty Hack** | Build it properly.<br>Yield: `Base Pay` | Use an unstable, messy hack.<br>Yield: `Base Pay × 1.3`, `Fame −80` |
+| 2 | **Academic Pivot**| Stick to the spec.<br>Yield: `Base Pay` | Deep dive into the underlying math.<br>Yield: `Base Pay × 0.6`, `RP +400` |
 | 3 | **Scope Creep** | Refuse extra work.<br>Yield: `Base Pay` | Accept the heavy extra workload.<br>Yield: `Base Pay × 1.2`, `E-Lv counter +1` |
+| 4 | **Hardware Crisis**| Work slowly on CPU.<br>Yield: `Base Pay` | Rent emergency cloud compute.<br>Yield: `Base Pay × 1.4`, `Cash −$500` |
+| 5 | **Open Source** | Keep it proprietary.<br>Yield: `Base Pay` | Open-source a core module.<br>Yield: `Base Pay × 0.7`, `Fame +150` |
 
-# Research Events Matrix
+# Research Era-Aware Dilemmas
 
-This table provides the raw data for Research events. The logic and formulas for selecting these coordinates are defined in the Actions rule.
+This table provides the generation data for Research events. The Engine invents a research topic fitting the **Era Theme**, then applies the mathematically selected **Complication**.
 
-**Axis 1: Research Focus (Flavor only)**
-| X | Focus | Flavor direction |
+**Axis 1: Era Themes (Flavor only - based on current Year)**
+| Years | Theme | Flavor direction |
 |---|---|---|
-| 0 | **Algorithm** | Math, matrix multiplication, weights, neural network theory. |
-| 1 | **Data Structure** | Tokenization, vectors, embeddings, parsing efficiency. |
-| 2 | **Hardware** | CUDA cores, memory management, parallelism, overheating. |
-| 3 | **Literature** | ArXiv papers, replicating old experiments, finding prior art. |
+| 2013–2014 | **Foundations** | Counting frequencies, word vectors, parsing Wikipedia dumps, math proofs, CPU constraints. |
+| 2015–2016 | **Neural Struggles** | RNNs, LSTMs, vanishing gradients, CUDA out-of-memory errors, early TensorFlow bugs. |
+| 2017–2018 | **Attention & Scale** | Attention matrices, parallelizing across GPUs, reading ArXiv daily, PyTorch migrations. |
+| 2019–2020 | **Pre-training** | Scaling laws, massive datasets, tokenization edge cases, multi-node cluster optimization. |
 
-**Axis 2: The Complication (Mechanics)**
+**Axis 2: The Complication (Mechanics - selected by Y = (Turn + 3) % 6)**
 | Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
 | 0 | **The Rabbit Hole** | Stick to the goal.<br>Yield: `Base RP` | Go deep into the theory.<br>Yield: `Base RP × 0.8`, `R-Lv counter +1` |
 | 1 | **The Shortcut** | Do it right.<br>Yield: `Base RP` | Skip the math, use a pre-built library.<br>Yield: `Base RP × 1.3`, `Fame −50` |
 | 2 | **Side Discovery** | Ignore it and focus.<br>Yield: `Base RP` | Publish a minor paper.<br>Yield: `Base RP × 0.6`, `Fame +150` |
 | 3 | **Compute Hog** | Optimize the code first.<br>Yield: `Base RP` | Brute force it with rented cloud.<br>Yield: `Base RP × 1.4`, `Cash −$1,000` |
+| 4 | **Data Epiphany** | Stick to standard parsing.<br>Yield: `Base RP` | Buy advanced scraping scripts.<br>Yield: `Base RP × 1.2`, `Cash −$300` |
+| 5 | **Peer Consulting** | Ignore the emails.<br>Yield: `Base RP` | Help a peer debug their model.<br>Yield: `Base RP × 0.5`, `Cash +$1,500` |
 
 # Project Dilemmas
 
