@@ -95,10 +95,9 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Reviews:**
-* **[Score]/10** — [Benchmark from Content] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Academic/Research] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Tech Media] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [User/Client] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Benchmark 1] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Benchmark 2] (*"[1-sentence flavor quote]"*)
+*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]

@@ -22,10 +22,10 @@ Expected completion report (S6, desktop) in English:
 🏁 SpamGuard — BOW × Classification on Product reviews
 
 Reviews:
-* 5/10 — F1-Score Benchmark ("Accuracy is acceptable, but precision drops on edge cases.")
+* 5/10 — F1-Score (IMDB/Reuters) ("Accuracy is acceptable, but precision drops on edge cases.")
 * 6/10 — r/MachineLearning ("Classic BOW approach. Nothing groundbreaking, but it works.")
 * 4/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
-* 5.5/10 — Enterprise Tester ("Caught most of our spam, but false positives are an issue.")
+* 5.5/10 — ArXiv Peer Review ("Solid baseline, though it struggles with out-of-vocabulary tokens.")
 
 Overall Quality: 51/100 (😐 Mediocre)
 ⭐ Fame +100  ·  🔬 Research Points +510

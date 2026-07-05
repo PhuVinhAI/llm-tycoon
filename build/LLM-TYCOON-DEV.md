@@ -1221,10 +1221,11 @@ A requirement of 0 always scores +5.
 
 ## Reception & Reviews
 
-When a model completes, the Engine translates its `Q` score into 4 reviews out of 10 (averaging `Q ÷ 10`).
-- **Reviewer 1 (Benchmark):** Selected strictly from the **Historical Benchmarks** table (Content), matching the Task and current Year.
-- **Reviewers 2, 3, 4:** Archetypes (Academic, Tech Media, User/Client). The Engine invents their specific names (e.g., ArXiv, TechCrunch, r/MachineLearning).
-- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer.
+When a model completes, the Engine translates its `Q` score into reviews out of 10 (averaging `Q ÷ 10`).
+- **Reviewers:** The Engine must list **ALL applicable Benchmarks** from the Content table matching the Task and current Year.
+- If the number of Benchmarks is less than 4, the Engine fills the remaining slots using **AI Communities & Platforms** from the Content table until there are at least 4 reviews.
+- If the number of Benchmarks is 4 or more, display all of them (do not use community fillers).
+- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer, matching the context of the benchmark/community.
 
 The overall reception tier still determines the Fame reward:
 
@@ -1648,24 +1649,48 @@ Flavor direction determined by `Turn % 4`:
 | 1. **Accept Flaws** (Ignore it and push through) | `q_mod -8` |
 | 2. **Refactor** (Delay the project to fix the architecture/data) | `M (total months) +1`, `q_mod +0` |
 
-# Historical Benchmarks
+# Historical Benchmarks & AI Communities
 
-When generating reviews for a completed Model, the Game Engine must select Reviewer 1 from this table. The Benchmark must match the Model's Task and must be available in the current in-game year. If multiple match, pick the most recent one.
+When generating reviews for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-| Benchmark / Metric | Available From | Applicable Tasks |
+If the total number of applicable Benchmarks is less than 4, the Engine must fill the remaining slots using entries from the **AI Communities & Platforms** list until there are exactly 4 reviews. If there are more than 4 applicable Benchmarks, display ALL of them (do not use fillers).
+
+## 1. Official Benchmarks
+
+| Benchmark / Dataset | Available From | Applicable Tasks |
 |---|---|---|
-| F1-Score / Accuracy | 2013 (Start) | CLS |
-| Perplexity (PPL) | 2013 (Start) | AUTO, LLM (general) |
+| F1-Score (IMDB/Reuters) | 2013 (Start) | CLS |
+| Perplexity (Penn Treebank) | 2013 (Start) | AUTO |
 | BLEU Score | 2013 (Start) | TRANS |
 | ROUGE Score | 2013 (Start) | SUMM |
-| Human Turing Test | 2013 (Start) | CHAT |
+| Human Evaluation | 2013 (Start) | CHAT |
+| WMT Translation Task | Nov 2014 | TRANS |
+| CNN/DailyMail | Jun 2015 | SUMM |
+| BLEU (Code domain) | Jan 2015 | CODE |
+| WikiText | Sep 2016 | AUTO, LLM (general) |
+| LAMBADA | Oct 2016 | AUTO, LLM (general) |
 | SQuAD 1.0 | Jun 2016 | QA |
+| ConvAI (Conversational AI) | 2017 | CHAT |
+| PersonaChat | 2018 | CHAT |
 | SQuAD 2.0 | Jun 2018 | QA |
+| CoQA | Aug 2018 | QA |
 | GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) |
+| Natural Questions (NQ) | Jan 2019 | QA |
+| HellaSwag | May 2019 | LLM (general) |
 | SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) |
-| HumanEval | Jul 2020 | CODE |
+| HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) |
+| MBPP (Google) | Aug 2020 | CODE |
+| MMLU | Sep 2020 | LLM (general) |
 
-*(The other 3 reviewers in the Completion Report are generated using archetypes: an Academic source, a Tech Media outlet, and a User/Client community).*
+## 2. AI Communities & Platforms (Fillers)
+Use these to pad the review list up to 4 if there aren't enough benchmarks:
+- **ArXiv Peer Review** (Available: Always)
+- **r/MachineLearning** (Available: Always)
+- **HackerNews** (Available: Always)
+- **Kaggle Community** (Available: Always)
+- **TechCrunch / Tech Media** (Available: Always)
+- **Hugging Face Community** (Available: From 2017)
+- **PapersWithCode** (Available: From 2018)
 
 ---
 
@@ -1836,10 +1861,9 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Reviews:**
-* **[Score]/10** — [Benchmark from Content] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Academic/Research] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [Tech Media] (*"[1-sentence flavor quote]"*)
-* **[Score]/10** — [User/Client] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Benchmark 1] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Benchmark 2] (*"[1-sentence flavor quote]"*)
+*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
 
 **Overall Quality: [Q]/100** ([reception emoji + tier])
 ⭐ Fame [±x]  ·  🔬 Research Points +[x]
@@ -2015,14 +2039,11 @@ on [Dataset]
 *(⚠️ [Art] artifacts)*
 
 **Reviews:**
-[Score]/10 - [Benchmark]
+[Score]/10 - [Benchmark 1]
 *"[Quote]"*
-[Score]/10 - [Community]
+[Score]/10 - [Benchmark 2]
 *"[Quote]"*
-[Score]/10 - [Media]
-*"[Quote]"*
-[Score]/10 - [Tester]
-*"[Quote]"*
+*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
 
 **Quality: [Q]/100** ([tier])
 ⭐ Fame [±x] · 🔬 RP +[x]
@@ -2165,10 +2186,10 @@ Expected completion report (S6, desktop) in English:
 🏁 SpamGuard — BOW × Classification on Product reviews
 
 Reviews:
-* 5/10 — F1-Score Benchmark ("Accuracy is acceptable, but precision drops on edge cases.")
+* 5/10 — F1-Score (IMDB/Reuters) ("Accuracy is acceptable, but precision drops on edge cases.")
 * 6/10 — r/MachineLearning ("Classic BOW approach. Nothing groundbreaking, but it works.")
 * 4/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
-* 5.5/10 — Enterprise Tester ("Caught most of our spam, but false positives are an issue.")
+* 5.5/10 — ArXiv Peer Review ("Solid baseline, though it struggles with out-of-vocabulary tokens.")
 
 Overall Quality: 51/100 (😐 Mediocre)
 ⭐ Fame +100  ·  🔬 Research Points +510

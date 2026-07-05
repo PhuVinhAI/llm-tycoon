@@ -91,10 +91,11 @@ A requirement of 0 always scores +5.
 
 ## Reception & Reviews
 
-When a model completes, the Engine translates its `Q` score into 4 reviews out of 10 (averaging `Q ÷ 10`).
-- **Reviewer 1 (Benchmark):** Selected strictly from the **Historical Benchmarks** table (Content), matching the Task and current Year.
-- **Reviewers 2, 3, 4:** Archetypes (Academic, Tech Media, User/Client). The Engine invents their specific names (e.g., ArXiv, TechCrunch, r/MachineLearning).
-- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer.
+When a model completes, the Engine translates its `Q` score into reviews out of 10 (averaging `Q ÷ 10`).
+- **Reviewers:** The Engine must list **ALL applicable Benchmarks** from the Content table matching the Task and current Year.
+- If the number of Benchmarks is less than 4, the Engine fills the remaining slots using **AI Communities & Platforms** from the Content table until there are at least 4 reviews.
+- If the number of Benchmarks is 4 or more, display all of them (do not use community fillers).
+- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer, matching the context of the benchmark/community.
 
 The overall reception tier still determines the Fame reward:
 

@@ -92,14 +92,11 @@ on [Dataset]
 *(⚠️ [Art] artifacts)*
 
 **Reviews:**
-[Score]/10 - [Benchmark]
+[Score]/10 - [Benchmark 1]
 *"[Quote]"*
-[Score]/10 - [Community]
+[Score]/10 - [Benchmark 2]
 *"[Quote]"*
-[Score]/10 - [Media]
-*"[Quote]"*
-[Score]/10 - [Tester]
-*"[Quote]"*
+*(List ALL applicable Benchmarks. If < 4, pad with AI Communities until there are 4 reviews)*
 
 **Quality: [Q]/100** ([tier])
 ⭐ Fame [±x] · 🔬 RP +[x]

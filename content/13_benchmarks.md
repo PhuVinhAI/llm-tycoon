@@ -13,30 +13,53 @@ chọn Benchmark từ bảng này dựa trên Task và Năm hiện tại, thay v
 ===============================================================================
 -->
 
-# Historical Benchmarks
+# Historical Benchmarks & AI Communities
 
-When generating reviews for a completed Model, the Game Engine must select Reviewer 1 from this table. The Benchmark must match the Model's Task and must be available in the current in-game year. If multiple match, pick the most recent one.
+When generating reviews for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-| Benchmark / Metric | Available From | Applicable Tasks |
+If the total number of applicable Benchmarks is less than 4, the Engine must fill the remaining slots using entries from the **AI Communities & Platforms** list until there are exactly 4 reviews. If there are more than 4 applicable Benchmarks, display ALL of them (do not use fillers).
+
+## 1. Official Benchmarks
+
+| Benchmark / Dataset | Available From | Applicable Tasks |
 |---|---|---|
-| F1-Score / Accuracy | 2013 (Start) | CLS |
-| Perplexity (PPL) | 2013 (Start) | AUTO, LLM (general) |
+| F1-Score (IMDB/Reuters) | 2013 (Start) | CLS |
+| Perplexity (Penn Treebank) | 2013 (Start) | AUTO |
 | BLEU Score | 2013 (Start) | TRANS |
 | ROUGE Score | 2013 (Start) | SUMM |
-| Human Turing Test | 2013 (Start) | CHAT |
+| Human Evaluation | 2013 (Start) | CHAT |
+| WMT Translation Task | Nov 2014 | TRANS |
+| CNN/DailyMail | Jun 2015 | SUMM |
+| BLEU (Code domain) | Jan 2015 | CODE |
+| WikiText | Sep 2016 | AUTO, LLM (general) |
+| LAMBADA | Oct 2016 | AUTO, LLM (general) |
 | SQuAD 1.0 | Jun 2016 | QA |
+| ConvAI (Conversational AI) | 2017 | CHAT |
+| PersonaChat | 2018 | CHAT |
 | SQuAD 2.0 | Jun 2018 | QA |
+| CoQA | Aug 2018 | QA |
 | GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) |
+| Natural Questions (NQ) | Jan 2019 | QA |
+| HellaSwag | May 2019 | LLM (general) |
 | SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) |
-| HumanEval | Jul 2020 | CODE |
+| HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) |
+| MBPP (Google) | Aug 2020 | CODE |
+| MMLU | Sep 2020 | LLM (general) |
 
-*(The other 3 reviewers in the Completion Report are generated using archetypes: an Academic source, a Tech Media outlet, and a User/Client community).*
+## 2. AI Communities & Platforms (Fillers)
+Use these to pad the review list up to 4 if there aren't enough benchmarks:
+- **ArXiv Peer Review** (Available: Always)
+- **r/MachineLearning** (Available: Always)
+- **HackerNews** (Available: Always)
+- **Kaggle Community** (Available: Always)
+- **TechCrunch / Tech Media** (Available: Always)
+- **Hugging Face Community** (Available: From 2017)
+- **PapersWithCode** (Available: From 2018)
 
 <!--
 Tiếng Việt (tóm tắt):
-Bảng chuẩn đánh giá theo lịch sử thực tế.
-Khi mô hình hoàn thành, Engine bắt buộc phải chọn 1 Benchmark từ bảng này
-(khớp với Task và Năm hiện tại) làm người đánh giá đầu tiên. Nếu có nhiều lựa
-chọn, ưu tiên cái mới nhất. 3 người đánh giá còn lại (Học thuật, Báo chí,
-Cộng đồng) AI tự tạo tên.
+Danh sách toàn diện các Benchmark lịch sử.
+Luật hiển thị: Lấy TẤT CẢ benchmark hợp lệ với Task và Năm.
+- Nếu < 4: Lấy thêm các trang cộng đồng (Hugging Face, ArXiv...) đắp vào cho đủ 4.
+- Nếu >= 4: Hiển thị toàn bộ, không giới hạn ở 4 dòng.
 -->
