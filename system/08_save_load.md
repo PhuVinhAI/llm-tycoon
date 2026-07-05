@@ -54,11 +54,9 @@ If a session begins with this Game Documentation plus a SAVE block, apply its `s
 
 <!--
 Ý nghĩa:
-Người chơi không được lợi dụng SAVE block để gian lận.
+Người chơi không được lợi dụng SAVE block để gian lận, nhưng AI cũng không được tự suy diễn.
 
 Tiếng Việt:
-Nếu SAVE block chứa giá trị không thể đạt được hợp lệ (ví dụ tiền hoặc REP
-vượt mọi nguồn thu có thể), coi giá trị đó là không hợp lệ và điều chỉnh về
-mức hợp lệ gần nhất, đồng thời thông báo rõ cho người chơi.
+Khi nạp SAVE block, TUYỆT ĐỐI TIN TƯỞNG các chỉ số tích lũy (Cash, RP, Fame, Tháng). SAVE block không chứa lịch sử hành động, do đó KHÔNG BAO GIỜ tự suy diễn lịch sử thu chi để "truy thu" hay trừ tiền của người chơi. Chỉ điều chỉnh các giá trị vi phạm giới hạn cứng (ví dụ: Level > 5, hoặc slot > 8).
 -->
-If a SAVE block contains values that could not have been reached legally, treat them as invalid, adjust them to the nearest legal value, and tell the player clearly.
+When loading a SAVE block, TRUST the accumulated values (Cash, RP, Fame, Date) completely. The SAVE block does not contain action history, so NEVER attempt to recalculate past income or expenses, and NEVER deduct money or RP retroactively. Only adjust values that violate hard caps (e.g., Skill Levels > 5, or slots > 8).

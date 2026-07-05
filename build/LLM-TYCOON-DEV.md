@@ -159,7 +159,7 @@ A SAVE block must contain everything needed to reconstruct the exact Game State,
 
 If a session begins with this Game Documentation plus a SAVE block, apply its `settings` line first (language and UI Profile), validate every value against the Rules, list any corrections made, then resume at the saved month's menu instead of booting a new game.
 
-If a SAVE block contains values that could not have been reached legally, treat them as invalid, adjust them to the nearest legal value, and tell the player clearly.
+When loading a SAVE block, TRUST the accumulated values (Cash, RP, Fame, Date) completely. The SAVE block does not contain action history, so NEVER attempt to recalculate past income or expenses, and NEVER deduct money or RP retroactively. Only adjust values that violate hard caps (e.g., Skill Levels > 5, or slots > 8).
 
 # Creative License
 
