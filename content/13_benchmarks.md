@@ -17,9 +17,9 @@ chọn Benchmark từ bảng này dựa trên Task và Năm hiện tại, thay v
 
 When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-Do not pad or fill the list. If only 1 or 2 Benchmarks exist for that Task at the current date, simply evaluate those. This accurately reflects how early AI had fewer standardized tests.
+Do not pad or fill the list. Show exactly as many Benchmarks as are available. (If 0 Benchmarks exist for a Task at the current date, use a single "Internal QA Metric" to calculate Q).
 
-## Official Benchmarks
+## 1. Official Benchmarks
 
 | Benchmark / Dataset | Available From | Applicable Tasks | Target Domains (Domain Fit) |
 |---|---|---|---|
@@ -48,3 +48,12 @@ Do not pad or fill the list. If only 1 or 2 Benchmarks exist for that Task at th
 | HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
 | MBPP (Google) | Aug 2020 | CODE | code, math |
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
+
+## 2. Public Reviewers (For Release)
+When a Model is officially released (Open-source, License, or Product), the Game Engine must randomly select exactly **4** of these sources to generate the Public Reception reviews (S6-B).
+- **ArXiv Peer Review** (Academic perspective)
+- **r/MachineLearning** (Practitioner perspective)
+- **HackerNews** (Startup/Tech perspective)
+- **TechCrunch / Tech Media** (Mainstream hype/fear)
+- **Twitter / X AI Community** (Trend-chasing perspective)
+- **Hugging Face Community** (Open-source perspective, From 2017)

@@ -128,6 +128,22 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 4 🗄️ Shelve (0 Fame)
 *[locked: why]*
 
+## S6-B — Public Reception
+
+🌍 **Reception: [Model]**
+**[Reviewer 1]**
+*"[1 sentence reaction]"*
+**[Reviewer 2]**
+*"[1 sentence reaction]"*
+**[Reviewer 3]**
+*"[1 sentence reaction]"*
+**[Reviewer 4]**
+*"[1 sentence reaction]"*
+
+**Payout:**
+⭐ Fame [±x]
+💰 [Cash/Stream info]
+
 ## S7 — Market List
 
 🛒 **[List title]**

@@ -122,6 +122,8 @@ Every completed Model immediately grants **RP + (floor(Q) × 10)** (knowledge ga
 
 A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40) may only be open-sourced or shelved.
 
+*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q, SOTA status, and any remaining Artifacts.
+
 *SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release.
 *Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
 *Paper Limitation:* If a `Shelved` model has been published via an Academic Paper (`pub=yes`), it may **only** be released as Open-source (proprietary tech is already leaked).

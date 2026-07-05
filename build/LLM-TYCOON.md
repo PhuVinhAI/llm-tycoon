@@ -1122,6 +1122,8 @@ Every completed Model immediately grants **RP + (floor(Q) × 10)** (knowledge ga
 
 A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40) may only be open-sourced or shelved.
 
+*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q, SOTA status, and any remaining Artifacts.
+
 *SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release.
 *Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
 *Paper Limitation:* If a `Shelved` model has been published via an Academic Paper (`pub=yes`), it may **only** be released as Open-source (proprietary tech is already leaked).
@@ -1613,9 +1615,9 @@ Flavor direction determined by `Turn % 4`:
 
 When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-Do not pad or fill the list. If only 1 or 2 Benchmarks exist for that Task at the current date, simply evaluate those. This accurately reflects how early AI had fewer standardized tests.
+Do not pad or fill the list. Show exactly as many Benchmarks as are available. (If 0 Benchmarks exist for a Task at the current date, use a single "Internal QA Metric" to calculate Q).
 
-## Official Benchmarks
+## 1. Official Benchmarks
 
 | Benchmark / Dataset | Available From | Applicable Tasks | Target Domains (Domain Fit) |
 |---|---|---|---|
@@ -1644,6 +1646,15 @@ Do not pad or fill the list. If only 1 or 2 Benchmarks exist for that Task at th
 | HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
 | MBPP (Google) | Aug 2020 | CODE | code, math |
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
+
+## 2. Public Reviewers (For Release)
+When a Model is officially released (Open-source, License, or Product), the Game Engine must randomly select exactly **4** of these sources to generate the Public Reception reviews (S6-B).
+- **ArXiv Peer Review** (Academic perspective)
+- **r/MachineLearning** (Practitioner perspective)
+- **HackerNews** (Startup/Tech perspective)
+- **TechCrunch / Tech Media** (Mainstream hype/fear)
+- **Twitter / X AI Community** (Trend-chasing perspective)
+- **Hugging Face Community** (Open-source perspective, From 2017)
 
 # Historical SOTA (Rival Models)
 
@@ -1764,7 +1775,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S16` Team & Interviews · `S17` Academic Publishing · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S6-B` Public Reception · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S16` Team & Interviews · `S17` Academic Publishing · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -1913,6 +1924,21 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
+
+## S6-B — Public Reception (Triggered on Release)
+
+🌍 **Public Reception: [Model Name]**
+*(Rendered immediately after choosing Open-source, License, or Product)*
+
+**Community Reviews:**
+* **[Reviewer 1]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+* **[Reviewer 2]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+* **[Reviewer 3]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+* **[Reviewer 4]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+
+**Final Payout:**
+⭐ Fame [±x] added!
+💰 [Cash amount / Income Stream details / "No direct cash (Open-source)"]
 
 ## S7 — Market List (shop, datasets, contracts, candidates)
 
@@ -2184,6 +2210,22 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 3 📈 Product $[x]/mo ×8
 4 🗄️ Shelve (0 Fame)
 *[locked: why]*
+
+## S6-B — Public Reception
+
+🌍 **Reception: [Model]**
+**[Reviewer 1]**
+*"[1 sentence reaction]"*
+**[Reviewer 2]**
+*"[1 sentence reaction]"*
+**[Reviewer 3]**
+*"[1 sentence reaction]"*
+**[Reviewer 4]**
+*"[1 sentence reaction]"*
+
+**Payout:**
+⭐ Fame [±x]
+💰 [Cash/Stream info]
 
 ## S7 — Market List
 

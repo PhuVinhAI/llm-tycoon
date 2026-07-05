@@ -127,6 +127,21 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
 
+## S6-B — Public Reception (Triggered on Release)
+
+🌍 **Public Reception: [Model Name]**
+*(Rendered immediately after choosing Open-source, License, or Product)*
+
+**Community Reviews:**
+* **[Reviewer 1]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+* **[Reviewer 2]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+* **[Reviewer 3]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+* **[Reviewer 4]:** *"[1 sentence reacting to Q, SOTA, or Artifacts]"*
+
+**Final Payout:**
+⭐ Fame [±x] added!
+💰 [Cash amount / Income Stream details / "No direct cash (Open-source)"]
+
 ## S7 — Market List (shop, datasets, contracts, candidates)
 
 🛒 **[List title] — [Month YYYY]**
