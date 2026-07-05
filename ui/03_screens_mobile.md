@@ -263,15 +263,16 @@ $[x]/mo · [Effects]
 
 ## S17 — Academic Publishing
 
-🎓 **Publish a Paper**
-*Warning: Cancels active Income Stream.*
+🎓 **Publish a Paper (3 mos)**
+⚠️ Prod: Stream cut. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60, Unpub):**
 **M1** [Name]
-▸ [Arch]×[Task] · Q[Q] · Stream:[Y/N]
+▸ [Arch]×[Task] · Q[Q]
+▸ [Release] → [Safe/Cut/Lawsuit!]
 *(or "No eligible models")*
 
-👉 *Reply ID to write paper (3 mos), or 0 back.*
+👉 *Reply ID to write paper, or 0 back.*
 
 ## S8 — SAVE
 

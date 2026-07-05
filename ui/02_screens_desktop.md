@@ -258,12 +258,13 @@ Provide your configuration to start:
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper**
-*Publishing reveals your tech: any active Income Stream for the chosen model will be immediately cancelled. Takes 3 months.*
+*Takes 3 months. Publishing reveals your tech to the world.*
+⚠️ **Product:** Active streams are cancelled. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60, Unpublished):**
-| ID | Name | Arch × Task | Q | Active Stream? |
-|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Yes/No] |
+| ID | Name | Arch × Task | Q | Release | Consequence |
+|---|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cancelled / Lawsuit!] |
 *(If none: "No eligible models.")*
 
 👉 *Reply with the ID to start writing a paper, or 0 to go back.*

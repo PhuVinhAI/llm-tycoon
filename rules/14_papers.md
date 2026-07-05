@@ -21,7 +21,10 @@ trả là mất độc quyền thương mại (hủy Income Stream).
 ## Starting a Paper
 - Starting a Paper is an instant action from S17.
 - **Commitment:** Writing a Paper takes exactly **3 committed months** (`M = 3`).
-- **Trade-off (Immediate):** Starting a Paper immediately **cancels any active Income Stream** for that specific Model (because the proprietary architecture and methods are now public knowledge).
+- **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
+  - **Product:** The active Income Stream is immediately **cancelled**.
+  - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
+  - **Open-source / Shelved:** Safe to publish. No immediate penalties.
 
 ## Mid-Paper Dilemmas
 - When a Paper reaches `months elapsed == floor(M ÷ 2)` (month 1), the engine pauses and presents a **Paper Dilemma** (Content).

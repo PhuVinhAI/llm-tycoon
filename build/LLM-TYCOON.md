@@ -1264,7 +1264,10 @@ Present the ending as a short narrated epilogue, then the final total score, the
 ## Starting a Paper
 - Starting a Paper is an instant action from S17.
 - **Commitment:** Writing a Paper takes exactly **3 committed months** (`M = 3`).
-- **Trade-off (Immediate):** Starting a Paper immediately **cancels any active Income Stream** for that specific Model (because the proprietary architecture and methods are now public knowledge).
+- **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
+  - **Product:** The active Income Stream is immediately **cancelled**.
+  - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
+  - **Open-source / Shelved:** Safe to publish. No immediate penalties.
 
 ## Mid-Paper Dilemmas
 - When a Paper reaches `months elapsed == floor(M ÷ 2)` (month 1), the engine pauses and presents a **Paper Dilemma** (Content).
@@ -2048,12 +2051,13 @@ Provide your configuration to start:
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper**
-*Publishing reveals your tech: any active Income Stream for the chosen model will be immediately cancelled. Takes 3 months.*
+*Takes 3 months. Publishing reveals your tech to the world.*
+⚠️ **Product:** Active streams are cancelled. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60, Unpublished):**
-| ID | Name | Arch × Task | Q | Active Stream? |
-|---|---|---|---|---|
-| M1 | [Name] | [Arch] × [Task] | [Q] | [Yes/No] |
+| ID | Name | Arch × Task | Q | Release | Consequence |
+|---|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cancelled / Lawsuit!] |
 *(If none: "No eligible models.")*
 
 👉 *Reply with the ID to start writing a paper, or 0 to go back.*
@@ -2322,15 +2326,16 @@ $[x]/mo · [Effects]
 
 ## S17 — Academic Publishing
 
-🎓 **Publish a Paper**
-*Warning: Cancels active Income Stream.*
+🎓 **Publish a Paper (3 mos)**
+⚠️ Prod: Stream cut. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60, Unpub):**
 **M1** [Name]
-▸ [Arch]×[Task] · Q[Q] · Stream:[Y/N]
+▸ [Arch]×[Task] · Q[Q]
+▸ [Release] → [Safe/Cut/Lawsuit!]
 *(or "No eligible models")*
 
-👉 *Reply ID to write paper (3 mos), or 0 back.*
+👉 *Reply ID to write paper, or 0 back.*
 
 ## S8 — SAVE
 
