@@ -273,7 +273,7 @@ Provide your configuration to start:
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper**
-*Takes 3 months. Publishing reveals your tech to the world.*
+*Takes 2 months. Publishing reveals your tech to the world.*
 ⚠️ **Product:** Active streams are cancelled. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60, Unpublished):**

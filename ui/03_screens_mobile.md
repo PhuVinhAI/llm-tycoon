@@ -279,7 +279,7 @@ $[x]/mo · [Effects]
 
 ## S17 — Academic Publishing
 
-🎓 **Publish a Paper (3 mos)**
+🎓 **Publish a Paper (2 mos)**
 ⚠️ Prod: Stream cut. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60, Unpub):**

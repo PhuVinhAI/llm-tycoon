@@ -1426,14 +1426,14 @@ Present the ending as a short narrated epilogue, then the final total score, the
 
 ## Starting a Paper
 - Starting a Paper is an instant action from S17.
-- **Commitment:** Writing a Paper takes exactly **3 committed months** (`M = 3`).
+- **Commitment:** Writing a Paper takes exactly **2 committed months** (`M = 2`).
 - **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
   - **Product:** The active Income Stream is immediately **cancelled**.
   - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
   - **Open-source / Shelved:** Safe to publish. No immediate penalties.
 
 ## Mid-Paper Dilemmas
-- When a Paper reaches `months elapsed == floor(M ÷ 2)` (month 1), the engine pauses and presents a **Paper Dilemma** (Content).
+- When a Paper reaches `months elapsed == 1` (which is `floor(M ÷ 2)`), the engine pauses and presents a **Paper Dilemma** (Content).
 - Render the Dilemma (S10) and wait for the Player's choice.
 - The outcome may modify the total months (`M`), the final RP multiplier/bonus, or grant immediate Cash/Fame. Track any RP modifiers in the Game State.
 
@@ -1872,7 +1872,7 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 
 # Paper Dilemmas
 
-Triggered mid-paper (month 1 of 3). Flavor direction determined by `Turn % 4`:
+Triggered mid-paper (month 1 of 2). Flavor direction determined by `Turn % 4`:
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
@@ -2228,7 +2228,7 @@ Provide your configuration to start:
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper**
-*Takes 3 months. Publishing reveals your tech to the world.*
+*Takes 2 months. Publishing reveals your tech to the world.*
 ⚠️ **Product:** Active streams are cancelled. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60, Unpublished):**
@@ -2519,7 +2519,7 @@ $[x]/mo · [Effects]
 
 ## S17 — Academic Publishing
 
-🎓 **Publish a Paper (3 mos)**
+🎓 **Publish a Paper (2 mos)**
 ⚠️ Prod: Stream cut. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60, Unpub):**

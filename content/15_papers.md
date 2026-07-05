@@ -14,7 +14,7 @@ Co-author, Overclaim) để việc viết báo không chỉ là chờ đợi.
 
 # Paper Dilemmas
 
-Triggered mid-paper (month 1 of 3). Flavor direction determined by `Turn % 4`:
+Triggered mid-paper (month 1 of 2). Flavor direction determined by `Turn % 4`:
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
