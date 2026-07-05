@@ -865,7 +865,7 @@ The concrete values are defined in the Content.
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
-| 📝 **Paper month** | Advance the active Paper by one month. At month 1, pause and trigger the Reviewer 2 Dilemma (see Research). |
+| 📝 **Paper month** | Advance the active Paper by one month. At `months elapsed == floor(M ÷ 2)`, pause and trigger a Paper Dilemma (see Academic Papers). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
 | 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
 
@@ -877,7 +877,7 @@ The concrete values are defined in the Content.
 - Pay a Headhunter to search for Employees, or fire an Employee.
 - Accept a Contract (its months become committed, starting this month).
 - Start a Project (its months become committed, starting this month).
-- Start a Paper on a completed Model (requires Q ≥ 60, not yet published). Commits 2 months. Immediately cancels any active Income Stream for that Model.
+- Start a Paper (its months become committed, starting this month. Instantly cancels the model's active Income Stream).
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
@@ -932,15 +932,6 @@ Every month, in the Costs step:
 
 - Events may discount a Technology's cost. A discount applies only if the Technology is still locked when the event fires, and it persists until unlocked.
 - Multiple discounts multiply; round the final cost **up** to the nearest 5 (Economy rule).
-
-## Publishing Papers
-
-- **Starting:** The Player may start a Paper (instant action from the Portfolio) on any completed Model that has **Q ≥ 60** and has not been published yet.
-- **Commitment:** It takes **2 committed months**. Starting a Paper immediately **cancels any active Income Stream** for that Model (the proprietary tech is now public).
-- **Reviewer 2 Dilemma:** When `months elapsed == 1`, the engine pauses for a Dilemma. Reviewer 2 demands extensive additional ablations.
-  - *Choice 1 (Appease):* Add 1 month to the commitment (`M` becomes 3). Yield: Final RP +1000.
-  - *Choice 2 (Argue):* Keep the 2-month schedule. Yield: Fame −100 immediately (for being combative).
-- **Completion:** On the final month, the Paper is published. The Model is marked as `published`. Yield: **RP = Q × 30** and **Fame +200**.
 
 # Skills
 
@@ -1263,6 +1254,28 @@ Score = 3 × Fame
 ```
 
 Present the ending as a short narrated epilogue, then the final total score, then the title from the Content's titles table. Do not show the score breakdown.
+
+# Academic Papers
+
+## Availability
+- The **Publish Paper** menu (S17) is accessible from the Action Menu (S5).
+- A Model is eligible for a Paper if it has **Q ≥ 60** and has not yet been published (`pub=no`).
+
+## Starting a Paper
+- Starting a Paper is an instant action from S17.
+- **Commitment:** Writing a Paper takes exactly **3 committed months** (`M = 3`).
+- **Trade-off (Immediate):** Starting a Paper immediately **cancels any active Income Stream** for that specific Model (because the proprietary architecture and methods are now public knowledge).
+
+## Mid-Paper Dilemmas
+- When a Paper reaches `months elapsed == floor(M ÷ 2)` (month 1), the engine pauses and presents a **Paper Dilemma** (Content).
+- Render the Dilemma (S10) and wait for the Player's choice.
+- The outcome may modify the total months (`M`), the final RP multiplier/bonus, or grant immediate Cash/Fame. Track any RP modifiers in the Game State.
+
+## Completion
+- On the final month, the Paper is published.
+- **Yield:** The Company receives **RP = Q × 30** and **Fame +300**. (Apply any modifiers from the Dilemma).
+- The Model is permanently marked as `published` and cannot be used for a Paper again.
+- Cancelling mid-paper: Fame −100, no RP (Actions rule).
 
 ---
 
@@ -1692,6 +1705,17 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 
 *(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50`).*
 
+# Paper Dilemmas
+
+Triggered mid-paper (month 1 of 3). Flavor direction determined by `Turn % 4`:
+
+| X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
+|---|---|---|---|
+| 0 | **Reviewer 2's Wrath** (Demands extensive ablation studies) | Argue the point.<br>Yield: `Fame -100` | Do the extra work.<br>Yield: `M +1`, `Final RP +1000` |
+| 1 | **Open-Source Pressure** (Conference wants the training code) | Keep proprietary.<br>Yield: `Normal` | Release code & weights.<br>Yield: `Fame +400`, `Cash -$2,000` (hosting) |
+| 2 | **Big Tech Co-Author** (A famous lab offers to co-author for prestige) | Solo author.<br>Yield: `Normal` | Accept co-author.<br>Yield: `Fame +500`, `Final RP × 0.5` |
+| 3 | **SOTA Overclaim** (Temptation to exaggerate the benchmark results) | Stay honest.<br>Yield: `Normal` | Hype it up.<br>Yield: `Fame +400`, `Final RP × 0.8` (peers lose respect) |
+
 ---
 
 # PART 5 — SCENARIO
@@ -1743,7 +1767,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S16` Team & Interviews · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S16` Team & Interviews · `S17` Academic Publishing · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -1850,7 +1874,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 5 📜 Contracts | 6 🛒 Shop |
 | 7 👥 Team | 8 🌳 Tech Tree |
 | 9 📁 Portfolio | 10 💾 Save |
-| 0 🏠 Main Menu | |
+| 11 🎓 Publish Paper | 0 🏠 Main Menu |
 
 *(If a PROJECT, CONTRACT, or PAPER is active):*
 | Active: [Project Name, Contract ID, or Paper on Model] | Month [X] of [M] |
@@ -1865,6 +1889,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns a Neural Architecture (GPUT or EMB).
+- Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60, unpublished).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
 ## S6 — Model Completion Report
@@ -2020,6 +2045,19 @@ Provide your configuration to start:
 
 👉 *Reply 1, 2, or 3 to hire, or 0 to pass.*
 
+## S17 — Academic Publishing
+
+🎓 **Publish a Paper**
+*Publishing reveals your tech: any active Income Stream for the chosen model will be immediately cancelled. Takes 3 months.*
+
+**Eligible Models (Q ≥ 60, Unpublished):**
+| ID | Name | Arch × Task | Q | Active Stream? |
+|---|---|---|---|---|
+| M1 | [Name] | [Arch] × [Task] | [Q] | [Yes/No] |
+*(If none: "No eligible models.")*
+
+👉 *Reply with the ID to start writing a paper, or 0 to go back.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -2103,6 +2141,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 8 🌳 Tech Tree
 9 📁 Portfolio
 10 💾 Save
+11 🎓 Publish Paper
 0 🏠 Main Menu
 
 *(If PROJECT/CONTRACT/PAPER active):*
@@ -2118,7 +2157,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned), keeping the early game menu simple.
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60, unpublished).
 
 ## S6 — Model Completion Report
 
@@ -2281,6 +2320,18 @@ $[x]/mo · [Effects]
 
 👉 *Reply 1, 2, 3 to hire, or 0 to pass.*
 
+## S17 — Academic Publishing
+
+🎓 **Publish a Paper**
+*Warning: Cancels active Income Stream.*
+
+**Eligible (Q ≥ 60, Unpub):**
+**M1** [Name]
+▸ [Arch]×[Task] · Q[Q] · Stream:[Y/N]
+*(or "No eligible models")*
+
+👉 *Reply ID to write paper (3 mos), or 0 back.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -2311,7 +2362,7 @@ candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Dataset,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no)]; …
 streams: [Name $x/mo ×y left]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M | none]
+contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
 project: [Name Arch×Task on Dataset, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows]
