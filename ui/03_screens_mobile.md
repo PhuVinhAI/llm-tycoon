@@ -181,13 +181,14 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S12 — Project Wizard
 
 🏗️ **New Model**
+Compute: [total] TFLOPS/mo
 Configuration:
-- **Arch:** [Owned]
+- **Arch:** [Owned + Base Req]
 - **Scale:** Small / Base / Large
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
-- **Data:** [Owned] *(show known fit ONLY if previously tested)*
-- **Months:** (min [X])
+- **Data:** [Owned] *(show known fit ONLY if previously analyzed)*
+- **Months:** (min [X]). *(Engine: State exactly how many months to reach Base/Large compute reqs at current TFLOPS/mo)*
 - **Focus:** 10 pts total *(no hints!)*
   - **Data (D):** Prep & clean
   - **Model (M):** Design & params
