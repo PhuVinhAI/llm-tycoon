@@ -26,7 +26,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 | Source | Fame change |
 |---|---|
-| Model reception: Breakthrough / Great / Good / Mediocre / Failure | +800 / +500 / +300 / +100 / −200 |
+| Model reception: Breakthrough / Great / Good / Mediocre / Failure | +800 / +500 / +300 / +100 / −100 |
 | Open-source release | reception Fame × 2 (replaces the normal reception Fame) |
 | Contract completed / cancelled | +100 / −200 |
 | Project cancelled | −100 |
@@ -43,7 +43,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 Tiếng Việt (tóm tắt):
 Fame từ 0 đến 5000 (sàn 0, trần 5000).
 
-Nguồn: tiếp nhận Model (Đột phá/Tuyệt/Tốt/Tàm tạm/Thất bại = +800/+500/+300/+100/−200);
+Nguồn: tiếp nhận Model (Đột phá/Tuyệt/Tốt/Tàm tạm/Thất bại = +800/+500/+300/+100/−100);
 phát hành mã nguồn mở = Fame tiếp nhận ×2 (thay thế mức thường); hoàn thành
 hợp đồng +100, hủy hợp đồng −200; hủy dự án −100; thắng cuộc thi và sự kiện theo
 Content.

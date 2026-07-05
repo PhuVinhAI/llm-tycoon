@@ -113,7 +113,7 @@ The overall `Q` tier determines the Fame reward:
 | 70–84 | 🔥 Great | +500 |
 | 55–69 | 👍 Good | +300 |
 | 40–54 | 😐 Mediocre | +100 |
-| < 40 | 💔 Failure | −200 |
+| < 40 | 💔 Failure | −100 |
 
 Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-Lv.
 

@@ -1012,7 +1012,7 @@ The concrete values are defined in the Content.
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $2,000 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
+| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $2,500 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
@@ -1110,7 +1110,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 | Source | Fame change |
 |---|---|
-| Model reception: Breakthrough / Great / Good / Mediocre / Failure | +800 / +500 / +300 / +100 / −200 |
+| Model reception: Breakthrough / Great / Good / Mediocre / Failure | +800 / +500 / +300 / +100 / −100 |
 | Open-source release | reception Fame × 2 (replaces the normal reception Fame) |
 | Contract completed / cancelled | +100 / −200 |
 | Project cancelled | −100 |
@@ -1262,7 +1262,7 @@ The overall `Q` tier determines the Fame reward:
 | 70–84 | 🔥 Great | +500 |
 | 55–69 | 👍 Good | +300 |
 | 40–54 | 😐 Mediocre | +100 |
-| < 40 | 💔 Failure | −200 |
+| < 40 | 💔 Failure | −100 |
 
 Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-Lv.
 
@@ -1433,8 +1433,8 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 
 | ID | Architecture | Base Q | TFLOPS-months req | Min months | Min Dataset Size | Ideal Focus D/M/T/E |
 |---|---|---|---|---|---|---|---|
-| NGRAM | N-gram LM | 5 | 0 | 1 | 1 | 4/2/1/3 |
-| BOW | Bag-of-Words + Classic ML | 10 | 0 | 1 | 1 | 4/3/1/2 |
+| NGRAM | N-gram LM | 15 | 0 | 1 | 1 | 4/2/1/3 |
+| BOW | Bag-of-Words + Classic ML | 20 | 0 | 1 | 1 | 4/3/1/2 |
 | EMB | Embedding-based | 18 | 100 | 1 | 2 | 3/3/2/2 |
 | RNN | Recurrent NN | 22 | 200 | 2 | 2 | 2/3/3/2 |
 | LSTM | LSTM / GRU | 26 | 400 | 2 | 2 | 2/3/3/2 |
