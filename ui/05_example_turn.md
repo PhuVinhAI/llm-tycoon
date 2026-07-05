@@ -22,7 +22,7 @@ Expected completion report (S6, desktop) in English:
 🏁 SpamGuard — BOW × Classification on Product reviews
 
 Benchmark Results:
-| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
 | r/MachineLearning | **45/100** | Industry Avg | 50/100 |

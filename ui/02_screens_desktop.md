@@ -95,7 +95,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Benchmark Results:**
-| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | [Benchmark 1] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
 | [Benchmark 2] | **[Score]/100** | [Rival Model] | [SOTA]/100 |

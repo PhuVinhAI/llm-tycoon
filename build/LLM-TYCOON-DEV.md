@@ -1224,7 +1224,7 @@ Review Score = Base Points
 **Step 3: Final Quality (Q) & UI Display**
 - **Q** = Average of all `Review Scores` (floor 0, cap 100).
 - When rendering the UI (S6), display each Reviewer's score on a 100-point scale (e.g., 85/100).
-- For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). Display a comparison between the Player's Score and the SOTA Score.
+- For each Benchmark, identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison between the Player's Score and the SOTA Score.
 - The Engine uses Creative License to write a 1–2 sentence flavor quote. **Crucially**, this quote MUST do two things: 1) Briefly explain what the benchmark actually measures in simple layman's terms (so non-experts understand it), and 2) React to the comparison (hyping a new world record if beating SOTA, or pointing out the gap if losing).
 
 ## Reception
@@ -1694,27 +1694,53 @@ Use these to pad the review list up to 4 if there aren't enough benchmarks:
 # Historical SOTA (Rival Models)
 
 When rendering the Benchmark comparison in the Model Completion Report (S6), the Game Engine must find the current SOTA Rival for each Benchmark. 
-**Rule:** Find the most recent entry in this table for the specific Benchmark that is ≤ the current in-game Year.
+**Rule:** Find the most recent entry in this table for the specific Benchmark where the `Date` is ≤ the current in-game Month and Year.
 
-| Year | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
+| Date | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
 |---|---|---|---|
-| 2013 | F1-Score (IMDB/Reuters) | SVM / Naive Bayes Baselines | 60 |
-| 2013 | SST-2 (Stanford Sentiment) | Recursive Neural Tensor Net | 85 |
-| 2013 | Perplexity (Penn Treebank) | KenLM (N-gram baseline) | 50 |
-| 2013 | BLEU Score | Moses (Statistical MT) | 40 |
-| 2014 | WMT14 En-De Translation | Seq2Seq (Google) | 55 |
-| 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75 |
-| 2015 | SNLI (Stanford Inference) | LSTM with Attention | 83 |
-| 2015 | Winograd Schema (WSC) | Statistical Co-occurrence | 52 |
-| 2016 | WMT14 En-De Translation | GNMT (Google Neural MT) | 65 |
-| 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77 |
-| 2017 | WMT14 En-De Translation | Transformer (Google) | 75 |
-| 2018 | SQuAD 2.0 | BERT (Google) | 86 |
-| 2018 | GLUE Benchmark | BERT (Google) | 82 |
-| 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
-| 2019 | SuperGLUE | T5 (Google) | 89 |
-| 2020 | HumanEval (OpenAI) | GPT-3 (OpenAI) | 60 |
-| 2020 | MMLU | GPT-3 (OpenAI) | 65 |
+| Jan 2013 | F1-Score (IMDB/Reuters) | SVM / Naive Bayes Baselines | 60 |
+| Jan 2013 | SST-2 (Stanford Sentiment) | RNTN (Stanford) | 85 |
+| Jan 2013 | Perplexity (Penn Treebank) | KenLM (N-gram baseline) | 50 |
+| Jan 2013 | BLEU Score | Moses (Statistical MT) | 40 |
+| Jan 2013 | ROUGE Score | LexRank Baseline | 45 |
+| Jan 2013 | Human Evaluation | Cleverbot / ALICE | 40 |
+| Sep 2013 | Perplexity (Penn Treebank) | word2vec + RNN (Mikolov) | 65 |
+| Sep 2014 | WMT14 En-De Translation | Seq2Seq (Google) | 55 |
+| Jan 2015 | BLEU (Code domain) | Statistical AST Baselines | 45 |
+| May 2015 | SNLI (Stanford Inference) | LSTM Baseline (NYU) | 77 |
+| Jun 2015 | CNN/DailyMail | Attentive Reader (DeepMind) | 60 |
+| Jul 2015 | Winograd Schema (WSC) | Statistical Co-occurrence | 52 |
+| Aug 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75 |
+| Mar 2016 | SNLI (Stanford Inference) | Decomposable Attention (Google) | 86 |
+| Jun 2016 | SQuAD 1.0 | Logistic Regression Baseline | 51 |
+| Sep 2016 | WikiText | AWD-LSTM (Salesforce) | 68 |
+| Oct 2016 | LAMBADA | Word CNN | 55 |
+| Nov 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77 |
+| Nov 2016 | WMT14 En-De Translation | GNMT (Google Neural MT) | 65 |
+| Jan 2017 | ConvAI (Conversational AI) | ParlAI Baselines (Meta) | 60 |
+| Apr 2017 | CNN/DailyMail | Pointer-Generator (Stanford) | 72 |
+| Jun 2017 | WMT14 En-De Translation | Transformer (Google) | 75 |
+| Jan 2018 | PersonaChat | Key-Value Profile Net (Meta) | 65 |
+| Feb 2018 | SNLI (Stanford Inference) | ELMo (AllenAI) | 89 |
+| May 2018 | GLUE Benchmark | BiLSTM + ELMo | 70 |
+| Jun 2018 | SQuAD 2.0 | No-Answer Baseline | 66 |
+| Aug 2018 | CoQA | DrQA + ELMo (Stanford) | 75 |
+| Oct 2018 | SQuAD 2.0 | BERT (Google) | 86 |
+| Oct 2018 | GLUE Benchmark | BERT (Google) | 82 |
+| Jan 2019 | Natural Questions (NQ) | BERT-QA (Google) | 81 |
+| Jan 2019 | PersonaChat | TransferTransfo (HuggingFace) | 82 |
+| May 2019 | HellaSwag | BERT (Google) | 73 |
+| Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
+| Aug 2019 | SuperGLUE | RoBERTa (Meta) | 84 |
+| Oct 2019 | SuperGLUE | T5 (Google) | 89 |
+| Oct 2019 | CNN/DailyMail | BART (Meta) | 85 |
+| Jan 2020 | Human Evaluation | Meena (Google) | 80 |
+| May 2020 | HellaSwag | GPT-3 (OpenAI) | 85 |
+| May 2020 | LAMBADA | GPT-3 (OpenAI) | 86 |
+| Jul 2020 | HumanEval (OpenAI) | GPT-3 (OpenAI) | 60 |
+| Aug 2020 | MBPP (Google) | Fine-tuned BERT | 50 |
+| Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 65 |
+| Oct 2020 | Human Evaluation | BlenderBot (Meta) | 85 |
 
 *(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50`).*
 
@@ -1887,7 +1913,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Benchmark Results:**
-| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | [Benchmark 1] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
 | [Benchmark 2] | **[Score]/100** | [Rival Model] | [SOTA]/100 |
@@ -2220,7 +2246,7 @@ Expected completion report (S6, desktop) in English:
 🏁 SpamGuard — BOW × Classification on Product reviews
 
 Benchmark Results:
-| Benchmark / Reviewer | Your Score | SOTA Rival (Year) | SOTA Score |
+| Benchmark / Reviewer | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
 | F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
 | r/MachineLearning | **45/100** | Industry Avg | 50/100 |
