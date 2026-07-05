@@ -57,47 +57,49 @@ When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engi
 
 When triggered, pause the game, render the Dilemma (S10), and wait for the Player's choice. The resulting `q_mod` is added to the Project's state and applied at completion. `M +1` increases the total committed months.
 
-## Quality formula
+## The Bottom-Up Quality Calculation
 
-Compute Q silently at completion. Floor 0, cap 100. Never reveal the formula or exact breakdown to the player.
+Compute scores silently at completion. Never reveal the formula or exact breakdown to the player.
 
+**Step 1: Calculate Base Points**
 ```
-Q = Base(Architecture)                          … Content: architectures table
-  + Match(Architecture × Task)                  … Content: match matrix
-  + 2 × Dataset Quality
-  + 5                                           … dataset Size meets the minimum (always true if started)
-  + Domain fit (+3 / 0 / −3)                    … Datasets rule
-  + Compute score                               … see below
-  + Focus score                                 … see below
-  + 2 × E-Lv
-  + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
-  + q_mod                                       … from Project Dilemma (default 0)
-  − floor(Artifacts ÷ 2)                        … Penalty if released as a Base Model with remaining Artifacts
-  − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
+Base Points = Base(Architecture)                … Content: architectures table
+            + (2 × Dataset Quality)
+            + 5                                 … dataset Size meets the minimum
+            + Compute score                     … see below
+            + Focus score                       … see below
+            + (2 × E-Lv)
+            + Technology & staff bonuses        … BPE +5 (S2S/S2SA/TRF/PTRF); FINE +5 (PTRF); staff
+            + q_mod                             … from Project Dilemmas
+            − floor(Artifacts ÷ 2)              … Penalty if released with remaining Artifacts
+            − 15 if repeat                      … same Arch + Task + Dataset as previous Model
 ```
 
-**Compute score** — compare accumulated CU-months against the Architecture's requirement (req):
+*Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
+*Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
-| Accumulated | Score |
-|---|---|
-| ≥ 2 × req | +8 |
-| ≥ req | +5 |
-| ≥ req ÷ 2 | −5 |
-| < req ÷ 2 | −15 |
+**Step 2: Calculate Individual Review Scores**
+Identify ALL applicable Reviewers (Benchmarks matching Task & Year). If < 4, pad with AI Communities (Content). For EACH Reviewer, calculate its specific score (0-100):
+```
+Review Score = Base Points
+             + Match(Architecture × Task)       … Content: match matrix
+             + Domain Fit                       … see below
+```
+*Domain Fit logic for each Reviewer:*
+- If Dataset Domain is in the Benchmark's `Target Domains`: **+20**
+- If Dataset Domain is `web-mixed` (General knowledge): **+5**
+- If Reviewer is a Filler (AI Community/Media): **+5** (They judge general utility)
+- Any other mismatch: **−15**
 
-A requirement of 0 always scores +5.
+*Clamp each Review Score between 0 and 100.*
 
-**Focus score** = 10 − Σ |allocated − ideal| across the four aspects (floor 0). Ideal allocations per Architecture are in the Content.
+**Step 3: Final Quality (Q) & UI Display**
+- **Q** = Average of all `Review Scores` (floor 0, cap 100).
+- When rendering the UI (S6), display each Reviewer's score as `Review Score ÷ 10` (e.g., 85 becomes 8.5/10). The Engine uses Creative License to write a 1-sentence flavor quote matching the specific score and context of that benchmark.
 
-## Reception & Reviews
+## Reception
 
-When a model completes, the Engine translates its `Q` score into reviews out of 10 (averaging `Q ÷ 10`).
-- **Reviewers:** The Engine must list **ALL applicable Benchmarks** from the Content table matching the Task and current Year.
-- If the number of Benchmarks is less than 4, the Engine fills the remaining slots using **AI Communities & Platforms** from the Content table until there are at least 4 reviews.
-- If the number of Benchmarks is 4 or more, display all of them (do not use community fillers).
-- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer, matching the context of the benchmark/community.
-
-The overall reception tier still determines the Fame reward:
+The overall `Q` tier determines the Fame reward:
 
 | Q | Reception | Fame |
 |---|---|---|

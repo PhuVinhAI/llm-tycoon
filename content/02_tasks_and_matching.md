@@ -47,17 +47,7 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 | **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
 | **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
-## Domain fit lists (Refer to the Datasets rule for exact matching mechanics)
-
-| Task | Fit Domains |
-|---|---|
-| CLS | reviews, social, news |
-| AUTO | web-mixed, news, social, encyclopedic |
-| TRANS | parallel (only) |
-| CHAT | dialogue, social |
-| SUMM | news, encyclopedic |
-| QA | QA, encyclopedic |
-| CODE | code (only) |
+*(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
 
 <!--
 Tiếng Việt (tóm tắt):

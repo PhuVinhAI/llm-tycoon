@@ -32,11 +32,9 @@ Trách nhiệm:
 - **Clean** (main action): one owned Dataset gains Quality +1 (max 5).
 - **Combine** (instant): merge two owned Datasets of the same Domain into one — Size = the larger Size + 1 (cap 5), Quality = the lower of the two. The originals are consumed.
 
-## Domain fit (used in the Model Quality formula)
+## Domain fit
 
-- If the Dataset's Domain is in the Task's fit list (Content): **+3**.
-- `web-mixed` counts as **0** for every Task, with two exceptions: AUTO **+3**, TRANS **−3**.
-- Any other mismatch: **−3**.
+*(Domain fit is now calculated dynamically against specific Benchmarks during the Model Completion phase. See the Model Projects rule for the Bottom-Up Quality Calculation).*
 
 ## Usage
 

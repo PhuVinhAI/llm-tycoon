@@ -1115,11 +1115,9 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 - **Clean** (main action): one owned Dataset gains Quality +1 (max 5).
 - **Combine** (instant): merge two owned Datasets of the same Domain into one — Size = the larger Size + 1 (cap 5), Quality = the lower of the two. The originals are consumed.
 
-## Domain fit (used in the Model Quality formula)
+## Domain fit
 
-- If the Dataset's Domain is in the Task's fit list (Content): **+3**.
-- `web-mixed` counts as **0** for every Task, with two exceptions: AUTO **+3**, TRANS **−3**.
-- Any other mismatch: **−3**.
+*(Domain fit is now calculated dynamically against specific Benchmarks during the Model Completion phase. See the Model Projects rule for the Bottom-Up Quality Calculation).*
 
 ## Usage
 
@@ -1187,47 +1185,49 @@ When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engi
 
 When triggered, pause the game, render the Dilemma (S10), and wait for the Player's choice. The resulting `q_mod` is added to the Project's state and applied at completion. `M +1` increases the total committed months.
 
-## Quality formula
+## The Bottom-Up Quality Calculation
 
-Compute Q silently at completion. Floor 0, cap 100. Never reveal the formula or exact breakdown to the player.
+Compute scores silently at completion. Never reveal the formula or exact breakdown to the player.
 
+**Step 1: Calculate Base Points**
 ```
-Q = Base(Architecture)                          … Content: architectures table
-  + Match(Architecture × Task)                  … Content: match matrix
-  + 2 × Dataset Quality
-  + 5                                           … dataset Size meets the minimum (always true if started)
-  + Domain fit (+3 / 0 / −3)                    … Datasets rule
-  + Compute score                               … see below
-  + Focus score                                 … see below
-  + 2 × E-Lv
-  + Technology & staff bonuses                  … BPE +5 (S2S, S2SA, TRF, PTRF only); FINE +5 (PTRF only); staff per Content
-  + q_mod                                       … from Project Dilemma (default 0)
-  − floor(Artifacts ÷ 2)                        … Penalty if released as a Base Model with remaining Artifacts
-  − 15 if repeat                                … same Architecture + Task + Dataset as any previous Model
+Base Points = Base(Architecture)                … Content: architectures table
+            + (2 × Dataset Quality)
+            + 5                                 … dataset Size meets the minimum
+            + Compute score                     … see below
+            + Focus score                       … see below
+            + (2 × E-Lv)
+            + Technology & staff bonuses        … BPE +5 (S2S/S2SA/TRF/PTRF); FINE +5 (PTRF); staff
+            + q_mod                             … from Project Dilemmas
+            − floor(Artifacts ÷ 2)              … Penalty if released with remaining Artifacts
+            − 15 if repeat                      … same Arch + Task + Dataset as previous Model
 ```
 
-**Compute score** — compare accumulated CU-months against the Architecture's requirement (req):
+*Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
+*Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
-| Accumulated | Score |
-|---|---|
-| ≥ 2 × req | +8 |
-| ≥ req | +5 |
-| ≥ req ÷ 2 | −5 |
-| < req ÷ 2 | −15 |
+**Step 2: Calculate Individual Review Scores**
+Identify ALL applicable Reviewers (Benchmarks matching Task & Year). If < 4, pad with AI Communities (Content). For EACH Reviewer, calculate its specific score (0-100):
+```
+Review Score = Base Points
+             + Match(Architecture × Task)       … Content: match matrix
+             + Domain Fit                       … see below
+```
+*Domain Fit logic for each Reviewer:*
+- If Dataset Domain is in the Benchmark's `Target Domains`: **+20**
+- If Dataset Domain is `web-mixed` (General knowledge): **+5**
+- If Reviewer is a Filler (AI Community/Media): **+5** (They judge general utility)
+- Any other mismatch: **−15**
 
-A requirement of 0 always scores +5.
+*Clamp each Review Score between 0 and 100.*
 
-**Focus score** = 10 − Σ |allocated − ideal| across the four aspects (floor 0). Ideal allocations per Architecture are in the Content.
+**Step 3: Final Quality (Q) & UI Display**
+- **Q** = Average of all `Review Scores` (floor 0, cap 100).
+- When rendering the UI (S6), display each Reviewer's score as `Review Score ÷ 10` (e.g., 85 becomes 8.5/10). The Engine uses Creative License to write a 1-sentence flavor quote matching the specific score and context of that benchmark.
 
-## Reception & Reviews
+## Reception
 
-When a model completes, the Engine translates its `Q` score into reviews out of 10 (averaging `Q ÷ 10`).
-- **Reviewers:** The Engine must list **ALL applicable Benchmarks** from the Content table matching the Task and current Year.
-- If the number of Benchmarks is less than 4, the Engine fills the remaining slots using **AI Communities & Platforms** from the Content table until there are at least 4 reviews.
-- If the number of Benchmarks is 4 or more, display all of them (do not use community fillers).
-- The Engine uses Creative License to write a 1-sentence flavor quote for each reviewer, matching the context of the benchmark/community.
-
-The overall reception tier still determines the Fame reward:
+The overall `Q` tier determines the Fame reward:
 
 | Q | Reception | Fame |
 |---|---|---|
@@ -1428,17 +1428,7 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 | **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
 | **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
-## Domain fit lists (Refer to the Datasets rule for exact matching mechanics)
-
-| Task | Fit Domains |
-|---|---|
-| CLS | reviews, social, news |
-| AUTO | web-mixed, news, social, encyclopedic |
-| TRANS | parallel (only) |
-| CHAT | dialogue, social |
-| SUMM | news, encyclopedic |
-| QA | QA, encyclopedic |
-| CODE | code (only) |
+*(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
 
 # Market Demand
 
@@ -1486,7 +1476,10 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | Product reviews | $400 | reviews | 2 | 3 | start |
 | Movie subtitles | $600 | dialogue | 3 | 3 | start |
 | Social media dump | $800 | social | 3 | 2 | start |
+| PubMed abstracts | $700 | medical | 3 | 3 | start |
+| Legal contracts dump | $900 | legal | 2 | 3 | start |
 | Open-source code crawl | $700 | code | 3 | 2 | Jan 2015 |
+| Math StackExchange | $600 | math | 2 | 4 | Mar 2015 |
 
 ## Free (claim once each, when available)
 
@@ -1494,6 +1487,7 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 |---|---|---|---|---|
 | Wikipedia dump | encyclopedic | 3 | 4 | start |
 | Common Crawl (raw) | web-mixed | 5 | 1 | Dec 2013 (event) |
+| Project Gutenberg | books | 4 | 4 | Jan 2014 (event) |
 | WMT parallel corpora | parallel | 3 | 4 | Nov 2014 (event) |
 | SQuAD | QA | 2 | 5 | Jun 2016 (event) |
 
@@ -1501,7 +1495,7 @@ Common Crawl is the only Size-5 dataset in the game — the LLM Project needs it
 
 ## Collectable Domains
 
-news, social, dialogue, reviews, code, encyclopedic, web-mixed.
+news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, math, books.
 
 # Contracts
 
@@ -1657,30 +1651,30 @@ If the total number of applicable Benchmarks is less than 4, the Engine must fil
 
 ## 1. Official Benchmarks
 
-| Benchmark / Dataset | Available From | Applicable Tasks |
-|---|---|---|
-| F1-Score (IMDB/Reuters) | 2013 (Start) | CLS |
-| Perplexity (Penn Treebank) | 2013 (Start) | AUTO |
-| BLEU Score | 2013 (Start) | TRANS |
-| ROUGE Score | 2013 (Start) | SUMM |
-| Human Evaluation | 2013 (Start) | CHAT |
-| WMT Translation Task | Nov 2014 | TRANS |
-| CNN/DailyMail | Jun 2015 | SUMM |
-| BLEU (Code domain) | Jan 2015 | CODE |
-| WikiText | Sep 2016 | AUTO, LLM (general) |
-| LAMBADA | Oct 2016 | AUTO, LLM (general) |
-| SQuAD 1.0 | Jun 2016 | QA |
-| ConvAI (Conversational AI) | 2017 | CHAT |
-| PersonaChat | 2018 | CHAT |
-| SQuAD 2.0 | Jun 2018 | QA |
-| CoQA | Aug 2018 | QA |
-| GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) |
-| Natural Questions (NQ) | Jan 2019 | QA |
-| HellaSwag | May 2019 | LLM (general) |
-| SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) |
-| HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) |
-| MBPP (Google) | Aug 2020 | CODE |
-| MMLU | Sep 2020 | LLM (general) |
+| Benchmark / Dataset | Available From | Applicable Tasks | Target Domains (Domain Fit) |
+|---|---|---|---|
+| F1-Score (IMDB/Reuters) | 2013 | CLS | reviews, news, social |
+| Perplexity (Penn Treebank) | 2013 | AUTO | news, books, encyclopedic |
+| BLEU Score | 2013 | TRANS | parallel |
+| ROUGE Score | 2013 | SUMM | news, encyclopedic, books |
+| Human Evaluation | 2013 | CHAT | dialogue, social |
+| WMT Translation Task | Nov 2014 | TRANS | parallel |
+| CNN/DailyMail | Jun 2015 | SUMM | news |
+| BLEU (Code domain) | Jan 2015 | CODE | code |
+| WikiText | Sep 2016 | AUTO, LLM (general) | encyclopedic, books |
+| LAMBADA | Oct 2016 | AUTO, LLM (general) | books |
+| SQuAD 1.0 | Jun 2016 | QA | QA, encyclopedic |
+| ConvAI (Conversational AI) | 2017 | CHAT | dialogue |
+| PersonaChat | 2018 | CHAT | dialogue, social |
+| SQuAD 2.0 | Jun 2018 | QA | QA, encyclopedic |
+| CoQA | Aug 2018 | QA | QA, dialogue |
+| GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) | encyclopedic, news, web-mixed |
+| Natural Questions (NQ) | Jan 2019 | QA | QA, encyclopedic, web-mixed |
+| HellaSwag | May 2019 | LLM (general) | social, dialogue, web-mixed |
+| SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) | encyclopedic, books, math, logic |
+| HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
+| MBPP (Google) | Aug 2020 | CODE | code, math |
+| MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
 
 ## 2. AI Communities & Platforms (Fillers)
 Use these to pad the review list up to 4 if there aren't enough benchmarks:
@@ -2186,13 +2180,13 @@ Expected completion report (S6, desktop) in English:
 🏁 SpamGuard — BOW × Classification on Product reviews
 
 Reviews:
-* 5/10 — F1-Score (IMDB/Reuters) ("Accuracy is acceptable, but precision drops on edge cases.")
-* 6/10 — r/MachineLearning ("Classic BOW approach. Nothing groundbreaking, but it works.")
-* 4/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
-* 5.5/10 — ArXiv Peer Review ("Solid baseline, though it struggles with out-of-vocabulary tokens.")
+* 8.5/10 — F1-Score (IMDB/Reuters) ("Excellent precision. The 'reviews' dataset perfectly matched the target domain.")
+* 4.5/10 — r/MachineLearning ("Classic BOW approach. Good for basic spam, but fails on complex sentences.")
+* 4.0/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
+* 5.0/10 — ArXiv Peer Review ("Solid baseline, though it struggles with out-of-vocabulary tokens.")
 
-Overall Quality: 51/100 (😐 Mediocre)
-⭐ Fame +100  ·  🔬 Research Points +510
+Overall Quality: 55/100 (👍 Good)
+⭐ Fame +300  ·  🔬 Research Points +550
 
 Release?
 1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
