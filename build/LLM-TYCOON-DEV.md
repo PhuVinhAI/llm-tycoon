@@ -283,7 +283,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 3200, turn on Cloud rental first).
 7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
 8. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper** (instant action), then continue down the list.
-9. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 40 → **Research**.
+9. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
 10. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
 11. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
 12. Releases: Product if legal; otherwise License if Q ≥ 50; otherwise Open-source.
