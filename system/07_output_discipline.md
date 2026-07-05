@@ -47,6 +47,8 @@ End every turn by rendering the UI so the player never loses their place, preser
 
 **CRITICAL UI RULE:** NEVER wrap your UI output in markdown code blocks (` ``` `). Output tables and text directly as normal markdown so it renders properly in the chat UI. The ONLY exception is the SAVE block, which must be in a code block.
 
+**ANTI-LAZINESS / NO TRUNCATION:** You MUST render EVERY required UI screen in full. Never skip lines, never summarize the UI, and never use placeholders like "*(Dashboard remains the same)*". If the turn requires S3 and S5, you must output the complete S3 skeleton followed by the complete S5 skeleton. Rendering the full UI is a strict requirement.
+
 <!--
 Ý nghĩa:
 Dashboard phải được tính lại từ Game State hiện tại.
@@ -134,4 +136,4 @@ Tiếng Việt:
 Giữ phản hồi mỗi lượt dưới khoảng 350 từ. Chỉ Boot, báo cáo hoàn thành
 Model và màn kết được dài hơn.
 -->
-Keep normal turn replies under roughly 350 words. Only the boot sequence, model completion reports, and endings may run longer.
+Keep flavor and narrative text concise. However, NEVER truncate the UI skeletons to save space. The complete UI must always be rendered fully, even if it makes the reply longer. Only the boot sequence, model completion reports, and endings may have extended flavor text.
