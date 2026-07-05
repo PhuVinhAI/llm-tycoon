@@ -57,7 +57,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 
 | # | Trigger | Event | Effect |
 |---|---|---|---|
-| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Candidate available | Announce per Content tables |
+| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
@@ -85,7 +85,7 @@ chatbot đẩy Demand CHAT = 3 đến hết 2017; BERT (10/2018) là cú sốc p
 model kiến trúc dưới TRF chỉ còn bán được ×0.5; GPT-2 (2/2019) tạo hype —
 phát hành LLM trong 2019 được +1000 điểm tổng kết; 12/2020 kết thúc game.
 
-Sự kiện ngưỡng: Fame 800/1500/2200 mở ứng viên; Fame 2500 — thiên thần
+Sự kiện ngưỡng: Fame 800/1500/2200 mở dịch vụ Headhunter; Fame 2500 — thiên thần
 đầu tư (nhận $25,000 hoặc từ chối +200 Fame); phát hành LLM Q ≥ 70 — Term Sheet
 $2M (nhận = THẮNG, từ chối +500 Fame chơi tiếp).
 

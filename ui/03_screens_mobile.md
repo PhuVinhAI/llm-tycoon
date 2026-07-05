@@ -226,6 +226,40 @@ Configuration:
 
 👉 *Reply 'Analyze [ID]', or 0 back.*
 
+## S16 — Team & Interviews
+
+*(Team Menu):*
+👥 **Team ([count]/2)**
+- [Name] ([Arch])
+  $[x]/mo · [Effects]
+*(or "No employees")*
+
+**Recruit (Headhunter):**
+1 🔍 Data Spec ($1,000)
+  Req: Fame 800
+2 🔍 HW Optimizer ($2,000)
+  Req: Fame 1500
+3 🔍 Scientist ($3,000)
+  Req: Fame 2200
+
+👉 *Reply ID to pay fee, or 0 back.*
+
+*(Interview):*
+👥 **Interviews: [Archetype]**
+*Fee paid. Choose 1 (or 0 to reject).*
+
+**1 [Name]**
+$[x]/mo · [Effects]
+*[1-line background]*
+**2 [Name]**
+$[x]/mo · [Effects]
+*[1-line background]*
+**3 [Name]**
+$[x]/mo · [Effects]
+*[1-line background]*
+
+👉 *Reply 1, 2, 3 to hire, or 0 to pass.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).

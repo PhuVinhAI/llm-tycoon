@@ -36,7 +36,7 @@ Trách nhiệm:
 - Unlock a Technology by paying its RP cost (prerequisites required).
 - Buy or sell Hardware; buy a Dataset; claim a free Dataset made available by an Event.
 - Combine two Datasets (see Datasets rule).
-- Hire or fire an Employee.
+- Pay a Headhunter to search for Employees, or fire an Employee.
 - Accept a Contract (its months become committed, starting this month).
 - Start a Project (its months become committed, starting this month).
 - Activate or deactivate cloud rental (Hardware rule).

@@ -1024,7 +1024,7 @@ The concrete values are defined in the Content.
 - Unlock a Technology by paying its RP cost (prerequisites required).
 - Buy or sell Hardware; buy a Dataset; claim a free Dataset made available by an Event.
 - Combine two Datasets (see Datasets rule).
-- Hire or fire an Employee.
+- Pay a Headhunter to search for Employees, or fire an Employee.
 - Accept a Contract (its months become committed, starting this month).
 - Start a Project (its months become committed, starting this month).
 - Activate or deactivate cloud rental (Hardware rule).
@@ -1317,15 +1317,15 @@ When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the eng
 
 ## Generation & Hiring
 
-- **Generation:** When the Company reaches a Fame threshold (Content), the Engine generates a candidate for that Archetype during the Events step. 
-- Using Creative License, invent a name, gender, and brief background that naturally fits the player's chosen language (e.g., Vietnamese names if playing in Vietnamese). 
-- Pick an exact Salary and exact Effect values within the Archetype's bounds (Content). Once generated, these stats are permanent for this playthrough.
-- Maximum **2** Employees at a time — the lab is one small room.
-- Hiring is instant. Salary is paid from the month of hire (Economy rule).
+- **Headhunter Search:** Hiring is an instant action initiated from the Team menu. The Player pays the Archetype's Headhunter Fee (Content). The game pauses and generates exactly **3 candidates** for that Archetype.
+- **Generation:** Using Creative License, invent a name, gender, and brief background for each candidate that naturally fits the player's chosen language. Pick exact Salary and Effect values within the bounds (Content), ensuring a trade-off (e.g., one cheap/weak, one expensive/strong).
+- **The Interview:** Render the Interview screen (S16). The Player must choose 1 candidate to hire, or 0 to reject all. The Headhunter Fee is **never refunded**, even if no one is hired.
+- Maximum **2** Employees at a time — the lab is one small room. The Engine must block searches if the lab is full.
+- Salary is paid starting from the month of hire (Economy rule).
 
 ## Firing
 
-- Firing is instant, effective immediately; no penalty, no severance. The candidate remains available in the candidate pool for re-hire.
+- Firing is instant, effective immediately; no penalty, no severance. Fired employees disappear permanently.
 
 ## Effects
 
@@ -1573,13 +1573,13 @@ Triggered when an active Contract reaches `months elapsed == floor(M ÷ 2)` (for
 
 # Employee Archetypes
 
-Instead of fixed characters, the Engine generates a unique candidate when a Fame threshold is reached. The Engine uses Creative License to invent a name and background fitting the player's language, and selects exact stats within the bounds below.
+Instead of fixed characters, the Player must pay a Headhunter Fee to search for an Archetype. The Engine then generates **3 unique candidates** for that Archetype. The Engine uses Creative License to invent a name and background fitting the player's language, and selects exact stats within the bounds below, ensuring the 3 candidates offer different trade-offs (e.g., one cheap but weak, one expensive but strong).
 
-| Archetype | Fame ≥ | Salary/mo Range | Stat Bounds |
-|---|---|---|---|
-| **The Data Specialist** | 800 | $1,000 – $1,400 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
-| **The Hardware Optimizer** | 1500 | $1,600 – $2,000 | All compute requirements ×0.75 (round up) |
-| **The Research Scientist** | 2200 | $2,300 – $2,800 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
+| Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
+|---|---|---|---|---|
+| **The Data Specialist** | 800 | $1,000 | $1,000 – $1,400 | Collected Datasets +1 Quality; Research + (150 to 250) RP |
+| **The Hardware Optimizer** | 1500 | $2,000 | $1,600 – $2,000 | All compute requirements ×0.75 (round up) |
+| **The Research Scientist** | 2200 | $3,000 | $2,300 – $2,800 | Research + (600 to 900) RP; All Models + (2 to 4) Q |
 
 Maximum 2 hired at a time (Employees rule).
 
@@ -1622,7 +1622,7 @@ Maximum 2 hired at a time (Employees rule).
 
 | # | Trigger | Event | Effect |
 |---|---|---|---|
-| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Candidate available | Announce per Content tables |
+| T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
 | T3 | LLM released with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
@@ -1880,7 +1880,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S13` Data Menu · `S14` Tech Tree · `S15` Portfolio · `S16` Team & Interviews · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -2125,6 +2125,38 @@ Provide your configuration to start:
 
 👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
 
+## S16 — Team & Interviews
+
+*(When viewing the Team Menu):*
+👥 **Team Management**
+
+**Current Team ([count]/2):**
+| Name | Archetype | Salary | Effects | Action |
+|---|---|---|---|---|
+| [Name] | [Arch] | $[x]/mo | [Effects] | *(Type 'fire [Name]' to dismiss)* |
+*(If none: "No employees.")*
+
+**Recruitment (Headhunter):**
+| ID | Archetype | Fee | Requires |
+|---|---|---|---|
+| 1 | 🔍 Data Specialist | $1,000 | Fame 800 |
+| 2 | 🔍 Hardware Optimizer | $2,000 | Fame 1500 |
+| 3 | 🔍 Research Scientist | $3,000 | Fame 2200 |
+
+👉 *Reply with the ID to pay the fee and interview candidates, or 0 to go back.*
+
+*(When an Interview is triggered):*
+👥 **Candidate Interviews — [Archetype]**
+*Headhunter fee of $[Fee] paid. Choose one to hire, or 0 to reject all (fee is not refunded).*
+
+| # | Name | Salary/mo | Effects | Background |
+|---|---|---|---|---|
+| 1 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
+| 2 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
+| 3 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
+
+👉 *Reply 1, 2, or 3 to hire, or 0 to pass.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -2351,6 +2383,40 @@ Configuration:
 *(or "No models")*
 
 👉 *Reply 'Analyze [ID]', or 0 back.*
+
+## S16 — Team & Interviews
+
+*(Team Menu):*
+👥 **Team ([count]/2)**
+- [Name] ([Arch])
+  $[x]/mo · [Effects]
+*(or "No employees")*
+
+**Recruit (Headhunter):**
+1 🔍 Data Spec ($1,000)
+  Req: Fame 800
+2 🔍 HW Optimizer ($2,000)
+  Req: Fame 1500
+3 🔍 Scientist ($3,000)
+  Req: Fame 2200
+
+👉 *Reply ID to pay fee, or 0 back.*
+
+*(Interview):*
+👥 **Interviews: [Archetype]**
+*Fee paid. Choose 1 (or 0 to reject).*
+
+**1 [Name]**
+$[x]/mo · [Effects]
+*[1-line background]*
+**2 [Name]**
+$[x]/mo · [Effects]
+*[1-line background]*
+**3 [Name]**
+$[x]/mo · [Effects]
+*[1-line background]*
+
+👉 *Reply 1, 2, 3 to hire, or 0 to pass.*
 
 ## S8 — SAVE
 

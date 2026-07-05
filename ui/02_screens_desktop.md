@@ -222,6 +222,38 @@ Provide your configuration to start:
 
 👉 *Reply with 'Analyze [ID]' to get a post-mortem review of a model, or 0 to go back.*
 
+## S16 — Team & Interviews
+
+*(When viewing the Team Menu):*
+👥 **Team Management**
+
+**Current Team ([count]/2):**
+| Name | Archetype | Salary | Effects | Action |
+|---|---|---|---|---|
+| [Name] | [Arch] | $[x]/mo | [Effects] | *(Type 'fire [Name]' to dismiss)* |
+*(If none: "No employees.")*
+
+**Recruitment (Headhunter):**
+| ID | Archetype | Fee | Requires |
+|---|---|---|---|
+| 1 | 🔍 Data Specialist | $1,000 | Fame 800 |
+| 2 | 🔍 Hardware Optimizer | $2,000 | Fame 1500 |
+| 3 | 🔍 Research Scientist | $3,000 | Fame 2200 |
+
+👉 *Reply with the ID to pay the fee and interview candidates, or 0 to go back.*
+
+*(When an Interview is triggered):*
+👥 **Candidate Interviews — [Archetype]**
+*Headhunter fee of $[Fee] paid. Choose one to hire, or 0 to reject all (fee is not refunded).*
+
+| # | Name | Salary/mo | Effects | Background |
+|---|---|---|---|---|
+| 1 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
+| 2 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
+| 3 | [Name] | $[x] | [Exact effects] | [1-line flavor] |
+
+👉 *Reply 1, 2, or 3 to hire, or 0 to pass.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
