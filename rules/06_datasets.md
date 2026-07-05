@@ -38,8 +38,8 @@ Trách nhiệm:
 
 ## Usage
 
-- A Project uses exactly one Dataset. The Dataset is not consumed — it can be reused (but see the repeat penalty in Model Projects).
-- A Project requires the Dataset's Size ≥ the Architecture's minimum Size (Content).
+- A Project uses **1 to 3 Datasets** (a Data Mixture). The Datasets are not consumed — they can be reused (but see the repeat penalty in Model Projects).
+- A Project requires the **Combined Size** (Max Size + Count - 1) to be ≥ the Architecture's minimum Size (Content).
 
 <!--
 Tiếng Việt (tóm tắt):

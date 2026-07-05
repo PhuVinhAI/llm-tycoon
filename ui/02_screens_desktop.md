@@ -192,7 +192,7 @@ Provide your configuration to start:
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
-- **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
+- **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
 - **Months:** (min [X] for chosen Architecture). *(Engine: You MUST calculate and state exactly how many months it takes to reach the 100% compute requirement at the current TFLOPS/mo, e.g., "💡 At your current 100 TFLOPS/mo, Base scale requires 2 months, Large requires 4 months").*
 - **Focus:** 10 points split across exactly 4 categories *(No hints!)*:
   - **Data (D):** Preparation, formatting, and cleaning.

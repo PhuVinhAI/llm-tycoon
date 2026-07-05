@@ -991,8 +991,8 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 ## Usage
 
-- A Project uses exactly one Dataset. The Dataset is not consumed — it can be reused (but see the repeat penalty in Model Projects).
-- A Project requires the Dataset's Size ≥ the Architecture's minimum Size (Content).
+- A Project uses **1 to 3 Datasets** (a Data Mixture). The Datasets are not consumed — they can be reused (but see the repeat penalty in Model Projects).
+- A Project requires the **Combined Size** (Max Size + Count - 1) to be ≥ the Architecture's minimum Size (Content).
 
 # Hardware
 
@@ -1027,7 +1027,7 @@ The Player declares, in one instant action:
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content.
-5. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
+5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
 6. **Months (M)** — at least the adjusted minimum months.
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
 8. **Name** — the Model's name.
@@ -1065,15 +1065,16 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 ```
 Base Points = Base(Architecture)                … Content: architectures table
             + Scale Modifier                    … Small: −5 | Base: 0 | Large: +10
-            + (2 × Dataset Quality)
-            + 5                                 … dataset Size meets the minimum
+            + (2 × Combined Dataset Quality)
+            + 5                                 … Combined Size meets the minimum
             + Compute score                     … see below
             + Focus score                       … see below
             + (2 × E-Lv)
             + Technology & staff bonuses        … BPE +5 (S2S/S2SA/TRF/PTRF); FINE +5 (PTRF); staff
             + q_mod                             … from Project Dilemmas
             − floor(Artifacts ÷ 2)              … Penalty if released with remaining Artifacts
-            − 15 if repeat                      … same Arch + Task + Dataset as previous Model
+            − 15 if Catastrophic Forgetting     … Dataset Count > 1 AND Architecture is below TRF
+            − 15 if repeat                      … same Arch + Task + Dataset(s) as previous Model
 ```
 
 *Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
@@ -1087,8 +1088,8 @@ Review Score = Base Points
              + Domain Fit                       … see below
 ```
 *Domain Fit logic for each Reviewer:*
-- If Dataset Domain is in the Benchmark's `Target Domains`: **+20**
-- If Dataset Domain is `web-mixed` (General knowledge): **+5**
+- If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
+- If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
 - If Reviewer is a Filler (AI Community/Media): **+5** (They judge general utility)
 - Any other mismatch: **−15**
 
@@ -1208,7 +1209,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 ## Requirements to start
 
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
-- A `web-mixed` Dataset with **Size 5** and **Quality ≥ 3**.
+- A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **4000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$5,000** upfront infrastructure cost, paid at start.
 
@@ -1946,7 +1947,7 @@ Provide your configuration to start:
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Base Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
-- **Dataset:** [List owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
+- **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
 - **Months:** (min [X] for chosen Architecture). *(Engine: You MUST calculate and state exactly how many months it takes to reach the 100% compute requirement at the current TFLOPS/mo, e.g., "💡 At your current 100 TFLOPS/mo, Base scale requires 2 months, Large requires 4 months").*
 - **Focus:** 10 points split across exactly 4 categories *(No hints!)*:
   - **Data (D):** Preparation, formatting, and cleaning.
@@ -2208,7 +2209,7 @@ Configuration:
 - **Scale:** Small / Base / Large
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
-- **Data:** [Owned] *(show known fit ONLY if previously analyzed)*
+- **Data:** [Select 1 to 3 Owned] *(show known fit ONLY if analyzed)*
 - **Months:** (min [X]). *(Engine: State exactly how many months to reach Base/Large compute reqs at current TFLOPS/mo)*
 - **Focus:** 10 pts total *(no hints!)*
   - **Data (D):** Prep & clean

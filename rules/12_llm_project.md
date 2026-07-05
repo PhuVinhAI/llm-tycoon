@@ -22,7 +22,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 ## Requirements to start
 
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
-- A `web-mixed` Dataset with **Size 5** and **Quality ≥ 3**.
+- A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **4000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$5,000** upfront infrastructure cost, paid at start.
 

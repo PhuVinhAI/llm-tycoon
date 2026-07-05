@@ -29,7 +29,7 @@ The Player declares, in one instant action:
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content.
-5. **Dataset** — owned, with Size ≥ the Architecture's minimum Size.
+5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
 6. **Months (M)** — at least the adjusted minimum months.
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
 8. **Name** — the Model's name.
@@ -67,15 +67,16 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 ```
 Base Points = Base(Architecture)                … Content: architectures table
             + Scale Modifier                    … Small: −5 | Base: 0 | Large: +10
-            + (2 × Dataset Quality)
-            + 5                                 … dataset Size meets the minimum
+            + (2 × Combined Dataset Quality)
+            + 5                                 … Combined Size meets the minimum
             + Compute score                     … see below
             + Focus score                       … see below
             + (2 × E-Lv)
             + Technology & staff bonuses        … BPE +5 (S2S/S2SA/TRF/PTRF); FINE +5 (PTRF); staff
             + q_mod                             … from Project Dilemmas
             − floor(Artifacts ÷ 2)              … Penalty if released with remaining Artifacts
-            − 15 if repeat                      … same Arch + Task + Dataset as previous Model
+            − 15 if Catastrophic Forgetting     … Dataset Count > 1 AND Architecture is below TRF
+            − 15 if repeat                      … same Arch + Task + Dataset(s) as previous Model
 ```
 
 *Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
@@ -89,8 +90,8 @@ Review Score = Base Points
              + Domain Fit                       … see below
 ```
 *Domain Fit logic for each Reviewer:*
-- If Dataset Domain is in the Benchmark's `Target Domains`: **+20**
-- If Dataset Domain is `web-mixed` (General knowledge): **+5**
+- If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
+- If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
 - If Reviewer is a Filler (AI Community/Media): **+5** (They judge general utility)
 - Any other mismatch: **−15**
 

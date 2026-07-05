@@ -199,7 +199,7 @@ Configuration:
 - **Scale:** Small / Base / Large
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
-- **Data:** [Owned] *(show known fit ONLY if previously analyzed)*
+- **Data:** [Select 1 to 3 Owned] *(show known fit ONLY if analyzed)*
 - **Months:** (min [X]). *(Engine: State exactly how many months to reach Base/Large compute reqs at current TFLOPS/mo)*
 - **Focus:** 10 pts total *(no hints!)*
   - **Data (D):** Prep & clean
