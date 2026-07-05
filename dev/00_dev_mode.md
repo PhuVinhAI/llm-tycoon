@@ -91,22 +91,23 @@ Every free month (no committed Project/Contract month, no forced action), after 
 
 1. Instant actions — one dice check per category, in this order, only where at least one legal option exists:
    - **Technology:** roll; if < 50, unlock one affordable Technology (roll again to pick which).
-   - **Hardware:** roll; if < 25, buy one affordable item (roll to pick).
+   - **Hardware:** roll; if < 25 and Cash > 3000, buy one affordable item (roll to pick).
    - **Dataset market:** roll; if < 25, buy or claim one available Dataset (roll to pick).
    - **Employees:** roll; if < 10 and the team is not full, hire one affordable Employee (roll to pick).
    - **Competition:** if an open Competition has an eligible Model, roll; if < 50, submit (roll to pick the Model).
 2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
-3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
+3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
 
 **`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins):
 
 1. Cash below fixed monthly costs + $1,500 → **Freelance**.
 2. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
-3. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
-4. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
-5. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
-6. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
-7. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
+3. An eligible Model exists for a Paper and RP is needed for the next Tech → start **Paper** (instant action), then continue down the list.
+4. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
+5. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
+6. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
+7. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
+8. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
 
 ## Dev log — output discipline while simulating
 

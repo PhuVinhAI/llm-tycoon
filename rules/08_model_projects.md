@@ -41,7 +41,7 @@ Validate every requirement before starting; if any fails, refuse with the reason
 ## Artifacts & Fine-Tuning
 
 During every Project month, the raw training process generates output anomalies called **Artifacts**.
-- **Generated per month:** `Art_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
+- **Generated per month:** `Art_gen = max(1, 4 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
 - The UI displays current `Artifacts` in the Dashboard and `+Art` in the monthly ledger.
 
 When `months elapsed == M`, if `Artifacts > 0`, the Project enters the **Fine-Tuning Phase**. The engine pauses and presents a Dilemma (S10):

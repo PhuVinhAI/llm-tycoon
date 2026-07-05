@@ -266,22 +266,23 @@ Every free month (no committed Project/Contract month, no forced action), after 
 
 1. Instant actions — one dice check per category, in this order, only where at least one legal option exists:
    - **Technology:** roll; if < 50, unlock one affordable Technology (roll again to pick which).
-   - **Hardware:** roll; if < 25, buy one affordable item (roll to pick).
+   - **Hardware:** roll; if < 25 and Cash > 3000, buy one affordable item (roll to pick).
    - **Dataset market:** roll; if < 25, buy or claim one available Dataset (roll to pick).
    - **Employees:** roll; if < 10 and the team is not full, hire one affordable Employee (roll to pick).
    - **Competition:** if an open Competition has an eligible Model, roll; if < 50, submit (roll to pick the Model).
 2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
-3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
+3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
 
 **`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins):
 
 1. Cash below fixed monthly costs + $1,500 → **Freelance**.
 2. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
-3. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
-4. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
-5. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
-6. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
-7. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
+3. An eligible Model exists for a Paper and RP is needed for the next Tech → start **Paper** (instant action), then continue down the list.
+4. A Project or Contract is legal to start → roll evenly among {start it (best Match Architecture × Task the roll picks among the top options), Research}.
+5. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
+6. Releases: Product if legal; otherwise roll between License and Open-source (Q < 40 → Open-source or Shelve by roll).
+7. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
+8. Everything else (dilemmas, Event choices, Domains, focus, months) → dice, exactly as in `policy=random`.
 
 ## Dev log — output discipline while simulating
 
@@ -1018,7 +1019,7 @@ The concrete values are defined in the Content.
 
 | Action | Effect |
 |---|---|
-| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,000 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
+| 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,500 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 1000 + 500 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
 | 🏗️ **Project month** | Advance the active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
 | 📜 **Contract month** | Advance the active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
@@ -1056,7 +1057,7 @@ Every month, in the Costs step:
 
 - **Living & rent:** $800.
 - **Salaries:** sum of all hired Employees (Content).
-- **Hardware upkeep:** $100 per occupied slot.
+- **Hardware upkeep:** $50 per occupied slot.
 - **Cloud rental:** if active, per the Hardware rule.
 
 ## Rounding
@@ -1198,7 +1199,7 @@ Validate every requirement before starting; if any fails, refuse with the reason
 ## Artifacts & Fine-Tuning
 
 During every Project month, the raw training process generates output anomalies called **Artifacts**.
-- **Generated per month:** `Art_gen = max(1, 5 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
+- **Generated per month:** `Art_gen = max(1, 4 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
 - The UI displays current `Artifacts` in the Dashboard and `+Art` in the monthly ledger.
 
 When `months elapsed == M`, if `Artifacts > 0`, the Project enters the **Fine-Tuning Phase**. The engine pauses and presents a Dilemma (S10):
@@ -1464,10 +1465,10 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | BPE | Subword Tokenization (BPE) | 4000 | EMB | +5 Q on S2S, S2SA, TRF, PTRF models |
 | S2S | Sequence-to-Sequence | 7000 | LSTM | Architecture S2S |
 | ATTN | Attention Mechanism | 9000 | S2S | Architecture S2SA |
-| TRF | Transformer | 12000 | ATTN | Architecture TRF |
-| PRET | Unsupervised Pre-training | 14000 | TRF | Architecture PTRF |
+| TRF | Transformer | 10000 | ATTN | Architecture TRF |
+| PRET | Unsupervised Pre-training | 11000 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 6000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 12000 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 10000 | PRET | unlocks The LLM Project |
 
 # Architectures
 
