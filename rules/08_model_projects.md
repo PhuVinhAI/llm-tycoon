@@ -89,10 +89,12 @@ A requirement of 0 always scores +5.
 
 **Focus score** = 10 − Σ |allocated − ideal| across the four aspects (floor 0). Ideal allocations per Architecture are in the Content.
 
-## Reception
+## Reception & Reviews
+
+When a model completes, the Engine translates its `Q` score into 4 reviews out of 10 (averaging `Q ÷ 10`), using era-accurate benchmarks and communities (see Creative License). The overall reception tier still determines the Fame reward:
 
 | Q | Reception | Fame |
-|---|---|---|---|
+|---|---|---|
 | ≥ 85 | 🌟 Breakthrough | +800 |
 | 70–84 | 🔥 Great | +500 |
 | 55–69 | 👍 Good | +300 |

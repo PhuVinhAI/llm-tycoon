@@ -91,10 +91,18 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 on [Dataset]
 *(⚠️ [Art] artifacts)*
 
-**Quality: [total]/100**
+**Reviews:**
+[Score]/10 - [Benchmark]
+*"[Quote]"*
+[Score]/10 - [Community]
+*"[Quote]"*
+[Score]/10 - [Media]
+*"[Quote]"*
+[Score]/10 - [Tester]
+*"[Quote]"*
 
-[reception emoji + tier]
-⭐ Fame [±x] · 🔬 Research Points +[x]
+**Quality: [Q]/100** ([tier])
+⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source

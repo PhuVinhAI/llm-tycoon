@@ -20,13 +20,22 @@ Expected completion report (S6, desktop) in English:
 
 ```
 🏁 SpamGuard — BOW × Classification on Product reviews
-   Quality: 51/100
-   😐 Mediocre → Fame +100, Research Points +510
-   Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
-   (3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)
+
+Reviews:
+* 5/10 — F1-Score Benchmark ("Accuracy is acceptable, but precision drops on edge cases.")
+* 6/10 — r/MachineLearning ("Classic BOW approach. Nothing groundbreaking, but it works.")
+* 4/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
+* 5.5/10 — Enterprise Tester ("Caught most of our spam, but false positives are an issue.")
+
+Overall Quality: 51/100 (😐 Mediocre)
+⭐ Fame +100  ·  🔬 Research Points +510
+
+Release?
+1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
+*(3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead.
+Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
 
 <!--
 Tiếng Việt (tóm tắt):

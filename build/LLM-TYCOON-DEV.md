@@ -177,6 +177,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
+- **Era-accurate Benchmarks & Reviews (S6)** — When a model completes, generate 4 GDT-style reviews. At least one reviewer MUST be a real historical AI benchmark appropriate for the current in-game year and Task (e.g., BLEU score for translation in 2014, SQuAD for QA in 2016, GLUE/SuperGLUE in 2018-2020). The other reviewers can be tech communities (e.g., r/MachineLearning, HackerNews), academic peer reviewers, or industry testers. Generate a short quote and a score out of 10 (the 4 scores must average roughly to `Q ÷ 10`).
 
 Hard limits:
 
@@ -1218,10 +1219,12 @@ A requirement of 0 always scores +5.
 
 **Focus score** = 10 − Σ |allocated − ideal| across the four aspects (floor 0). Ideal allocations per Architecture are in the Content.
 
-## Reception
+## Reception & Reviews
+
+When a model completes, the Engine translates its `Q` score into 4 reviews out of 10 (averaging `Q ÷ 10`), using era-accurate benchmarks and communities (see Creative License). The overall reception tier still determines the Fame reward:
 
 | Q | Reception | Fame |
-|---|---|---|---|
+|---|---|---|
 | ≥ 85 | 🌟 Breakthrough | +800 |
 | 70–84 | 🔥 Great | +500 |
 | 55–69 | 👍 Good | +300 |
@@ -1807,8 +1810,15 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
-**Quality: [Q]/100**
-[reception emoji + tier] → Fame [±x], Research Points +[x]
+
+**Reviews:**
+* **[Score]/10** — [Era-accurate Benchmark] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Tech Community / ArXiv] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Industry Media] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Beta Tester / Client] (*"[1-sentence flavor quote]"*)
+
+**Overall Quality: [Q]/100** ([reception emoji + tier])
+⭐ Fame [±x]  ·  🔬 Research Points +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
@@ -1980,10 +1990,18 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 on [Dataset]
 *(⚠️ [Art] artifacts)*
 
-**Quality: [total]/100**
+**Reviews:**
+[Score]/10 - [Benchmark]
+*"[Quote]"*
+[Score]/10 - [Community]
+*"[Quote]"*
+[Score]/10 - [Media]
+*"[Quote]"*
+[Score]/10 - [Tester]
+*"[Quote]"*
 
-[reception emoji + tier]
-⭐ Fame [±x] · 🔬 Research Points +[x]
+**Quality: [Q]/100** ([tier])
+⭐ Fame [±x] · 🔬 RP +[x]
 
 **Release?**
 1 🌐 Open-source
@@ -2121,13 +2139,22 @@ Expected completion report (S6, desktop) in English:
 
 ```
 🏁 SpamGuard — BOW × Classification on Product reviews
-   Quality: 51/100
-   😐 Mediocre → Fame +100, Research Points +510
-   Release?  1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
-   (3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)
+
+Reviews:
+* 5/10 — F1-Score Benchmark ("Accuracy is acceptable, but precision drops on edge cases.")
+* 6/10 — r/MachineLearning ("Classic BOW approach. Nothing groundbreaking, but it works.")
+* 4/10 — TechCrunch ("A bit outdated compared to the new embedding models.")
+* 5.5/10 — Enterprise Tester ("Caught most of our spam, but false positives are an issue.")
+
+Overall Quality: 51/100 (😐 Mediocre)
+⭐ Fame +100  ·  🔬 Research Points +510
+
+Release?
+1 🌐 Open-source | 2 💼 License ($6,120) | 4 🗄️ Shelve
+*(3 📈 Product locked: needs Fame ≥ 1000 and Quality ≥ 55)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead.
+Note how the exact formula is hidden, the License price is computed silently (51 × $60 × Demand 2 = $6,120), and the locked option states its unmet Requirement. The reviews are generated dynamically by the AI using Creative License. On the mobile profile the same numbers appear in the S6 vertical layout instead.
 
 ---
 

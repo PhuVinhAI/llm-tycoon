@@ -93,8 +93,15 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
-**Quality: [Q]/100**
-[reception emoji + tier] → Fame [±x], Research Points +[x]
+
+**Reviews:**
+* **[Score]/10** — [Era-accurate Benchmark] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Tech Community / ArXiv] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Industry Media] (*"[1-sentence flavor quote]"*)
+* **[Score]/10** — [Beta Tester / Client] (*"[1-sentence flavor quote]"*)
+
+**Overall Quality: [Q]/100** ([reception emoji + tier])
+⭐ Fame [±x]  ·  🔬 Research Points +[x]
 
 **Release?**
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve
