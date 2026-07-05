@@ -47,8 +47,9 @@ Trách nhiệm:
 
 ## Commitment and cancelling
 
-- Starting a Project or accepting a Contract commits the coming months: the main action of those months is fixed until completion.
-- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
+- Starting a Project or accepting a Contract commits the coming months. While active, the Player's main action is restricted to "Continue Project" or "Continue Contract" until completion.
+- Because the game pauses at the Dashboard every month, the Player can perform instant actions (like buying Hardware or claiming Datasets) mid-project.
+- The Player may **cancel** from the Action Menu at any time: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
 - Only one Project **or** Contract may be active at a time — never both, never two.
 
 <!--

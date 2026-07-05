@@ -76,6 +76,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 ## S5 — Action Menu
 
+*(If the Company is IDLE):*
 | What will you do this month? | |
 |---|---|
 | 1 💼 Freelance | 2 🔬 Research |
@@ -84,6 +85,14 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 7 👥 Team | 8 🌳 Tech Tree |
 | 9 📁 Portfolio | 10 💾 Save |
 | 0 🏠 Main Menu | |
+
+*(If a PROJECT or CONTRACT is active):*
+| Active: [Project Name or Contract ID] | Month [X] of [M] |
+|---|---|
+| **1 ⏩ Continue [Project/Contract]** | **2 🛑 Cancel** |
+| 6 🛒 Shop | 7 👥 Team |
+| 8 🌳 Tech Tree | 9 📁 Portfolio |
+| 10 💾 Save | 0 🏠 Main Menu |
 
 💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
 

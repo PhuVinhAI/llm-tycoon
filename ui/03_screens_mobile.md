@@ -70,12 +70,24 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 ## S5 — Action Menu
 
+*(If IDLE):*
 **This month?**
 1 💼 Freelance
 2 🔬 Research
 3 🏗️ New model
 4 📦 Data
 5 📜 Contracts
+6 🛒 Shop
+7 👥 Team
+8 🌳 Tech Tree
+9 📁 Portfolio
+10 💾 Save
+0 🏠 Main Menu
+
+*(If PROJECT/CONTRACT active):*
+**Active: [Name] ([X]/[M])**
+1 ⏩ Continue
+2 🛑 Cancel
 6 🛒 Shop
 7 👥 Team
 8 🌳 Tech Tree

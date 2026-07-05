@@ -36,11 +36,11 @@ Trách nhiệm:
 6. **Checks** — bankruptcy, win and lose conditions.
 7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
-## Multi-month batching
+## Committed Months (Step-by-Step)
 
-- Committed months (Projects, Contracts) resolve automatically month by month, each with a one-line ledger.
-- **Pause a batch only when:** an Event requires a Player choice, a Project or Contract completes, a warning triggers (e.g., negative cash), or the batch ends.
-- Do not ask for input during routine committed months.
+- When a Project or Contract is active, it does **not** auto-advance. The Player must manually choose the "Continue Project" or "Continue Contract" main action each month.
+- This returns the Player to the Dashboard every month, allowing them to perform instant actions (buy hardware, hire staff, check the market, etc.) while the commitment is ongoing.
+- The Action Menu (S5) dynamically updates to lock out other main actions until the commitment completes or is cancelled.
 
 <!--
 Tiếng Việt (tóm tắt):

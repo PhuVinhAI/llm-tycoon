@@ -842,11 +842,11 @@ The concrete values are defined in the Content.
 6. **Checks** — bankruptcy, win and lose conditions.
 7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
-## Multi-month batching
+## Committed Months (Step-by-Step)
 
-- Committed months (Projects, Contracts) resolve automatically month by month, each with a one-line ledger.
-- **Pause a batch only when:** an Event requires a Player choice, a Project or Contract completes, a warning triggers (e.g., negative cash), or the batch ends.
-- Do not ask for input during routine committed months.
+- When a Project or Contract is active, it does **not** auto-advance. The Player must manually choose the "Continue Project" or "Continue Contract" main action each month.
+- This returns the Player to the Dashboard every month, allowing them to perform instant actions (buy hardware, hire staff, check the market, etc.) while the commitment is ongoing.
+- The Action Menu (S5) dynamically updates to lock out other main actions until the commitment completes or is cancelled.
 
 # Actions
 
@@ -877,8 +877,9 @@ The concrete values are defined in the Content.
 
 ## Commitment and cancelling
 
-- Starting a Project or accepting a Contract commits the coming months: the main action of those months is fixed until completion.
-- The Player may **cancel** at any pause point: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
+- Starting a Project or accepting a Contract commits the coming months. While active, the Player's main action is restricted to "Continue Project" or "Continue Contract" until completion.
+- Because the game pauses at the Dashboard every month, the Player can perform instant actions (like buying Hardware or claiming Datasets) mid-project.
+- The Player may **cancel** from the Action Menu at any time: months already spent stay spent, nothing is produced, and Fame −100 (Project) or −200 (Contract).
 - Only one Project **or** Contract may be active at a time — never both, never two.
 
 # Economy
@@ -1798,6 +1799,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 ## S5 — Action Menu
 
+*(If the Company is IDLE):*
 | What will you do this month? | |
 |---|---|
 | 1 💼 Freelance | 2 🔬 Research |
@@ -1806,6 +1808,14 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 7 👥 Team | 8 🌳 Tech Tree |
 | 9 📁 Portfolio | 10 💾 Save |
 | 0 🏠 Main Menu | |
+
+*(If a PROJECT or CONTRACT is active):*
+| Active: [Project Name or Contract ID] | Month [X] of [M] |
+|---|---|
+| **1 ⏩ Continue [Project/Contract]** | **2 🛑 Cancel** |
+| 6 🛒 Shop | 7 👥 Team |
+| 8 🌳 Tech Tree | 9 📁 Portfolio |
+| 10 💾 Save | 0 🏠 Main Menu |
 
 💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
 
@@ -2006,12 +2016,24 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 ## S5 — Action Menu
 
+*(If IDLE):*
 **This month?**
 1 💼 Freelance
 2 🔬 Research
 3 🏗️ New model
 4 📦 Data
 5 📜 Contracts
+6 🛒 Shop
+7 👥 Team
+8 🌳 Tech Tree
+9 📁 Portfolio
+10 💾 Save
+0 🏠 Main Menu
+
+*(If PROJECT/CONTRACT active):*
+**Active: [Name] ([X]/[M])**
+1 ⏩ Continue
+2 🛑 Cancel
 6 🛒 Shop
 7 👥 Team
 8 🌳 Tech Tree
