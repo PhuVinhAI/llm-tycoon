@@ -33,7 +33,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S8` SAVE · `S9` Ending.
 
 <!--
 Tiếng Việt (tóm tắt):
@@ -46,7 +46,7 @@ Mọi màn hình phải theo ĐÚNG khung: đúng dòng, đúng thứ tự, đú
 emoji; nhãn và chỉ số dịch HOÀN TOÀN sang ngôn ngữ người chơi, không song ngữ.
 Chỉ tên công nghệ AI (Transformer, BOW...) và tên trường SAVE giữ nguyên tiếng Anh.
 Chỗ [ngoặc vuông] thay bằng
-giá trị thật; chỉ được bỏ dòng nào đánh dấu (optional). SAVE block không
-phụ thuộc profile. Thứ gì chưa có khung thì ứng biến theo dáng của profile
-đang dùng.
+giá trị thật; chỉ được bỏ dòng nào đánh dấu (optional). S10 cho Dilemma, S11
+cho menu phụ, S12 cho tạo Project. SAVE block không phụ thuộc profile.
+Thứ gì chưa có khung thì ứng biến theo dáng của profile đang dùng.
 -->

@@ -107,6 +107,39 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
+## S10 — Dilemma (Freelance & Research)
+
+⚠️ **[Event Title]**
+*[FLAVOR: 2–3 lines of story combining the matrix coordinates]*
+
+| Option | Yield / Effect |
+|---|---|
+| 1 [Standard Choice] | [Exact calculated yield] |
+| 2 [Trade-off Choice] | [Exact calculated yield] |
+
+👉 What is your choice?
+
+## S11 — Sub-Menu (Data & Team)
+
+[Icon] **[Menu Name]**
+1 [Action 1] ([Cost/Time])
+2 [Action 2] ([Cost/Time])
+…
+0 ↩ Back
+
+## S12 — Project Wizard
+
+🏗️ **New Model Project**
+Provide your configuration to start:
+- **Architecture:** [List owned]
+- **Task:** [List available Tasks]
+- **Dataset:** [List owned Datasets]
+- **Months:** (min [X] for chosen Architecture)
+- **Focus:** 10 points across Data / Model / Training / Eval
+- **Name:** [Suggest a name]
+
+👉 *Reply with your choices, or type 0 to cancel.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -123,13 +156,14 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 
 <!--
 Tiếng Việt (tóm tắt):
-Khung desktop cho 10 màn hình: S0 tiêu đề + hỏi ngôn ngữ/thiết bị (màn duy
+Khung desktop cho 13 màn hình: S0 tiêu đề + hỏi ngôn ngữ/thiết bị (màn duy
 nhất bằng tiếng Anh); S1 main menu 5 mục xếp 2 cột; S2 màn thông tin, kết
 thúc bằng "0 quay về menu"; S3 dashboard 5 dòng gộp cột; S4 cấu trúc lượt
 (thẻ sự kiện → sổ cái → dashboard → menu hành động); S5 menu hành động 10
 mục 2 hàng — mục chưa khả dụng vẫn liệt kê, chọn thì giải thích; S6 báo cáo
 hoàn thành model (chỉ hiện kết quả Q, 4 lựa chọn phát hành đánh số, lựa
 chọn khóa phải nêu điều kiện thiếu); S7 danh sách chợ/shop đánh số + giá;
+S10 Dilemma hiển thị tình huống 4x4; S11 Menu phụ; S12 Wizard tạo dự án;
 S8 SAVE dùng định dạng cố định; S9 màn kết (tổng điểm + danh hiệu + chơi
 lại/recap).
 -->

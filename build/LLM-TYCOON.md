@@ -1475,7 +1475,7 @@ Rendering rules:
 - The SAVE block (S8) is profile-independent: always the exact fixed format.
 - If something must be shown that has no skeleton, improvise in the active profile's shape — on mobile that means staying narrow and vertical.
 
-Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S8` SAVE · `S9` Ending.
+Screen index: `S0` Title & Setup · `S1` Main Menu · `S2` Info · `S3` Dashboard · `S4` Turn Report · `S5` Action Menu · `S6` Model Report · `S7` Market List · `S10` Dilemma · `S11` Sub-Menu · `S12` Project Wizard · `S8` SAVE · `S9` Ending.
 
 # Boot Sequence & Main Menu
 
@@ -1605,6 +1605,39 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
+## S10 — Dilemma (Freelance & Research)
+
+⚠️ **[Event Title]**
+*[FLAVOR: 2–3 lines of story combining the matrix coordinates]*
+
+| Option | Yield / Effect |
+|---|---|
+| 1 [Standard Choice] | [Exact calculated yield] |
+| 2 [Trade-off Choice] | [Exact calculated yield] |
+
+👉 What is your choice?
+
+## S11 — Sub-Menu (Data & Team)
+
+[Icon] **[Menu Name]**
+1 [Action 1] ([Cost/Time])
+2 [Action 2] ([Cost/Time])
+…
+0 ↩ Back
+
+## S12 — Project Wizard
+
+🏗️ **New Model Project**
+Provide your configuration to start:
+- **Architecture:** [List owned]
+- **Task:** [List available Tasks]
+- **Dataset:** [List owned Datasets]
+- **Months:** (min [X] for chosen Architecture)
+- **Focus:** 10 points across Data / Model / Training / Eval
+- **Name:** [Suggest a name]
+
+👉 *Reply with your choices, or type 0 to cancel.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -1718,6 +1751,40 @@ on [Dataset]
 …
 💰 $[cash]
 0 ↩ Back
+
+## S10 — Dilemma (Freelance & Research)
+
+⚠️ **[Event Title]**
+*[FLAVOR: 2–3 lines of story]*
+
+**1 [Standard Choice]**
+▸ [Exact calculated yield]
+**2 [Trade-off Choice]**
+▸ [Exact calculated yield]
+
+👉 Your choice?
+
+## S11 — Sub-Menu (Data & Team)
+
+[Icon] **[Menu Name]**
+1 [Action 1]
+  ▸ [Cost/Time]
+2 [Action 2]
+  ▸ [Cost/Time]
+0 ↩ Back
+
+## S12 — Project Wizard
+
+🏗️ **New Model**
+Provide configuration:
+- **Arch:** [Owned]
+- **Task:** [Available]
+- **Data:** [Owned]
+- **Months:** (min [X])
+- **Focus:** 10 pts (D/M/T/E)
+- **Name:** [Suggestion]
+
+👉 *Reply choices, or 0 to cancel.*
 
 ## S8 — SAVE
 

@@ -113,6 +113,40 @@ on [Dataset]
 💰 $[cash]
 0 ↩ Back
 
+## S10 — Dilemma (Freelance & Research)
+
+⚠️ **[Event Title]**
+*[FLAVOR: 2–3 lines of story]*
+
+**1 [Standard Choice]**
+▸ [Exact calculated yield]
+**2 [Trade-off Choice]**
+▸ [Exact calculated yield]
+
+👉 Your choice?
+
+## S11 — Sub-Menu (Data & Team)
+
+[Icon] **[Menu Name]**
+1 [Action 1]
+  ▸ [Cost/Time]
+2 [Action 2]
+  ▸ [Cost/Time]
+0 ↩ Back
+
+## S12 — Project Wizard
+
+🏗️ **New Model**
+Provide configuration:
+- **Arch:** [Owned]
+- **Task:** [Available]
+- **Data:** [Owned]
+- **Months:** (min [X])
+- **Focus:** 10 pts (D/M/T/E)
+- **Name:** [Suggestion]
+
+👉 *Reply choices, or 0 to cancel.*
+
 ## S8 — SAVE
 
 Profile-independent — exact format in the Save Format module. (This is the ONLY screen that MUST use a markdown code block).
@@ -135,6 +169,7 @@ rộng. Cùng bộ màn hình với desktop nhưng xếp dọc: S0 tiêu đề h
 5 dòng; S3 dashboard mỗi chỉ số một dòng; S4 thẻ sự kiện/sổ cái bản hẹp;
 S5 menu hành động 10 dòng; S6 báo cáo model chỉ hiện số Q cuối cùng, 4 lựa
 chọn phát hành xếp dọc; S7 danh sách 2 dòng mỗi món (tên / số liệu + giá);
+S10 Dilemma dọc; S11 Menu phụ dọc; S12 Wizard tạo dự án dọc;
 S9 màn kết chỉ hiện tổng điểm. SAVE giữ nguyên định dạng cố định, không phụ
 thuộc profile.
 -->
