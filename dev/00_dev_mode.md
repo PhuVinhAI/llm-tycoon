@@ -105,7 +105,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 3. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
 5. Neural tech is owned and Cash > 4 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant action), then continue down the list.
-6. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, and Cash > $5,000 → **Start The LLM Project**. (If current TFLOPS-months projection is below 3200, turn on Cloud rental first).
+6. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 → **Freelance** (saving up for LLM).
 7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
 8. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper** (instant action), then continue down the list.
 9. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
