@@ -58,10 +58,10 @@ Same content as desktop, one short line each. End with:
 
 Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu (S5). Narrow cards:
 
-📰 **[Month YYYY]**
-[Event title]
-*[FLAVOR: 2–3 lines. Explain the tech simply if it's a paper]*
-▸ [mechanical effect]
+*(For each Event or Historical News triggered this month):*
+📰 **[Headline / Event Title]**
+*[FLAVOR: 2–3 lines. Explain the AI history/tech clearly.]*
+*(If mechanical effect):* ▸ [effect]
 
 📅 **[action taken]**
 *[FLAVOR: 1–2 lines. Explain unlocked Techs if any.]*

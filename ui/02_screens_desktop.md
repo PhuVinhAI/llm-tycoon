@@ -64,10 +64,10 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 
 Structure of every resolved turn, in this order: event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
 
-📰 **[Month YYYY]**
-[Event title]
-*[FLAVOR: 2–3 lines. If a scientific paper/tech event, explain its core concept in simple layman's terms]*
-▸ [mechanical effect, plainly stated]
+*(For each Event Calendar entry OR Historical News triggered this month, render a card):*
+📰 **[Month YYYY] — [Headline / Event Title]**
+*[FLAVOR: 2–3 lines. Act as a tech journalist. Explain the AI model, benchmark, or paper clearly so the player learns real AI history.]*
+*(If it has a mechanical effect):* ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
 *[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*

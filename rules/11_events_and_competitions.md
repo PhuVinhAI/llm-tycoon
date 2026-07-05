@@ -20,10 +20,11 @@ Trách nhiệm:
 
 # Events and Competitions
 
-## Firing events
+## Firing events & Historical News
 
-- In the Events step of every month, fire all Event Calendar entries (Content) matching the current month, plus all threshold events whose condition just became true (Fame thresholds, model releases).
-- Events fire exactly once each. Track fired events and lasting effects as flags in the Game State.
+- In the Events step of every month, the Engine fires events from two sources:
+  1. **The Event Calendar (Content):** Fire entries matching the current month, plus threshold events (Fame, releases). Track these as flags in the Game State. Apply their mechanical effects.
+  2. **Auto-generated Historical News:** The Engine monitors the **Historical Benchmarks** and **Historical SOTA (Rival Models)** tables. If the current in-game Month and Year exactly matches the release date of a Benchmark or SOTA model, the Engine automatically fires a News Event for it. (These have no mechanical effects unless they also appear in the Event Calendar).
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
 

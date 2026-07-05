@@ -175,6 +175,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 - **Scientific Explanations** — When an event is about a real-world AI paper (e.g., word2vec, Attention, Transformer), do not just state that it was published. Use the flavor text to explain *what the breakthrough actually means* in simple, layman's terms so players without an AI background can understand it.
 - **Technology Unlocks** — Whenever the player spends RP to unlock a new Technology (an instant action), use flavor text in the turn report to briefly explain what this tech actually does and how it upgrades their capabilities (e.g., "You unlocked RNNs: Models can now remember context from previous words!").
 - **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
+- **Historical Tech News (S4)** — Whenever a new Benchmark or SOTA Rival is released (matching the current in-game month), act as a tech journalist. Write a catchy headline and 2-3 sentences explaining *what* this new AI/Benchmark is, *how* it works under the hood, and *why* it is a historical breakthrough. Make it highly educational for a non-expert player.
 - **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
 - **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
 - **Review Quotes (S6)** — When a model completes, generate 4 GDT-style reviews with scores averaging `Q ÷ 10`. You may invent the names of the Academic, Media, and User reviewers, and write a 1-sentence flavor quote for all 4 reviewers. However, the name of the 1st reviewer (the Benchmark) MUST be pulled directly from the Content rules, not invented.
@@ -1286,10 +1287,11 @@ Every completed Model also grants **RP + (floor(Q) × 10)** and counts toward E-
 
 # Events and Competitions
 
-## Firing events
+## Firing events & Historical News
 
-- In the Events step of every month, fire all Event Calendar entries (Content) matching the current month, plus all threshold events whose condition just became true (Fame thresholds, model releases).
-- Events fire exactly once each. Track fired events and lasting effects as flags in the Game State.
+- In the Events step of every month, the Engine fires events from two sources:
+  1. **The Event Calendar (Content):** Fire entries matching the current month, plus threshold events (Fame, releases). Track these as flags in the Game State. Apply their mechanical effects.
+  2. **Auto-generated Historical News:** The Engine monitors the **Historical Benchmarks** and **Historical SOTA (Rival Models)** tables. If the current in-game Month and Year exactly matches the release date of a Benchmark or SOTA model, the Engine automatically fires a News Event for it. (These have no mechanical effects unless they also appear in the Event Calendar).
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
 
@@ -1890,10 +1892,10 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 
 Structure of every resolved turn, in this order: event cards (if any) → month ledger → Dashboard (S3) → Action Menu (S5).
 
-📰 **[Month YYYY]**
-[Event title]
-*[FLAVOR: 2–3 lines. If a scientific paper/tech event, explain its core concept in simple layman's terms]*
-▸ [mechanical effect, plainly stated]
+*(For each Event Calendar entry OR Historical News triggered this month, render a card):*
+📰 **[Month YYYY] — [Headline / Event Title]**
+*[FLAVOR: 2–3 lines. Act as a tech journalist. Explain the AI model, benchmark, or paper clearly so the player learns real AI history.]*
+*(If it has a mechanical effect):* ▸ [mechanical effect, plainly stated]
 
 📅 **[Month YYYY] — [main action taken]**
 *[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
@@ -2071,10 +2073,10 @@ Same content as desktop, one short line each. End with:
 
 Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu (S5). Narrow cards:
 
-📰 **[Month YYYY]**
-[Event title]
-*[FLAVOR: 2–3 lines. Explain the tech simply if it's a paper]*
-▸ [mechanical effect]
+*(For each Event or Historical News triggered this month):*
+📰 **[Headline / Event Title]**
+*[FLAVOR: 2–3 lines. Explain the AI history/tech clearly.]*
+*(If mechanical effect):* ▸ [effect]
 
 📅 **[action taken]**
 *[FLAVOR: 1–2 lines. Explain unlocked Techs if any.]*
