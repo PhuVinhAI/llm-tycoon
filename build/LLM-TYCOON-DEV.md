@@ -1540,16 +1540,17 @@ Maximum 2 hired at a time (Employees rule).
 | E9 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +500 (inspiration) |
 | E10 | Mar 2016 | 🔥 *AlphaGo beats Lee Sedol* | AI hype: license & product income ×1.5 during Mar–Aug 2016 |
 | E11 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
-| E12 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5) |
+| E12 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5). Triggers **SQuAD Challenge**: Competition for QA, Q ≥ 60, 3-month window → $3,000 + 500 Fame |
 | E13 | Jan 2017 | ☁️ *Cloud GPUs become practical* | Cloud rental available (hardware table) |
 | E14 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +1000 Fame + headline "Indie researcher scooped Google?" |
 | E15 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 600 Fame |
 | E16 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
 | E17 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
-| E18 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
+| E17b| May 2018 | 🏆 **GLUE Benchmark Introduced** | The ultimate NLU test is born. Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75, 3-month window → $5,000 + 800 Fame |
+| E18 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame. (Sets new SOTA on WikiText) |
 | E19 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
-| E20 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame (vindicated!) |
-| E21 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end |
+| E20 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame. (BERT shatters the GLUE leaderboard) |
+| E21 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | LLM hype headline; an LLM released during 2019 gains +1000 Score at the end. (Sets Zero-shot SOTA on LAMBADA) |
 | E22 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player Fame ≥ 1500, the article namechecks them |
 | E23 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
@@ -1724,11 +1725,15 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Feb 2018 | SNLI (Stanford Inference) | ELMo (AllenAI) | 89 |
 | May 2018 | GLUE Benchmark | BiLSTM + ELMo | 70 |
 | Jun 2018 | SQuAD 2.0 | No-Answer Baseline | 66 |
+| Jun 2018 | WikiText | GPT-1 (OpenAI) | 75 |
+| Jun 2018 | LAMBADA | GPT-1 (OpenAI) | 60 |
 | Aug 2018 | CoQA | DrQA + ELMo (Stanford) | 75 |
 | Oct 2018 | SQuAD 2.0 | BERT (Google) | 86 |
 | Oct 2018 | GLUE Benchmark | BERT (Google) | 82 |
 | Jan 2019 | Natural Questions (NQ) | BERT-QA (Google) | 81 |
 | Jan 2019 | PersonaChat | TransferTransfo (HuggingFace) | 82 |
+| Feb 2019 | WikiText | GPT-2 (OpenAI) | 82 |
+| Feb 2019 | LAMBADA | GPT-2 (OpenAI) | 75 |
 | May 2019 | HellaSwag | BERT (Google) | 73 |
 | Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
 | Aug 2019 | SuperGLUE | RoBERTa (Meta) | 84 |

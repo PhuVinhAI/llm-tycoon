@@ -46,11 +46,15 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Feb 2018 | SNLI (Stanford Inference) | ELMo (AllenAI) | 89 |
 | May 2018 | GLUE Benchmark | BiLSTM + ELMo | 70 |
 | Jun 2018 | SQuAD 2.0 | No-Answer Baseline | 66 |
+| Jun 2018 | WikiText | GPT-1 (OpenAI) | 75 |
+| Jun 2018 | LAMBADA | GPT-1 (OpenAI) | 60 |
 | Aug 2018 | CoQA | DrQA + ELMo (Stanford) | 75 |
 | Oct 2018 | SQuAD 2.0 | BERT (Google) | 86 |
 | Oct 2018 | GLUE Benchmark | BERT (Google) | 82 |
 | Jan 2019 | Natural Questions (NQ) | BERT-QA (Google) | 81 |
 | Jan 2019 | PersonaChat | TransferTransfo (HuggingFace) | 82 |
+| Feb 2019 | WikiText | GPT-2 (OpenAI) | 82 |
+| Feb 2019 | LAMBADA | GPT-2 (OpenAI) | 75 |
 | May 2019 | HellaSwag | BERT (Google) | 73 |
 | Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
 | Aug 2019 | SuperGLUE | RoBERTa (Meta) | 84 |
