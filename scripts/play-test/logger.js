@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { LOGS_DIR, HISTORY_PATH } from './config.js';
 
@@ -62,8 +62,18 @@ export function resumeSession(sessionId, sessionDir) {
   _sessionId = sessionId;
   _sessionDir = sessionDir;
   _sessionFile = join(sessionDir, 'game.json');
-  _logEntries = [];
   _history = loadHistory();
+
+  // Load existing log entries so new logs append instead of overwriting
+  if (existsSync(_sessionFile)) {
+    try {
+      _logEntries = JSON.parse(readFileSync(_sessionFile, 'utf8'));
+    } catch {
+      _logEntries = [];
+    }
+  } else {
+    _logEntries = [];
+  }
 
   return { id: sessionId, dir: sessionDir, file: _sessionFile };
 }
@@ -167,6 +177,33 @@ export function log(entry) {
 
 export function logTurn(turnNum, data) {
   log({ type: 'turn', turn: turnNum, ...data });
+}
+
+// ─── History List ─────────────────────────────────────────────────────────
+// ─── Debug Logging ──────────────────────────────────────────────────────
+let _debugDir = null;
+let _debugIdx = 0;
+
+export function initDebugDir(sessionDir) {
+  _debugDir = join(sessionDir, 'debug');
+  mkdirSync(_debugDir, { recursive: true });
+  // Resume: start index after existing files to avoid overwriting
+  try {
+    const existing = readdirSync(_debugDir).filter(f => f.endsWith('.json'));
+    _debugIdx = existing.length;
+  } catch {
+    _debugIdx = 0;
+  }
+}
+
+export function logApiDebug(label, data) {
+  if (!_debugDir) return;
+  try {
+    _debugIdx++;
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const filePath = join(_debugDir, `${String(_debugIdx).padStart(3, '0')}_${ts}_${label}.json`);
+    writeFileSync(filePath, JSON.stringify(data, null, 2));
+  } catch {}
 }
 
 // ─── History List ─────────────────────────────────────────────────────────
