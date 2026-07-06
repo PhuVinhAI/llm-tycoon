@@ -25,13 +25,14 @@ Trách nhiệm:
 - The home lab has **4 slots**. A one-time upgrade — *Rewire the lab*, $2,000, available any time — raises it to **8 slots**.
 - Each piece of Hardware occupies the slots listed in the Content.
 
-## Compute
+## Compute & Capacity
 
 - Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
-- **Inference TFLOPS** = sum of reserved compute from active Product streams.
-- **Available TFLOPS/mo** = Total TFLOPS/mo − Inference TFLOPS.
-- During a Project, compute accumulates monthly: **TFLOPS-months += current Available TFLOPS/mo**.
-- Neural Architectures (compute requirement > 0 in the Content) cannot start with Available TFLOPS/mo < 100, and require the GPUT technology.
+- Total **VRAM** = sum of installed Hardware VRAM + active cloud units.
+- **Inference VRAM** = sum of reserved VRAM from active Product streams.
+- **Available VRAM** = Total VRAM − Inference VRAM.
+- During a Project, compute accumulates monthly: **TFLOPS-months += current Total TFLOPS/mo**.
+- Neural Architectures (compute requirement > 0 in the Content) cannot start with Total TFLOPS/mo < 100, and require the GPUT technology.
 
 ## Buying and selling
 
@@ -40,7 +41,7 @@ Trách nhiệm:
 
 ## Cloud rental (available per the Event Calendar)
 
-- $1,000 per month per **+1000 TFLOPS** unit; maximum 2 units.
+- $1,000 per month per **+1000 TFLOPS** unit (+80 GB VRAM); maximum 2 units.
 - May only be active during Project months; deactivates automatically when the Project ends.
 
 <!--
@@ -48,9 +49,10 @@ Tiếng Việt (tóm tắt):
 Slot: home lab có 4 slot; nâng cấp "Đi lại dây điện" $2,000 (một lần, mua
 lúc nào cũng được) → 8 slot. Mỗi phần cứng chiếm số slot ghi trong Content.
 
-Compute: tổng TFLOPS/tháng = tổng TFLOPS phần cứng + cloud đang bật. Trong dự án,
-mỗi tháng cộng dồn: TFLOPS-month += TFLOPS/tháng hiện tại. Kiến trúc neural (yêu cầu
-compute > 0) không thể khởi động khi TFLOPS = 0 và cần công nghệ GPUT.
+Compute & VRAM: tổng TFLOPS/tháng và tổng VRAM = tổng phần cứng + cloud đang bật. 
+VRAM khả dụng = Tổng VRAM - VRAM đang bị chiếm bởi Product.
+Trong dự án, mỗi tháng cộng dồn: TFLOPS-month += TFLOPS/tháng hiện tại. Kiến trúc neural 
+không thể khởi động khi TFLOPS < 100 và cần công nghệ GPUT.
 
 Mua/bán: mua tức thời các món đã đến ngày bán; phí vận hành tính từ tháng
 mua. Bán lại thu 50% giá gốc; không được bán khi đang chạy dự án.

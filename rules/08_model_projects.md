@@ -25,8 +25,12 @@ Trách nhiệm:
 
 The Player declares, in one instant action:
 
-1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
-2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
+1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Total TFLOPS/mo ≥ 100 (Hardware rule).
+2. **Scale (Parameter Tier)** — Defines the size of the model. The Company must have enough **Available VRAM** to start the Project.
+   - **Tiny (<10M):** 2 GB VRAM req. Compute req ×0.5. Ideal Data Size ≥ 1.
+   - **Base (~50M):** 4 GB VRAM req. Compute req ×1.0. Ideal Data Size ≥ 2.
+   - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
+   - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
@@ -66,9 +70,10 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 **Step 1: Calculate Base Points**
 ```
 Base Points = Base(Architecture)                … Content: architectures table
-            + Scale Modifier                    … Small: −5 | Base: 0 | Large: +10
+            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15
             + (2 × Combined Dataset Quality)
-            + 5                                 … Combined Size meets the minimum
+            + 5                                 … Combined Size meets the Architecture's minimum
+            − 20 if Data Starvation             … Combined Size is LESS than the Scale's Ideal Data Size
             + Compute score                     … see below
             + Focus score                       … see below
             + (2 × E-Lv)
@@ -139,7 +144,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40.0 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference VRAM** = Scale VRAM Req ÷ 2 (minimum 1GB). (Track Task, Q, and reserved VRAM in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -156,14 +161,14 @@ The Player can view their Portfolio (S15) and ask to **Analyze** any completed M
 <!--
 Tiếng Việt (tóm tắt):
 Khai báo dự án (tức thời): chọn Architecture (đã mở khóa; neural cần GPUT và
-TFLOPS ≥ 100) + Task + Dataset (Size đủ) + số tháng M (≥ tối thiểu) + phân bổ đúng
+TFLOPS ≥ 100) + Scale (cần đủ VRAM khả dụng) + Task + Dataset (Size đủ) + số tháng M (≥ tối thiểu) + phân bổ đúng
 10 điểm Focus cho Data/Model/Training/Eval + đặt tên. Engine kiểm tra đủ
 điều kiện mới cho chạy.
 
 Công thức Quality (tính khi hoàn thành, hiện từng dòng, sàn 0 trần 100):
-Q = Base + Match + 2×Quality_dataset + 5 (đủ Size) + Domain fit (±3/0)
-  + Điểm compute (≥2×yêu cầu:+8; ≥yêu cầu:+5; ≥nửa:−5; dưới nửa:−15; yêu
-    cầu 0 luôn +5)
+Q = Base + Match + 2×Quality_dataset + 5 (đủ Size kiến trúc) + Scale Modifier (-5/0/+5/+15)
+  - 20 nếu Đói dữ liệu (Size < mức lý tưởng của Scale) + Domain fit (±3/0)
+  + Điểm compute (≥2×yêu cầu:+8; ≥yêu cầu:+5; ≥nửa:−5; dưới nửa:−15; yêu cầu 0 luôn +5)
   + Điểm focus (10 − tổng |chênh với lý tưởng|, sàn 0)
   + 2×E-Lv + bonus công nghệ/nhân sự (BPE +5 cho S2S trở lên; FINE +5 cho
     PTRF; nhân sự theo Content)
@@ -173,7 +178,7 @@ Tiếp nhận: ≥85 Đột phá +800 Fame; 70–84 Tuyệt +500; 55–69 Tốt 
 +100; <40 Thất bại −200. Mỗi model xong: +(Q×10) RP, tính vào E-Lv.
 
 Phát hành (chọn đúng 1; model Thất bại chỉ được mã nguồn mở hoặc cất kho):
-Mã nguồn mở (Fame tiếp nhận ×2, +500 RP, không tiền); Bán bản quyền (Q × $60 ×
+Mã nguồn mở (Fame tiếp nhận ×2, +500 RP, không tiền); Bán bản quyền (Q × $150 ×
 Demand; Q<40 không ai mua); Sản phẩm (cần Fame ≥1000 và Q ≥55 — dòng thu
-Q×Demand×$6/tháng trong 8 tháng); Cất kho (không gì cả, vẫn được đem thi).
+Q×Demand×$25/tháng trong 8 tháng, chiếm dụng VRAM = VRAM Scale / 2); Cất kho.
 -->

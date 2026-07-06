@@ -14,7 +14,7 @@ Theo shared/conventions.md: ví dụ CHỈ minh họa, không phải Game Data.
 
 # Worked Example — *illustrative only, not Game Data*
 
-Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
+Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, Base scale, 1 month, focus 4/3/1/2, then the month resolves.
 
 Expected completion report (S6, desktop) in English:
 

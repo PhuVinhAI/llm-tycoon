@@ -38,7 +38,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
 * Fame: current value (0–5000).
-* Income Stream: source name, amount per month, months remaining, original Task, original Q, and reserved Inference TFLOPS.
+* Income Stream: source name, amount per month, months remaining, original Task, original Q, and reserved Inference VRAM.
 
 ---
 
@@ -57,8 +57,8 @@ Resource là tài sản định lượng được của Company. LLM Tycoon có 
   Technology. RP là một quỹ chung, tích trữ không giới hạn.
 * Fame (Danh tiếng) — danh tiếng của Company, số nguyên từ 0 đến 5000. Fame
   không bị tiêu — nó mở khóa cơ hội.
-* Income Stream — dòng thu nhập định kỳ: số tiền cố định mỗi tháng và số
-  tháng còn lại.
+* Income Stream — dòng thu nhập định kỳ: số tiền cố định mỗi tháng, số
+  tháng còn lại, và VRAM bị chiếm dụng.
 
 Resource thuộc về đúng một Company; chỉ thay đổi thông qua Player Action,
 Event và Income Stream theo đúng Rules; luôn xuất hiện trong SAVE Block.

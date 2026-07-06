@@ -45,7 +45,8 @@ Same content as desktop, one short line each. End with:
 💰 $[cash]
 🔬 Research Points [x] · ⭐ Fame [x]/5000
 🧠 Research Lv [x] · Engineering Lv [x]
-🖥️ [available]/[total] TFLOPS · slots [u]/[t]
+🖥️ [total] TFLOPS · slots [u]/[t]
+💾 [av_vram]/[tot] GB VRAM
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
@@ -213,10 +214,11 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S12 — Project Wizard
 
 🏗️ **New Model**
-Compute: [available]/[total] TFLOPS/mo
+Compute: [total] TFLOPS/mo
+VRAM: [available] GB available
 Configuration:
 - **Arch:** [Owned + Base Req]
-- **Scale:** Small / Base / Large
+- **Scale:** Tiny/Base/Large/Massive
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
 - **Data:** [Select 1 to 3 Owned] *(show known fit ONLY if analyzed)*
@@ -236,7 +238,7 @@ Configuration:
 📁 **Portfolio & Income**
 
 **Streams:**
-- [Model]: +$[x]/mo · -[z] TFLOPS ([y] left)
+- [Model]: +$[x]/mo · -[z] GB VRAM ([y] left)
 *(or "No active streams")*
 
 **Models:**

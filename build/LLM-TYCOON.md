@@ -490,7 +490,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
 * Fame: current value (0–5000).
-* Income Stream: source name, amount per month, months remaining, original Task, original Q, and reserved Inference TFLOPS.
+* Income Stream: source name, amount per month, months remaining, original Task, original Q, and reserved Inference VRAM.
 
 ---
 
@@ -690,9 +690,9 @@ A Dataset exists as part of the Game State.
 
 Hardware is physical computing equipment owned by a Company, primarily GPUs.
 
-Each piece of Hardware occupies one or more slots in the Company's facility and provides TeraFLOPS per month (TFLOPS/mo). The Company's total TFLOPS/mo is the sum over all installed Hardware, plus any rented cloud compute.
+Each piece of Hardware occupies one or more slots in the Company's facility, provides TeraFLOPS per month (TFLOPS/mo) for training speed, and VRAM (GB) for capacity. The Company's total TFLOPS/mo and Total VRAM is the sum over all installed Hardware, plus any rented cloud compute.
 
-Training Models consumes compute measured in TFLOPS-months.
+Training Models consumes compute measured in TFLOPS-months, but requires sufficient Available VRAM to even start.
 
 ---
 
@@ -703,6 +703,7 @@ A piece of Hardware may be associated with information such as:
 * Name
 * Price
 * TFLOPS provided per month
+* VRAM capacity (GB)
 * Slots occupied
 * Upkeep cost
 * Availability date
@@ -1001,13 +1002,14 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 - The home lab has **4 slots**. A one-time upgrade — *Rewire the lab*, $2,000, available any time — raises it to **8 slots**.
 - Each piece of Hardware occupies the slots listed in the Content.
 
-## Compute
+## Compute & Capacity
 
 - Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
-- **Inference TFLOPS** = sum of reserved compute from active Product streams.
-- **Available TFLOPS/mo** = Total TFLOPS/mo − Inference TFLOPS.
-- During a Project, compute accumulates monthly: **TFLOPS-months += current Available TFLOPS/mo**.
-- Neural Architectures (compute requirement > 0 in the Content) cannot start with Available TFLOPS/mo < 100, and require the GPUT technology.
+- Total **VRAM** = sum of installed Hardware VRAM + active cloud units.
+- **Inference VRAM** = sum of reserved VRAM from active Product streams.
+- **Available VRAM** = Total VRAM − Inference VRAM.
+- During a Project, compute accumulates monthly: **TFLOPS-months += current Total TFLOPS/mo**.
+- Neural Architectures (compute requirement > 0 in the Content) cannot start with Total TFLOPS/mo < 100, and require the GPUT technology.
 
 ## Buying and selling
 
@@ -1016,7 +1018,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 ## Cloud rental (available per the Event Calendar)
 
-- $1,000 per month per **+1000 TFLOPS** unit; maximum 2 units.
+- $1,000 per month per **+1000 TFLOPS** unit (+80 GB VRAM); maximum 2 units.
 - May only be active during Project months; deactivates automatically when the Project ends.
 
 # Model Projects
@@ -1025,8 +1027,12 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 The Player declares, in one instant action:
 
-1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
-2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
+1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Total TFLOPS/mo ≥ 100 (Hardware rule).
+2. **Scale (Parameter Tier)** — Defines the size of the model. The Company must have enough **Available VRAM** to start the Project.
+   - **Tiny (<10M):** 2 GB VRAM req. Compute req ×0.5. Ideal Data Size ≥ 1.
+   - **Base (~50M):** 4 GB VRAM req. Compute req ×1.0. Ideal Data Size ≥ 2.
+   - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
+   - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
@@ -1066,9 +1072,10 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 **Step 1: Calculate Base Points**
 ```
 Base Points = Base(Architecture)                … Content: architectures table
-            + Scale Modifier                    … Small: −5 | Base: 0 | Large: +10
+            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15
             + (2 × Combined Dataset Quality)
-            + 5                                 … Combined Size meets the minimum
+            + 5                                 … Combined Size meets the Architecture's minimum
+            − 20 if Data Starvation             … Combined Size is LESS than the Scale's Ideal Data Size
             + Compute score                     … see below
             + Focus score                       … see below
             + (2 × E-Lv)
@@ -1139,7 +1146,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40.0 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference VRAM** = Scale VRAM Req ÷ 2 (minimum 1GB). (Track Task, Q, and reserved VRAM in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -1226,6 +1233,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
+- **Available VRAM ≥ 320 GB** (Requires massive Cloud rental).
 - Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$20,000** upfront infrastructure cost, paid at start.
 
@@ -1233,7 +1241,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 - Use the PTRF row of the architectures table, but with compute requirement **3200** TFLOPS-months.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
-- The Scale choice is fixed to Base. Add a special **+10 LLM scale bonus** to the formula instead.
+- The Scale choice is fixed to **Frontier** (which grants a special **+25 LLM scale bonus** to the Base Points formula).
 
 ## Outcomes
 
@@ -1391,20 +1399,20 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 
 # Hardware Shop
 
-| Available from | Item | Price | TFLOPS/mo | Slots |
-|---|---|---|---|---|---|
-| start | GTX 780 | $1,500 | 100 | 1 |
-| Sep 2014 | GTX 980 | $2,500 | 200 | 1 |
-| Jun 2016 | GTX 1080 | $5,000 | 400 | 1 |
-| Oct 2017 | Used K80 server | $8,000 | 600 | 2 |
-| Sep 2018 | RTX 2080 | $12,000 | 800 | 1 |
+| Available from | Item | Price | TFLOPS/mo | VRAM | Slots |
+|---|---|---|---|---|---|---|
+| start | GTX 780 | $1,500 | 100 | 3 GB | 1 |
+| Sep 2014 | GTX 980 | $2,500 | 200 | 4 GB | 1 |
+| Jun 2016 | GTX 1080 | $5,000 | 400 | 8 GB | 1 |
+| Oct 2017 | Used K80 server | $8,000 | 600 | 24 GB | 2 |
+| Sep 2018 | RTX 2080 | $12,000 | 800 | 11 GB | 1 |
 
 **Other purchases:**
 
 | Item | Price | Effect |
 |---|---|---|
 | 🔌 Rewire the lab (once) | $4,000 | slots 4 → 8 |
-| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo per unit, max 2 units, project months only |
+| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo and +80 GB VRAM per unit, max 2 units, project months only |
 
 *(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 
@@ -1857,7 +1865,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 |---|---|
 | **Resources** | 💰 $[cash]  ·  🔬 Research Points [x]  ·  ⭐ Fame [x]/5000 |
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
-| **Assets** | 🖥️ [available]/[total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  💾 [available_vram]/[total_vram] GB VRAM  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
 | **Status** | 📦 [idle / project (🧩 Art) / contract / paper]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
@@ -2009,9 +2017,9 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏗️ **New Model Project**
 Provide your configuration to start:
-- **Current Compute:** [available] / [total] TFLOPS/mo
+- **Capacity:** [total] TFLOPS/mo  ·  [available_vram] GB VRAM available
 - **Architecture:** [List owned. Include their Base Compute Req]
-- **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
+- **Scale:** Tiny (2GB VRAM) / Base (4GB) / Large (12GB) / Massive (40GB)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
@@ -2031,9 +2039,9 @@ Provide your configuration to start:
 📁 **Model Portfolio & Income**
 
 **Active Income Streams:**
-| Product | Income | Inference Cost | Months Left |
+| Product | Income | Reserved VRAM | Months Left |
 |---|---|---|---|
-| [Model Name] | +$[x]/mo | -[z] TFLOPS | [y] mos |
+| [Model Name] | +$[x]/mo | -[z] GB | [y] mos |
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
@@ -2136,7 +2144,8 @@ Same content as desktop, one short line each. End with:
 💰 $[cash]
 🔬 Research Points [x] · ⭐ Fame [x]/5000
 🧠 Research Lv [x] · Engineering Lv [x]
-🖥️ [available]/[total] TFLOPS · slots [u]/[t]
+🖥️ [total] TFLOPS · slots [u]/[t]
+💾 [av_vram]/[tot] GB VRAM
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
@@ -2304,10 +2313,11 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S12 — Project Wizard
 
 🏗️ **New Model**
-Compute: [available]/[total] TFLOPS/mo
+Compute: [total] TFLOPS/mo
+VRAM: [available] GB available
 Configuration:
 - **Arch:** [Owned + Base Req]
-- **Scale:** Small / Base / Large
+- **Scale:** Tiny/Base/Large/Massive
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
 - **Data:** [Select 1 to 3 Owned] *(show known fit ONLY if analyzed)*
@@ -2327,7 +2337,7 @@ Configuration:
 📁 **Portfolio & Income**
 
 **Streams:**
-- [Model]: +$[x]/mo · -[z] TFLOPS ([y] left)
+- [Model]: +$[x]/mo · -[z] GB VRAM ([y] left)
 *(or "No active streams")*
 
 **Models:**
@@ -2408,12 +2418,12 @@ settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
 counters: research=[x], models=[x]
 tech: [comma-separated IDs]
-hw: [item xN, …] | cloud: [0-2] | slots_used: [x]/[4|8] | rewired: [yes/no]
+hw: [item xN, …] | cloud: [0-2] | vram: [av]/[tot] | slots_used: [x]/[4|8] | rewired: [yes/no]
 team: [Name($Salary, Effects) | none]
 candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Datasets,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
-streams: [Name $x/mo ×y left (Task, Q, inf=z)]; … | none
+streams: [Name $x/mo ×y left (Task, Q, vram=z)]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
 project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
@@ -2428,7 +2438,7 @@ flags: [fired events with lasting effects, discounts in force, hype windows, llm
 
 # Worked Example — *illustrative only, not Game Data*
 
-Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, 1 month, focus 4/3/1/2, then the month resolves.
+Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, Base scale, 1 month, focus 4/3/1/2, then the month resolves.
 
 Expected completion report (S6, desktop) in English:
 

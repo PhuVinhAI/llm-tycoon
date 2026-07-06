@@ -54,7 +54,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 |---|---|
 | **Resources** | 💰 $[cash]  ·  🔬 Research Points [x]  ·  ⭐ Fame [x]/5000 |
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
-| **Assets** | 🖥️ [available]/[total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  💾 [available_vram]/[total_vram] GB VRAM  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
 | **Status** | 📦 [idle / project (🧩 Art) / contract / paper]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
@@ -206,9 +206,9 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏗️ **New Model Project**
 Provide your configuration to start:
-- **Current Compute:** [available] / [total] TFLOPS/mo
+- **Capacity:** [total] TFLOPS/mo  ·  [available_vram] GB VRAM available
 - **Architecture:** [List owned. Include their Base Compute Req]
-- **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
+- **Scale:** Tiny (2GB VRAM) / Base (4GB) / Large (12GB) / Massive (40GB)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
@@ -228,9 +228,9 @@ Provide your configuration to start:
 📁 **Model Portfolio & Income**
 
 **Active Income Streams:**
-| Product | Income | Inference Cost | Months Left |
+| Product | Income | Reserved VRAM | Months Left |
 |---|---|---|---|
-| [Model Name] | +$[x]/mo | -[z] TFLOPS | [y] mos |
+| [Model Name] | +$[x]/mo | -[z] GB | [y] mos |
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
