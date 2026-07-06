@@ -40,7 +40,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | TRF | Transformer | 9000 | ATTN | Architecture TRF |
 | PRET | Unsupervised Pre-training | 9500 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 8500 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 8500 | PRET | unlocks the LLM (general) Task for Projects |
 
 <!--
 Tiếng Việt (tóm tắt):

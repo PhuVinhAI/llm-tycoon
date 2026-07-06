@@ -25,8 +25,8 @@ Tăng phiên bản game ở đây VÀ trong package.json khi thay đổi luật/
 | Version | 0.3 |
 | Chapter | 1 of 3 — *Home Lab* |
 | Genre | Text-based business simulation (tycoon) |
-| Setting | Real AI history, 2013–2020 |
-| Goal | Train the world's first LLM before 2021 |
+| Setting | Real AI history, 2013 onwards |
+| Goal | Train the world's first LLM |
 | Players | 1 |
 | Playtime | Multiple sessions; progress carried by SAVE blocks |
 | Languages | Any — the Game Engine speaks the player's language |

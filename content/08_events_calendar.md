@@ -51,7 +51,6 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 | E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
 | E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face adoption grows rapidly. License income ×1.2 permanent. If PRET owned: RP +1000 |
 | E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
-| E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
 ## Threshold events
 
@@ -59,7 +58,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
+| T3 | First Model with Task LLM (general) and Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 

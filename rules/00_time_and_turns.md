@@ -22,7 +22,7 @@ Trách nhiệm:
 
 ## Timeline
 
-- The game begins in **January 2013** and ends no later than **December 2020**.
+- The game begins in **January 2013** and continues indefinitely (sandbox).
 - One Turn equals one in-game month.
 - Each month, the Player chooses exactly **one main action**, plus any number of **instant actions** (see Actions).
 

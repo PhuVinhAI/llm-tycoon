@@ -30,8 +30,8 @@ Document map:
 | Version | 0.3 |
 | Chapter | 1 of 3 — *Home Lab* |
 | Genre | Text-based business simulation (tycoon) |
-| Setting | Real AI history, 2013–2020 |
-| Goal | Train the world's first LLM before 2021 |
+| Setting | Real AI history, 2013 onwards |
+| Goal | Train the world's first LLM |
 | Players | 1 |
 | Playtime | Multiple sessions; progress carried by SAVE blocks |
 | Languages | Any — the Game Engine speaks the player's language |
@@ -232,14 +232,14 @@ This module extends the system modules. From `dev` until `dev exit`, the followi
 
 | Command | Behavior |
 |---|---|
-| `dev` | Enter Dev Mode. Show one config line with defaults — `runs=1 · seed=42 · policy=random · until=2020-12` — and wait for one reply: overrides in the same `key=value` form (e.g., `seed=7 policy=human runs=3 until=2015-12`), or anything else to start with defaults. |
+| `dev` | Enter Dev Mode. Show one config line with defaults — `runs=1 · seed=42 · policy=random · until=2024-12` — and wait for one reply: overrides in the same `key=value` form (e.g., `seed=7 policy=human runs=3 until=2015-12`), or anything else to start with defaults. |
 | `dev report` | Stop the current simulation and produce the Dev Report from the turns played so far. |
 | `dev continue` | Resume an interrupted simulation from its last checkpoint. |
 | `dev exit` | Discard all simulation state and return to the Main Menu. |
 
 - If a real run is in progress when `dev` is typed: output its SAVE block (S8) FIRST so the player can restore it later via *Continue*. Simulations never touch, reuse, or overwrite a real run's Game State.
 - Each simulated run starts as a fresh *New game* from the Scenario, skipping the name questions and the opening narration: player **DEV**, company **DevCo**. Models are named `DEV-1`, `DEV-2`, … in completion order.
-- Config bounds: `runs` 1–5 (run *k* uses seed + *k* − 1) · `until` = any month up to `2020-12` (a run also ends early at any Ending) · `policy` = `random` or `human`.
+- Config bounds: `runs` 1–5 (run *k* uses seed + *k* − 1) · `until` = any month up to `2024-12` (a run also ends early at any Ending) · `policy` = `random` or `human`.
 
 ## Dice — the only source of randomness
 
@@ -281,7 +281,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
 5. Neural tech is owned and Cash > 8 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant actions), then continue down the list.
 6. Cash below fixed monthly costs + $1,500 → **Freelance**.
-7. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 + (3 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
+7. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 + (3 × fixed costs) → **Start Project** with Task LLM (general) (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
 8. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
 9. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper**.
 10. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
@@ -998,7 +998,7 @@ The concrete values are defined in the Content.
 
 ## Timeline
 
-- The game begins in **January 2013** and ends no later than **December 2020**.
+- The game begins in **January 2013** and continues indefinitely (sandbox).
 - One Turn equals one in-game month.
 - Each month, the Player chooses exactly **one main action**, plus any number of **instant actions** (see Actions).
 
@@ -1192,7 +1192,7 @@ The Player declares, in one instant action:
 1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
-4. **Task** — one of the Tasks in the Content.
+4. **Task** — one of the Tasks in the Content. (Task **LLM (general)** requires the SCALE technology).
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
 6. **Months (M)** — at least the adjusted minimum months.
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
@@ -1384,31 +1384,7 @@ When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the eng
 
 # The LLM Project
 
-The LLM Project is a special Model Project: pretraining a large language model on web-scale data. All Model Project rules apply unless overridden below.
-
-## Requirements to start
-
-- **SCALE** technology owned (which implies PRET and the PTRF Architecture).
-- A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
-- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
-- **$20,000** upfront infrastructure cost, paid at start.
-
-## Quality
-
-- Use the PTRF row of the architectures table, but with compute requirement **3200** TFLOPS-months.
-- Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
-- The Scale choice is fixed to Base. Add a special **+10 LLM scale bonus** to the formula instead.
-
-## Outcomes
-
-| Q | Outcome |
-|---|---|
-| ≥ 70.0 | 🚀 The **Term Sheet** event fires (Content): accept → **WIN ending**; decline → +500 Fame and the sandbox continues. |
-| 55.0–69.9 | It works, but demos underwhelm: Fame +1000, and the Model may be released normally (Model Projects rule). |
-| < 55.0 | A very expensive lesson: Fame −300, RP +2000. |
-
-- The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual if the same Dataset is reused.
-- Name the model — this is the game's namesake moment.
+*(This module has been deprecated. The LLM Project is now handled as a standard Model Project using the `LLM (general)` Task in `rules/08_model_projects.md`. It acts as the bridge to Chapter 2).*
 
 # Endings and Scoring
 
@@ -1416,8 +1392,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 | Ending | Trigger |
 |---|---|
-| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet upon completing an LLM with Q ≥ 70. |
-| 🌅 **Retirement** | December 2020 ends without a win. |
+| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet upon completing an LLM with Q ≥ 70. The game continues in sandbox mode. |
 | 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
 
 ## Score
@@ -1427,7 +1402,7 @@ Score = 3 × Fame
       + 100 × Best Model Q
       + 500 × models completed (Projects + Contracts)
       + 100 × floor(Cash ÷ $1,000)
-      + WIN only: 4000 + 200 × full months remaining until December 2020
+      + WIN only: 4000
       + LLM released during 2019: +1000 (perfect timing)
 ```
 
@@ -1482,7 +1457,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | TRF | Transformer | 9000 | ATTN | Architecture TRF |
 | PRET | Unsupervised Pre-training | 9500 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 8500 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 8500 | PRET | unlocks the LLM (general) Task for Projects |
 
 # Architectures
 
@@ -1514,24 +1489,25 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | SUMM | Summarization | Condensing documents |
 | QA | Question Answering | Answering questions over text |
 | CODE | Code Completion | Suggesting source code |
+| LLM (general) | Large Language Model | General purpose text generation |
 
-(The LLM Project uses the special task **LLM (general)** — Rules.)
+(The **LLM (general)** task requires the SCALE technology to be unlocked.)
 
 ## Architecture × Task match matrix
 
 Values: +10 perfect · +5 good · 0 weak · −10 poor.
 
-| | CLS | AUTO | TRANS | CHAT | SUMM | QA | CODE |
-|---|---|---|---|---|---|---|---|
-| **NGRAM** | 0 | +10 | −10 | −10 | −10 | −10 | +5 |
-| **BOW** | +10 | −10 | −10 | −10 | 0 | 0 | −10 |
-| **EMB** | +10 | 0 | −10 | 0 | 0 | +5 | −10 |
-| **RNN** | +5 | +10 | 0 | 0 | 0 | 0 | +5 |
-| **LSTM** | +5 | +10 | +5 | +5 | +5 | +5 | +5 |
-| **S2S** | 0 | +5 | +10 | +5 | +5 | 0 | 0 |
-| **S2SA** | 0 | +5 | +10 | +10 | +10 | +5 | +5 |
-| **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
-| **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
+| | CLS | AUTO | TRANS | CHAT | SUMM | QA | CODE | LLM (general) |
+|---|---|---|---|---|---|---|---|---|
+| **NGRAM** | 0 | +10 | −10 | −10 | −10 | −10 | +5 | −10 |
+| **BOW** | +10 | −10 | −10 | −10 | 0 | 0 | −10 | −10 |
+| **EMB** | +10 | 0 | −10 | 0 | 0 | +5 | −10 | −10 |
+| **RNN** | +5 | +10 | 0 | 0 | 0 | 0 | +5 | −10 |
+| **LSTM** | +5 | +10 | +5 | +5 | +5 | +5 | +5 | −10 |
+| **S2S** | 0 | +5 | +10 | +5 | +5 | 0 | 0 | −10 |
+| **S2SA** | 0 | +5 | +10 | +10 | +10 | +5 | +5 | −10 |
+| **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 | +5 |
+| **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
 *(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
 
@@ -1673,7 +1649,6 @@ Maximum 2 hired at a time (Employees rule).
 | E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
 | E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face adoption grows rapidly. License income ×1.2 permanent. If PRET owned: RP +1000 |
 | E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
-| E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
 ## Threshold events
 
@@ -1681,7 +1656,7 @@ Maximum 2 hired at a time (Employees rule).
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
+| T3 | First Model with Task LLM (general) and Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 
@@ -1974,7 +1949,7 @@ If a SAVE block **did** come with the document: skip S0 and S1, take language an
 ## How to play (S2 content — at most 10 lines)
 
 - One **main action** per month; instant actions are free.
-- Goal: build the world's first LLM before 2021.
+- Goal: build the world's first LLM.
 - The world moves on the calendar whether you are ready or not.
 - Money below −$5,000 means bankruptcy.
 - Internal formulas and mechanics are strictly hidden — trust your intuition.
@@ -1988,7 +1963,7 @@ Labels are translated into the player's language; emoji anchors and canonical co
 
 **S0-A (Language Ask):** Rendered strictly in simple English.
 🏭 **LLM TYCOON**
-Build the world's first LLM (2013-2020)
+Build the world's first LLM
 v0.3 · Chapter 1: Home Lab
 
 🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)

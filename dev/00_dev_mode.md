@@ -57,14 +57,14 @@ This module extends the system modules. From `dev` until `dev exit`, the followi
 
 | Command | Behavior |
 |---|---|
-| `dev` | Enter Dev Mode. Show one config line with defaults — `runs=1 · seed=42 · policy=random · until=2020-12` — and wait for one reply: overrides in the same `key=value` form (e.g., `seed=7 policy=human runs=3 until=2015-12`), or anything else to start with defaults. |
+| `dev` | Enter Dev Mode. Show one config line with defaults — `runs=1 · seed=42 · policy=random · until=2024-12` — and wait for one reply: overrides in the same `key=value` form (e.g., `seed=7 policy=human runs=3 until=2015-12`), or anything else to start with defaults. |
 | `dev report` | Stop the current simulation and produce the Dev Report from the turns played so far. |
 | `dev continue` | Resume an interrupted simulation from its last checkpoint. |
 | `dev exit` | Discard all simulation state and return to the Main Menu. |
 
 - If a real run is in progress when `dev` is typed: output its SAVE block (S8) FIRST so the player can restore it later via *Continue*. Simulations never touch, reuse, or overwrite a real run's Game State.
 - Each simulated run starts as a fresh *New game* from the Scenario, skipping the name questions and the opening narration: player **DEV**, company **DevCo**. Models are named `DEV-1`, `DEV-2`, … in completion order.
-- Config bounds: `runs` 1–5 (run *k* uses seed + *k* − 1) · `until` = any month up to `2020-12` (a run also ends early at any Ending) · `policy` = `random` or `human`.
+- Config bounds: `runs` 1–5 (run *k* uses seed + *k* − 1) · `until` = any month up to `2024-12` (a run also ends early at any Ending) · `policy` = `random` or `human`.
 
 ## Dice — the only source of randomness
 
@@ -106,7 +106,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
 5. Neural tech is owned and Cash > 8 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant actions), then continue down the list.
 6. Cash below fixed monthly costs + $1,500 → **Freelance**.
-7. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 + (3 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
+7. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 + (3 × fixed costs) → **Start Project** with Task LLM (general) (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
 8. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
 9. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper**.
 10. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
@@ -214,7 +214,7 @@ của Dev Mode, mở phiên mới gặp cặp này thì resume dev thay vì chơ
 và Creative License (tắt flavor). Ngoài Dev Mode, module này vô hiệu hoàn toàn.
 
 Điều khiển: `dev` (hiện dòng config mặc định runs=1 seed=42 policy=random
-until=2020-12, trả lời key=value để chỉnh hoặc gì cũng được để chạy);
+until=2024-12, trả lời key=value để chỉnh hoặc gì cũng được để chạy);
 `dev report` (dừng và xuất báo cáo ngay); `dev continue` (chạy tiếp từ
 checkpoint); `dev exit` (bỏ toàn bộ trạng thái mô phỏng, về Main Menu).
 Đang có ván thật thì in SAVE block trước khi mô phỏng. Ván mô phỏng luôn là

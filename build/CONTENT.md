@@ -18,7 +18,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | TRF | Transformer | 9000 | ATTN | Architecture TRF |
 | PRET | Unsupervised Pre-training | 9500 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 8500 | PRET | unlocks The LLM Project |
+| SCALE | Scaling Recipe | 8500 | PRET | unlocks the LLM (general) Task for Projects |
 
 # Architectures
 
@@ -50,24 +50,25 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | SUMM | Summarization | Condensing documents |
 | QA | Question Answering | Answering questions over text |
 | CODE | Code Completion | Suggesting source code |
+| LLM (general) | Large Language Model | General purpose text generation |
 
-(The LLM Project uses the special task **LLM (general)** — Rules.)
+(The **LLM (general)** task requires the SCALE technology to be unlocked.)
 
 ## Architecture × Task match matrix
 
 Values: +10 perfect · +5 good · 0 weak · −10 poor.
 
-| | CLS | AUTO | TRANS | CHAT | SUMM | QA | CODE |
-|---|---|---|---|---|---|---|---|
-| **NGRAM** | 0 | +10 | −10 | −10 | −10 | −10 | +5 |
-| **BOW** | +10 | −10 | −10 | −10 | 0 | 0 | −10 |
-| **EMB** | +10 | 0 | −10 | 0 | 0 | +5 | −10 |
-| **RNN** | +5 | +10 | 0 | 0 | 0 | 0 | +5 |
-| **LSTM** | +5 | +10 | +5 | +5 | +5 | +5 | +5 |
-| **S2S** | 0 | +5 | +10 | +5 | +5 | 0 | 0 |
-| **S2SA** | 0 | +5 | +10 | +10 | +10 | +5 | +5 |
-| **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
-| **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
+| | CLS | AUTO | TRANS | CHAT | SUMM | QA | CODE | LLM (general) |
+|---|---|---|---|---|---|---|---|---|
+| **NGRAM** | 0 | +10 | −10 | −10 | −10 | −10 | +5 | −10 |
+| **BOW** | +10 | −10 | −10 | −10 | 0 | 0 | −10 | −10 |
+| **EMB** | +10 | 0 | −10 | 0 | 0 | +5 | −10 | −10 |
+| **RNN** | +5 | +10 | 0 | 0 | 0 | 0 | +5 | −10 |
+| **LSTM** | +5 | +10 | +5 | +5 | +5 | +5 | +5 | −10 |
+| **S2S** | 0 | +5 | +10 | +5 | +5 | 0 | 0 | −10 |
+| **S2SA** | 0 | +5 | +10 | +10 | +10 | +5 | +5 | −10 |
+| **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 | +5 |
+| **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
 *(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
 
@@ -209,7 +210,6 @@ Maximum 2 hired at a time (Employees rule).
 | E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
 | E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face adoption grows rapidly. License income ×1.2 permanent. If PRET owned: RP +1000 |
 | E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
-| E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
 ## Threshold events
 
@@ -217,7 +217,7 @@ Maximum 2 hired at a time (Employees rule).
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
+| T3 | First Model with Task LLM (general) and Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 

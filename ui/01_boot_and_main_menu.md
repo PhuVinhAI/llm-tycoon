@@ -44,7 +44,7 @@ If a SAVE block **did** come with the document: skip S0 and S1, take language an
 ## How to play (S2 content — at most 10 lines)
 
 - One **main action** per month; instant actions are free.
-- Goal: build the world's first LLM before 2021.
+- Goal: build the world's first LLM.
 - The world moves on the calendar whether you are ready or not.
 - Money below −$5,000 means bankruptcy.
 - Internal formulas and mechanics are strictly hidden — trust your intuition.

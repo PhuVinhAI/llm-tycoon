@@ -23,8 +23,7 @@ Trách nhiệm:
 
 | Ending | Trigger |
 |---|---|
-| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet upon completing an LLM with Q ≥ 70. |
-| 🌅 **Retirement** | December 2020 ends without a win. |
+| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet upon completing an LLM with Q ≥ 70. The game continues in sandbox mode. |
 | 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
 
 ## Score
@@ -34,7 +33,7 @@ Score = 3 × Fame
       + 100 × Best Model Q
       + 500 × models completed (Projects + Contracts)
       + 100 × floor(Cash ÷ $1,000)
-      + WIN only: 4000 + 200 × full months remaining until December 2020
+      + WIN only: 4000
       + LLM released during 2019: +1000 (perfect timing)
 ```
 

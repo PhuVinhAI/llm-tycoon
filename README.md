@@ -3,7 +3,7 @@
 **A tycoon game about building an AI company — run entirely by an LLM.**
 **Game tycoon về việc xây dựng một công ty AI — do chính LLM vận hành.**
 
-You start in a tiny **home lab** in **January 2013**, when LLMs don't exist yet. Research your way through real AI history — word2vec, LSTM, Seq2Seq, Attention, Transformer, pre-training — and race the timeline to train the world's first LLM before 2021.
+You start in a tiny **home lab** in **January 2013**, when LLMs don't exist yet. Research your way through real AI history — word2vec, LSTM, Seq2Seq, Attention, Transformer, pre-training — and race the timeline to train the world's first LLM.
 
 ## ▶️ Play now / Chơi ngay
 
@@ -33,7 +33,7 @@ The assembly order is the `MANIFEST` in [`scripts/build.js`](./scripts/build.js)
 
 ## 🎮 v0.3 — Chapter 1: Home Lab
 
-- **Era:** 2013–2020, from pre-LLM to the first LLM. A fixed event calendar built from real AI history (word2vec, TensorFlow, AlphaGo, *Attention Is All You Need*, BERT, GPT-2…). Follow history for research discounts — or beat the papers to it for glory.
+- **Era:** 2013 onwards, from pre-LLM to the first LLM. A fixed event calendar built from real AI history (word2vec, TensorFlow, AlphaGo, *Attention Is All You Need*, BERT, GPT-2…). Follow history for research discounts — or beat the papers to it for glory.
 - **Loop:** 1 turn = 1 month. Freelance for cash, research the tech tree, collect & clean datasets, buy GPUs, hire up to 2 helpers, ship models (open-source / license / product), take contracts, win competitions.
 - **Endgame:** train an LLM with Quality ≥ 70 → VC term sheet → *From Home Lab to Headquarters*. Scored endings with titles.
 - **Game-like shell:** title screen, language + device setup, main menu (New / Continue / How to play / About / Exit), in-game commands `save` `menu` `help` `ui` `lang`.
