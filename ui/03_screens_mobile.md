@@ -120,7 +120,10 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ⭐ Est. Fame [±x] · 🔬 RP +[x]
 
 **Release?**
-*(If SOTA: "🔥 SOTA Hype: Payouts ×1.5")*
+*(If First-Mover: "🚀 First-Mover: Payouts ×2.0")*
+*(If The Clash: "⚔️ The Clash: Beat Q for Fame")*
+*(If Saturated: "📉 Saturated: Payouts ×0.5")*
+*(If SOTA & normal: "🔥 SOTA Hype: Payouts ×1.5")*
 *(If Art > 0: "⚠️ Art: Product income halved")*
 1 🌐 Open-source
 2 💼 License $[x]

@@ -122,8 +122,11 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ⭐ Est. Fame [±x] (Awarded ONLY on Release)  ·  🔬 Research Points +[x]
 
 **Release?**
-*(If SOTA Hype: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
-*(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
+*(If First-Mover: "🚀 First-Mover! The market is starved. Payouts are ×2.0!")*
+*(If The Clash: "⚔️ The Clash! Releasing alongside Big Tech. Beat their Q for massive Fame!")*
+*(If Saturated: "📉 Saturated Market! A Rival just dominated this space. Payouts are ×0.5")*
+*(If SOTA Hype and normal market: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
+*(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
 

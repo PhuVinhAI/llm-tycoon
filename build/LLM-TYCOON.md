@@ -1119,9 +1119,15 @@ The overall `Q` tier determines the **Estimated Reception Fame**:
 **CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
 Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge gained from building it) and counts toward E-Lv.
 
-## Release (from Completion or Portfolio)
+## Release & The Market Hype Cycle
 
 A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40) may only be open-sourced or shelved.
+
+**The Market Hype Cycle:** When releasing a Model (License or Product), the Engine checks the **Historical SOTA** table for the closest Rival release targeting the *same Task* (mapping Benchmark to Task). Let **R** be the Rival's release date.
+1. **First-Mover (Build-up):** If released between `R - 3 months` and `R - 1 month` (inclusive). The market is starved. **Multiplier: Cash/Income × 2.0**.
+2. **The Clash (Head-to-head):** If released in exactly month `R` or `R + 1 month`. Direct comparison. Cash is normal (× 1.0). **Bonus:** If the Player's Q > the Rival's SOTA Score, award **+1000 Fame** for beating Big Tech.
+3. **Saturated (Late-comer):** If released between `R + 2 months` and `R + 7 months`. The market is dominated by the Rival. **Multiplier: Cash/Income × 0.5**.
+*(If outside all these windows, normal market rules apply).*
 
 *Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q, SOTA status, and any remaining Artifacts.
 
@@ -1132,8 +1138,8 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 | Release | Effect |
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10 (minimum 0). (Track Task, Q, and Inference in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40 → $0, no buyer. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -1197,6 +1203,7 @@ When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the eng
 - In the Events step of every month, the Engine fires events from two sources:
   1. **The Event Calendar (Content):** Fire entries matching the current month, plus threshold events (Fame, releases), and Dynamic Press Coverage (M1-M6) if their conditions are met. Track these as flags in the Game State so they fire exactly once. Apply their mechanical effects.
   2. **Auto-generated Historical News:** The Engine monitors the **Historical Benchmarks** and **Historical SOTA (Rival Models)** tables. If the current in-game Month and Year exactly matches the release date of a Benchmark or SOTA model (if only a Year is listed, assume January), the Engine automatically fires a News Event for it. (These have no mechanical effects unless they also appear in the Event Calendar).
+  3. **The Rumor Mill (Market Intelligence):** If the current in-game date is exactly **3 months before** a Rival Model's release date (from the Historical SOTA table), automatically fire a Rumor News Event. The Engine maps the Rival's Benchmark to its corresponding Task, then uses Creative License to write a rumor (e.g., "Leaks suggest Google is working on a massive Translation model, expected in 3 months").
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
 
@@ -1922,8 +1929,11 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ⭐ Est. Fame [±x] (Awarded ONLY on Release)  ·  🔬 Research Points +[x]
 
 **Release?**
-*(If SOTA Hype: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
-*(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved. Open-source grants bonus Fame.")*
+*(If First-Mover: "🚀 First-Mover! The market is starved. Payouts are ×2.0!")*
+*(If The Clash: "⚔️ The Clash! Releasing alongside Big Tech. Beat their Q for massive Fame!")*
+*(If Saturated: "📉 Saturated Market! A Rival just dominated this space. Payouts are ×0.5")*
+*(If SOTA Hype and normal market: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
+*(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
 
@@ -2205,7 +2215,10 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ⭐ Est. Fame [±x] · 🔬 RP +[x]
 
 **Release?**
-*(If SOTA: "🔥 SOTA Hype: Payouts ×1.5")*
+*(If First-Mover: "🚀 First-Mover: Payouts ×2.0")*
+*(If The Clash: "⚔️ The Clash: Beat Q for Fame")*
+*(If Saturated: "📉 Saturated: Payouts ×0.5")*
+*(If SOTA & normal: "🔥 SOTA Hype: Payouts ×1.5")*
 *(If Art > 0: "⚠️ Art: Product income halved")*
 1 🌐 Open-source
 2 💼 License $[x]

@@ -25,6 +25,7 @@ Trách nhiệm:
 - In the Events step of every month, the Engine fires events from two sources:
   1. **The Event Calendar (Content):** Fire entries matching the current month, plus threshold events (Fame, releases), and Dynamic Press Coverage (M1-M6) if their conditions are met. Track these as flags in the Game State so they fire exactly once. Apply their mechanical effects.
   2. **Auto-generated Historical News:** The Engine monitors the **Historical Benchmarks** and **Historical SOTA (Rival Models)** tables. If the current in-game Month and Year exactly matches the release date of a Benchmark or SOTA model (if only a Year is listed, assume January), the Engine automatically fires a News Event for it. (These have no mechanical effects unless they also appear in the Event Calendar).
+  3. **The Rumor Mill (Market Intelligence):** If the current in-game date is exactly **3 months before** a Rival Model's release date (from the Historical SOTA table), automatically fire a Rumor News Event. The Engine maps the Rival's Benchmark to its corresponding Task, then uses Creative License to write a rumor (e.g., "Leaks suggest Google is working on a massive Translation model, expected in 3 months").
 - Events with a Player choice pause any batch and wait for the answer.
 - Never foreshadow events (Output Discipline).
 
