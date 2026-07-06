@@ -31,6 +31,7 @@ The Player declares, in one instant action:
    - **Base (~50M):** 4 GB VRAM req. Compute req ×1.0. Ideal Data Size ≥ 2.
    - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
    - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
+   - **Frontier (100B+):** 320 GB VRAM req. Compute req ×20.0. Ideal Data Size 5. *(Only available if `llm_unlocked` flag is true).*
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
@@ -70,7 +71,7 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 **Step 1: Calculate Base Points**
 ```
 Base Points = Base(Architecture)                … Content: architectures table
-            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15
+            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15 | Frontier: +25
             + (2 × Combined Dataset Quality)
             + 5                                 … Combined Size meets the Architecture's minimum
             − 20 if Data Starvation             … Combined Size is LESS than the Scale's Ideal Data Size

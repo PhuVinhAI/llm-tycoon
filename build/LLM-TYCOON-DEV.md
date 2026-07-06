@@ -1182,7 +1182,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 ## Cloud rental (available per the Event Calendar)
 
-- $1,000 per month per **+1000 TFLOPS** unit (+80 GB VRAM); maximum 2 units.
+- $1,000 per month per **+1000 TFLOPS** unit (+120 GB VRAM); maximum 2 units.
 - May only be active during Project months; deactivates automatically when the Project ends.
 
 # Model Projects
@@ -1197,6 +1197,7 @@ The Player declares, in one instant action:
    - **Base (~50M):** 4 GB VRAM req. Compute req ×1.0. Ideal Data Size ≥ 2.
    - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
    - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
+   - **Frontier (100B+):** 320 GB VRAM req. Compute req ×20.0. Ideal Data Size 5. *(Only available if `llm_unlocked` flag is true).*
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
@@ -1236,7 +1237,7 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 **Step 1: Calculate Base Points**
 ```
 Base Points = Base(Architecture)                … Content: architectures table
-            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15
+            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15 | Frontier: +25
             + (2 × Combined Dataset Quality)
             + 5                                 … Combined Size meets the Architecture's minimum
             − 20 if Data Starvation             … Combined Size is LESS than the Scale's Ideal Data Size
@@ -1398,12 +1399,12 @@ The LLM Project is a special Model Project: pretraining a large language model o
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - **Available VRAM ≥ 320 GB** (Requires massive Cloud rental).
-- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
+- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **60,000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$20,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
-- Use the PTRF row of the architectures table, but with compute requirement **3200** TFLOPS-months.
+- Use the PTRF row of the architectures table, but with compute requirement **60,000** TFLOPS-months.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
 - The Scale choice is fixed to **Frontier** (which grants a special **+25 LLM scale bonus** to the Base Points formula).
 
@@ -1576,7 +1577,7 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | Item | Price | Effect |
 |---|---|---|
 | 🔌 Rewire the lab (once) | $4,000 | slots 4 → 8 |
-| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo and +80 GB VRAM per unit, max 2 units, project months only |
+| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo and +120 GB VRAM per unit, max 2 units, project months only |
 
 *(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 
@@ -2183,7 +2184,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 Provide your configuration to start:
 - **Capacity:** [total] TFLOPS/mo  ·  [available_vram] GB VRAM available
 - **Architecture:** [List owned. Include their Base Compute Req]
-- **Scale:** Tiny (2GB VRAM) / Base (4GB) / Large (12GB) / Massive (40GB)
+- **Scale:** Tiny (2GB VRAM) / Base (4GB) / Large (12GB) / Massive (40GB) *(If LLM unlocked: / Frontier (320GB))*
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
@@ -2481,7 +2482,7 @@ Compute: [total] TFLOPS/mo
 VRAM: [available] GB available
 Configuration:
 - **Arch:** [Owned + Base Req]
-- **Scale:** Tiny/Base/Large/Massive
+- **Scale:** Tiny/Base/Large/Massive/Frontier
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
 - **Data:** [Select 1 to 3 Owned] *(show known fit ONLY if analyzed)*

@@ -41,7 +41,7 @@ Trách nhiệm:
 
 ## Cloud rental (available per the Event Calendar)
 
-- $1,000 per month per **+1000 TFLOPS** unit (+80 GB VRAM); maximum 2 units.
+- $1,000 per month per **+1000 TFLOPS** unit (+120 GB VRAM); maximum 2 units.
 - May only be active during Project months; deactivates automatically when the Project ends.
 
 <!--

@@ -24,12 +24,12 @@ The LLM Project is a special Model Project: pretraining a large language model o
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - **Available VRAM ≥ 320 GB** (Requires massive Cloud rental).
-- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
+- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **60,000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
 - **$20,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
-- Use the PTRF row of the architectures table, but with compute requirement **3200** TFLOPS-months.
+- Use the PTRF row of the architectures table, but with compute requirement **60,000** TFLOPS-months.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
 - The Scale choice is fixed to **Frontier** (which grants a special **+25 LLM scale bonus** to the Base Points formula).
 

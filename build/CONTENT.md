@@ -104,7 +104,7 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | Item | Price | Effect |
 |---|---|---|
 | 🔌 Rewire the lab (once) | $4,000 | slots 4 → 8 |
-| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo and +80 GB VRAM per unit, max 2 units, project months only |
+| ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo and +120 GB VRAM per unit, max 2 units, project months only |
 
 *(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
 

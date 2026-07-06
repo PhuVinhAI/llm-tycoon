@@ -218,7 +218,7 @@ Compute: [total] TFLOPS/mo
 VRAM: [available] GB available
 Configuration:
 - **Arch:** [Owned + Base Req]
-- **Scale:** Tiny/Base/Large/Massive
+- **Scale:** Tiny/Base/Large/Massive/Frontier
 - **Inherit:** [Model Name / None]
 - **Task:** [Available + short desc] *(show known match ONLY if previously analyzed)*
 - **Data:** [Select 1 to 3 Owned] *(show known fit ONLY if analyzed)*

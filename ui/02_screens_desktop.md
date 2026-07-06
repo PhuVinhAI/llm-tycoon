@@ -208,7 +208,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 Provide your configuration to start:
 - **Capacity:** [total] TFLOPS/mo  ·  [available_vram] GB VRAM available
 - **Architecture:** [List owned. Include their Base Compute Req]
-- **Scale:** Tiny (2GB VRAM) / Base (4GB) / Large (12GB) / Massive (40GB)
+- **Scale:** Tiny (2GB VRAM) / Base (4GB) / Large (12GB) / Massive (40GB) *(If LLM unlocked: / Frontier (320GB))*
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
 - **Task:** [List available Tasks with their short descriptions (e.g., CLS - Spam filtering...). *ONLY append known Match quality if previously analyzed via Portfolio*]
 - **Dataset(s):** [List 1 to 3 owned Datasets. *ONLY append known Domain fit if previously analyzed via Portfolio*]
