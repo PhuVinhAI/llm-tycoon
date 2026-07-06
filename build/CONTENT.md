@@ -35,7 +35,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
 - Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
-- The LLM Project overrides PTRF's compute requirement to 3200 TFLOPS-months (Rules).
+- The LLM Project overrides PTRF's compute requirement to 60,000 TFLOPS-months (Rules).
 
 # Tasks and Matching
 
@@ -186,6 +186,7 @@ Maximum 2 hired at a time (Employees rule).
 | E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
 | E1 | Jan 2013 | 📄 *word2vec core preprint (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl becomes widely accessible* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
+| E2b | Jan 2014 | 📚 *BookCorpus published (Smashwords scrape)* | Free Dataset claimable: BookCorpus (books 4/4) |
 | E3 | Sep 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +500 Fame |
 | E4 | Sep 2014 | 🛒 *GTX 980 launches* | Shop update (hardware table) |
 | E5 | Oct 2014 | 📄 *GloVe Embeddings (Stanford)* | EMB cost ×0.75 if locked |
