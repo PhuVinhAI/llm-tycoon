@@ -150,7 +150,7 @@ Tiếng Việt:
 
 ## Quality (Q)
 
-The overall score of a completed Model, from 0 to 100, computed by the Rules.
+The overall score of a completed Model, from 0.0 to 100.0, computed by the Rules.
 
 <!--
 Tiếng Việt:

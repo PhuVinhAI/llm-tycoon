@@ -83,7 +83,7 @@ Base Points = Base(Architecture)                … Content: architectures table
 *Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
 **Step 2: Calculate Individual Benchmark Scores**
-Identify ALL applicable Benchmarks (matching Task & Date ≤ current Month/Year). For EACH Benchmark, calculate its specific score (0-100):
+Identify ALL applicable Benchmarks (matching Task & Date ≤ current Month/Year). For EACH Benchmark, calculate its specific score (0.0-100.0):
 ```
 Benchmark Score = Base Points
                 + Match(Architecture × Task)       … Content: match matrix
@@ -95,11 +95,11 @@ Benchmark Score = Base Points
 - If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
 - Any other mismatch: **−15**
 
-*Clamp each Benchmark Score between 0 and 100.*
+*Clamp each Benchmark Score between 0.0 and 100.0, rounded to 1 decimal place.*
 
 **Step 3: Final Quality (Q) & UI Display**
-- **Q** = Average of all `Benchmark Scores` (floor 0, cap 100).
-- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15)`.
+- **Q** = Average of all `Benchmark Scores` (floor 0.0, cap 100.0, rounded to 1 decimal place).
+- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15.0)`.
 - When rendering the UI (S6), display each Benchmark's score.
 - Identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison.
 - The Engine uses Creative License to write a 1–2 sentence **Internal Analysis** quote. **Crucially**, this quote MUST: 1) Briefly explain what the benchmark actually measures in simple layman's terms, and 2) Provide a technical analysis comparing the Player's local test results against the public SOTA.
@@ -110,18 +110,18 @@ The overall `Q` tier determines the **Estimated Reception Fame**:
 
 | Q | Reception | Est. Fame |
 |---|---|---|
-| ≥ 85 | 🌟 Breakthrough | +800 |
-| 70–84 | 🔥 Great | +500 |
-| 55–69 | 👍 Good | +300 |
-| 40–54 | 😐 Mediocre | +100 |
-| < 40 | 💔 Failure | −100 |
+| ≥ 85.0 | 🌟 Breakthrough | +800 |
+| 70.0–84.9 | 🔥 Great | +500 |
+| 55.0–69.9 | 👍 Good | +300 |
+| 40.0–54.9 | 😐 Mediocre | +100 |
+| < 40.0 | 💔 Failure | −100 |
 
 **CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
 Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge gained from building it) and counts toward E-Lv.
 
 ## Release & The Market Hype Cycle
 
-A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40) may only be open-sourced or shelved.
+A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40.0) may only be open-sourced or shelved.
 
 **The Market Hype Cycle:** When releasing a Model (License or Product), the Engine checks the **Historical SOTA** table for the closest Rival release targeting the *same Task* (mapping Benchmark to Task). Let **R** be the Rival's release date.
 1. **First-Mover (Build-up):** If released between `R - 3 months` and `R - 1 month` (inclusive). The market is starved. **Multiplier: Cash/Income × 2.0**.
@@ -129,7 +129,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 3. **Saturated (Late-comer):** If released between `R + 2 months` and `R + 7 months`. The market is dominated by the Rival. **Multiplier: Cash/Income × 0.5**.
 *(If outside all these windows, normal market rules apply).*
 
-*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q, SOTA status, and any remaining Artifacts.
+*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q (formatted to 1 decimal place), SOTA status, and any remaining Artifacts.
 
 *SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release.
 *Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
@@ -138,8 +138,8 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 | Release | Effect |
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40.0 → $0, no buyer. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)

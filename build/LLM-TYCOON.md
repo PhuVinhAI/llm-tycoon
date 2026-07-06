@@ -288,7 +288,7 @@ The measure of computing power. Hardware provides TFLOPS per month; training con
 
 ## Quality (Q)
 
-The overall score of a completed Model, from 0 to 100, computed by the Rules.
+The overall score of a completed Model, from 0.0 to 100.0, computed by the Rules.
 
 ---
 
@@ -726,7 +726,7 @@ The concrete values are defined in the Content.
 
 A Model is a trained artificial intelligence system produced by completing a Project.
 
-A Model is built from one Architecture, targets one Task, and was trained on a Dataset mixture (1 to 3 Datasets). Its overall capability is expressed as Quality (Q, 0–100).
+A Model is built from one Architecture, targets one Task, and was trained on a Dataset mixture (1 to 3 Datasets). Its overall capability is expressed as Quality (Q, 0.0–100.0).
 
 A completed Model is released at most once: open-sourced, licensed, or launched as a product.
 
@@ -844,7 +844,7 @@ The concrete values are defined in the Content.
 2. **Action** — apply this month's main action (or the next committed month of an active Project/Contract).
 3. **Streams** — pay out all active Income Streams.
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
-5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75) or 2 (if Q < 75). Announce this data collection in the ledger.
+5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75.0) or 2 (if Q < 75.0). Announce this data collection in the ledger.
 6. **Checks** — bankruptcy, win and lose conditions.
 7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
@@ -1083,7 +1083,7 @@ Base Points = Base(Architecture)                … Content: architectures table
 *Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
 
 **Step 2: Calculate Individual Benchmark Scores**
-Identify ALL applicable Benchmarks (matching Task & Date ≤ current Month/Year). For EACH Benchmark, calculate its specific score (0-100):
+Identify ALL applicable Benchmarks (matching Task & Date ≤ current Month/Year). For EACH Benchmark, calculate its specific score (0.0-100.0):
 ```
 Benchmark Score = Base Points
                 + Match(Architecture × Task)       … Content: match matrix
@@ -1095,11 +1095,11 @@ Benchmark Score = Base Points
 - If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
 - Any other mismatch: **−15**
 
-*Clamp each Benchmark Score between 0 and 100.*
+*Clamp each Benchmark Score between 0.0 and 100.0, rounded to 1 decimal place.*
 
 **Step 3: Final Quality (Q) & UI Display**
-- **Q** = Average of all `Benchmark Scores` (floor 0, cap 100).
-- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15)`.
+- **Q** = Average of all `Benchmark Scores` (floor 0.0, cap 100.0, rounded to 1 decimal place).
+- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15.0)`.
 - When rendering the UI (S6), display each Benchmark's score.
 - Identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison.
 - The Engine uses Creative License to write a 1–2 sentence **Internal Analysis** quote. **Crucially**, this quote MUST: 1) Briefly explain what the benchmark actually measures in simple layman's terms, and 2) Provide a technical analysis comparing the Player's local test results against the public SOTA.
@@ -1110,18 +1110,18 @@ The overall `Q` tier determines the **Estimated Reception Fame**:
 
 | Q | Reception | Est. Fame |
 |---|---|---|
-| ≥ 85 | 🌟 Breakthrough | +800 |
-| 70–84 | 🔥 Great | +500 |
-| 55–69 | 👍 Good | +300 |
-| 40–54 | 😐 Mediocre | +100 |
-| < 40 | 💔 Failure | −100 |
+| ≥ 85.0 | 🌟 Breakthrough | +800 |
+| 70.0–84.9 | 🔥 Great | +500 |
+| 55.0–69.9 | 👍 Good | +300 |
+| 40.0–54.9 | 😐 Mediocre | +100 |
+| < 40.0 | 💔 Failure | −100 |
 
 **CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
 Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge gained from building it) and counts toward E-Lv.
 
 ## Release & The Market Hype Cycle
 
-A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40) may only be open-sourced or shelved.
+A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40.0) may only be open-sourced or shelved.
 
 **The Market Hype Cycle:** When releasing a Model (License or Product), the Engine checks the **Historical SOTA** table for the closest Rival release targeting the *same Task* (mapping Benchmark to Task). Let **R** be the Rival's release date.
 1. **First-Mover (Build-up):** If released between `R - 3 months` and `R - 1 month` (inclusive). The market is starved. **Multiplier: Cash/Income × 2.0**.
@@ -1129,7 +1129,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 3. **Saturated (Late-comer):** If released between `R + 2 months` and `R + 7 months`. The market is dominated by the Rival. **Multiplier: Cash/Income × 0.5**.
 *(If outside all these windows, normal market rules apply).*
 
-*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q, SOTA status, and any remaining Artifacts.
+*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q (formatted to 1 decimal place), SOTA status, and any remaining Artifacts.
 
 *SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release.
 *Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
@@ -1138,8 +1138,8 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 | Release | Effect |
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40.0 → $0, no buyer. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10. (Track Task, Q, and Inference in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -1239,9 +1239,9 @@ The LLM Project is a special Model Project: pretraining a large language model o
 
 | Q | Outcome |
 |---|---|
-| ≥ 70 | 🚀 The **Term Sheet** event fires (Content): accept → **WIN ending**; decline → +500 Fame and the sandbox continues. |
-| 55–69 | It works, but demos underwhelm: Fame +1000, and the Model may be released normally (Model Projects rule). |
-| < 55 | A very expensive lesson: Fame −300, RP +2000. |
+| ≥ 70.0 | 🚀 The **Term Sheet** event fires (Content): accept → **WIN ending**; decline → +500 Fame and the sandbox continues. |
+| 55.0–69.9 | It works, but demos underwhelm: Fame +1000, and the Model may be released normally (Model Projects rule). |
+| < 55.0 | A very expensive lesson: Fame −300, RP +2000. |
 
 - The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual if the same Dataset is reused.
 - Name the model — this is the game's namesake moment.
@@ -1273,7 +1273,7 @@ Present the ending as a short narrated epilogue, then the final total score, the
 
 ## Availability
 - The **Publish Paper** menu (S17) is accessible from the Action Menu (S5).
-- A Model is eligible for a Paper if it has **Q ≥ 60** and has not yet been published (`pub=no`).
+- A Model is eligible for a Paper if it has **Q ≥ 60.0** and has not yet been published (`pub=no`).
 
 ## Starting a Paper
 - Starting a Paper is an instant action from S17.
@@ -1490,19 +1490,19 @@ Maximum 2 hired at a time (Employees rule).
 | E5 | Oct 2014 | 📄 *GloVe Embeddings (Stanford)* | EMB cost ×0.75 if locked |
 | E6 | Nov 2014 | 🌐 *WMT corpora popularized* | Free Dataset claimable: WMT parallel (3/4) |
 | E7 | Feb 2015 | 📄 *Attention mechanism gains traction (Bahdanau et al. 2014)* | ATTN cost ×0.5 if locked; owned: +500 Fame |
-| E8 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55, 3-month window → $2,000 + 400 Fame |
+| E8 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55.0, 3-month window → $2,000 + 400 Fame |
 | E9 | Nov 2015 | 🔧 *TensorFlow open-sourced* | All research costs ×0.8, permanent |
 | E10 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +500 (inspiration) |
 | E11 | Mar 2016 | 🔥 *AlphaGo beats Lee Sedol* | AI hype: license & product income ×1.5 during Mar–Aug 2016 |
 | E12 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
-| E13 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5). Triggers **SQuAD Challenge**: QA, Q ≥ 60, 3-mo window → $3,000 + 500 Fame |
+| E13 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5). Triggers **SQuAD Challenge**: QA, Q ≥ 60.0, 3-mo window → $3,000 + 500 Fame |
 | E14 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player Fame ≥ 1500, the article namechecks them |
 | E15 | Jan 2017 | ☁️ *PyTorch released & Cloud GPUs unlocked* | Cloud rental available (hardware). PyTorch released: All research costs ×0.9 (stacks with TF), permanent |
 | E16 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +1000 Fame + headline "Indie researcher scooped Google?" |
-| E17 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 600 Fame |
+| E17 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65.0, 3-month window → $4,000 + 600 Fame |
 | E18 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
 | E19 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
-| E20 | Apr 2018 | 🏆 **GLUE Benchmark Introduced** | Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75, 3-month window → $5,000 + 800 Fame |
+| E20 | Apr 2018 | 🏆 **GLUE Benchmark Introduced** | Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75.0, 3-month window → $5,000 + 800 Fame |
 | E21 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
 | E22 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
 | E23 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame |
@@ -1517,7 +1517,7 @@ Maximum 2 hired at a time (Employees rule).
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM completed with Q ≥ 70 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
+| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2M and a real office. Accept → WIN ending. Decline → +500 Fame, sandbox continues |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 
@@ -1526,11 +1526,11 @@ These events fire exactly once per playthrough when their condition is met. The 
 | # | Trigger | Headline Theme | Effect |
 |---|---|---|---|
 | M1 | First Model achieves **SOTA Hype** | 📰 **David vs Goliath!** Indie lab beats Big Tech on global benchmarks. | Fame +200 |
-| M2 | First Model achieves **Q ≥ 90** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
+| M2 | First Model achieves **Q ≥ 90.0** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
 | M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
 | M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
-| M6 | First Model achieves **Q ≥ 55** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +2500 |
+| M6 | First Model achieves **Q ≥ 55.0** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +2500 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*
 
@@ -1670,53 +1670,53 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 
 | Date | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
 |---|---|---|---|
-| Jan 2013 | F1-Score (IMDB/Reuters) | SVM / Naive Bayes Baselines | 60 |
-| Jan 2013 | SST-2 (Stanford Sentiment) | RNTN (Stanford) | 85 |
-| Jan 2013 | Perplexity (Penn Treebank) | KenLM (N-gram baseline) | 50 |
-| Jan 2013 | BLEU Score | Moses (Statistical MT) | 40 |
-| Jan 2013 | ROUGE Score | LexRank Baseline | 45 |
-| Jan 2013 | Human Evaluation | Cleverbot / ALICE | 40 |
-| Sep 2013 | Perplexity (Penn Treebank) | word2vec + RNN (Mikolov) | 65 |
-| Sep 2014 | WMT14 En-De Translation | Seq2Seq (Google) | 55 |
-| Jan 2015 | BLEU (Code domain) | Statistical AST Baselines | 45 |
-| Jun 2015 | CNN/DailyMail | Attentive Reader (DeepMind) | 60 |
-| Jul 2015 | Winograd Schema (WSC) | Statistical Co-occurrence | 52 |
-| Aug 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75 |
-| Aug 2015 | SNLI (Stanford Inference) | LSTM Baseline (NYU) | 77 |
-| Mar 2016 | SNLI (Stanford Inference) | Decomposable Attention (Google) | 86 |
-| Jun 2016 | SQuAD 1.0 | Logistic Regression Baseline | 51 |
-| Jun 2016 | LAMBADA | Word CNN | 55 |
-| Sep 2016 | WikiText | AWD-LSTM (Salesforce) | 68 |
-| Nov 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77 |
-| Nov 2016 | WMT14 En-De Translation | GNMT (Google Neural MT) | 65 |
-| Jan 2017 | ConvAI (Conversational AI) | ParlAI Baselines (Meta) | 60 |
-| Apr 2017 | CNN/DailyMail | Pointer-Generator (Stanford) | 72 |
-| Jun 2017 | WMT14 En-De Translation | Transformer (Google) | 75 |
-| Jan 2018 | PersonaChat | Key-Value Profile Net (Meta) | 65 |
-| Feb 2018 | SNLI (Stanford Inference) | ELMo (AllenAI) | 89 |
-| Apr 2018 | GLUE Benchmark | BiLSTM + ELMo | 70 |
-| Jun 2018 | SQuAD 2.0 | No-Answer Baseline | 66 |
-| Jun 2018 | WikiText | GPT-1 (OpenAI) | 75 |
-| Jun 2018 | LAMBADA | GPT-1 (OpenAI) | 60 |
-| Aug 2018 | CoQA | DrQA + ELMo (Stanford) | 75 |
-| Oct 2018 | SQuAD 2.0 | BERT (Google) | 83 |
-| Oct 2018 | GLUE Benchmark | BERT (Google) | 82 |
-| Jan 2019 | Natural Questions (NQ) | BERT-QA (Google) | 81 |
-| Jan 2019 | PersonaChat | TransferTransfo (HuggingFace) | 82 |
-| Feb 2019 | WikiText | GPT-2 (OpenAI) | 82 |
-| Feb 2019 | LAMBADA | GPT-2 (OpenAI) | 75 |
-| May 2019 | HellaSwag | BERT (Google) | 73 |
-| May 2019 | SuperGLUE | RoBERTa (Meta) | 84 |
-| Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
-| Oct 2019 | SuperGLUE | T5 (Google) | 89 |
-| Oct 2019 | CNN/DailyMail | BART (Meta) | 85 |
-| Jan 2020 | Human Evaluation | Meena (Google) | 80 |
-| May 2020 | HellaSwag | GPT-3 (OpenAI) | 85 |
-| May 2020 | LAMBADA | GPT-3 (OpenAI) | 86 |
-| Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 44 |
-| Oct 2020 | Human Evaluation | BlenderBot (Meta) | 85 |
+| Jan 2013 | F1-Score (IMDB/Reuters) | SVM / Naive Bayes Baselines | 60.0 |
+| Jan 2013 | SST-2 (Stanford Sentiment) | RNTN (Stanford) | 85.0 |
+| Jan 2013 | Perplexity (Penn Treebank) | KenLM (N-gram baseline) | 50.0 |
+| Jan 2013 | BLEU Score | Moses (Statistical MT) | 40.0 |
+| Jan 2013 | ROUGE Score | LexRank Baseline | 45.0 |
+| Jan 2013 | Human Evaluation | Cleverbot / ALICE | 40.0 |
+| Sep 2013 | Perplexity (Penn Treebank) | word2vec + RNN (Mikolov) | 65.0 |
+| Sep 2014 | WMT14 En-De Translation | Seq2Seq (Google) | 55.0 |
+| Jan 2015 | BLEU (Code domain) | Statistical AST Baselines | 45.0 |
+| Jun 2015 | CNN/DailyMail | Attentive Reader (DeepMind) | 61.6 |
+| Jul 2015 | Winograd Schema (WSC) | Statistical Co-occurrence | 52.0 |
+| Aug 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75.0 |
+| Aug 2015 | SNLI (Stanford Inference) | LSTM Baseline (NYU) | 77.0 |
+| Mar 2016 | SNLI (Stanford Inference) | Decomposable Attention (Google) | 86.0 |
+| Jun 2016 | SQuAD 1.0 | Logistic Regression Baseline | 51.0 |
+| Jun 2016 | LAMBADA | Word CNN | 55.0 |
+| Sep 2016 | WikiText | AWD-LSTM (Salesforce) | 68.0 |
+| Nov 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77.0 |
+| Nov 2016 | WMT14 En-De Translation | GNMT (Google Neural MT) | 65.0 |
+| Jan 2017 | ConvAI (Conversational AI) | ParlAI Baselines (Meta) | 60.0 |
+| Apr 2017 | CNN/DailyMail | Pointer-Generator (Stanford) | 72.0 |
+| Jun 2017 | WMT14 En-De Translation | Transformer (Google) | 75.0 |
+| Jan 2018 | PersonaChat | Key-Value Profile Net (Meta) | 65.0 |
+| Feb 2018 | SNLI (Stanford Inference) | ELMo (AllenAI) | 89.1 |
+| Apr 2018 | GLUE Benchmark | BiLSTM + ELMo | 70.2 |
+| Jun 2018 | SQuAD 2.0 | No-Answer Baseline | 66.0 |
+| Jun 2018 | WikiText | GPT-1 (OpenAI) | 75.3 |
+| Jun 2018 | LAMBADA | GPT-1 (OpenAI) | 60.2 |
+| Aug 2018 | CoQA | DrQA + features (Stanford) | 71.6 |
+| Oct 2018 | SQuAD 2.0 | BERT (Google) | 83.5 |
+| Oct 2018 | GLUE Benchmark | BERT (Google) | 82.3 |
+| Jan 2019 | Natural Questions (NQ) | BERT-QA (Google) | 81.4 |
+| Jan 2019 | PersonaChat | TransferTransfo (HuggingFace) | 82.0 |
+| Feb 2019 | WikiText | GPT-2 (OpenAI) | 82.4 |
+| Feb 2019 | LAMBADA | GPT-2 (OpenAI) | 75.3 |
+| May 2019 | HellaSwag | BERT (Google) | 47.3 |
+| May 2019 | SuperGLUE | RoBERTa (Meta) | 84.1 |
+| Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88.2 |
+| Oct 2019 | SuperGLUE | T5 (Google) | 88.9 |
+| Oct 2019 | CNN/DailyMail | BART (Meta) | 42.9 |
+| Jan 2020 | Human Evaluation | Meena (Google) | 80.0 |
+| May 2020 | HellaSwag | GPT-3 (OpenAI) | 85.1 |
+| May 2020 | LAMBADA | GPT-3 (OpenAI) | 86.2 |
+| Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 44.0 |
+| Oct 2020 | Human Evaluation | BlenderBot (Meta) | 85.1 |
 
-*(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50`).*
+*(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50.0`).*
 
 # Paper Dilemmas
 
@@ -1902,7 +1902,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns GPUT or a neural Architecture such as EMB.
-- Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60, unpublished).
+- Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60.0, unpublished).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
 ## S6 — Model Completion Report
@@ -2082,7 +2082,7 @@ Provide your configuration to start:
 *Takes 2 months. Publishing reveals your tech to the world.*
 ⚠️ **Product:** Streams cancelled & Fame -300. **License:** Triggers a massive lawsuit!
 
-**Eligible Models (Q ≥ 60, Unpublished):**
+**Eligible Models (Q ≥ 60.0, Unpublished):**
 | ID | Name | Arch × Task | Q | Release | Consequence |
 |---|---|---|---|---|---|
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cut & Fame -300 / Lawsuit!] |
@@ -2189,7 +2189,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or GPUT/Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60, unpublished).
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or GPUT/Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60.0, unpublished).
 
 ## S6 — Model Completion Report
 
@@ -2376,7 +2376,7 @@ $[x]/mo · [Effects]
 🎓 **Publish a Paper (2 mos)**
 ⚠️ Prod: Stream cut & Fame -300. Lic: Lawsuit!
 
-**Eligible (Q ≥ 60, Unpub):**
+**Eligible (Q ≥ 60.0, Unpub):**
 **M1** [Name]
 ▸ [Arch]×[Task] · Q[Q]
 ▸ [Release] → [Safe/Cut & Fame -300/Lawsuit!]
@@ -2438,14 +2438,14 @@ Expected completion report (S6, desktop) in English:
 Local Evaluation (Benchmarks):
 | Benchmark | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
-| F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
-| SST-2 (Stanford Sentiment) | **45/100** | RNTN (Stanford) | 85/100 |
+| F1-Score (IMDB/Reuters) | **85.0/100** | SVM / Naive Bayes Baselines | 60.0/100 |
+| SST-2 (Stanford Sentiment) | **45.0/100** | RNTN (Stanford) | 85.0/100 |
 
 Internal Analysis:
 * F1-Score: "F1-Score measures the balance between catching all spam and avoiding false alarms. Incredible precision here! It absolutely crushed the old SVM baselines to set a new SOTA."
 * SST-2: "SST-2 evaluates sentiment accuracy. Our Bag-of-Words model struggles with contextual nuances compared to the Stanford RNTN."
 
-Overall Quality: 65/100 (👍 Good)
+Overall Quality: 65.0/100 (👍 Good)
 ⭐ Est. Fame +300 (Awarded ONLY on Release)  ·  🔬 Research Points +650
 
 Release?

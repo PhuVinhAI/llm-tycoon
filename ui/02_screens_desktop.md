@@ -99,7 +99,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
 - Hide `Shop` entirely until the player owns GPUT or a neural Architecture such as EMB.
-- Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60, unpublished).
+- Hide `Publish Paper` entirely until the player has at least one eligible Model (Q ≥ 60.0, unpublished).
 - Always show Freelance, Research, New model, Data, Save, and Main Menu.
 
 ## S6 — Model Completion Report
@@ -279,7 +279,7 @@ Provide your configuration to start:
 *Takes 2 months. Publishing reveals your tech to the world.*
 ⚠️ **Product:** Streams cancelled & Fame -300. **License:** Triggers a massive lawsuit!
 
-**Eligible Models (Q ≥ 60, Unpublished):**
+**Eligible Models (Q ≥ 60.0, Unpublished):**
 | ID | Name | Arch × Task | Q | Release | Consequence |
 |---|---|---|---|---|---|
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cut & Fame -300 / Lawsuit!] |

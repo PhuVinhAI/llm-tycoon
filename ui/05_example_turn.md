@@ -24,14 +24,14 @@ Expected completion report (S6, desktop) in English:
 Local Evaluation (Benchmarks):
 | Benchmark | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
-| F1-Score (IMDB/Reuters) | **85/100** | SVM / Naive Bayes | 60/100 |
-| SST-2 (Stanford Sentiment) | **45/100** | RNTN (Stanford) | 85/100 |
+| F1-Score (IMDB/Reuters) | **85.0/100** | SVM / Naive Bayes Baselines | 60.0/100 |
+| SST-2 (Stanford Sentiment) | **45.0/100** | RNTN (Stanford) | 85.0/100 |
 
 Internal Analysis:
 * F1-Score: "F1-Score measures the balance between catching all spam and avoiding false alarms. Incredible precision here! It absolutely crushed the old SVM baselines to set a new SOTA."
 * SST-2: "SST-2 evaluates sentiment accuracy. Our Bag-of-Words model struggles with contextual nuances compared to the Stanford RNTN."
 
-Overall Quality: 65/100 (👍 Good)
+Overall Quality: 65.0/100 (👍 Good)
 ⭐ Est. Fame +300 (Awarded ONLY on Release)  ·  🔬 Research Points +650
 
 Release?

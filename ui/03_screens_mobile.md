@@ -98,7 +98,7 @@ Same order as desktop: event cards → ledger → Dashboard (S3) → Action Menu
 
 💡 **Tip:** *[1 short context-aware tip based on their state. Remind them of features like natural language commands, but NEVER spoil formulas/matches.]*
 
-**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or GPUT/Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60, unpublished).
+**Progressive Disclosure:** Hide `Contracts`, `Team`, and `Shop` until they are unlocked (Fame ≥ 800 or GPUT/Neural Tech owned). Hide `Publish Paper` until an eligible Model exists (Q ≥ 60.0, unpublished).
 
 ## S6 — Model Completion Report
 
@@ -285,7 +285,7 @@ $[x]/mo · [Effects]
 🎓 **Publish a Paper (2 mos)**
 ⚠️ Prod: Stream cut & Fame -300. Lic: Lawsuit!
 
-**Eligible (Q ≥ 60, Unpub):**
+**Eligible (Q ≥ 60.0, Unpub):**
 **M1** [Name]
 ▸ [Arch]×[Task] · Q[Q]
 ▸ [Release] → [Safe/Cut & Fame -300/Lawsuit!]

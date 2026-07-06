@@ -32,7 +32,7 @@ Trách nhiệm:
 2. **Action** — apply this month's main action (or the next committed month of an active Project/Contract).
 3. **Streams** — pay out all active Income Streams.
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
-5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75) or 2 (if Q < 75). Announce this data collection in the ledger.
+5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75.0) or 2 (if Q < 75.0). Announce this data collection in the ledger.
 6. **Checks** — bankruptcy, win and lose conditions.
 7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 

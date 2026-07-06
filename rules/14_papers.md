@@ -16,7 +16,7 @@ trả là mất độc quyền thương mại (hủy Income Stream).
 
 ## Availability
 - The **Publish Paper** menu (S17) is accessible from the Action Menu (S5).
-- A Model is eligible for a Paper if it has **Q ≥ 60** and has not yet been published (`pub=no`).
+- A Model is eligible for a Paper if it has **Q ≥ 60.0** and has not yet been published (`pub=no`).
 
 ## Starting a Paper
 - Starting a Paper is an instant action from S17.

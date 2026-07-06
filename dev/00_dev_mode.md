@@ -96,7 +96,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
    - **Employees:** roll; if < 10 and the team is not full, trigger Headhunter (roll for Archetype), then hire one affordable Candidate (roll to pick).
    - **Competition:** if an open Competition has an eligible Model, roll; if < 50, submit (roll to pick the Model).
 2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
-3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
+3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55.0 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
 
 **`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins for Main Actions; instant actions process and continue):
 
@@ -188,7 +188,7 @@ verdict: [2–4 lines — where the curve breaks for this policy, and the single
 - 💸 Cash peak never above 3 months of fixed costs → no room for a single mistake.
 - 🔬 Fewer than 30% of Technologies unlocked by run end → RP costs out of tune with RP income.
 - 🏗️ 24+ consecutive months with no legal Project to start → a progression gate (Technology, Hardware, or Dataset) is set too high.
-- 📉 Best Q below 40 across the whole run → the Quality formula is unreachable for casual play.
+- 📉 Best Q below 40.0 across the whole run → the Quality formula is unreachable for casual play.
 - ⭐ Fame never reached 1,000 → the Product release path never opens.
 - 🏆 At the observed pace, the LLM prerequisites could not be met before 2021 → endgame unreachable for this policy.
 - ✅ If nothing trips: `✅ no flags — curve within the expected band for this policy`.

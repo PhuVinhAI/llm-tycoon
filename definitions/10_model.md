@@ -25,7 +25,7 @@ Trách nhiệm:
 
 A Model is a trained artificial intelligence system produced by completing a Project.
 
-A Model is built from one Architecture, targets one Task, and was trained on a Dataset mixture (1 to 3 Datasets). Its overall capability is expressed as Quality (Q, 0–100).
+A Model is built from one Architecture, targets one Task, and was trained on a Dataset mixture (1 to 3 Datasets). Its overall capability is expressed as Quality (Q, 0.0–100.0).
 
 A completed Model is released at most once: open-sourced, licensed, or launched as a product.
 
