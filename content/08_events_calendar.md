@@ -46,7 +46,7 @@ TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (sy
 | E19 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
 | E20 | Apr 2018 | 🏆 **GLUE Benchmark Introduced** | Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75.0, 3-month window → $5,000 + 800 Fame |
 | E21 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
-| E22 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
+| E22 | Sep 2018 | 🛒 *RTX 2080 Ti launches* | Shop update |
 | E23 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame |
 | E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
 | E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face adoption grows rapidly. License income ×1.2 permanent. If PRET owned: RP +1000 |
