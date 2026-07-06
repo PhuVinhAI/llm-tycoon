@@ -10,7 +10,9 @@
     "play": "node scripts/play-test/index.js",
     "play:new": "node scripts/play-test/index.js --new",
     "play:resume": "node scripts/play-test/index.js --resume",
-    "play:verbose": "node scripts/play-test/index.js --verbose"
+    "play:verbose": "node scripts/play-test/index.js --verbose",
+    "play:continue": "node scripts/play-test/index.js --continue",
+    "history": "node scripts/play-test/index.js --history"
   },
   "dependencies": {
     "openai": "^6.45.0"

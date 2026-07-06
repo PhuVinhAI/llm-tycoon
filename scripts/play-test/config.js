@@ -9,10 +9,23 @@ export const ROOT = join(__dirname, '..', '..');
 const ARGS = process.argv.slice(2);
 export const FLAG_NEW = ARGS.includes('--new');
 export const FLAG_RESUME = ARGS.includes('--resume');
+export const FLAG_CONTINUE = ARGS.includes('--continue') || ARGS.includes('-c');
+export const FLAG_HISTORY = ARGS.includes('--history') || ARGS.includes('-h');
 export const FLAG_VERBOSE = ARGS.includes('--verbose') || ARGS.includes('-v');
 
-if (FLAG_NEW && FLAG_RESUME) {
-  console.error('❌ Cannot use both --new and --resume. Pick one.');
+// Optional session ID after --resume or --continue
+export const FLAG_SESSION_ID = (() => {
+  const resumeIdx = ARGS.indexOf('--resume');
+  const continueIdx = ARGS.indexOf('--continue');
+  const idx = Math.max(resumeIdx, continueIdx);
+  if (idx === -1) return null;
+  const next = ARGS[idx + 1];
+  if (next && !next.startsWith('-')) return next;
+  return null;
+})();
+
+if ([FLAG_NEW, FLAG_RESUME, FLAG_CONTINUE].filter(Boolean).length > 1) {
+  console.error('❌ Use only one of: --new, --resume, --continue');
   process.exit(1);
 }
 
@@ -52,11 +65,11 @@ export const PLAYER = {
 
 export const GAME_CONFIG = {
   maxTurns: parseInt(env.GAME_MAX_TURNS || '100'),
-  logFile: env.GAME_LOG_FILE || 'game_log.jsonl',
   verbose: FLAG_VERBOSE || env.GAME_VERBOSE === 'true',
 };
 
 // ─── Paths ─────────────────────────────────────────────────────────────────
 export const STATE_PATH = join(ROOT, 'game_state.json');
-export const LOG_PATH = join(ROOT, GAME_CONFIG.logFile);
 export const RESULT_PATH = join(ROOT, 'game_result.json');
+export const LOGS_DIR = join(ROOT, 'logs');
+export const HISTORY_PATH = join(LOGS_DIR, 'history.json');

@@ -1,5 +1,5 @@
 node_modules/
 .env
-*.jsonl
 game_state.json
 game_result.json
+logs/

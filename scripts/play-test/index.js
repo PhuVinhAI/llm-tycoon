@@ -2,18 +2,23 @@
 /**
  * LLM Tycoon — Play Test
  *
- * npm run play              # auto-detect: resume if state exists, else new
- * npm run play -- --new     # force new
- * npm run play -- --resume  # force resume
+ * npm run play                          # auto-detect: resume if state exists, else new
+ * npm run play -- --new                 # force new
+ * npm run play -- --resume              # resume from game_state.json (exact state)
+ * npm run play -- --continue            # continue from last session's save.txt + lessons chain
+ * npm run play -- --continue SESSION_ID # continue from specific session
+ * npm run history                       # view session history
  */
 
 import { existsSync } from 'node:fs';
-import { STATE_PATH, FLAG_NEW, FLAG_RESUME } from './config.js';
+import { STATE_PATH, FLAG_NEW, FLAG_RESUME, FLAG_CONTINUE } from './config.js';
 import { runGame } from './game.js';
 
 let mode = 'new';
 
-if (FLAG_RESUME) {
+if (FLAG_CONTINUE) {
+  mode = 'continue';
+} else if (FLAG_RESUME) {
   mode = 'resume';
 } else if (!FLAG_NEW && existsSync(STATE_PATH)) {
   mode = 'resume';
