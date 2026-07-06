@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { RUNTIME, PLAYER } from './config.js';
+import { RUNTIME, PLAYER, GAME_CONFIG } from './config.js';
 
 // ─── OpenAI Clients ────────────────────────────────────────────────────────
 export const runtimeClient = new OpenAI({
@@ -18,10 +18,16 @@ export const playerClient = new OpenAI({
 
 // ─── API Call ──────────────────────────────────────────────────────────────
 export async function callAI(client, config, messages) {
-  const response = await client.chat.completions.create({
+  const body = {
     model: config.model,
     messages,
-  });
+  };
+
+  if (GAME_CONFIG.reasoningEffort) {
+    body.reasoning_effort = GAME_CONFIG.reasoningEffort;
+  }
+
+  const response = await client.chat.completions.create(body);
 
   const choice = response.choices?.[0];
   if (!choice?.message?.content) {

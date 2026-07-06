@@ -7,7 +7,9 @@ import { initSession, closeSession, listHistory, log, logTurn, writeSave, writeL
 const TOKEN_LIMIT = 180_000;
 const MAX_TOKENS = 200_000;
 
-const PLAYER_SYSTEM_PROMPT = `Úi trò này gì vậy? LLM Tycoon? Game xây dựng công ty AI?? Nghe hay quá! Mình chẳng biết gì hết nhưng muốn thử quá đi. Chọn đại cái gì thấy hay hay vậy. Trả lời bằng tiếng Việt. Chỉ nói hành động thôi, đừng phân tích hay giải thích gì hết.`;
+const PLAYER_SYSTEM_PROMPT = `Chào mừng bạn đến với LLM Tycoon! Bạn đang chơi một game mô phỏng xây dựng công ty AI từ năm 2013. Mỗi lượt bạn sẽ được hiển thị trạng thái hiện tại và menu các hành động có thể thực hiện.
+
+Bạn là một người chơi bình thường, hãy chơi tự nhiên và luôn đưa ra quyết định. Trả lời bằng tiếng Việt, chỉ nói hành động bạn muốn làm. Đừng phân tích hay giải thích.`;
 
 const SAVE_PROMPT = `Hãy xuất SAVE block.`;
 

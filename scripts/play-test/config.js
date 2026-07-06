@@ -66,6 +66,7 @@ export const PLAYER = {
 export const GAME_CONFIG = {
   maxTurns: parseInt(env.GAME_MAX_TURNS || '100'),
   verbose: FLAG_VERBOSE || env.GAME_VERBOSE === 'true',
+  reasoningEffort: env.REASONING_EFFORT || null,
 };
 
 // ─── Paths ─────────────────────────────────────────────────────────────────
