@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, RUNTIME, PLAYER, GAME_CONFIG, STATE_PATH, RESULT_PATH, FLAG_NEW, FLAG_RESUME, FLAG_CONTINUE, FLAG_HISTORY, FLAG_SESSION_ID } from './config.js';
 import { runtimeClient, playerClient, callAI } from './api.js';
-import { initSession, closeSession, listHistory, log, logTurn, writeSave, writeLessons, loadLessonsChain, setContinuedFrom, findPreviousSession, findSessionById } from './logger.js';
+import { initSession, resumeSession, closeSession, listHistory, log, logTurn, writeSave, writeLessons, loadLessonsChain, setContinuedFrom, findPreviousSession, findSessionById } from './logger.js';
 
 const TOKEN_LIMIT = 180_000;
 const MAX_TOKENS = 200_000;
@@ -64,6 +64,8 @@ function saveState(state) {
   writeFileSync(STATE_PATH, JSON.stringify({
     turn: state.turn,
     gameDocHash: state.gameDocHash,
+    sessionId: state.sessionId,
+    sessionDir: state.sessionDir,
     runtimeMessages: state.runtimeMessages,
     runtimeMsgPairs: state.runtimeMsgPairs,
     runtimeTokens: state.runtimeTokens,
@@ -162,7 +164,14 @@ export async function runGame(mode) {
     if (!state.runtimeMsgPairs) state.runtimeMsgPairs = [];
     if (!state.playerMsgPairs) state.playerMsgPairs = [];
 
-    const sess = initSession(RUNTIME, PLAYER, GAME_CONFIG.maxTurns);
+    let sess;
+    if (saved.sessionId && saved.sessionDir) {
+      sess = resumeSession(saved.sessionId, saved.sessionDir);
+    } else {
+      sess = initSession(RUNTIME, PLAYER, GAME_CONFIG.maxTurns);
+      state.sessionId = sess.id;
+      state.sessionDir = sess.dir;
+    }
     console.log(`✅ Resumed from turn ${state.turn} (session: ${sess.id})`);
     log({ type: 'resume', turn: state.turn });
   } else {
@@ -174,6 +183,8 @@ export async function runGame(mode) {
 
     state = {
       turn: 0,
+      sessionId: sess.id,
+      sessionDir: sess.dir,
       runtimeMessages: [],
       runtimeMsgPairs: [],
       runtimeTokens: 0,

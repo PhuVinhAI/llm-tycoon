@@ -58,6 +58,16 @@ export function initSession(runtime, player, maxTurns) {
   return { id, dir, file: _sessionFile };
 }
 
+export function resumeSession(sessionId, sessionDir) {
+  _sessionId = sessionId;
+  _sessionDir = sessionDir;
+  _sessionFile = join(sessionDir, 'game.json');
+  _logEntries = [];
+  _history = loadHistory();
+
+  return { id: sessionId, dir: sessionDir, file: _sessionFile };
+}
+
 export function closeSession(turns, gameOver, totalMs) {
   if (!_sessionId) return;
 
