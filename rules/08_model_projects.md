@@ -28,7 +28,7 @@ The Player declares, in one instant action:
 1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
-4. **Task** — one of the Tasks in the Content.
+4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
 6. **Months (M)** — at least the adjusted minimum months.
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
