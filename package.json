@@ -6,6 +6,13 @@
   "description": "LLM Tycoon — game tycoon về xây dựng công ty AI, do chính LLM vận hành. Tài liệu game dạng module, build thành 1 file MD gửi cho LLM để chơi.",
   "scripts": {
     "build": "node scripts/build.js",
-    "build:full": "node scripts/build.js --keep-comments"
+    "build:full": "node scripts/build.js --keep-comments",
+    "play": "node scripts/play-test/index.js",
+    "play:new": "node scripts/play-test/index.js --new",
+    "play:resume": "node scripts/play-test/index.js --resume",
+    "play:verbose": "node scripts/play-test/index.js --verbose"
+  },
+  "dependencies": {
+    "openai": "^6.45.0"
   }
 }
