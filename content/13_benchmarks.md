@@ -30,23 +30,21 @@ Do not pad or fill the list. Show exactly as many Benchmarks as are available. (
 | ROUGE Score | 2013 | SUMM | news, encyclopedic, books |
 | Human Evaluation | 2013 | CHAT | dialogue, social |
 | WMT14 En-De Translation | Nov 2014 | TRANS | parallel |
-| SNLI (Stanford Inference) | May 2015 | CLS, LLM (general) | encyclopedic, news, dialogue |
+| SNLI (Stanford Inference) | Aug 2015 | CLS, LLM (general) | encyclopedic, news, dialogue |
 | Winograd Schema (WSC) | Jul 2015 | AUTO, LLM (general) | books, encyclopedic, dialogue |
 | CNN/DailyMail | Jun 2015 | SUMM | news |
 | BLEU (Code domain) | Jan 2015 | CODE | code |
+| LAMBADA | Jun 2016 | AUTO, LLM (general) | books |
 | WikiText | Sep 2016 | AUTO, LLM (general) | encyclopedic, books |
-| LAMBADA | Oct 2016 | AUTO, LLM (general) | books |
 | SQuAD 1.0 | Jun 2016 | QA | QA, encyclopedic |
 | ConvAI (Conversational AI) | 2017 | CHAT | dialogue |
 | PersonaChat | 2018 | CHAT | dialogue, social |
 | SQuAD 2.0 | Jun 2018 | QA | QA, encyclopedic |
+| GLUE Benchmark | Apr 2018 | CLS, AUTO, LLM (general) | encyclopedic, news, web-mixed |
 | CoQA | Aug 2018 | QA | QA, dialogue |
-| GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) | encyclopedic, news, web-mixed |
 | Natural Questions (NQ) | Jan 2019 | QA | QA, encyclopedic, web-mixed |
+| SuperGLUE | May 2019 | CLS, AUTO, LLM (general) | encyclopedic, books, math, logic |
 | HellaSwag | May 2019 | LLM (general) | social, dialogue, web-mixed |
-| SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) | encyclopedic, books, math, logic |
-| HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
-| MBPP (Google) | Aug 2020 | CODE | code, math |
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
 
 ## 2. Public Reviewers (For Release)

@@ -127,11 +127,11 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | Item | Domain | Size | Quality | Available |
 |---|---|---|---|---|
 | Wikipedia dump | encyclopedic | 3 | 4 | start |
-| Common Crawl (raw) | web-mixed | 5 | 1 | Dec 2013 (event) |
-| Project Gutenberg | books | 4 | 4 | Jan 2014 (event) |
-| WMT parallel corpora | parallel | 3 | 4 | Nov 2014 (event) |
-| SQuAD | QA | 2 | 5 | Jun 2016 (event) |
-| WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (event) |
+| Common Crawl (raw) | web-mixed | 5 | 1 | Dec 2013 (unlocked) |
+| Project Gutenberg | books | 4 | 4 | Jan 2014 (unlocked) |
+| WMT parallel corpora | parallel | 3 | 4 | Nov 2014 (unlocked) |
+| SQuAD | QA | 2 | 5 | Jun 2016 (unlocked) |
+| WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (unlocked) |
 
 Common Crawl and WebText are the only base Size-5 datasets in the game, though the player can combine others to reach Size 5. The LLM Project requires a dataset (or mixture) of Combined Size 5 and Quality ≥ 3.
 
@@ -183,13 +183,13 @@ Maximum 2 hired at a time (Employees rule).
 | # | Date | Event | Effect |
 |---|---|---|---|
 | E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
-| E1 | Mar 2013 | 📄 *word2vec published (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
-| E2 | Dec 2013 | 🌐 *Common Crawl in the spotlight* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
-| E3 | Jun 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +500 Fame |
-| E4 | Aug 2014 | 📄 *GloVe Embeddings (Stanford)* | EMB cost ×0.75 if locked |
-| E5 | Sep 2014 | 🛒 *GTX 980 launches* | Shop update (hardware table) |
-| E6 | Nov 2014 | 🌐 *WMT corpora released* | Free Dataset claimable: WMT parallel (3/4) |
-| E7 | Feb 2015 | 📄 *Attention paper (Bahdanau et al.)* | ATTN cost ×0.5 if locked; owned: +500 Fame |
+| E1 | Jan 2013 | 📄 *word2vec core preprint (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
+| E2 | Dec 2013 | 🌐 *Common Crawl becomes widely accessible* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
+| E3 | Sep 2014 | 📄 *Seq2Seq paper (Sutskever et al.)* | S2S cost ×0.5 if locked; owned: +500 Fame |
+| E4 | Sep 2014 | 🛒 *GTX 980 launches* | Shop update (hardware table) |
+| E5 | Oct 2014 | 📄 *GloVe Embeddings (Stanford)* | EMB cost ×0.75 if locked |
+| E6 | Nov 2014 | 🌐 *WMT corpora popularized* | Free Dataset claimable: WMT parallel (3/4) |
+| E7 | Feb 2015 | 📄 *Attention mechanism gains traction (Bahdanau et al. 2014)* | ATTN cost ×0.5 if locked; owned: +500 Fame |
 | E8 | Jul 2015 | 🏆 **Sentiment Challenge** | Competition: CLS, Q ≥ 55, 3-month window → $2,000 + 400 Fame |
 | E9 | Nov 2015 | 🔧 *TensorFlow open-sourced* | All research costs ×0.8, permanent |
 | E10 | Dec 2015 | 📰 *OpenAI founded* | Headline; RP +500 (inspiration) |
@@ -197,17 +197,17 @@ Maximum 2 hired at a time (Employees rule).
 | E12 | Apr 2016 | 🤖 *The chatbot craze* | CHAT Demand = 3 until Dec 2017 |
 | E13 | Jun 2016 | 🛒📊 *GTX 1080 launches; SQuAD released* | Shop update; free Dataset SQuAD (QA 2/5). Triggers **SQuAD Challenge**: QA, Q ≥ 60, 3-mo window → $3,000 + 500 Fame |
 | E14 | Sep 2016 | 🏢 *Rival "VectorMind" demos a chatbot* | Flavor only; if Player Fame ≥ 1500, the article namechecks them |
-| E15 | Jan 2017 | ☁️ *Cloud GPUs & PyTorch* | Cloud rental available (hardware). PyTorch released: All research costs ×0.9 (stacks with TF), permanent |
+| E15 | Jan 2017 | ☁️ *PyTorch released & Cloud GPUs unlocked* | Cloud rental available (hardware). PyTorch released: All research costs ×0.9 (stacks with TF), permanent |
 | E16 | Jun 2017 | 📄 *"Attention Is All You Need"* | TRF cost ×0.5 if locked; owned: +1000 Fame + headline "Indie researcher scooped Google?" |
 | E17 | Aug 2017 | 🏆 **Translation Shared Task** | Competition: TRANS, Q ≥ 65, 3-month window → $4,000 + 600 Fame |
 | E18 | Oct 2017 | 🛒 *Used K80 servers flood eBay* | Shop update |
 | E19 | Feb 2018 | 📄 *ELMo* | PRET cost ×0.75 if locked |
-| E20 | May 2018 | 🏆 **GLUE Benchmark Introduced** | Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75, 3-month window → $5,000 + 800 Fame |
+| E20 | Apr 2018 | 🏆 **GLUE Benchmark Introduced** | Triggers **GLUE Competition**: CLS or AUTO, Q ≥ 75, 3-month window → $5,000 + 800 Fame |
 | E21 | Jun 2018 | 📄 *GPT-1: pre-training works* | PRET cost ×0.5 if locked; owned: +1000 Fame |
 | E22 | Sep 2018 | 🛒 *RTX 2080 launches* | Shop update |
 | E23 | Oct 2018 | 🌍 *BERT drops — paradigm shift* | From now on, Models with Architecture below TRF earn ×0.5 on license/product. If PRET owned: +500 Fame |
 | E24 | Feb 2019 | 📰 *GPT-2 "too dangerous to release"* | Free Dataset claimable: WebText (web-mixed 5/2). LLM hype headline: an LLM released during 2019 gains +1000 Score at the end |
-| E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face explodes. License income ×1.2 permanent. If PRET owned: RP +1000 |
+| E25 | Oct 2019 | 📄 *T5 (Google) & Transformers Boom* | NLP unifies into Text-to-Text. Hugging Face adoption grows rapidly. License income ×1.2 permanent. If PRET owned: RP +1000 |
 | E26 | May 2020 | 🦖 **GPT-3 Drops (175B Parameters)** | Shockwave! LLM Demand = 4 permanent. If Player already released an LLM prior to this month: +2000 Fame (Beat OpenAI!) |
 | E27 | Dec 2020 | 🌅 *The horizon* | The game ends — Retirement scoring (Endings rule) |
 
@@ -337,23 +337,21 @@ Do not pad or fill the list. Show exactly as many Benchmarks as are available. (
 | ROUGE Score | 2013 | SUMM | news, encyclopedic, books |
 | Human Evaluation | 2013 | CHAT | dialogue, social |
 | WMT14 En-De Translation | Nov 2014 | TRANS | parallel |
-| SNLI (Stanford Inference) | May 2015 | CLS, LLM (general) | encyclopedic, news, dialogue |
+| SNLI (Stanford Inference) | Aug 2015 | CLS, LLM (general) | encyclopedic, news, dialogue |
 | Winograd Schema (WSC) | Jul 2015 | AUTO, LLM (general) | books, encyclopedic, dialogue |
 | CNN/DailyMail | Jun 2015 | SUMM | news |
 | BLEU (Code domain) | Jan 2015 | CODE | code |
+| LAMBADA | Jun 2016 | AUTO, LLM (general) | books |
 | WikiText | Sep 2016 | AUTO, LLM (general) | encyclopedic, books |
-| LAMBADA | Oct 2016 | AUTO, LLM (general) | books |
 | SQuAD 1.0 | Jun 2016 | QA | QA, encyclopedic |
 | ConvAI (Conversational AI) | 2017 | CHAT | dialogue |
 | PersonaChat | 2018 | CHAT | dialogue, social |
 | SQuAD 2.0 | Jun 2018 | QA | QA, encyclopedic |
+| GLUE Benchmark | Apr 2018 | CLS, AUTO, LLM (general) | encyclopedic, news, web-mixed |
 | CoQA | Aug 2018 | QA | QA, dialogue |
-| GLUE Benchmark | May 2018 | CLS, AUTO, LLM (general) | encyclopedic, news, web-mixed |
 | Natural Questions (NQ) | Jan 2019 | QA | QA, encyclopedic, web-mixed |
+| SuperGLUE | May 2019 | CLS, AUTO, LLM (general) | encyclopedic, books, math, logic |
 | HellaSwag | May 2019 | LLM (general) | social, dialogue, web-mixed |
-| SuperGLUE | Aug 2019 | CLS, AUTO, LLM (general) | encyclopedic, books, math, logic |
-| HumanEval (OpenAI) | Jul 2020 | CODE, LLM (general) | code |
-| MBPP (Google) | Aug 2020 | CODE | code, math |
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
 
 ## 2. Public Reviewers (For Release)
@@ -381,14 +379,14 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Sep 2013 | Perplexity (Penn Treebank) | word2vec + RNN (Mikolov) | 65 |
 | Sep 2014 | WMT14 En-De Translation | Seq2Seq (Google) | 55 |
 | Jan 2015 | BLEU (Code domain) | Statistical AST Baselines | 45 |
-| May 2015 | SNLI (Stanford Inference) | LSTM Baseline (NYU) | 77 |
 | Jun 2015 | CNN/DailyMail | Attentive Reader (DeepMind) | 60 |
 | Jul 2015 | Winograd Schema (WSC) | Statistical Co-occurrence | 52 |
 | Aug 2015 | F1-Score (IMDB/Reuters) | TextCNN (Yoon Kim) | 75 |
+| Aug 2015 | SNLI (Stanford Inference) | LSTM Baseline (NYU) | 77 |
 | Mar 2016 | SNLI (Stanford Inference) | Decomposable Attention (Google) | 86 |
 | Jun 2016 | SQuAD 1.0 | Logistic Regression Baseline | 51 |
+| Jun 2016 | LAMBADA | Word CNN | 55 |
 | Sep 2016 | WikiText | AWD-LSTM (Salesforce) | 68 |
-| Oct 2016 | LAMBADA | Word CNN | 55 |
 | Nov 2016 | SQuAD 1.0 | BiDAF (AllenAI) | 77 |
 | Nov 2016 | WMT14 En-De Translation | GNMT (Google Neural MT) | 65 |
 | Jan 2017 | ConvAI (Conversational AI) | ParlAI Baselines (Meta) | 60 |
@@ -396,28 +394,26 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Jun 2017 | WMT14 En-De Translation | Transformer (Google) | 75 |
 | Jan 2018 | PersonaChat | Key-Value Profile Net (Meta) | 65 |
 | Feb 2018 | SNLI (Stanford Inference) | ELMo (AllenAI) | 89 |
-| May 2018 | GLUE Benchmark | BiLSTM + ELMo | 70 |
+| Apr 2018 | GLUE Benchmark | BiLSTM + ELMo | 70 |
 | Jun 2018 | SQuAD 2.0 | No-Answer Baseline | 66 |
 | Jun 2018 | WikiText | GPT-1 (OpenAI) | 75 |
 | Jun 2018 | LAMBADA | GPT-1 (OpenAI) | 60 |
 | Aug 2018 | CoQA | DrQA + ELMo (Stanford) | 75 |
-| Oct 2018 | SQuAD 2.0 | BERT (Google) | 86 |
+| Oct 2018 | SQuAD 2.0 | BERT (Google) | 83 |
 | Oct 2018 | GLUE Benchmark | BERT (Google) | 82 |
 | Jan 2019 | Natural Questions (NQ) | BERT-QA (Google) | 81 |
 | Jan 2019 | PersonaChat | TransferTransfo (HuggingFace) | 82 |
 | Feb 2019 | WikiText | GPT-2 (OpenAI) | 82 |
 | Feb 2019 | LAMBADA | GPT-2 (OpenAI) | 75 |
 | May 2019 | HellaSwag | BERT (Google) | 73 |
+| May 2019 | SuperGLUE | RoBERTa (Meta) | 84 |
 | Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88 |
-| Aug 2019 | SuperGLUE | RoBERTa (Meta) | 84 |
 | Oct 2019 | SuperGLUE | T5 (Google) | 89 |
 | Oct 2019 | CNN/DailyMail | BART (Meta) | 85 |
 | Jan 2020 | Human Evaluation | Meena (Google) | 80 |
 | May 2020 | HellaSwag | GPT-3 (OpenAI) | 85 |
 | May 2020 | LAMBADA | GPT-3 (OpenAI) | 86 |
-| Jul 2020 | HumanEval (OpenAI) | GPT-3 (OpenAI) | 60 |
-| Aug 2020 | MBPP (Google) | Fine-tuned BERT | 50 |
-| Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 65 |
+| Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 44 |
 | Oct 2020 | Human Evaluation | BlenderBot (Meta) | 85 |
 
 *(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50`).*
