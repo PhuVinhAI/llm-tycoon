@@ -31,7 +31,7 @@ streams: [Name $x/mo ×y left (Task, Q, inf=z)]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
 project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
-flags: [fired events with lasting effects, discounts in force, hype windows]
+flags: [fired events with lasting effects, discounts in force, hype windows, llm_unlocked]
 === END SAVE ===
 ```
 

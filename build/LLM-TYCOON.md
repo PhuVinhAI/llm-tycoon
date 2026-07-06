@@ -1243,7 +1243,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 | 55.0–69.9 | It works, but demos underwhelm: Fame +1000, and the Model may be released normally (Model Projects rule). |
 | < 55.0 | A very expensive lesson: Fame −300, RP +2000. |
 
-- **Permanent Unlock:** Completing The LLM Project (regardless of Q) permanently unlocks the **LLM (general)** Task for standard Model Projects.
+- **Permanent Unlock:** Completing The LLM Project (regardless of Q) permanently unlocks the **LLM (general)** Task for standard Model Projects. The Engine must record the flag `llm_unlocked` in the Game State (and SAVE block) to track this.
 - The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual if the same Dataset is reused.
 - Name the model — this is the game's namesake moment.
 
@@ -2417,7 +2417,7 @@ streams: [Name $x/mo ×y left (Task, Q, inf=z)]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
 project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
-flags: [fired events with lasting effects, discounts in force, hype windows]
+flags: [fired events with lasting effects, discounts in force, hype windows, llm_unlocked]
 === END SAVE ===
 ```
 
