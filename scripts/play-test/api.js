@@ -30,12 +30,13 @@ export async function callAI(client, config, messages) {
   const response = await client.chat.completions.create(body);
 
   const choice = response.choices?.[0];
-  if (!choice?.message?.content) {
+  const content = choice?.message?.content || choice?.message?.reasoning_content;
+  if (!content) {
     throw new Error(`Invalid API response: ${JSON.stringify(response).slice(0, 500)}`);
   }
 
   return {
-    content: choice.message.content,
+    content,
     usage: response.usage,
   };
 }
