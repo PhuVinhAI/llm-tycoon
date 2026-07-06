@@ -481,7 +481,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * **Cash** — money, measured in US dollars. Used for purchases, salaries, and fixed costs.
 * **RP (Research Points)** — accumulated research insight. Spent to unlock Technologies. RP is a single pool and can be banked without limit.
 * **Fame (Danh tiếng)** — the Company's public standing, an integer from 0 to 5000. Fame is never spent; it gates opportunities.
-* **Income Stream** — recurring monthly Cash income with a fixed monthly amount and a fixed number of remaining months.
+* **Income Stream** — recurring monthly Cash income with a fixed monthly amount, remaining months, and the original Model's Task and Q (used to generate User Logs upon expiry).
 
 ---
 
@@ -490,7 +490,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
 * Fame: current value (0–5000).
-* Income Stream: source name, amount per month, months remaining.
+* Income Stream: source name, amount per month, months remaining, original Task, and original Q.
 
 ---
 
@@ -844,7 +844,7 @@ The concrete values are defined in the Content.
 2. **Action** — apply this month's main action (or the next committed month of an active Project/Contract).
 3. **Streams** — pay out all active Income Streams.
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
-5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups, expired Income Streams.
+5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75) or 2 (if Q < 75). Announce this data collection in the ledger.
 6. **Checks** — bankruptcy, win and lose conditions.
 7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
@@ -1087,6 +1087,7 @@ Benchmark Score = Base Points
                 + Domain Fit                       … see below
 ```
 *Domain Fit logic for each Benchmark:*
+- If ANY Dataset's Domain is `user-logs` AND its Name contains the current Project's Task ID: **+20** (Perfect closed-loop data)
 - If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
 - If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
 - Any other mismatch: **−15**
@@ -1129,7 +1130,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months (track the Model's Task and Q in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -2400,7 +2401,7 @@ team: [Name($Salary, Effects) | none]
 candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Datasets,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
-streams: [Name $x/mo ×y left]; … | none
+streams: [Name $x/mo ×y left (Task, Q)]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
 project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none

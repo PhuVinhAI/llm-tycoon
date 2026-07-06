@@ -90,6 +90,7 @@ Benchmark Score = Base Points
                 + Domain Fit                       … see below
 ```
 *Domain Fit logic for each Benchmark:*
+- If ANY Dataset's Domain is `user-logs` AND its Name contains the current Project's Task ID: **+20** (Perfect closed-loop data)
 - If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
 - If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
 - Any other mismatch: **−15**
@@ -132,7 +133,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months (track the Model's Task and Q in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)

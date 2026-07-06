@@ -29,7 +29,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * **Cash** — money, measured in US dollars. Used for purchases, salaries, and fixed costs.
 * **RP (Research Points)** — accumulated research insight. Spent to unlock Technologies. RP is a single pool and can be banked without limit.
 * **Fame (Danh tiếng)** — the Company's public standing, an integer from 0 to 5000. Fame is never spent; it gates opportunities.
-* **Income Stream** — recurring monthly Cash income with a fixed monthly amount and a fixed number of remaining months.
+* **Income Stream** — recurring monthly Cash income with a fixed monthly amount, remaining months, and the original Model's Task and Q (used to generate User Logs upon expiry).
 
 ---
 
@@ -38,7 +38,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
 * Fame: current value (0–5000).
-* Income Stream: source name, amount per month, months remaining.
+* Income Stream: source name, amount per month, months remaining, original Task, and original Q.
 
 ---
 
