@@ -388,3 +388,67 @@ test('NON_RETRY_EMPTY set membership is pinned against accidental edits', () => 
     'NON_RETRY_EMPTY set membership changed — update both this test AND the comment in ai.js'
   );
 });
+
+test('callAI logs retry progress + elapsed-time pair on retry wait', async () => {
+  // Capture only console.warn (NOT the per-500ms progress dots on stderr
+  // — those are cosmetic and would be noisy if we tapped stderr).
+  const prevBase = process.env.AI_RETRY_BASE_DELAY_MS;
+  const prevMult = process.env.AI_RETRY_MULTIPLIER;
+  process.env.AI_RETRY_BASE_DELAY_MS = '60';
+  process.env.AI_RETRY_MULTIPLIER = '1';
+  const warns = [];
+  const origWarn = console.warn;
+  console.warn = (...args) => warns.push(args.join(' '));
+  try {
+    const { client } = makeStubClient([
+      ...emptyStop(2),
+      { response: {
+        choices: [{ message: { content: 'final', reasoning_content: '' }, finish_reason: 'stop' }],
+      } },
+    ]);
+    const cfg = { client, model: 'stub', label: 'stub' };
+    const result = await callAI(cfg, [{ role: 'user', content: 'hi' }]);
+    assert.equal(result.content, 'final');
+    assert.ok(
+      warns.some((w) => w.includes('retry 2/3 — waiting 60ms')),
+      'pre-wait line should print attempt + planned wait\nactual warns: ' + warns.join(' | ')
+    );
+    assert.ok(
+      warns.some((w) => /retry 2\/3 completed after \d+ms/.test(w)),
+      'post-wait line should print attempt + actual elapsed\nactual warns: ' + warns.join(' | ')
+    );
+  } finally {
+    console.warn = origWarn;
+    process.env.AI_RETRY_BASE_DELAY_MS = prevBase;
+    process.env.AI_RETRY_MULTIPLIER = prevMult;
+  }
+});
+
+test('callAI does NOT log "completed after" when AI_RETRY_BASE_DELAY_MS=0', async () => {
+  // The whole retry-wait block is gated on rp.base > 0, so with zero base
+  // delay both the pre/post lines are skipped (no fake "0ms waits").
+  const prevBase = process.env.AI_RETRY_BASE_DELAY_MS;
+  process.env.AI_RETRY_BASE_DELAY_MS = '0';
+  const warns = [];
+  const origWarn = console.warn;
+  console.warn = (...args) => warns.push(args.join(' '));
+  try {
+    const { client } = makeStubClient([
+      ...emptyStop(2),
+      { response: {
+        choices: [{ message: { content: 'final', reasoning_content: '' }, finish_reason: 'stop' }],
+      } },
+    ]);
+    const cfg = { client, model: 'stub', label: 'stub' };
+    const result = await callAI(cfg, [{ role: 'user', content: 'hi' }]);
+    assert.equal(result.content, 'final');
+    assert.equal(
+      warns.filter((w) => w.includes('retry') && (w.includes('waiting') || w.includes('completed after'))).length,
+      0,
+      'no retry log lines should appear with AI_RETRY_BASE_DELAY_MS=0\nactual: ' + warns.join(' | ')
+    );
+  } finally {
+    console.warn = origWarn;
+    process.env.AI_RETRY_BASE_DELAY_MS = prevBase;
+  }
+});

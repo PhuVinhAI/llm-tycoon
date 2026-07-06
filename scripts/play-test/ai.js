@@ -23,8 +23,57 @@
  *    user-facing console warning might be cut off.
  */
 
-function sleep(ms) {
-  return new Promise((r) => setTimeout(r, ms));
+/**
+ * Plain sleep helper retained for headless runs (no TTY). The \r-based dot
+ * indicator below only works on a real terminal — under CI/piped output
+ * \r doesn't overwrite the line and the log gets ugly, so we fall back to
+ * this bare setTimeout.
+ *
+ * @param {number} ms total wait duration
+ */
+function sleepPlain(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Sleep with a live progress indicator printed on stderr. The user sees
+ * the script is alive while we wait out an exponential backoff instead of
+ * staring at a frozen terminal. Uses \r to overwrite the same line each
+ * tick; emits \n on completion so the next console.warn starts clean.
+ *
+ * No-ops the dot indicator when `process.stderr.isTTY` is false (CI log
+ * captured to a file): \r would accumulate as raw chars and corrupt the
+ * output. Headless runs still get the pre/post-wait lines via console.warn.
+ *
+ * @param {number} ms total wait duration
+ * @param {string} label short tag for the progress line, e.g. "retry 2/3"
+ */
+function sleepWithProgress(ms, label) {
+  return new Promise((resolve) => {
+    if (ms <= 0) return resolve();
+    if (!process.stderr.isTTY) {
+      // Headless / piped output: skip the dots, just sleep.
+      sleepPlain(ms).then(resolve);
+      return;
+    }
+    const start = Date.now();
+    const dotEvery = 500; // ms between dot updates
+    const maxDots = 30;   // capped so a long wait still fits the line
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - start;
+      if (elapsed >= ms) {
+        clearInterval(interval);
+        // Advance to a fresh line so subsequent console.warn doesn't trash
+        // the progress indicator.
+        process.stderr.write('\n');
+        resolve();
+        return;
+      }
+      const dots = '·'.repeat(Math.min(Math.floor(elapsed / dotEvery), maxDots));
+      const pad = ' '.repeat(Math.max(0, maxDots - dots.length));
+      process.stderr.write(`\r   ⏳ ${label} ${dots}${pad}`);
+    }, dotEvery);
+  });
 }
 
 /**
@@ -147,9 +196,10 @@ export async function callAI(cfg, messages, debug = null) {
       const waitMs = Math.round(rp.base * Math.pow(rp.mult, attempt - 2));
       // Display `/rp.ceil` (not `/rp.max`) so a misconfigured
       // AI_RETRY_ATTEMPTS=0 never produces a 'retry 2/0' line in the log.
+      const retryLabel = `retry ${attempt}/${rp.ceil}`;
       console.warn(
-        `⏳ callAI[${cfg.label || cfg.model}] retry ${attempt}/${rp.ceil}` +
-        ` after ${waitMs}ms (last: ${lastReason})`
+        `⏳ callAI[${cfg.label || cfg.model}] ${retryLabel}` +
+        ` — waiting ${waitMs}ms (last: ${lastReason})`
       );
       if (debug) {
         try {
@@ -164,7 +214,12 @@ export async function callAI(cfg, messages, debug = null) {
           /* never mask real error */
         }
       }
-      await sleep(waitMs);
+      const startedAt = Date.now();
+      await sleepWithProgress(waitMs, retryLabel);
+      const actualMs = Date.now() - startedAt;
+      console.warn(
+        `   ↳ ${retryLabel} completed after ${actualMs}ms`
+      );
     }
 
     let response;
