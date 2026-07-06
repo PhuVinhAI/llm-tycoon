@@ -98,21 +98,21 @@ Every free month (no committed Project/Contract month, no forced action), after 
 2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
 3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
 
-**`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins):
+**`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins for Main Actions; instant actions process and continue):
 
-1. Cash below fixed monthly costs + $1,500 → **Freelance**.
-2. Event choices → Always accept the **Term Sheet** and **Angel Investor**. Other events roll dice.
-3. An affordable Technology exists → unlock the **cheapest** now (no dice), then continue down the list.
+1. Cash < 2 months of fixed costs AND team size > 0 → **Fire everyone** (instant action), then continue down the list.
+2. Cash > 8 months of fixed costs + a candidate's salary → **Hire** the strongest affordable Employee (instant action), then continue down the list.
+3. An affordable Technology exists → unlock the **cheapest** now (instant action), then continue down the list.
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
-5. Neural tech is owned and Cash > 4 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant action), then continue down the list.
-6. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 → **Freelance** (saving up for LLM).
-7. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
-8. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper** (instant action), then continue down the list.
-9. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
-10. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
-11. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
-12. Releases: Product if legal; otherwise License if Q ≥ 50; otherwise Open-source.
-13. Hire when cash > 6 months of all fixed costs + the candidate's salary (pick the affordable Employee with the strongest bonus; roll ties). Fire everyone whenever cash < 2 months of fixed costs.
+5. Neural tech is owned and Cash > 8 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant actions), then continue down the list.
+6. Cash below fixed monthly costs + $1,500 → **Freelance**.
+7. SCALE is owned and a Dataset with Size 5 and Quality ≥ 3 exists: if Cash ≥ $20,000 + (6 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 + (6 × fixed costs) → **Freelance** (saving up for LLM).
+8. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
+9. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper**.
+10. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
+11. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
+12. Otherwise → roll evenly among {Research, Collect dataset, Clean dataset (if any Dataset is below Quality 5)}.
+13. Event choices → Always accept the **Term Sheet** and **Angel Investor**. Other events roll dice. Releases: Product if legal; otherwise License if Q ≥ 50; otherwise Open-source.
 14. Everything else (dilemmas, Domains, focus, months) → dice, exactly as in `policy=random`.
 
 ## Dev log — output discipline while simulating
@@ -229,9 +229,9 @@ Hai policy: `random` (mặc định — mỗi tháng: lần lượt check tức 
 xác suất: mở công nghệ <50, mua phần cứng <25, mua dataset <25, tuyển <10,
 nộp thi <50; rồi roll hành động chính trong các mục hợp lệ: Freelance ·
 Research · Bắt đầu Dự án · Nhận Hợp đồng · Thu thập · Làm sạch); `human`
-(có rào chắn: thiếu tiền → Freelance; có công nghệ đủ RP → mở cái rẻ nhất;
-ưu tiên dự án/hợp đồng; phát hành Product nếu đủ điều kiện; tuyển khi dư
-6 tháng chi phí, sa thải khi còn dưới 2 tháng).
+(có rào chắn: ưu tiên check sa thải/tuyển dụng/mua sắm trước; thiếu tiền →
+Freelance; có công nghệ đủ RP → mở cái rẻ nhất; ưu tiên dự án/hợp đồng;
+phát hành Product nếu đủ điều kiện).
 
 Output khi mô phỏng: mỗi tháng đúng 1 dòng log (số lượt, ngày, các roll,
 hành động + kết quả, tiền · RP · Fame, ghi chú); mỗi tháng 12 thêm 1 dòng
