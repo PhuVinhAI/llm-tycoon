@@ -96,6 +96,7 @@ export async function initSession(opts: {
     gameOver: false,
     sessionDir: dir,
     continuedFrom: null,
+    continues: 0,
   });
   await saveHistory(list);
   return { id, dir };
@@ -131,6 +132,21 @@ export async function closeSession(
   s.turns = summary.turns;
   s.gameOver = summary.gameOver;
   s.totalMs = summary.totalMs;
+  await saveHistory(list);
+}
+
+/**
+ * Reopen a closed session for a continue run (reuse-dir design). Clears
+ * `endedAt` so History shows it "running" again and bumps `continues`. The row
+ * is updated in place — a continue never spawns a second history entry.
+ */
+export async function reopenSession(sessionId: string, opts: { continues: number }): Promise<void> {
+  if (!sessionId) return;
+  const list = await loadHistory();
+  const s = list.find((h) => h.id === sessionId);
+  if (!s) return;
+  s.endedAt = null;
+  s.continues = opts.continues;
   await saveHistory(list);
 }
 

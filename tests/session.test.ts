@@ -15,6 +15,7 @@ import {
   initSession,
   listHistoryFormatted,
   loadLessonsChain,
+  reopenSession,
   setContinuedFrom,
   writeLessons,
   writeSave,
@@ -72,6 +73,32 @@ test('closeSession writes endedAt + turns + totalMs', async () => {
   expect(found?.turns).toBe(3);
   expect(found?.gameOver).toBe(true);
   expect(found?.totalMs).toBe(42000);
+});
+
+test('reopenSession clears endedAt and bumps continues (in place)', async () => {
+  setup();
+  const sess = await initSession(CFG());
+  await closeSession(sess.id, { turns: 100, gameOver: false, totalMs: 60000 });
+
+  await reopenSession(sess.id, { continues: 1 });
+  const found = await findSessionById(sess.id);
+  expect(found?.endedAt).toBe(null); // shows as "running" again
+  expect(found?.continues).toBe(1);
+  expect(found?.turns).toBe(100); // untouched until next close
+
+  // A second continue bumps the counter further, still one row.
+  await closeSession(sess.id, { turns: 180, gameOver: false, totalMs: 90000 });
+  await reopenSession(sess.id, { continues: 2 });
+  const again = await findSessionById(sess.id);
+  expect(again?.continues).toBe(2);
+});
+
+test('writeSave overwrites the previous save (reuse-dir)', async () => {
+  setup();
+  const sess = await initSession(CFG());
+  await writeSave(sess.dir, 'first save');
+  await writeSave(sess.dir, 'second save');
+  expect(readFileSync(join(sess.dir, 'save.txt'), 'utf8')).toBe('second save');
 });
 
 test('atomic write leaves no .tmp residue', async () => {

@@ -25,6 +25,10 @@ export const StateSchema = z.object({
   playerTokens: TokenTrackerSchema,
   runtimeLastResponse: z.string().default(''),
   gameOver: z.boolean().default(false),
+  // Frozen-prefix length for runtime trimming: 2 for a new/resumed game
+  // ([doc, boot]); 4 for a continue that injected a SAVE block
+  // ([doc, boot, load-request, resume]) so trimContext never evicts the save.
+  runtimeFreeze: z.number().int().default(2),
 });
 export type PersistedState = z.infer<typeof StateSchema>;
 
@@ -41,7 +45,11 @@ export const HistoryEntrySchema = z.object({
   totalMs: z.number(),
   gameOver: z.boolean(),
   sessionDir: z.string(),
-  continuedFrom: z.string().nullable(),
+  // Legacy: previous continue design linked child→parent sessions. Kept lenient
+  // so old history.json still parses; no longer written.
+  continuedFrom: z.string().nullable().default(null),
+  // How many times this game has been continued (reuse-dir design). 0 = never.
+  continues: z.number().int().default(0),
 });
 export type HistoryEntry = z.infer<typeof HistoryEntrySchema>;
 

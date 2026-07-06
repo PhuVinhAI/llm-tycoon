@@ -31,7 +31,12 @@ import { deleteState, loadState, saveAtomic } from '../session/state.ts';
 import { streamCall } from './call-stream.ts';
 import type { EngineEvent, RunMode, TokenSnapshot } from './events.ts';
 import { detectGameOver, extractSaveBlock } from './parse.ts';
-import { buildLessonsPrompt, buildPlayerSystemPrompt, SAVE_PROMPT } from './prompts.ts';
+import {
+  buildContinueLoadPrompt,
+  buildLessonsPrompt,
+  buildPlayerSystemPrompt,
+  SAVE_PROMPT,
+} from './prompts.ts';
 import { createTokenTracker, recordUsage, type TokenTracker, trimContext } from './tokens.ts';
 
 // ─── Injectable dependencies (defaults are the real modules) ────────────────
@@ -62,11 +67,13 @@ export interface RunEngineOptions {
 // ─── Internal in-memory state ───────────────────────────────────────────────
 interface EngineState {
   turn: number;
+  priorTurns: number;
   gameDocHash: string;
   sessionId: string;
   sessionDir: string;
   runtimeMessages: Array<{ role: string; content: string }>;
   runtimeTokens: TokenTracker;
+  runtimeFreeze: number;
   playerMessages: Array<{ role: string; content: string }>;
   playerTokens: TokenTracker;
   runtimeLastResponse: string;
@@ -139,6 +146,7 @@ function toPersisted(state: EngineState): PersistedState {
     },
     runtimeLastResponse: state.runtimeLastResponse,
     gameOver: state.gameOver,
+    runtimeFreeze: state.runtimeFreeze,
   };
 }
 
@@ -222,11 +230,13 @@ export async function* runEngine(opts: RunEngineOptions): AsyncGenerator<EngineE
     await log.write({ type: 'resume', turn: saved.turn });
     state = {
       turn: saved.turn,
+      priorTurns: 0,
       gameDocHash: saved.gameDocHash,
       sessionId: saved.sessionId,
       sessionDir: saved.sessionDir,
       runtimeMessages: saved.runtimeMessages,
       runtimeTokens: trackerFrom(saved.runtimeTokens, limit),
+      runtimeFreeze: saved.runtimeFreeze ?? 2,
       playerMessages:
         saved.playerMessages.length > 0
           ? saved.playerMessages
@@ -260,17 +270,36 @@ export async function* runEngine(opts: RunEngineOptions): AsyncGenerator<EngineE
 
     if (existsSync(PATHS.state)) await deps.deleteState();
 
-    const sess = await deps.history.initSession({
-      runtime: config.runtime,
-      player: config.player,
-      maxTurns: config.game.maxTurns,
-    });
-    if (parentSession) await deps.history.setContinuedFrom(sess.id, parentSession.id);
+    // A real continue (parent found) REUSES the parent's session + directory:
+    // no new history row, logs append in place, lessons_N accumulate in one dir.
+    // A `continue` with no parent, or `new`, allocates a fresh session.
+    let sessionId: string;
+    let sessionDir: string;
+    let priorTurns = 0;
+    if (parentSession) {
+      sessionId = parentSession.id;
+      sessionDir = parentSession.sessionDir;
+      priorTurns = parentSession.turns;
+      await deps.history.reopenSession(parentSession.id, {
+        continues: parentSession.continues + 1,
+      });
+    } else {
+      const sess = await deps.history.initSession({
+        runtime: config.runtime,
+        player: config.player,
+        maxTurns: config.game.maxTurns,
+      });
+      sessionId = sess.id;
+      sessionDir = sess.dir;
+    }
 
-    const log = new SessionLog(join(sess.dir, 'game.jsonl'), { tail: config.game.historyTail });
+    const log = new SessionLog(join(sessionDir, 'game.jsonl'), { tail: config.game.historyTail });
     await log.init();
-    const debug = new DebugLog(join(sess.dir, 'debug'));
+    const debug = new DebugLog(join(sessionDir, 'debug'));
     await debug.init();
+    if (parentSession) {
+      await log.write({ type: 'continue', run: parentSession.continues + 1, priorTurns });
+    }
     await log.write({
       type: 'config',
       runtime: config.runtime.model,
@@ -283,11 +312,13 @@ export async function* runEngine(opts: RunEngineOptions): AsyncGenerator<EngineE
 
     state = {
       turn: 0,
+      priorTurns,
       gameDocHash,
-      sessionId: sess.id,
-      sessionDir: sess.dir,
+      sessionId,
+      sessionDir,
       runtimeMessages: [],
       runtimeTokens: createTokenTracker({ limit }),
+      runtimeFreeze: 2,
       playerMessages: [{ role: 'system', content: buildPlayerSystemPrompt(lessons) }],
       playerTokens: createTokenTracker({ limit }),
       runtimeLastResponse: '',
@@ -334,7 +365,7 @@ export async function* runEngine(opts: RunEngineOptions): AsyncGenerator<EngineE
     }
     try {
       await deps.history.closeSession(state.sessionId, {
-        turns: state.turn,
+        turns: state.priorTurns + state.turn,
         gameOver: state.gameOver,
         totalMs: Date.now() - state.startMs,
       });
@@ -374,13 +405,15 @@ async function* runLoop(
 ): AsyncGenerator<EngineEvent, void> {
   // Runtime init (skipped on resume — runtime already has history).
   if (state.runtimeMessages.length === 0) {
-    let init = state.gameDocRef ?? '';
-    if (state.continueSave) init += `\n\n---\n\n${state.continueSave}`;
-    state.runtimeMessages = [{ role: 'user', content: init }];
+    // Boot on the DOCUMENT ALONE first. Appending a SAVE block to this first
+    // message makes some models stall indefinitely, so a continue hands the
+    // save over in a SECOND message (below) — matching the doc's "2 Continue"
+    // boot path.
+    state.runtimeMessages = [{ role: 'user', content: state.gameDocRef ?? '' }];
 
-    let res: Awaited<ReturnType<typeof deps.callAI>>;
+    let bootRes: Awaited<ReturnType<typeof deps.callAI>>;
     try {
-      res = yield* streamCall('runtime', (hooks) =>
+      bootRes = yield* streamCall('runtime', (hooks) =>
         deps.callAI(runtimeCfg, state.runtimeMessages, { ...hooks, debug: state.debug }),
       );
     } catch (err) {
@@ -397,16 +430,56 @@ async function* runLoop(
       };
       return;
     }
-    state.runtimeLastResponse = res.content;
-    state.runtimeMessages.push({ role: 'assistant', content: res.content });
-    recordUsage(state.runtimeTokens, res.usage);
+    state.runtimeMessages.push({ role: 'assistant', content: bootRes.content });
+    recordUsage(state.runtimeTokens, bootRes.usage);
+    state.runtimeLastResponse = bootRes.content;
+    let initRes = bootRes;
+
+    // Continue: second message loads the SAVE block. The frozen prefix now spans
+    // [doc, boot, load-request, resume] so trimContext must never evict it.
+    if (state.continueSave) {
+      state.runtimeMessages.push({
+        role: 'user',
+        content: buildContinueLoadPrompt(state.continueSave),
+      });
+      let loadRes: Awaited<ReturnType<typeof deps.callAI>>;
+      try {
+        loadRes = yield* streamCall('runtime', (hooks) =>
+          deps.callAI(runtimeCfg, state.runtimeMessages, { ...hooks, debug: state.debug }),
+        );
+      } catch (err) {
+        await state.log
+          .write({ type: 'runtime_init_error', message: (err as Error).message })
+          .catch(() => {});
+        state.endReason = 'error';
+        yield {
+          type: 'error',
+          who: 'runtime',
+          turn: 0,
+          message: `Runtime continue-load failed: ${(err as Error).message}`,
+          fatal: true,
+        };
+        return;
+      }
+      state.runtimeMessages.push({ role: 'assistant', content: loadRes.content });
+      recordUsage(state.runtimeTokens, loadRes.usage);
+      state.runtimeLastResponse = loadRes.content;
+      state.runtimeFreeze = 4;
+      initRes = loadRes;
+    }
+
     await state.log.write({
       type: 'runtime_init',
-      content: res.content.slice(0, 2000),
-      usage: res.usage,
-      fallback: res.fallback,
+      content: state.runtimeLastResponse.slice(0, 2000),
+      usage: initRes.usage,
+      fallback: initRes.fallback,
     });
-    yield { type: 'runtime_init', content: res.content, usage: res.usage, fallback: res.fallback };
+    yield {
+      type: 'runtime_init',
+      content: state.runtimeLastResponse,
+      usage: initRes.usage,
+      fallback: initRes.fallback,
+    };
   } else {
     yield { type: 'resumed', turn: state.turn, lastResponse: state.runtimeLastResponse };
   }
@@ -493,7 +566,11 @@ async function* runLoop(
     recordUsage(state.runtimeTokens, runtimeRes.usage);
 
     if (
-      trimContext({ messages: state.runtimeMessages, tracker: state.runtimeTokens, startIndex: 2 })
+      trimContext({
+        messages: state.runtimeMessages,
+        tracker: state.runtimeTokens,
+        startIndex: state.runtimeFreeze,
+      })
     ) {
       yield { type: 'trim', who: 'runtime', turn: turnNo, newPrompt: state.runtimeTokens.prompt };
     }

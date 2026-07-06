@@ -25,6 +25,19 @@ ${GAME_OVER_KEYWORDS.map((k) => `- "${k}"`).join('\n')}`;
 
 export const SAVE_PROMPT = `Hãy xuất SAVE block theo đúng định dạng đã mô tả trong tài liệu (khung === SAVE LLM-TYCOON ... === END SAVE ===). Không thêm giải thích, chỉ in ra block thôi.`;
 
+/**
+ * Second runtime message on a `continue`: the Game Engine has already booted on
+ * the document alone (first call); now we hand it the previous SAVE block as the
+ * "2 📂 Continue" path from the doc's boot menu. Splitting doc and save into two
+ * messages is REQUIRED — some models stall indefinitely when the full document
+ * and a SAVE block arrive in a single message.
+ */
+export function buildContinueLoadPrompt(save: string): string {
+  return `Người chơi chọn "2 📂 Continue". Đây là SAVE block của ván trước — hãy nạp và resume theo module Save/Load: áp dụng dòng settings trước (ngôn ngữ + UI Profile), validate mọi giá trị theo Rules, liệt kê các chỉnh sửa (nếu có), rồi render menu hành động của tháng đã lưu.
+
+${save}`;
+}
+
 /** Final-turn reflection prompt sent to the player after the game ends. */
 export function buildLessonsPrompt(turn: number): string {
   return `Game đã kết thúc! Bạn chơi ${turn} lượt. Hãy tổng hợp kinh nghiệm từ chính lần chơi này để bàn giao cho lần chơi kế tiếp — lần đó sẽ CHƠI TIẾP từ trạng thái hiện tại (save này), KHÔNG phải chơi lại từ đầu:

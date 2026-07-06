@@ -87,6 +87,36 @@ test('trimContext preserves runtime init pair when startIndex=2', () => {
   expect(messages[3]?.content).toBe('a2');
 });
 
+test('trimContext preserves the SAVE block when startIndex=4 (continue init)', () => {
+  const t = createTokenTracker({ limit: 100 });
+  recordUsage(t, { prompt_tokens: 200, completion_tokens: 50 });
+  recordUsage(t, { prompt_tokens: 210, completion_tokens: 40 });
+
+  // Continue freezes [doc, boot, load-request(SAVE), resume] = indices 0..3.
+  const messages = [
+    { role: 'user', content: 'gameDoc' },
+    { role: 'assistant', content: 'boot' },
+    { role: 'user', content: 'load SAVE block …' },
+    { role: 'assistant', content: 'resume' },
+    { role: 'user', content: 'u1' },
+    { role: 'assistant', content: 'a1' },
+    { role: 'user', content: 'u2' },
+    { role: 'assistant', content: 'a2' },
+  ];
+
+  const trimmed = trimContext({ messages, tracker: t, startIndex: 4 });
+  expect(trimmed).toBe(true);
+  expect(messages.length).toBe(6);
+  // Frozen prefix (incl. the SAVE block at index 2) is untouched.
+  expect(messages[0]?.content).toBe('gameDoc');
+  expect(messages[1]?.content).toBe('boot');
+  expect(messages[2]?.content).toBe('load SAVE block …');
+  expect(messages[3]?.content).toBe('resume');
+  // Oldest removable turn (u1/a1) is what got spliced.
+  expect(messages[4]?.content).toBe('u2');
+  expect(messages[5]?.content).toBe('a2');
+});
+
 test('trimContext never drops below startIndex', () => {
   const t = createTokenTracker({ limit: 10 });
   recordUsage(t, { prompt_tokens: 999, completion_tokens: 999 });
