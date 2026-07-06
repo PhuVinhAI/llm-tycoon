@@ -16,7 +16,7 @@ khối văn bản gọn; người chơi dán nó cùng Game Document vào hội 
 # S8 — SAVE Block Format
 
 ```
-=== SAVE LLM-TYCOON v0.3 ===
+=== SAVE LLM-TYCOON v0.4 ===
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]

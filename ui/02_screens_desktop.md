@@ -22,7 +22,7 @@ Labels are translated into the player's language; emoji anchors and canonical co
 **S0-A (Language Ask):** Rendered strictly in simple English.
 🏭 **LLM TYCOON**
 Build the world's first LLM
-v0.3 · Chapter 1: Home Lab
+v0.4 · Chapter 1: Home Lab
 
 🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)
 

@@ -27,7 +27,7 @@ Document map:
 | Field | Value |
 |---|---|
 | Title | 🏭 LLM TYCOON |
-| Version | 0.3 |
+| Version | 0.4 |
 | Chapter | 1 of 3 — *Home Lab* |
 | Genre | Text-based business simulation (tycoon) |
 | Setting | Real AI history, 2013 onwards |
@@ -1870,7 +1870,7 @@ Labels are translated into the player's language; emoji anchors and canonical co
 **S0-A (Language Ask):** Rendered strictly in simple English.
 🏭 **LLM TYCOON**
 Build the world's first LLM
-v0.3 · Chapter 1: Home Lab
+v0.4 · Chapter 1: Home Lab
 
 🌐 **What language do you want to play in?** (Example: English, Tiếng Việt, Español...)
 
@@ -2449,7 +2449,7 @@ Profile-independent — exact format in the Save Format module. (This is the ONL
 # S8 — SAVE Block Format
 
 ```
-=== SAVE LLM-TYCOON v0.3 ===
+=== SAVE LLM-TYCOON v0.4 ===
 player: [name] | company: [name]
 settings: lang=[language] | ui=[desktop|mobile]
 date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
