@@ -1043,7 +1043,7 @@ The concrete values are defined in the Content.
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
-- Shutdown a Product (instantly cancel an active Income Stream to free up its reserved Inference TFLOPS; forfeits remaining income and User Logs).
+- Shutdown a Product (instantly cancel an active Income Stream to free up its reserved Inference VRAM; forfeits remaining income and User Logs).
 - Analyze a completed Model (ask the engine for a post-mortem review).
 - Request save, help, rules explanation, current status, or play history (`history` command).
 
