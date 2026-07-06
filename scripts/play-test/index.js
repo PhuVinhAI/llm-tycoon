@@ -1,22 +1,31 @@
 #!/usr/bin/env node
 /**
- * LLM Tycoon — Play Test
+ * index.js — CLI entry point.
  *
- * npm run play                          # auto-detect: resume if state exists, else new
- * npm run play -- --new                 # force new
- * npm run play -- --resume              # resume from game_state.json (exact state)
- * npm run play -- --continue            # continue from last session's save.txt + lessons chain
- * npm run play -- --continue SESSION_ID # continue from specific session
- * npm run history                       # view session history
+ * Modes (in dispatch order):
+ *   --history / -h         : print session history, no AI calls
+ *   --continue / -c [id]   : continue from a previous session's save + lessons
+ *   --resume [id]          : resume from saved game_state.json (in-place)
+ *   --new                  : fresh session
+ *   (default)              : if game_state.json exists → resume; else new
+ *
+ * Behaviour preserved from the previous version EXCEPT:
+ *   - If auto-detect finds a saved state whose gameDocHash doesn't match
+ *     the freshly-built LLM-TYCOON.md, we no longer crash; we degrade to
+ *     a fresh `--new` session with a warning (game.js handles that).
  */
 
 import { existsSync } from 'node:fs';
-import { STATE_PATH, FLAG_NEW, FLAG_RESUME, FLAG_CONTINUE } from './config.js';
+import {
+  STATE_PATH, FLAG_NEW, FLAG_RESUME, FLAG_CONTINUE, FLAG_HISTORY,
+} from './config.js';
 import { runGame } from './game.js';
 
 let mode = 'new';
 
-if (FLAG_CONTINUE) {
+if (FLAG_HISTORY) {
+  mode = 'history';
+} else if (FLAG_CONTINUE) {
   mode = 'continue';
 } else if (FLAG_RESUME) {
   mode = 'resume';
@@ -27,5 +36,6 @@ if (FLAG_CONTINUE) {
 
 runGame(mode).catch((err) => {
   console.error('❌ Fatal:', err.message);
+  if (process.env.DEBUG) console.error(err.stack);
   process.exit(1);
 });
