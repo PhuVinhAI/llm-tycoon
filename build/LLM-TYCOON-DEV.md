@@ -281,7 +281,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
 5. Neural tech is owned and Cash > 8 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant actions), then continue down the list.
 6. Cash below fixed monthly costs + $1,500 → **Freelance**.
-7. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, AND the `llm_unlocked` flag is not set: if Cash ≥ $20,000 + (3 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 3200); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
+7. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, AND the `llm_unlocked` flag is not set: if Cash ≥ $20,000 + (3 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 60000); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
 8. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
 9. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper**.
 10. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
@@ -1508,7 +1508,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
 - Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
-- The LLM Project overrides PTRF's compute requirement to 3200 TFLOPS-months (Rules).
+- The LLM Project overrides PTRF's compute requirement to 60,000 TFLOPS-months (Rules).
 
 # Tasks and Matching
 

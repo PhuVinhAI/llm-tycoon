@@ -1344,7 +1344,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
 - Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
-- The LLM Project overrides PTRF's compute requirement to 3200 TFLOPS-months (Rules).
+- The LLM Project overrides PTRF's compute requirement to 60,000 TFLOPS-months (Rules).
 
 # Tasks and Matching
 

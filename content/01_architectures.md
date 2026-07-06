@@ -28,7 +28,7 @@ số buộc người chơi đầu tư GPU; Focus lý tưởng khác nhau tạo "
 | PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
 - Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
-- The LLM Project overrides PTRF's compute requirement to 3200 TFLOPS-months (Rules).
+- The LLM Project overrides PTRF's compute requirement to 60,000 TFLOPS-months (Rules).
 
 <!--
 Tiếng Việt (tóm tắt):
@@ -36,5 +36,5 @@ Bảng thông số kiến trúc: Base Q (điểm nền), yêu cầu TFLOPS-month
 thiểu, Size dataset tối thiểu, phân bổ Focus lý tưởng (Data/Model/Training/
 Eval, tổng 10). Kiến trúc yêu cầu compute 0 (NGRAM, BOW) chạy được trên PC
 cũ; còn lại là neural — cần GPUT và ít nhất 100 TFLOPS. Dự án LLM nâng yêu cầu
-compute của PTRF lên 3200 TFLOPS-month.
+compute của PTRF lên 60,000 TFLOPS-month.
 -->
