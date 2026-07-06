@@ -1028,7 +1028,7 @@ The Player declares, in one instant action:
 1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
-4. **Task** — one of the Tasks in the Content. (Task **LLM (general)** requires the SCALE technology).
+4. **Task** — one of the Tasks in the Content.
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
 6. **Months (M)** — at least the adjusted minimum months.
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
@@ -1220,7 +1220,31 @@ When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the eng
 
 # The LLM Project
 
-*(This module has been deprecated. The LLM Project is now handled as a standard Model Project using the `LLM (general)` Task in `rules/08_model_projects.md`. It acts as the bridge to Chapter 2).*
+The LLM Project is a special Model Project: pretraining a large language model on web-scale data. All Model Project rules apply unless overridden below.
+
+## Requirements to start
+
+- **SCALE** technology owned (which implies PRET and the PTRF Architecture).
+- A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
+- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **3200 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
+- **$20,000** upfront infrastructure cost, paid at start.
+
+## Quality
+
+- Use the PTRF row of the architectures table, but with compute requirement **3200** TFLOPS-months.
+- Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
+- The Scale choice is fixed to Base. Add a special **+10 LLM scale bonus** to the formula instead.
+
+## Outcomes
+
+| Q | Outcome |
+|---|---|
+| ≥ 70.0 | 🚀 The **Term Sheet** event fires (Content): accept → **+$2,000,000 and the sandbox continues** (WIN ending triggered); decline → +500 Fame and the sandbox continues. |
+| 55.0–69.9 | It works, but demos underwhelm: Fame +1000, and the Model may be released normally (Model Projects rule). |
+| < 55.0 | A very expensive lesson: Fame −300, RP +2000. |
+
+- The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual if the same Dataset is reused.
+- Name the model — this is the game's namesake moment.
 
 # Endings and Scoring
 
@@ -1293,7 +1317,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | TRF | Transformer | 9000 | ATTN | Architecture TRF |
 | PRET | Unsupervised Pre-training | 9500 | TRF | Architecture PTRF |
 | FINE | Fine-tuning Toolkit | 5000 | PRET | PTRF minimum months −1; +5 Q on PTRF models |
-| SCALE | Scaling Recipe | 8500 | PRET | unlocks the LLM (general) Task for Projects |
+| SCALE | Scaling Recipe | 8500 | PRET | unlocks The LLM Project |
 
 # Architectures
 
@@ -1325,25 +1349,24 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | SUMM | Summarization | Condensing documents |
 | QA | Question Answering | Answering questions over text |
 | CODE | Code Completion | Suggesting source code |
-| LLM (general) | Large Language Model | General purpose text generation |
 
-(The **LLM (general)** task requires the SCALE technology to be unlocked.)
+(The LLM Project uses the special task **LLM (general)** — Rules.)
 
 ## Architecture × Task match matrix
 
 Values: +10 perfect · +5 good · 0 weak · −10 poor.
 
-| | CLS | AUTO | TRANS | CHAT | SUMM | QA | CODE | LLM (general) |
-|---|---|---|---|---|---|---|---|---|
-| **NGRAM** | 0 | +10 | −10 | −10 | −10 | −10 | +5 | −10 |
-| **BOW** | +10 | −10 | −10 | −10 | 0 | 0 | −10 | −10 |
-| **EMB** | +10 | 0 | −10 | 0 | 0 | +5 | −10 | −10 |
-| **RNN** | +5 | +10 | 0 | 0 | 0 | 0 | +5 | −10 |
-| **LSTM** | +5 | +10 | +5 | +5 | +5 | +5 | +5 | −10 |
-| **S2S** | 0 | +5 | +10 | +5 | +5 | 0 | 0 | −10 |
-| **S2SA** | 0 | +5 | +10 | +10 | +10 | +5 | +5 | −10 |
-| **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 | +5 |
-| **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
+| | CLS | AUTO | TRANS | CHAT | SUMM | QA | CODE |
+|---|---|---|---|---|---|---|---|
+| **NGRAM** | 0 | +10 | −10 | −10 | −10 | −10 | +5 |
+| **BOW** | +10 | −10 | −10 | −10 | 0 | 0 | −10 |
+| **EMB** | +10 | 0 | −10 | 0 | 0 | +5 | −10 |
+| **RNN** | +5 | +10 | 0 | 0 | 0 | 0 | +5 |
+| **LSTM** | +5 | +10 | +5 | +5 | +5 | +5 | +5 |
+| **S2S** | 0 | +5 | +10 | +5 | +5 | 0 | 0 |
+| **S2SA** | 0 | +5 | +10 | +10 | +10 | +5 | +5 |
+| **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 |
+| **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
 *(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
 
@@ -1492,7 +1515,7 @@ Maximum 2 hired at a time (Employees rule).
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
 | T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | First Model with Task LLM (general) and Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
+| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 
