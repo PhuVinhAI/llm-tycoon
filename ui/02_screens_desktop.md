@@ -54,7 +54,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 |---|---|
 | **Resources** | 💰 $[cash]  ·  🔬 Research Points [x]  ·  ⭐ Fame [x]/5000 |
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
-| **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Assets** | 🖥️ [available]/[total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
 | **Status** | 📦 [idle / project (🧩 Art) / contract / paper]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
@@ -203,7 +203,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏗️ **New Model Project**
 Provide your configuration to start:
-- **Current Compute:** [total] TFLOPS/mo
+- **Current Compute:** [available] / [total] TFLOPS/mo
 - **Architecture:** [List owned. Include their Base Compute Req]
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
@@ -225,9 +225,9 @@ Provide your configuration to start:
 📁 **Model Portfolio & Income**
 
 **Active Income Streams:**
-| Product | Income | Months Left |
-|---|---|---|
-| [Model Name] | +$[x]/mo | [y] mos |
+| Product | Income | Inference Cost | Months Left |
+|---|---|---|---|
+| [Model Name] | +$[x]/mo | -[z] TFLOPS | [y] mos |
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
@@ -236,7 +236,7 @@ Provide your configuration to start:
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
-👉 *Reply 'Analyze [ID]' for a review, 'Release [ID]' to launch a shelved model, 'Paper [ID]' to write a paper, or 0 back.*
+👉 *Reply 'Analyze [ID]' for a review, 'Release [ID]' to launch, 'Shutdown [ID]' to kill a Product, 'Paper [ID]', or 0 back.*
 
 ## S16 — Team & Interviews
 

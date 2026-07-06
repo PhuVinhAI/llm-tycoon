@@ -654,7 +654,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
 * Fame: current value (0–5000).
-* Income Stream: source name, amount per month, months remaining, original Task, and original Q.
+* Income Stream: source name, amount per month, months remaining, original Task, original Q, and reserved Inference TFLOPS.
 
 ---
 
@@ -1042,6 +1042,7 @@ The concrete values are defined in the Content.
 - Activate or deactivate cloud rental (Hardware rule).
 - Submit a Model to an open Competition.
 - View Portfolio (check released/shelved models and active income streams).
+- Shutdown a Product (instantly cancel an active Income Stream to free up its reserved Inference TFLOPS; forfeits remaining income and User Logs).
 - Analyze a completed Model (ask the engine for a post-mortem review).
 - Request save, help, rules explanation, current status, or play history (`history` command).
 
@@ -1167,8 +1168,10 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 ## Compute
 
 - Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
-- During a Project, compute accumulates monthly: **TFLOPS-months += current TFLOPS/mo**.
-- Neural Architectures (compute requirement > 0 in the Content) cannot start with total TFLOPS/mo = 0, and require the GPUT technology.
+- **Inference TFLOPS** = sum of reserved compute from active Product streams.
+- **Available TFLOPS/mo** = Total TFLOPS/mo − Inference TFLOPS.
+- During a Project, compute accumulates monthly: **TFLOPS-months += current Available TFLOPS/mo**.
+- Neural Architectures (compute requirement > 0 in the Content) cannot start with Available TFLOPS/mo < 100, and require the GPUT technology.
 
 ## Buying and selling
 
@@ -1186,7 +1189,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 
 The Player declares, in one instant action:
 
-1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and total TFLOPS/mo ≥ 100 (Hardware rule).
+1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content.
@@ -1294,7 +1297,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months (track the Model's Task and Q in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10 (minimum 0). (Track Task, Q, and Inference in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -2015,7 +2018,7 @@ Free-form but short: the guide (≤ 10 lines) or the Game Info card + pitch. Alw
 |---|---|
 | **Resources** | 💰 $[cash]  ·  🔬 Research Points [x]  ·  ⭐ Fame [x]/5000 |
 | **Skills** | 🧠 Research Lv [x]  ·  Engineering Lv [x] |
-| **Assets** | 🖥️ [total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
+| **Assets** | 🖥️ [available]/[total] TFLOPS ([slots used]/[total])  ·  👥 [team or "solo"] |
 | **Knowledge** | 📚 Data: [count]  ·  🛠️ Tech: [owned tech names] |
 | **Status** | 📦 [idle / project (🧩 Art) / contract / paper]  ·  💵 Streams: +$[x]/mo  ·  📉 Fixed: -$[x]/mo |
 
@@ -2164,7 +2167,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 🏗️ **New Model Project**
 Provide your configuration to start:
-- **Current Compute:** [total] TFLOPS/mo
+- **Current Compute:** [available] / [total] TFLOPS/mo
 - **Architecture:** [List owned. Include their Base Compute Req]
 - **Scale:** Small (Compute ×0.5, Q -5) / Base / Large (Compute ×2, Q +10)
 - **Inherit (Optional):** [Name of owned TRF/PTRF model, or None. Halves compute, caps final Q at Inherited Model's Q + 15]
@@ -2186,9 +2189,9 @@ Provide your configuration to start:
 📁 **Model Portfolio & Income**
 
 **Active Income Streams:**
-| Product | Income | Months Left |
-|---|---|---|
-| [Model Name] | +$[x]/mo | [y] mos |
+| Product | Income | Inference Cost | Months Left |
+|---|---|---|---|
+| [Model Name] | +$[x]/mo | -[z] TFLOPS | [y] mos |
 *(If none: "No active income streams.")*
 
 **Completed Models (Inventory):**
@@ -2197,7 +2200,7 @@ Provide your configuration to start:
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Product/License/Open/Shelved] | [Yes/No] | [Yes/No] |
 *(If none: "No models completed yet.")*
 
-👉 *Reply 'Analyze [ID]' for a review, 'Release [ID]' to launch a shelved model, 'Paper [ID]' to write a paper, or 0 back.*
+👉 *Reply 'Analyze [ID]' for a review, 'Release [ID]' to launch, 'Shutdown [ID]' to kill a Product, 'Paper [ID]', or 0 back.*
 
 ## S16 — Team & Interviews
 
@@ -2291,7 +2294,7 @@ Same content as desktop, one short line each. End with:
 💰 $[cash]
 🔬 Research Points [x] · ⭐ Fame [x]/5000
 🧠 Research Lv [x] · Engineering Lv [x]
-🖥️ [total] TFLOPS · slots [u]/[t]
+🖥️ [available]/[total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
@@ -2456,7 +2459,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S12 — Project Wizard
 
 🏗️ **New Model**
-Compute: [total] TFLOPS/mo
+Compute: [available]/[total] TFLOPS/mo
 Configuration:
 - **Arch:** [Owned + Base Req]
 - **Scale:** Small / Base / Large
@@ -2479,7 +2482,7 @@ Configuration:
 📁 **Portfolio & Income**
 
 **Streams:**
-- [Model]: +$[x]/mo ([y] left)
+- [Model]: +$[x]/mo · -[z] TFLOPS ([y] left)
 *(or "No active streams")*
 
 **Models:**
@@ -2487,7 +2490,7 @@ Configuration:
 ▸ [Arch]×[Task] · Q[Q] · [Status] · Anz:[Y/N] · Pub:[Y/N]
 *(or "No models")*
 
-👉 *Reply 'Analyze', 'Release', 'Paper' + ID, or 0 back.*
+👉 *Reply 'Analyze', 'Release', 'Shutdown', 'Paper' + ID, or 0 back.*
 
 ## S16 — Team & Interviews
 
@@ -2565,7 +2568,7 @@ team: [Name($Salary, Effects) | none]
 candidates: [Name($Salary, Effects) | none]
 data: [Name(domain,Size,Quality)]; …
 models: [Name(Arch,Task,Datasets,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
-streams: [Name $x/mo ×y left (Task, Q)]; … | none
+streams: [Name $x/mo ×y left (Task, Q, inf=z)]; … | none
 contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
 project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
 competitions: [Ex:won | Ex:open(until YYYY-MM)] | none

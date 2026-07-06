@@ -25,7 +25,7 @@ Trách nhiệm:
 
 The Player declares, in one instant action:
 
-1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and total TFLOPS/mo ≥ 100 (Hardware rule).
+1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Available TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Scale** — Small (Compute req ×0.5), Base (Compute req ×1), or Large (Compute req ×2).
 3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content.
@@ -133,7 +133,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers). If SOTA Hype: **Cash × 1.5**. Q < 40 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months (track the Model's Task and Q in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55. Creates an Income Stream: Q × Demand × $25 per month for 8 months. Reserves **Inference TFLOPS** = Architecture Compute Req ÷ 10 (minimum 0). (Track Task, Q, and Inference in the stream to generate User Logs upon expiry). If SOTA Hype: **Income × 1.5**. If released with Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)

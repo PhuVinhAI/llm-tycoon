@@ -28,8 +28,10 @@ Trách nhiệm:
 ## Compute
 
 - Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
-- During a Project, compute accumulates monthly: **TFLOPS-months += current TFLOPS/mo**.
-- Neural Architectures (compute requirement > 0 in the Content) cannot start with total TFLOPS/mo = 0, and require the GPUT technology.
+- **Inference TFLOPS** = sum of reserved compute from active Product streams.
+- **Available TFLOPS/mo** = Total TFLOPS/mo − Inference TFLOPS.
+- During a Project, compute accumulates monthly: **TFLOPS-months += current Available TFLOPS/mo**.
+- Neural Architectures (compute requirement > 0 in the Content) cannot start with Available TFLOPS/mo < 100, and require the GPUT technology.
 
 ## Buying and selling
 

@@ -38,7 +38,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 * Cash: current balance (may be negative within the limits defined by the Rules).
 * RP: current balance (never negative).
 * Fame: current value (0–5000).
-* Income Stream: source name, amount per month, months remaining, original Task, and original Q.
+* Income Stream: source name, amount per month, months remaining, original Task, original Q, and reserved Inference TFLOPS.
 
 ---
 

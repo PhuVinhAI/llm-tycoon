@@ -45,7 +45,7 @@ Same content as desktop, one short line each. End with:
 💰 $[cash]
 🔬 Research Points [x] · ⭐ Fame [x]/5000
 🧠 Research Lv [x] · Engineering Lv [x]
-🖥️ [total] TFLOPS · slots [u]/[t]
+🖥️ [available]/[total] TFLOPS · slots [u]/[t]
 [hardware, short list]
 👥 [team or "solo"]
 📚 [datasets, short]
@@ -210,7 +210,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S12 — Project Wizard
 
 🏗️ **New Model**
-Compute: [total] TFLOPS/mo
+Compute: [available]/[total] TFLOPS/mo
 Configuration:
 - **Arch:** [Owned + Base Req]
 - **Scale:** Small / Base / Large
@@ -233,7 +233,7 @@ Configuration:
 📁 **Portfolio & Income**
 
 **Streams:**
-- [Model]: +$[x]/mo ([y] left)
+- [Model]: +$[x]/mo · -[z] TFLOPS ([y] left)
 *(or "No active streams")*
 
 **Models:**
@@ -241,7 +241,7 @@ Configuration:
 ▸ [Arch]×[Task] · Q[Q] · [Status] · Anz:[Y/N] · Pub:[Y/N]
 *(or "No models")*
 
-👉 *Reply 'Analyze', 'Release', 'Paper' + ID, or 0 back.*
+👉 *Reply 'Analyze', 'Release', 'Shutdown', 'Paper' + ID, or 0 back.*
 
 ## S16 — Team & Interviews
 
