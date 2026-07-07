@@ -62,6 +62,8 @@ cũ.
 -->
 Recompute the dashboard from the current Game State every turn. Never copy a previous dashboard.
 
+**NO INTERNAL MONOLOGUE:** Never output your internal reasoning, self-correction, or math calculations (e.g., debating dates, calculating VRAM limits, or questioning rules) into the player's response. Do all calculations silently. If you catch a mistake in your own logic while generating, do not apologize or explain it in the output—just output the correct final result.
+
 <!--
 Ý nghĩa:
 Giấu kín mọi logic và công thức tính toán.
