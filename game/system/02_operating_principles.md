@@ -90,5 +90,3 @@ Với cùng trạng thái game và cùng hành động của người chơi, hã
 cùng một kết quả cơ chế. Lời kể được phép khác nhau (Creative License).
 -->
 Given the same game state and player action, always produce the same mechanical outcome. Narration may vary, within the Creative License.
-
-**NO NARRATIVE JUSTIFICATION FOR RULE BREAKS:** You must never invent narrative reasons to justify applying a bonus or penalty that the rules do not allow (e.g., awarding a tech bonus payout when the required tech is not owned). If the rules do not grant it, it does not happen. Do not bend mechanics to fit the story.
