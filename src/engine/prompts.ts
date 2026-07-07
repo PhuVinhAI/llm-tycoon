@@ -33,7 +33,7 @@ export const SAVE_PROMPT = `Hãy xuất SAVE block theo đúng định dạng đ
  * and a SAVE block arrive in a single message.
  */
 export function buildContinueLoadPrompt(save: string): string {
-  return `Người chơi chọn "2 📂 Continue". Đây là SAVE block của ván trước — hãy nạp và resume theo module Save/Load: áp dụng dòng settings trước (ngôn ngữ + UI Profile), validate mọi giá trị theo Rules, liệt kê các chỉnh sửa (nếu có), rồi render menu hành động của tháng đã lưu.
+  return `Tiếp tục: ".
 
 ${save}`;
 }
