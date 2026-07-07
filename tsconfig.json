@@ -1,0 +1,31 @@
+{
+  // Bun + React Ink, strict. Type-check only (bun runs .ts/.tsx directly).
+  "compilerOptions": {
+    // Environment
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "types": ["bun", "react"],
+    "jsx": "react-jsx",
+
+    // Bun runs source directly — never emit.
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+
+    // Strict typechecking (max quality)
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src", "tests"],
+  "exclude": ["node_modules", "build", "logs", "game"]
+}
