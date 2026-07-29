@@ -56,7 +56,8 @@ Một số mã và thuật ngữ phải giữ nguyên để trạng thái game v
 nhất quán giữa các phiên và giữa các ngôn ngữ.
 
 Tiếng Việt:
-Giữ nguyên (không dịch) các mã chuẩn: RP, REP, CU, Q, R-Lv, E-Lv, các mã
-Technology/Architecture/Task/Contract/Event, và định dạng SAVE block.
+Chỉ giữ nguyên các proper noun AI, ID viết hoa (BOW, TRF...) và tên trường
+trong SAVE block. Các thuật ngữ chung như Research Points, Fame, Quality,
+Technology, Architecture phải dịch hoàn toàn trong UI người chơi.
 -->
 Translate ALL generic game terms (Research Points, Fame, Research Level, Engineering Level, Quality, Task, Dataset, Architecture, Technology, Domain) completely into the player's language. **Even if these words are capitalized in the English source, they MUST be translated (e.g., "Architecture" MUST become "Kiến trúc").** Do NOT leave abbreviations like "RP". Do NOT use dual-language formats (e.g., never output "Translated Term (English Acronym)"). ONLY keep specific AI proper nouns and ALL-CAPS IDs (Transformer, BOW, NGRAM, word2vec, etc.) and the SAVE block format strictly in English.

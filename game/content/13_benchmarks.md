@@ -17,7 +17,7 @@ chọn Benchmark từ bảng này dựa trên Task và Năm hiện tại, thay v
 
 When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-Do not pad or fill the list. Show exactly as many Benchmarks as are available. (If 0 Benchmarks exist for a Task at the current date, use a single "Internal QA Metric" to calculate Q).
+Do not pad or fill the list. Show exactly as many Benchmarks as are available. If 0 official Benchmarks exist for a Task at the current date, use one `Internal QA Metric`; it has Domain Fit **0** and no SOTA Rival, so display `N/A` instead of inventing a comparison.
 
 ## 1. Official Benchmarks
 
@@ -48,7 +48,7 @@ Do not pad or fill the list. Show exactly as many Benchmarks as are available. (
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
 
 ## 2. Public Reviewers (For Release)
-When a Model is officially released (Open-source, License, or Product), the Game Engine must deterministically select exactly **4** of these sources (based on the Model's ID or current Date) to generate the Public Reception reviews (S6-B).
+When a Model is officially released (Open-source, License, or Product), build the eligible list below in displayed order, excluding sources not yet available, and index it from `0` to `N − 1`. Let `start = (Model completion ordinal + current Turn) mod N`, where the first completed Model has ordinal 1. Select four consecutive sources beginning at zero-based index `start`, wrapping to the beginning. This deterministically selects exactly **4 distinct** sources.
 - **ArXiv Peer Review** (Academic perspective)
 - **r/MachineLearning** (Practitioner perspective)
 - **HackerNews** (Startup/Tech perspective)

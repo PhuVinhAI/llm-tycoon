@@ -85,7 +85,7 @@ Example (seed 42): the rolls go 95, 08, 81, 14, 07, … Picking among 3 release 
 
 ## The Simulated Player
 
-Every free month (no committed Project/Contract month, no forced action), after Events fire, the Simulated Player acts by policy.
+After Events fire, an active Project, Contract, or Paper forces its matching Continue main action; this consumes no roll because there is only one legal main action. In every free month (no active commitment and no forced action), the Simulated Player acts by policy.
 
 **`policy=random` — uniform chaos (default).**
 
@@ -95,7 +95,7 @@ Every free month (no committed Project/Contract month, no forced action), after 
    - **Dataset market:** roll; if < 25, buy or claim one available Dataset (roll to pick).
    - **Employees:** roll; if < 10 and the team is not full, trigger Headhunter (roll for Archetype), then hire one affordable Candidate (roll to pick).
    - **Competition:** if an open Competition has an eligible Model, roll; if < 50, submit (roll to pick the Model).
-2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
+2. Main action — roll over the legal entries of this fixed list, skipping any that are illegal this month: **Freelance · Research · Start a Project · Accept a Contract · Start a Paper · Collect dataset · Clean dataset**. Sub-decisions (which Architecture/Task/Dataset, which Contract, which Model to publish, which Domain, which Dataset to clean) are each resolved by their own roll over the legal options.
 3. Freelance dilemmas, Event choices, and Release choices are rolled the same way. (Exception: if a Model Q ≥ 55.0 and Product is legal, always pick Product instead of Shelving a SOTA model). For dilemmas: compute both choices' exact yields silently, roll the pick, log `dilemma 1` or `dilemma 2` — no story text.
 
 **`policy=human` — guardrailed casual player.** Same dice, but decisions pass through this checklist (first match wins for Main Actions; instant actions process and continue):
@@ -104,10 +104,10 @@ Every free month (no committed Project/Contract month, no forced action), after 
 2. Cash > 8 months of fixed costs + a candidate's salary → **Hire** the strongest affordable Employee (instant action), then continue down the list.
 3. An affordable Technology exists → unlock the **cheapest** now (instant action), then continue down the list.
 4. A free Dataset is claimable → **Claim** it now (instant action), then continue down the list.
-5. Neural tech is owned and Cash > 8 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU (if slots are full, sell the weakest GPU first to make room). If slots are full and Rewire is affordable, **Rewire** (instant actions), then continue down the list.
+5. Neural tech is owned and Cash > 8 months of fixed costs + price of the BEST available GPU → **Buy** the best GPU. If slots are full, Rewire first when legal and affordable; otherwise sell the weakest Hardware whose sale remains legal under the Product Inference VRAM rule. If neither can make enough slots, skip the purchase. Then continue down the list.
 6. Cash below fixed monthly costs + $1,500 → **Freelance**.
-7. SCALE is owned, a Dataset with Size 5 and Quality ≥ 3 exists, AND the `llm_unlocked` flag is not set: if Cash ≥ $20,000 + (3 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if TFLOPS-months projection < 60000); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
-8. A Size 5 Dataset exists with Quality < 3 → **Clean dataset** (target the Size 5 dataset).
+7. SCALE is owned, a Dataset mixture with Combined Size 5 and Combined Quality ≥ 3 exists, AND the `llm_unlocked` flag is not set: if Cash ≥ $20,000 + (3 × fixed costs) → **Start The LLM Project** (turn on Cloud rental first if the current projection is below its adjusted compute requirement); if Cash < $20,000 + (3 × fixed costs) → **Freelance** (saving up for LLM).
+8. At least one owned Dataset can be cleaned so that some available mixture moves toward the LLM's Combined Size 5 and Combined Quality ≥ 3 requirements → **Clean dataset** (target the lowest-Quality useful Dataset).
 9. An eligible Model exists for a Paper AND its Release type is "Open-source" or "Shelve" → start **Paper**.
 10. If Cash > 6 months of all fixed costs AND any Technology is locked, roll; if < 80 → **Research**.
 11. A Project or Contract is legal to start → **Start it** (best Match Architecture × Task). Only fallback to Research if no Project/Contract is viable.
@@ -132,7 +132,7 @@ While a simulation runs: do not render S3/S4/S5 screens, do not emit the June/De
 
   ```
   devstate: run=1/3 seed=42 R=57 policy=random until=2020-12 rolls=141
-  act F14,R17,P9,C5,D6,L5 | dil 8/6 | inc fr41200,ct9000,md6120,pz0
+  act F14,R15,P9,C5,A2,D6,L5 | dil 8/6 | inc fr41200,ct9000,md6120,pz0
   cost lv31000,sal4500,hw1225,cl0,buy3800 | rp earn31400,spend28600
   cash min-2210@2015-03,peak9400@2014-06,red3 | fame peak400 | evt 11
   ```
@@ -141,7 +141,7 @@ While a simulation runs: do not render S3/S4/S5 screens, do not emit the June/De
 
 ## Statistics to maintain per run
 
-Count throughout the run: main actions by type (F/R/P/C/D/L) · dilemma picks (choice 1 vs 2) · income by source (freelance, contracts, model sales & streams, prizes/events) · costs by category (living, salaries, hardware upkeep, cloud, purchases) · cash minimum and peak with their months, months ending in the red · RP earned and spent · Technologies unlocked with dates · Models with Q values and release types · Datasets owned and their final average Quality · Contracts done/cancelled · Competitions won/entered · Fame end and peak · Events fired · total rolls drawn.
+Count throughout the run: main actions by type (`F` Freelance / `R` Research / `P` Project / `C` Contract / `A` Paper / `D` Collect / `L` Clean) · dilemma picks (choice 1 vs 2) · income by source (freelance, contracts, model sales & streams, prizes/events) · costs by category (living, salaries, hardware upkeep, cloud, purchases) · cash minimum and peak with their months, months ending in the red · RP earned and spent · Technologies unlocked with dates · Models with Q values and release types · Datasets owned and their final average Quality · Papers published/cancelled · Contracts done/cancelled · Competitions won/entered · Fame end and peak · Events fired · total rolls drawn.
 
 ## SDEV — The Dev Report
 
@@ -157,9 +157,9 @@ ECONOMY
 PROGRESS
   tech: 7/15 unlocked (last: RNN @2016-03) | RP: earned 31,400 · spent 28,600
   models: 2 | best Q 51 · avg Q 46 | releases: OS 1 · License 1 · Product 0 · Shelve 0
-  datasets: 4 (avg Quality 2.5) | contracts done: 1 | competitions: 0/2 won
+  datasets: 4 (avg Quality 2.5) | contracts done: 1 | papers: 1 | competitions: 0/2 won
   fame: end 300 | peak 400 | events fired: 14 | dilemmas: 8× choice 1 · 6× choice 2
-ACTIONS (56): freelance 14 · research 17 · project 9 · contract 5 · collect 6 · clean 5
+ACTIONS (56): freelance 14 · research 15 · project 9 · contract 5 · paper 2 · collect 6 · clean 5
 DICE: 141 rolls from seed 42 (final R 73)
 TIMELINE
   2013: [one line — the year's defining beat]
@@ -173,7 +173,7 @@ SUGGESTIONS
 
 ```
 === DEV AGGREGATE — 3 runs · seeds 42–44 · policy random ===
-endings: WIN 0 · Retirement 1 · Burned Out 2 | scores: 0 / 0 / 3,900 (median 0)
+outcomes: WIN 0 · Horizon Reached 1 · Burned Out 2 | scores: 0 / 0 / 3,900 (median 0)
 cash end: −5,210 / −5,050 / +2,100 | tech: 7 / 6 / 9 of 15 | best Q: 51 / 44 / 58
 first bankruptcy: T56 (2017-08) | earliest LLM tech era reached: none
 common flags: [flags tripped in ≥ 2 runs]
@@ -228,7 +228,7 @@ M = tối thiểu + (roll mod 3); focus chọn 1 trong 5 preset theo roll mod 5.
 Hai policy: `random` (mặc định — mỗi tháng: lần lượt check tức thời có trần
 xác suất: mở công nghệ <50, mua phần cứng <25, mua dataset <25, tuyển <10,
 nộp thi <50; rồi roll hành động chính trong các mục hợp lệ: Freelance ·
-Research · Bắt đầu Dự án · Nhận Hợp đồng · Thu thập · Làm sạch); `human`
+Research · Bắt đầu Dự án · Nhận Hợp đồng · Bắt đầu Paper · Thu thập · Làm sạch); `human`
 (có rào chắn: ưu tiên check sa thải/tuyển dụng/mua sắm trước; thiếu tiền →
 Freelance; có công nghệ đủ RP → mở cái rẻ nhất; ưu tiên dự án/hợp đồng;
 phát hành Product nếu đủ điều kiện).

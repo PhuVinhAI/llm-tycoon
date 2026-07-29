@@ -9,14 +9,14 @@ Danh mục phần cứng theo dòng thời gian thật của thị trường GPU
 Tác dụng:
 Nhịp ra mắt GPU (GTX 780 → 980 → 1080 → RTX 2080 Ti, cộng server K80 cũ và
 cloud) là "nấc thang compute" kéo người chơi nâng cấp đúng lúc kiến trúc
-mới ngốn CU hơn.
+mới ngốn TFLOPS hơn.
 ===============================================================================
 -->
 
 # Hardware Shop
 
 | Available from | Item | Price | TFLOPS/mo | VRAM | Slots |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 | start | GTX 780 | $1,500 | 100 | 3 GB | 1 |
 | Sep 2014 | GTX 980 | $2,500 | 200 | 4 GB | 1 |
 | Jun 2016 | GTX 1080 | $5,000 | 400 | 8 GB | 1 |

@@ -15,7 +15,7 @@ vẫn bị khóa trong giới hạn trần/sàn để đảm bảo cân bằng g
 
 # Employee Archetypes
 
-Instead of fixed characters, the Player must pay a Headhunter Fee to search for an Archetype. The Engine then generates **3 unique candidates** for that Archetype. The Engine uses Creative License to invent a name and background fitting the player's language. To remain deterministic, the Engine must select exact stats within the bounds below based on the current in-game Turn (e.g., higher turn = higher stats/salary), ensuring the 3 candidates offer fixed trade-offs: Candidate 1 (Low Salary, Low Stats), Candidate 2 (Mid Salary, Mid Stats), Candidate 3 (High Salary, High Stats).
+Instead of fixed characters, the Player must pay a Headhunter Fee to search for an Archetype. The Engine then generates **3 unique candidates** for that Archetype. The Engine uses Creative License to invent a name and background fitting the player's language. Mechanical values never depend on flavor or Turn: Candidate 1 uses every minimum bound, Candidate 2 uses every midpoint (round half up), and Candidate 3 uses every maximum bound. Fixed effects are identical for all three.
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
@@ -28,9 +28,10 @@ Maximum 2 hired at a time (Employees rule).
 <!--
 Tiếng Việt (tóm tắt):
 Thay vì nhân vật cố định, người chơi phải trả phí Headhunter để tìm kiếm. 
-Engine sẽ tạo ra 3 ứng viên có sự đánh đổi khác nhau (ví dụ: lương rẻ thì 
-chỉ số thấp, lương cao thì chỉ số cao). Tên và bối cảnh được sáng tạo theo 
-ngôn ngữ người chơi. Chỉ số khóa trong trần/sàn:
+Engine sẽ tạo ra 3 ứng viên có sự đánh đổi cố định: ứng viên 1 lấy mọi mức
+tối thiểu, ứng viên 2 lấy trung điểm (làm tròn nửa lên), ứng viên 3 lấy mọi
+mức tối đa. Tên và bối cảnh được sáng tạo theo ngôn ngữ người chơi nhưng
+không ảnh hưởng cơ chế. Chỉ số khóa trong trần/sàn:
 1. Chuyên gia dữ liệu (Fame 800, Phí $1000): Lương $800-$1200; Dataset +1 Q; Research +150-250 RP.
 2. Tối ưu phần cứng (Fame 1500, Phí $2500): Lương $1500-$2200; Compute req ×0.75.
 3. Nhà khoa học (Fame 2200, Phí $5000): Lương $3000-$4500; Research +600-900 RP; Model +2-4 Q.

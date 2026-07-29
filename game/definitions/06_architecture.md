@@ -25,7 +25,7 @@ Trách nhiệm:
 
 An Architecture is a family of model designs that a Company knows how to train.
 
-An Architecture is granted by owning its corresponding Technology. It defines the baseline capability, the computing requirements, and the data requirements of Models built from it.
+An Architecture is granted by owning its corresponding Technology. It defines the baseline capability, computing requirement, and Baseline Data Size Quality target of Models built from it.
 
 An Architecture is knowledge; a Model is a concrete product built from an Architecture.
 
@@ -38,9 +38,9 @@ An Architecture may be associated with information such as:
 * Identifier (ID)
 * Name
 * Base Quality
-* Compute requirement (CU-months)
+* Compute requirement (TFLOPS-months)
 * Minimum training months
-* Minimum Dataset Size
+* Baseline Dataset Size target
 * Ideal focus allocation
 
 The concrete values are defined in the Content.
@@ -50,7 +50,7 @@ The concrete values are defined in the Content.
 ## Relationships
 
 * An Architecture is granted by a Technology.
-* An Architecture is combined with a Task and a Dataset to form a Project.
+* An Architecture is combined with a Task and a Dataset mixture to form a Project.
 * Models are built from Architectures.
 
 <!--
@@ -58,15 +58,15 @@ Tiếng Việt:
 Architecture là một "họ thiết kế" mô hình mà Company biết cách huấn luyện.
 
 Architecture được mở khóa bằng cách sở hữu Technology tương ứng. Nó xác định
-năng lực nền, yêu cầu tính toán và yêu cầu dữ liệu của các Model xây từ nó.
+năng lực nền, yêu cầu tính toán và mốc dữ liệu nhận bonus Quality của các Model xây từ nó.
 
 Architecture là kiến thức; Model là sản phẩm cụ thể được huấn luyện từ một
 Architecture.
 
-Thuộc tính: ID; tên; Base Quality; yêu cầu CU-month; số tháng huấn luyện tối
-thiểu; Size tối thiểu của Dataset; phân bổ trọng tâm lý tưởng. Giá trị cụ
+Thuộc tính: ID; tên; Base Quality; yêu cầu TFLOPS-month; số tháng huấn luyện tối
+thiểu; mốc Dataset Size nền để nhận bonus Quality; phân bổ trọng tâm lý tưởng. Giá trị cụ
 thể nằm trong Content.
 
-Quan hệ: được Technology mở khóa; kết hợp với Task và Dataset để tạo thành
+Quan hệ: được Technology mở khóa; kết hợp với Task và hỗn hợp Dataset để tạo thành
 Project; Model được xây từ Architecture.
 -->

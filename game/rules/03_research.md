@@ -40,8 +40,9 @@ Trách nhiệm:
 
 <!--
 Tiếng Việt (tóm tắt):
-Kiếm RP: hành động Research tạo ra một tình huống Dilemma với mức nền là 1000 + 500×R-Lv + bonus nhân viên; mỗi Model
-hoàn thành cho Q×10 RP; một số sự kiện tặng RP. RP dồn vào một quỹ chung,
+Kiếm RP: hành động Research tạo ra một tình huống Dilemma với mức nền là
+400 + 200×R-Lv + bonus nhân viên; mỗi Model hoàn thành cho floor(Q)×15 RP;
+một số sự kiện tặng RP. RP dồn vào một quỹ chung,
 không giới hạn.
 
 Mở khóa: là hành động tức thời — trả đủ chi phí RP khi đã sở hữu mọi công

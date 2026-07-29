@@ -39,7 +39,7 @@ mới dùng được, đúng như đời), WMT cho dịch máy, BookCorpus cho d
 | SQuAD | QA | 2 | 5 | Jun 2016 (unlocked) |
 | WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (unlocked) |
 
-Common Crawl and WebText are the only base Size-5 datasets in the game, though the player can combine others to reach Size 5. The LLM Project requires a dataset (or mixture) of Combined Size 5 and Quality ≥ 3.
+Common Crawl and WebText are the only base Size-5 datasets in the game, though the player can combine others to reach Size 5. The LLM Project requires a dataset (or mixture) of Combined Size 5 and Combined Quality ≥ 3.
 
 ## Collectable Domains
 
@@ -47,17 +47,19 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 
 <!--
 Tiếng Việt (tóm tắt):
-Chợ (mua 1 lần/món, tức thời): kho tin tức $500 (news 2/3); đánh giá sản
-phẩm $400 (reviews 2/3); phụ đề phim $600 (dialogue 3/3); dump mạng xã hội
-$800 (social 3/2); crawl mã nguồn mở $700 (code 3/2, từ 1/2015).
+Chợ (mua 1 lần/món, tức thời): kho tin tức, đánh giá sản phẩm, phụ đề phim,
+dump mạng xã hội, tóm tắt PubMed, hợp đồng pháp lý, crawl mã nguồn mở và
+Math StackExchange; dùng đúng giá/ngày/domain/Size/Quality trong bảng.
 
 Miễn phí (nhận 1 lần/món khi mở): Wikipedia dump (encyclopedic 3/4, từ đầu);
-Common Crawl thô (web-mixed 5/1, mở khóa 12/2013); WMT song ngữ (parallel
-3/4, mở khóa 11/2014); SQuAD (QA 2/5, mở khóa 6/2016); WebText (web-mixed 5/2, mở khóa 2/2019).
+Common Crawl thô (web-mixed 5/1, mở khóa 12/2013); BookCorpus (books 4/4,
+mở khóa 1/2014); WMT song ngữ (parallel 3/4, mở khóa 11/2014); SQuAD
+(QA 2/5, mở khóa 6/2016); WebText (web-mixed 5/2, mở khóa 2/2019).
 
-Common Crawl và WebText là 2 dataset Size 5 duy nhất — dự án LLM cần 1 trong 
-2 được làm sạch lên Quality ≥ 3.
+Common Crawl và WebText là hai dataset gốc Size 5 duy nhất, nhưng có thể
+gộp dataset khác để đạt Combined Size 5. Dự án LLM chấp nhận một dataset
+hoặc hỗn hợp có Combined Size 5 và Combined Quality ≥ 3.
 
 Domain thu thập được: news, social, dialogue, reviews, code, encyclopedic,
-web-mixed.
+web-mixed, medical, legal, math, books, logic.
 -->

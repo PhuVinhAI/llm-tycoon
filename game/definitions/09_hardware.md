@@ -7,7 +7,7 @@ Mục đích:
 Định nghĩa khái niệm Hardware (phần cứng tính toán) trong LLM Tycoon.
 
 Tác dụng:
-Thiết lập ý nghĩa thống nhất của Hardware và đơn vị CU trước khi Rules mô tả
+Thiết lập ý nghĩa thống nhất của Hardware và đơn vị TFLOPS trước khi Rules mô tả
 việc mua bán, lắp đặt và tiêu thụ compute.
 
 Trách nhiệm:

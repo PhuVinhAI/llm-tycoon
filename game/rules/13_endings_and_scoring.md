@@ -31,7 +31,7 @@ Trách nhiệm:
 ```
 Score = 3 × Fame
       + 100 × Best Model Q
-      + 500 × models completed (Projects + Contracts)
+      + 500 × (completed Projects + completed Contracts)
       + 100 × floor(Cash ÷ $1,000)
       + WIN only: 4000
       + LLM released during 2019: +1000 (perfect timing)
@@ -41,12 +41,12 @@ Present the ending as a short narrated epilogue, then the final total score, the
 
 <!--
 Tiếng Việt (tóm tắt):
-Ba kết cục: THẮNG "From Home Lab to Headquarters" (nhận Term Sheet sau LLM
-Q ≥ 70);
-"Retirement" (hết 12/2020 chưa thắng); "Burned Out" (phá sản, điểm = 0).
+Hai kết cục: THẮNG "From Home Lab to Headquarters" (nhận Term Sheet sau LLM
+Q ≥ 70; sau màn tổng kết vẫn tiếp tục sandbox) và "Burned Out" (phá sản,
+điểm = 0). Không có kết cục bắt buộc ở 12/2020.
 
 Điểm = 3×Fame + 100×Q của model tốt nhất + 500×số dự án/hợp đồng hoàn thành
-+ 100×⌊Cash/1000⌋ + (chỉ khi THẮNG: 4000 + 200×số tháng còn lại đến 12/2020)
++ 100×⌊Cash/1000⌋ + (chỉ khi THẮNG: 4000)
 + (+1000 nếu phát hành LLM trong năm 2019 — đúng thời điểm vàng).
 
 Trình bày kết cục: đoạn kết ngắn có kể chuyện → tổng điểm cuối cùng → danh

@@ -204,7 +204,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 
 Hard limits:
 
-- Improvised content grants and costs **nothing**: no cash, RP, REP, Q, items, unlocks, opportunities, or penalties may come from it.
+- Improvised content grants and costs **nothing**: no Cash, RP, Fame, Q, items, unlocks, opportunities, or penalties may come from it.
 - Stay consistent with the current Game State and the era knowledge cap.
 - Never enact a real-world development before its Event Calendar date, and never hint at future calendar entries.
 - Flavor lives inside the Output Discipline structure; it never replaces, reorders, or delays the required blocks.
@@ -276,7 +276,7 @@ The resource earned through research and spent to unlock Technologies.
 
 ## Fame (Danh tiếng)
 
-The Company's public standing, ranging from 0 to 5000. Fame gates contracts, hires, and investor interest. (Formerly REP).
+The Company's public standing, ranging from 0 to 5000. Fame gates contracts, hires, and investor interest.
 
 ---
 
@@ -579,7 +579,7 @@ A Technology exists as part of the Game State.
 
 An Architecture is a family of model designs that a Company knows how to train.
 
-An Architecture is granted by owning its corresponding Technology. It defines the baseline capability, the computing requirements, and the data requirements of Models built from it.
+An Architecture is granted by owning its corresponding Technology. It defines the baseline capability, computing requirement, and Baseline Data Size Quality target of Models built from it.
 
 An Architecture is knowledge; a Model is a concrete product built from an Architecture.
 
@@ -592,9 +592,9 @@ An Architecture may be associated with information such as:
 * Identifier (ID)
 * Name
 * Base Quality
-* Compute requirement (CU-months)
+* Compute requirement (TFLOPS-months)
 * Minimum training months
-* Minimum Dataset Size
+* Baseline Dataset Size target
 * Ideal focus allocation
 
 The concrete values are defined in the Content.
@@ -604,7 +604,7 @@ The concrete values are defined in the Content.
 ## Relationships
 
 * An Architecture is granted by a Technology.
-* An Architecture is combined with a Task and a Dataset to form a Project.
+* An Architecture is combined with a Task and a Dataset mixture to form a Project.
 * Models are built from Architectures.
 
 # Task
@@ -727,7 +727,7 @@ The concrete values are defined in the Content.
 
 A Model is a trained artificial intelligence system produced by completing a Project.
 
-A Model is built from one Architecture, targets one Task, and was trained on a Dataset mixture (1 to 3 Datasets). Its overall capability is expressed as Quality (Q, 0.0–100.0).
+A Model is built at one Scale from one Architecture, targets one Task, and was trained on a Dataset mixture (1 to 3 Datasets) with a recorded focus allocation. Its overall capability is expressed as Quality (Q, 0.0–100.0).
 
 A completed Model is released at most once: open-sourced, licensed, or launched as a product.
 
@@ -739,9 +739,12 @@ A Model may be associated with information such as:
 
 * Name
 * Architecture
+* Scale
 * Task
-* Dataset(s) used
+* Dataset name(s) and Domain(s) used
+* Focus allocation (Data / Model / Training / Eval)
 * Quality (Q)
+* Remaining Artifacts
 * Reception
 * Release type
 * Completion date
@@ -752,7 +755,7 @@ A Model may be associated with information such as:
 
 * A Model is owned by a Company.
 * A Model is produced by a Project.
-* A Model may generate Cash, REP, or an Income Stream upon release.
+* A Model may generate Cash, Fame, or an Income Stream upon release.
 * A Model may be submitted to a Competition.
 * A Model exists as part of the Game State.
 
@@ -764,7 +767,7 @@ A Model may be associated with information such as:
 
 A Project is a multi-month commitment by a Company to build a Model.
 
-A Project is declared with a fixed plan: an Architecture, a Task, a Dataset, a number of months, and a focus allocation. Once started, the committed months fill the Company's main activity until the Project completes or is cancelled.
+A Project is declared with a fixed plan: an Architecture, a Scale, an optional inherited Model, a Task, a Dataset mixture of 1 to 3 Datasets, a number of months, and a focus allocation. Once started, the committed months fill the Company's main activity until the Project completes or is cancelled.
 
 The special endgame effort to train the first Large Language Model is also a Project, with additional requirements defined by the Rules.
 
@@ -776,11 +779,14 @@ A Project may be associated with information such as:
 
 * Model name
 * Architecture
+* Scale
+* Optional inherited Model
 * Task
-* Dataset
+* Dataset mixture (1 to 3 Datasets)
 * Committed months and months elapsed
 * Focus allocation (Data / Model / Training / Eval)
-* Compute accumulated (CU-months)
+* Compute accumulated (TFLOPS-months)
+* Whether the one-time midpoint Dilemma evaluation is done
 
 ---
 
@@ -841,18 +847,18 @@ The concrete values are defined in the Content.
 
 ## Order of operations — every month, in this exact order
 
-1. **Events** — check the Event Calendar (Content) for entries matching the current month, plus any threshold events whose condition became true (REP thresholds, releases). Fire them and apply their effects.
-2. **Action** — apply this month's main action (or the next committed month of an active Project/Contract).
+1. **Events** — check the Event Calendar (Content) for entries matching the current month, plus any threshold events whose condition became true (Fame thresholds, releases). Fire them and apply their effects.
+2. **Action** — apply this month's main action (including the next committed month of an active Project, Contract, or Paper).
 3. **Streams** — pay out all active Income Streams.
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
-5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75.0) or 2 (if Q < 75.0). Announce this data collection in the ledger.
+5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Paper publication, and Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task ID]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75.0) or 2 (if Q < 75.0). Announce this data collection in the ledger.
 6. **Checks** — bankruptcy, win and lose conditions.
 7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
 
 ## Committed Months (Step-by-Step)
 
 - When a Project, Contract, or Paper is active, it does **not** auto-advance. The Player must manually choose the "Continue Project/Contract/Paper" main action each month.
-- Mid-way through a Project, Contract, or Paper (when `months elapsed == floor(M ÷ 2)`), the game pauses for a Dilemma.
+- For a Project or Contract with `M ≥ 2`, evaluate its midpoint once when `months elapsed == floor(M ÷ 2)`. A Paper evaluates its Dilemma once at month 1. Every commitment tracks `dilemma_done`; changing `M` never triggers a second evaluation.
 - This returns the Player to the Dashboard every month, allowing them to perform instant actions (buy hardware, hire staff, check the market, etc.) while the commitment is ongoing.
 - The Action Menu (S5) dynamically updates to lock out other main actions until the commitment completes or is cancelled.
 
@@ -864,9 +870,9 @@ The concrete values are defined in the Content.
 |---|---|
 | 💼 **Freelance** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base Pay` = $3,800 + $100 × floor(Fame ÷ 500).<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = Turn % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. |
 | 🔬 **Research** | Generates an Era-aware Dilemma (Content).<br>1. Calculate `Base RP` = 400 + 200 × R-Lv + staff bonuses.<br>2. Determine **Era Theme** based on the current Year.<br>3. Select **Complication** `Y` = (Turn + 3) % 6.<br>4. Pause the game. Use Creative License to output a short story combining the Era Theme and Complication, then present Choice 1 and Choice 2 (with exact calculated yields).<br>5. Wait for the Player's choice and apply the outcome. Increments the `research` counter by 1 (plus any bonus from the choice). |
-| 🏗️ **Start/Continue Project** | Start a new Project (advances month 1) or advance an active Project by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and evaluate Project Synergy to potentially trigger a Dilemma (see Model Projects). |
-| 📜 **Accept/Continue Contract** | Accept a new Contract (advances month 1) or advance an active Contract by one month. If `months elapsed == floor(M ÷ 2)` (and M ≥ 2), pause and trigger a Contract Dilemma (see Contracts). |
-| 📝 **Start/Continue Paper** | Start a new Paper (advances month 1; cancels active Product stream) or advance an active Paper by one month. At `months elapsed == floor(M ÷ 2)`, pause and trigger a Paper Dilemma (see Academic Papers). |
+| 🏗️ **Start/Continue Project** | Start a new Project (advances month 1) or advance an active Project by one month. At the midpoint, evaluate Project Synergy at most once and record `dilemma_done=yes` (see Model Projects). |
+| 📜 **Accept/Continue Contract** | Accept a new Contract (advances month 1) or advance an active Contract by one month. At the midpoint, trigger at most one Contract Dilemma and record `dilemma_done=yes` (see Contracts). |
+| 📝 **Start/Continue Paper** | Select an eligible Model and start a Paper (applies its release-specific immediate consequences and advances month 1), or advance an active Paper by one month. At month 1, trigger its single Paper Dilemma and record `dilemma_done=yes` (see Academic Papers). |
 | 📦 **Collect dataset** | Create a Dataset in a chosen Domain: Size 2, Quality 2. SCRAPE technology → Size 3. Staff effects apply (Content). |
 | 🧹 **Clean dataset** | One owned Dataset: Quality +1 (max 5). |
 
@@ -964,6 +970,7 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 | Open-source release | reception Fame × 2 (replaces the normal reception Fame) |
 | Contract completed / cancelled | +100 / −200 |
 | Project cancelled | −100 |
+| Academic Paper completed / cancelled | +300 / −100 (before any separate Dilemma or release-specific effects) |
 | Competition won | per the competition (Content) |
 | Event-granted | per the event (Content) |
 
@@ -993,13 +1000,13 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 ## Usage
 
 - A Project uses **1 to 3 Datasets** (a Data Mixture). The Datasets are not consumed — they can be reused (but see the repeat penalty in Model Projects).
-- A Project requires the **Combined Size** (Max Size + Count - 1) to be ≥ the Architecture's minimum Size (Content).
+- **Combined Size** = Max Size + Count − 1 (cap 5), and **Combined Quality** = floor(Average Quality). Architecture Baseline Data Size and Scale Ideal Data Size affect Quality; they are not hard start requirements. The LLM Project's explicit Combined Size 5 and Combined Quality ≥ 3 requirements remain hard.
 
 # Hardware
 
 ## Slots
 
-- The home lab has **4 slots**. A one-time upgrade — *Rewire the lab*, $2,000, available any time — raises it to **8 slots**.
+- The home lab has **4 slots**. A one-time upgrade — *Rewire the lab*, $4,000, available any time — raises it to **8 slots**.
 - Each piece of Hardware occupies the slots listed in the Content.
 
 ## Compute & Capacity
@@ -1014,18 +1021,20 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 ## Buying and selling
 
 - Buying (instant): any shop item whose availability date has passed (Content). Upkeep starts the month of purchase (Economy rule).
-- Selling (instant): returns 50% of the purchase price. Not allowed during an active Project.
+- Selling (instant): returns 50% of the purchase price. Not allowed during an active Project, and never allowed if the sale would make installed Hardware VRAM lower than the Inference VRAM reserved by active Product streams.
 
 ## Cloud rental (available per the Event Calendar)
 
 - $1,000 per month per **+1000 TFLOPS** unit (+120 GB VRAM); maximum 2 units.
-- May only be active during Project months; deactivates automatically when the Project ends.
+- Cloud rental may be activated while a Project is active, or in the same instant-action chain immediately before starting a Project. If that Project fails validation or is not started in the same reply, cancel the activation with no charge.
+- Cloud rental supplies compute and VRAM only during months whose main action starts or continues that Project. It is inactive and costs nothing during forced Freelance pauses.
+- It deactivates before release choices when the Project ends. Cloud VRAM can never satisfy the persistent Inference VRAM reservation of a Product.
 
 # Model Projects
 
 ## Declaring a Project (the start wizard)
 
-The Player declares, in one instant action:
+The Player may fill or revise the wizard without advancing time. Confirming a valid declaration **starts the Project as this month's main action and immediately advances month 1**. The declaration contains:
 
 1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Total TFLOPS/mo ≥ 100 (Hardware rule).
 2. **Scale (Parameter Tier)** — Defines the size of the model. The Company must have enough **Available VRAM** to start the Project.
@@ -1034,14 +1043,16 @@ The Player declares, in one instant action:
    - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
    - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
    - **Frontier (100B+):** 320 GB VRAM req. Compute req ×20.0. Ideal Data Size 5. *(Only available if `llm_unlocked` flag is true).*
-3. **Inherit (Optional)** — Name of a previously completed Model (must be TRF or PTRF architecture). If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
+3. **Inherit (Optional)** — Available only when the selected Architecture is TRF or PTRF. Name a previously completed Model whose Architecture is also TRF or PTRF. If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
-6. **Months (M)** — at least the adjusted minimum months.
+6. **Months (M)** — at least the adjusted minimum months. Apply FINE and Inherit minimum-month reductions cumulatively, with a final minimum of 1.
 7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
 8. **Name** — the Model's name.
 
 **Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously **analyzed** a Model (via the Portfolio action) with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have **analyzed** a Model using a specific Domain for a Task, reveal the Domain fit. Otherwise, keep it strictly hidden.
+
+Architecture `Baseline Data Size` and Scale `Ideal Data Size` are Quality targets, not hard start Requirements. A normal Project may start below either target and suffer the formula's missing bonus or Data Starvation penalty; do not warn about those hidden consequences. The LLM Project's explicit Combined Size 5 and Combined Quality ≥ 3 requirements remain hard.
 
 Validate every requirement before starting; if any fails, refuse with the reason and do not start.
 
@@ -1053,16 +1064,23 @@ During every Project month, the raw training process generates output anomalies 
 
 When `months elapsed == M`, if `Artifacts > 0`, the Project enters the **Fine-Tuning Phase**. The engine pauses and presents a Dilemma (S10):
 - **Option 1: Release Base Model.** The project completes immediately. `Q` suffers a penalty of `-floor(Artifacts ÷ 2)` due to raw, unaligned outputs.
-- **Option 2: Fine-Tune (1 month).** Extends `M` by 1. The next month's action is dedicated to fine-tuning, which reduces `Artifacts` by `8 + (3 × E-Lv)`. At the end of that month, if `Artifacts > 0`, this Dilemma repeats; if `Artifacts ≤ 0`, the Project completes automatically.
+- **Option 2: Fine-Tune (1 month).** Extends `M` by 1. The next month's action is dedicated to fine-tuning; it generates no new Artifacts and reduces existing `Artifacts` by `8 + (3 × E-Lv)`. At the end of that month, if `Artifacts > 0`, this Dilemma repeats; if `Artifacts ≤ 0`, set Artifacts to 0 and the Project completes automatically.
 
 ## Project Dilemmas (Mid-Project)
 
 When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine calculates its **Synergy Score**:
 `Synergy = Match(Arch × Task) + Domain fit + Focus score`
 
+For this mid-project calculation, use a single **Project Domain Fit** on the original −3/0/+3 scale (do not use the per-Benchmark ±20 values from the completion formula):
+- **+3:** at least one selected Dataset is `user-logs` for this Task, or its Domain matches a Target Domain of at least one applicable Benchmark available by the current date.
+- **0:** there is no applicable official Benchmark, or no direct match exists but at least one selected Dataset is `web-mixed`.
+- **−3:** applicable Benchmarks exist and every selected Dataset mismatches all of their Target Domains.
+
 - If **Synergy ≥ 16**, trigger a **Breakthrough** dilemma (Content / Project Dilemmas).
 - If **Synergy ≤ 8**, trigger a **Complication** dilemma (Content).
 - If 9–15, the project proceeds smoothly with no interruption.
+
+The mid-project Dilemma is evaluated **at most once per Project**. Store `dilemma_done=yes` as soon as the evaluation occurs, even when Synergy 9–15 produces no Dilemma. A later change to `M` never evaluates it again.
 
 When triggered, pause the game, render the Dilemma (S10), and wait for the Player's choice. The resulting `q_mod` is added to the Project's state and applied at completion. `M +1` increases the total committed months.
 
@@ -1075,7 +1093,7 @@ Compute scores silently at completion. Never reveal the formula or exact breakdo
 Base Points = Base(Architecture)                … Content: architectures table
             + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15 | Frontier: +25
             + (2 × Combined Dataset Quality)
-            + 5                                 … Combined Size meets the Architecture's minimum
+            + 5                                 … Combined Size meets the Architecture's Baseline Data Size
             − 20 if Data Starvation             … Combined Size is LESS than the Scale's Ideal Data Size
             + Compute score                     … see below
             + Focus score                       … see below
@@ -1084,7 +1102,7 @@ Base Points = Base(Architecture)                … Content: architectures table
             + q_mod                             … from Project Dilemmas
             − floor(Artifacts ÷ 2)              … Penalty if released with remaining Artifacts
             − 15 if Catastrophic Forgetting     … Dataset Count > 1 AND Architecture is below TRF
-            − 15 if repeat                      … same Arch + Task + Dataset(s) as previous Model
+            − 15 if repeat                      … same Arch + Task + unordered set of Dataset(s) as previous Model
 ```
 
 *Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
@@ -1098,10 +1116,12 @@ Benchmark Score = Base Points
                 + Domain Fit                       … see below
 ```
 *Domain Fit logic for each Benchmark:*
-- If ANY Dataset's Domain is `user-logs` AND its Name contains the current Project's Task ID: **+20** (Perfect closed-loop data)
-- If ANY of the Datasets' Domains are in the Benchmark's `Target Domains`: **+20**
-- If ANY of the Datasets' Domains are `web-mixed` (General knowledge): **+5**
-- Any other mismatch: **−15**
+- Apply the first matching condition below; these values are mutually exclusive and never summed.
+- If ANY Dataset's Domain is `user-logs` AND its Name contains the current Project's Task ID: **+20** (Perfect closed-loop data).
+- Otherwise, if ANY Dataset Domain is in the Benchmark's `Target Domains`: **+20**.
+- Otherwise, if ANY Dataset Domain is `web-mixed` (general knowledge): **+5**.
+- Otherwise: **−15**.
+- For the fallback `Internal QA Metric` used when no official Benchmark exists, Domain Fit is **0**.
 
 *Clamp each Benchmark Score between 0.0 and 100.0, rounded to 1 decimal place.*
 
@@ -1109,7 +1129,7 @@ Benchmark Score = Base Points
 - **Q** = Average of all `Benchmark Scores` (floor 0.0, cap 100.0, rounded to 1 decimal place).
 - *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15.0)`.
 - When rendering the UI (S6), display each Benchmark's score.
-- Identify the current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content). The Game Engine must select the most recent rival whose `Date` is ≤ the current in-game Month and Year. Display a comparison.
+- For each official Benchmark, identify its current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content): select the most recent row for that exact Benchmark whose `Date` is ≤ the current in-game Month and Year. If none exists, display `N/A`. `Internal QA Metric` always has no rival.
 - The Engine uses Creative License to write a 1–2 sentence **Internal Analysis** quote. **Crucially**, this quote MUST: 1) Briefly explain what the benchmark actually measures in simple layman's terms, and 2) Provide a technical analysis comparing the Player's local test results against the public SOTA.
 
 ## Reception & Fame
@@ -1131,7 +1151,7 @@ Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge ga
 
 A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40.0) may only be open-sourced or shelved.
 
-**The Market Hype Cycle:** When releasing a Model (License or Product), the Engine checks the **Historical SOTA** table for the closest Rival release targeting the *same Task* (mapping Benchmark to Task). Let **R** be the Rival's release date.
+**The Market Hype Cycle:** When releasing a Model (License or Product), map each Historical SOTA row through its Benchmark's Applicable Tasks and keep rows matching the Model's Task. Choose the row whose release date has the smallest absolute month distance from the current release month; a tie chooses the earlier date, then the row appearing first in the table. This lookup may use future rows for timing mechanics, but must never reveal or foreshadow them. Let **R** be that Rival's release date. If no row matches the Task, use normal market rules (no Hype Cycle window).
 1. **First-Mover (Build-up):** If released between `R - 3 months` and `R - 1 month` (inclusive). The market is starved. **Multiplier: Cash/Income × 2.0**.
 2. **The Clash (Head-to-head):** If released in exactly month `R` or `R + 1 month`. Direct comparison. Cash is normal (× 1.0). **Bonus:** If the Player's Q > the Rival's SOTA Score, award **+1000 Fame** for beating Big Tech.
 3. **Saturated (Late-comer):** If released between `R + 2 months` and `R + 7 months`. The market is dominated by the Rival. **Multiplier: Cash/Income × 0.5**.
@@ -1139,7 +1159,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 
 *Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q (formatted to 1 decimal place), SOTA status, and any remaining Artifacts.
 
-*SOTA Hype:* If the Model's score strictly exceeded the SOTA Rival's score on *at least one* Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release.
+*SOTA Hype:* If the Model's Benchmark Score strictly exceeded the corresponding dated SOTA Rival's score on *at least one* official Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release. A Benchmark with rival `N/A` cannot grant SOTA Hype.
 *Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
 *Paper Limitation:* If a `Shelved` model has been published via an Academic Paper (`pub=yes`), it may **only** be released as Open-source (proprietary tech is already leaked).
 
@@ -1147,7 +1167,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 |---|---|
 | 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
 | 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40.0 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000 and Q ≥ 55.0. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Reserves **Inference VRAM** = Scale VRAM Req ÷ 2 (minimum 1GB). (Track Task, Q, and reserved VRAM in stream to generate User Logs upon expiry). If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
+| 📈 **Product** | Requires Fame ≥ 1000, Q ≥ 55.0, and enough unreserved **installed Hardware VRAM** after cloud deactivation to reserve **Inference VRAM** = Scale VRAM Req ÷ 2 (minimum 1 GB). Cloud VRAM cannot satisfy this persistent reservation. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Track Task, Q, and reserved VRAM in the stream to generate User Logs upon expiry. If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
 | 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
 
 ## Post-Mortem Analysis (Portfolio)
@@ -1166,23 +1186,24 @@ The Player can view their Portfolio (S15) and ask to **Analyze** any completed M
 ## Availability
 
 - Contracts unlock when the Company's Fame reaches their threshold AND the current in-game date is ≥ their Date requirement (Content). The engine announces newly available Contracts in the Events step.
-- Each Contract may be completed **once**. At most **one** Contract (or Project) is active at a time (Actions rule).
+- Each Contract may be completed **once**. At most one Contract, Project, or Paper is active at a time (Actions rule).
 
 ## Accepting and working
 
-- Accepting is instant; requirements (Technologies, Datasets) are checked at acceptance and must all hold.
-- The listed months become committed Contract months. The Player must manually execute the "Continue Contract" action each month.
+- Browsing and selecting a Contract for validation is instant. Confirming a valid Contract **accepts it as this month's main action and immediately advances month 1**; requirements (Technologies, Datasets) are checked before confirmation and must all hold.
+- The listed months become committed Contract months. After month 1, the Player must manually execute the "Continue Contract" main action for each remaining month.
 
 ## Mid-Contract Dilemmas
 
-When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine pauses and presents a **Contract Dilemma** (Content). 
+When a Contract first reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine marks `dilemma_done=yes`, pauses, and presents a **Contract Dilemma** (Content). Each Contract evaluates this midpoint exactly once; changing `M` never triggers it again.
 - Render the Dilemma (S10) and wait for the Player's choice. 
 - The outcome may modify the total months (`M`), the final payment (`Pay`), or grant immediate Cash/Fame. Track any `Pay` modifier (`pay_mod`) in the Game State.
+- Every `Pay ±x%` modifier is `±x%` of the Contract's listed base pay. At completion calculate `listed base pay × 1.2` when the bonus Technology is owned, then add the signed dilemma percentage of the unmodified listed base pay, then round to the nearest dollar.
 
 ## Completion & Payout
 
 - **No partial payments:** The Company receives $0 during the intermediate months of a Contract.
-- **On the final month:** When the final committed month is completed, the client pays the listed amount in full (plus or minus any modifier from the Mid-Contract Dilemma). If the Company owns the listed bonus Technology, base pay × **1.2** (calculate multiplier on base pay before adding/subtracting dilemma modifiers).
+- **On the final month:** When the final committed month is completed, the client pays the final amount defined above. No other multiplier or retroactive payment applies.
 - Fame +100. The Contract counts toward E-Lv (Skills rule).
 - Cancelling mid-contract: Fame −200, no pay (Actions rule).
 
@@ -1191,7 +1212,7 @@ When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the eng
 ## Generation & Hiring
 
 - **Headhunter Search:** Hiring is an instant action initiated from the Team menu. The Player pays the Archetype's Headhunter Fee (Content). The game pauses and generates exactly **3 candidates** for that Archetype.
-- **Generation:** Using Creative License, invent a name, gender, and brief background for each candidate that naturally fits the player's chosen language. To remain deterministic, select exact Salary and Effect values within the bounds (Content) based on the current in-game Turn, ensuring a fixed trade-off: Candidate 1 (Low Salary/Stats), Candidate 2 (Mid Salary/Stats), Candidate 3 (High Salary/Stats).
+- **Generation:** Using Creative License, invent a name and brief background for each candidate that naturally fits the player's chosen language; those flavor details have no mechanical effect. Mechanical values are deterministic: Candidate 1 uses every minimum Salary/stat bound, Candidate 2 uses the midpoint of every bound (round half up to a whole number), and Candidate 3 uses every maximum bound. A fixed effect with no range is identical for all three. Always present them in that order: Low Salary/Stats, Mid Salary/Stats, High Salary/Stats.
 - **The Interview:** Render the Interview screen (S16). The Player must choose 1 candidate to hire, or 0 to reject all. The Headhunter Fee is **never refunded**, even if no one is hired.
 - Maximum **2** Employees at a time — the lab is one small room. The Engine must block searches if the lab is full.
 - Salary is paid starting from the month of hire (Economy rule).
@@ -1203,6 +1224,7 @@ When a Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the eng
 ## Effects
 
 - Each Employee's generated effects apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
+- When multiple Employees apply, add all flat RP, Q, or Dataset Quality bonuses. Multiply all compute-requirement multipliers, then round the final requirement up to the nearest whole TFLOPS-month. Dataset Quality remains capped at 5.
 
 # Events and Competitions
 
@@ -1235,12 +1257,12 @@ The LLM Project is a special Model Project: pretraining a large language model o
 - **SCALE** technology owned (which implies PRET and the PTRF Architecture).
 - A Dataset mixture (or single dataset) with **Combined Size 5** and **Combined Quality ≥ 3**.
 - **Available VRAM ≥ 320 GB** (Requires massive Cloud rental).
-- Committed months **M ≥ 4**, with projected compute TFLOPS/mo × M ≥ **60,000 TFLOPS-months** (staff compute reductions apply). The engine validates the projection before starting.
+- Committed months **M ≥ 4**, with projected compute `TFLOPS/mo × M` meeting the adjusted LLM compute requirement defined below. The LLM's `M ≥ 4` overrides all minimum-month reductions. The engine validates the projection before starting.
 - **$20,000** upfront infrastructure cost, paid at start.
 
 ## Quality
 
-- Use the PTRF row of the architectures table, but with compute requirement **60,000** TFLOPS-months.
+- Use the PTRF row, but set the LLM's compute requirement to **60,000 TFLOPS-months before Data Mixture, Inherit, and Employee multipliers**. This replaces the normal `PTRF requirement × Frontier scale multiplier`; do **not** multiply 60,000 by Frontier ×20 again. Apply the usual Data Mixture multiplier, optional Inherit ×0.5, and all Employee compute multipliers, then round the final requirement up to a whole TFLOPS-month.
 - Task = **LLM (general)**: Match +10; Demand per the market table's LLM row.
 - The Scale choice is fixed to **Frontier** (which grants a special **+25 LLM scale bonus** to the Base Points formula).
 
@@ -1253,7 +1275,8 @@ The LLM Project is a special Model Project: pretraining a large language model o
 | < 55.0 | A very expensive lesson: Fame −300, RP +2000. |
 
 - **Permanent Unlock:** Completing The LLM Project (regardless of Q) permanently unlocks the **LLM (general)** Task for standard Model Projects. The Engine must record the flag `llm_unlocked` in the Game State (and SAVE block) to track this.
-- The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual if the same Dataset is reused.
+- After resolving the outcome table (including the Term Sheet choice at Q ≥ 70), finish normal Model completion and present the legal Release choices. The Term Sheet does not itself release the LLM.
+- The LLM may be retried any number of times: better data cleaning, more compute, FINE/BPE technologies, and higher E-Lv all raise Q. The repeat penalty applies as usual to the same Architecture + Task + unordered Dataset mixture.
 - Name the model — this is the game's namesake moment.
 
 # Endings and Scoring
@@ -1270,7 +1293,7 @@ The LLM Project is a special Model Project: pretraining a large language model o
 ```
 Score = 3 × Fame
       + 100 × Best Model Q
-      + 500 × models completed (Projects + Contracts)
+      + 500 × (completed Projects + completed Contracts)
       + 100 × floor(Cash ÷ $1,000)
       + WIN only: 4000
       + LLM released during 2019: +1000 (perfect timing)
@@ -1285,21 +1308,22 @@ Present the ending as a short narrated epilogue, then the final total score, the
 - A Model is eligible for a Paper if it has **Q ≥ 60.0** and has not yet been published (`pub=no`).
 
 ## Starting a Paper
-- Starting a Paper is an instant action from S17.
-- **Commitment:** Writing a Paper takes exactly **2 committed months** (`M = 2`).
+- Choosing a Model in S17 prepares the selection, but **starting the Paper is a main action**. It immediately advances month 1 of the commitment; it is not an instant action.
+- **Commitment:** Writing a Paper begins with exactly **2 committed months** (`M = 2`).
 - **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
-  - **Product:** The active Income Stream is immediately **cancelled**. Furthermore, giving away proprietary commercial IP angers investors: **Fame −300**.
+  - **Product:** If its Income Stream is still active, that Model's stream is immediately **cancelled**, forfeiting all remaining payouts and its future User Logs. Furthermore, giving away proprietary commercial IP angers investors: **Fame −300**.
   - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
   - **Open-source / Shelved:** Safe to publish. No immediate penalties.
 
 ## Mid-Paper Dilemmas
-- When a Paper reaches `months elapsed == 1` (which is `floor(M ÷ 2)`), the engine pauses and presents a **Paper Dilemma** (Content).
+- When a Paper reaches `months elapsed == 1`, mark `dilemma_done=yes`, pause, and present a **Paper Dilemma** (Content). This happens exactly once; a later change to `M` never triggers another Paper Dilemma.
 - Render the Dilemma (S10) and wait for the Player's choice.
 - The outcome may modify the total months (`M`), the final RP multiplier/bonus, or grant immediate Cash/Fame. Track any RP modifiers in the Game State.
+- At completion, calculate base RP = `Q × 40`, apply the dilemma multiplier first, then add any flat Final RP bonus, and round half up to a whole RP.
 
 ## Completion
 - On the final month, the Paper is published.
-- **Yield:** The Company receives **RP = Q × 40** and **Fame +300**. (Apply any modifiers from the Dilemma).
+- **Yield:** The Company receives the final RP calculated above and **Fame +300**.
 - The Model is permanently marked as `published` and cannot be used for a Paper again.
 - Cancelling mid-paper: Fame −100, no RP (Actions rule).
 
@@ -1331,8 +1355,8 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 
 # Architectures
 
-| ID | Architecture | Base Q | TFLOPS-months req | Min months | Min Dataset Size | Ideal Focus D/M/T/E |
-|---|---|---|---|---|---|---|---|---|
+| ID | Architecture | Base Q | TFLOPS-months req | Min months | Baseline Data Size | Ideal Focus D/M/T/E |
+|---|---|---|---|---|---|---|
 | NGRAM | N-gram LM | 15 | 0 | 1 | 1 | 4/2/1/3 |
 | BOW | Bag-of-Words + Classic ML | 20 | 0 | 1 | 1 | 4/3/1/2 |
 | EMB | Embedding-based | 18 | 100 | 1 | 2 | 3/3/2/2 |
@@ -1344,7 +1368,8 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 | PTRF | Pretrained Transformer | 55 | 3000 | 4 | 5 | 3/2/4/1 |
 
 - Architectures with TFLOPS-months req 0 train on the starting desktop PC; all others are neural (GPUT + TFLOPS ≥ 100 required).
-- The LLM Project overrides PTRF's compute requirement to 60,000 TFLOPS-months (Rules).
+- `Baseline Data Size` is a Quality target, not a hard start Requirement. Falling below it forfeits the +5 Base Points bonus; Scale Ideal Data Size may separately cause Data Starvation.
+- The LLM Project uses a special final pre-modifier compute requirement of 60,000 TFLOPS-months instead of applying Frontier ×20 to PTRF a second time (Rules).
 
 # Tasks and Matching
 
@@ -1385,23 +1410,25 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 
 Demand multiplies sale income (refer to the Model Projects rule for the exact formulas).
 
-| Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 |
-|---|---|---|---|---|
-| CLS | 2 | 2 | 1 | 1 |
-| AUTO | 1 | 2 | 2 | 2 |
-| TRANS | 1 | 2 | 2 | 1 |
-| CHAT | 1 | 2 | 2 | 3 |
-| SUMM | 1 | 1 | 2 | 2 |
-| QA | 1 | 1 | 2 | 2 |
-| CODE | 1 | 1 | 1 | 2 |
-| LLM (general) | — | — | 2 | 3 |
+| Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 | 2021+ sandbox |
+|---|---|---|---|---|---|
+| CLS | 2 | 2 | 1 | 1 | 1 |
+| AUTO | 1 | 2 | 2 | 2 | 2 |
+| TRANS | 1 | 2 | 2 | 1 | 1 |
+| CHAT | 1 | 2 | 2 | 3 | 3 |
+| SUMM | 1 | 1 | 2 | 2 | 2 |
+| QA | 1 | 1 | 2 | 2 | 2 |
+| CODE | 1 | 1 | 1 | 2 | 2 |
+| LLM (general) | — | — | 2 | 3 | 3 |
 
 Event overrides (Event Calendar) apply on top of this table — e.g., the chatbot craze, the AlphaGo hype multiplier, and the post-BERT paradigm shift.
+
+The `2021+ sandbox` column is a fixed fallback, not a forecast. Continue applying all permanent Events already fired by December 2020, but never invent later real-world market events or future technologies.
 
 # Hardware Shop
 
 | Available from | Item | Price | TFLOPS/mo | VRAM | Slots |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 | start | GTX 780 | $1,500 | 100 | 3 GB | 1 |
 | Sep 2014 | GTX 980 | $2,500 | 200 | 4 GB | 1 |
 | Jun 2016 | GTX 1080 | $5,000 | 400 | 8 GB | 1 |
@@ -1443,7 +1470,7 @@ Event overrides (Event Calendar) apply on top of this table — e.g., the chatbo
 | SQuAD | QA | 2 | 5 | Jun 2016 (unlocked) |
 | WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (unlocked) |
 
-Common Crawl and WebText are the only base Size-5 datasets in the game, though the player can combine others to reach Size 5. The LLM Project requires a dataset (or mixture) of Combined Size 5 and Quality ≥ 3.
+Common Crawl and WebText are the only base Size-5 datasets in the game, though the player can combine others to reach Size 5. The LLM Project requires a dataset (or mixture) of Combined Size 5 and Combined Quality ≥ 3.
 
 ## Collectable Domains
 
@@ -1465,7 +1492,7 @@ news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, 
 
 ## Mid-Contract Dilemmas
 
-Triggered when an active Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2). Flavor direction is determined by `Turn % 4`:
+Triggered at most once, when an active Contract first reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2). Flavor direction is determined by `Turn % 4`:
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
@@ -1476,7 +1503,7 @@ Triggered when an active Contract reaches `months elapsed == floor(M ÷ 2)` (for
 
 # Employee Archetypes
 
-Instead of fixed characters, the Player must pay a Headhunter Fee to search for an Archetype. The Engine then generates **3 unique candidates** for that Archetype. The Engine uses Creative License to invent a name and background fitting the player's language. To remain deterministic, the Engine must select exact stats within the bounds below based on the current in-game Turn (e.g., higher turn = higher stats/salary), ensuring the 3 candidates offer fixed trade-offs: Candidate 1 (Low Salary, Low Stats), Candidate 2 (Mid Salary, Mid Stats), Candidate 3 (High Salary, High Stats).
+Instead of fixed characters, the Player must pay a Headhunter Fee to search for an Archetype. The Engine then generates **3 unique candidates** for that Archetype. The Engine uses Creative License to invent a name and background fitting the player's language. Mechanical values never depend on flavor or Turn: Candidate 1 uses every minimum bound, Candidate 2 uses every midpoint (round half up), and Candidate 3 uses every maximum bound. Fixed effects are identical for all three.
 
 | Archetype | Fame ≥ | Headhunter Fee | Salary/mo Range | Stat Bounds |
 |---|---|---|---|---|
@@ -1565,6 +1592,7 @@ This table provides the generation data for Freelance events. The Engine invents
 | 2015–2016 | **Early Deep Learning** | Word embeddings, sentiment analysis for brands, basic translation. Clients throw around the buzzword "Deep Learning" but lack data. |
 | 2017–2018 | **The Chatbot Craze** | Everyone wants a chatbot, sequence-to-sequence customer support, VC hype. Highly unrealistic expectations. |
 | 2019–2020 | **Transformer Era** | Text generation, auto-writing SEO, massive API wrappers. Clients ask for "human-like" text and massive scale. |
+| 2021+ sandbox | **Mature Transformer Market** | Continue the 2020 market context using only technologies and historical developments already present in the Game State. Do not invent later real-world products, companies, or events. |
 
 **Axis 2: The Complication (Mechanics - selected by Y = Turn % 6)**
 | Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
@@ -1587,11 +1615,12 @@ This table provides the generation data for Research events. The Engine invents 
 | 2015–2016 | **Neural Struggles** | RNNs, LSTMs, vanishing gradients, CUDA out-of-memory errors, early TensorFlow bugs. |
 | 2017–2018 | **Attention & Scale** | Attention matrices, parallelizing across GPUs, reading ArXiv daily, PyTorch migrations. |
 | 2019–2020 | **Pre-training** | Scaling laws, massive datasets, tokenization edge cases, multi-node cluster optimization. |
+| 2021+ sandbox | **Scaling & Refinement** | Continue exploring pre-training, data quality, tokenization, efficiency, and already-unlocked techniques. Do not introduce real-world discoveries after December 2020. |
 
 **Axis 2: The Complication (Mechanics - selected by Y = (Turn + 3) % 6)**
 | Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
-| 0 | **The Rabbit Hole** | Stick to the goal.<br>Yield: `Base RP` | Go deep into the theory.<br>Yield: `Base RP × 0.8`, `R-Lv counter +1` |
+| 0 | **The Rabbit Hole** | Stick to the goal.<br>Yield: `Base RP` | Go deep into the theory.<br>Yield: `Base RP × 0.8`, `research counter +1 additional` |
 | 1 | **The Shortcut** | Do it right.<br>Yield: `Base RP` | Skip the math, use a pre-built library.<br>Yield: `Base RP × 1.3`, `Fame −50` |
 | 2 | **Side Discovery** | Ignore it and focus.<br>Yield: `Base RP` | Publish a minor paper.<br>Yield: `Base RP × 0.6`, `Fame +150` |
 | 3 | **Compute Hog** | Optimize the code first.<br>Yield: `Base RP` | Brute force it with rented cloud.<br>Yield: `Base RP × 1.4`, `Cash −$1,000` |
@@ -1670,7 +1699,7 @@ Flavor direction determined by `Turn % 4`:
 
 When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-Do not pad or fill the list. Show exactly as many Benchmarks as are available. (If 0 Benchmarks exist for a Task at the current date, use a single "Internal QA Metric" to calculate Q).
+Do not pad or fill the list. Show exactly as many Benchmarks as are available. If 0 official Benchmarks exist for a Task at the current date, use one `Internal QA Metric`; it has Domain Fit **0** and no SOTA Rival, so display `N/A` instead of inventing a comparison.
 
 ## 1. Official Benchmarks
 
@@ -1701,7 +1730,7 @@ Do not pad or fill the list. Show exactly as many Benchmarks as are available. (
 | MMLU | Sep 2020 | LLM (general) | encyclopedic, medical, legal, math |
 
 ## 2. Public Reviewers (For Release)
-When a Model is officially released (Open-source, License, or Product), the Game Engine must deterministically select exactly **4** of these sources (based on the Model's ID or current Date) to generate the Public Reception reviews (S6-B).
+When a Model is officially released (Open-source, License, or Product), build the eligible list below in displayed order, excluding sources not yet available, and index it from `0` to `N − 1`. Let `start = (Model completion ordinal + current Turn) mod N`, where the first completed Model has ordinal 1. Select four consecutive sources beginning at zero-based index `start`, wrapping to the beginning. This deterministically selects exactly **4 distinct** sources.
 - **ArXiv Peer Review** (Academic perspective)
 - **r/MachineLearning** (Practitioner perspective)
 - **HackerNews** (Startup/Tech perspective)
@@ -1762,7 +1791,7 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 44.0 |
 | Oct 2020 | Human Evaluation | BlenderBot (Meta) | 85.1 |
 
-*(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50.0`).*
+If no dated Rival entry exists for an applicable official Benchmark, display `N/A`; never invent an Industry Average or filler. The fallback `Internal QA Metric` also always displays `N/A` (Benchmarks rule).
 
 # Paper Dilemmas
 
@@ -1920,7 +1949,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 📅 **[Month YYYY] — [main action taken]**
 *[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
-[one line per change: +/− cash, RP, Fame, 🧩 +x Artifacts…]
+[one line per change: +/− cash, Research Points, Fame, 🧩 +x Artifacts…]
 💰 [cash after] | 🔬 Research Points [after]
 
 ## S5 — Action Menu
@@ -1943,7 +1972,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 8 🌳 Tech Tree | 9 📁 Portfolio |
 | 10 💾 Save | 0 🏠 Main Menu |
 
-💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
+💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, Research Points, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if Research Points are high. NEVER spoil exact formulas, ideal focus, or matches.]*
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
@@ -1953,7 +1982,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 ## S6 — Model Completion Report
 
-🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
+🏁 **[Model]** — [Architecture] × [Task] on [Dataset(s)]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Local Evaluation (Benchmarks):**
@@ -1974,7 +2003,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If First-Mover: "🚀 First-Mover! The market is starved. Payouts are ×2.0!")*
 *(If The Clash: "⚔️ The Clash! Releasing alongside Big Tech. Beat their Q for massive Fame!")*
 *(If Saturated: "📉 Saturated Market! A Rival just dominated this space. Payouts are ×0.5")*
-*(If SOTA Hype and normal market: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
+*(If SOTA Hype and not First-Mover: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
 *(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
@@ -2002,7 +2031,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research, Projects & Contracts)
+## S10 — Dilemma (Freelance, Research, Projects, Contracts & Papers)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story combining the matrix coordinates]*
@@ -2040,14 +2069,14 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S14 — Tech Tree
 
 🌳 **Technology Tree**
-🔬 **Available RP:** [x]
+🔬 **Available Research Points:** [x]
 
 **Owned:** [Comma-separated list of owned Tech IDs]
 
 **Available to Unlock:**
 | ID | Technology | Cost | Requires | Effect |
 |---|---|---|---|---|
-| [ID] | [Name] | [Cost] RP | [Req] | [Effect] |
+| [ID] | [Name] | [Cost] Research Points | [Req] | [Effect] |
 
 👉 *Reply with the ID to unlock (instant), or 0 to go back.*
 
@@ -2126,7 +2155,7 @@ Provide your configuration to start:
 
 🎓 **Publish a Paper**
 *Takes 2 months. Publishing reveals your tech to the world.*
-⚠️ **Product:** Streams cancelled & Fame -300. **License:** Triggers a massive lawsuit!
+⚠️ **Product:** This Model's active stream is cancelled & Fame -300. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60.0, Unpublished):**
 | ID | Name | Arch × Task | Q | Release | Consequence |
@@ -2134,7 +2163,7 @@ Provide your configuration to start:
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cut & Fame -300 / Lawsuit!] |
 *(If none: "No eligible models.")*
 
-👉 *Reply with the ID to start writing a paper, or 0 to go back.*
+👉 *Reply with the ID to confirm Paper as this month's main action (month 1/2), or 0 to go back.*
 
 ## S8 — SAVE
 
@@ -2255,13 +2284,13 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 *(List ALL applicable Benchmarks. No fillers).*
 
 **Quality: [Q]/100** ([tier])
-⭐ Est. Fame [±x] · 🔬 RP +[x]
+⭐ Est. Fame [±x] · 🔬 Research Points +[x]
 
 **Release?**
 *(If First-Mover: "🚀 First-Mover: Payouts ×2.0")*
 *(If The Clash: "⚔️ The Clash: Beat Q for Fame")*
 *(If Saturated: "📉 Saturated: Payouts ×0.5")*
-*(If SOTA & normal: "🔥 SOTA Hype: Payouts ×1.5")*
+*(If SOTA Hype and not First-Mover: "🔥 SOTA Hype: Payouts ×1.5")*
 *(If Art > 0: "⚠️ Art: Product income halved")*
 1 🌐 Open-source
 2 💼 License $[x]
@@ -2297,7 +2326,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 💰 $[cash]
 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research, Projects & Contracts)
+## S10 — Dilemma (Freelance, Research, Projects, Contracts & Papers)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story]*
@@ -2337,13 +2366,13 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S14 — Tech Tree
 
 🌳 **Tech Tree**
-🔬 **RP:** [x]
+🔬 **Research Points:** [x]
 
 **Owned:** [IDs]
 
 **Available:**
 **[ID]** [Name]
-▸ [Cost] RP (Req: [Req])
+▸ [Cost] Research Points (Req: [Req])
 ▸ [Effect]
 
 👉 *Reply ID to unlock, or 0 back.*
@@ -2422,7 +2451,7 @@ $[x]/mo · [Effects]
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper (2 mos)**
-⚠️ Prod: Stream cut & Fame -300. Lic: Lawsuit!
+⚠️ Prod: This Model's active stream cut & Fame -300. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60.0, Unpub):**
 **M1** [Name]
@@ -2430,7 +2459,7 @@ $[x]/mo · [Effects]
 ▸ [Release] → [Safe/Cut & Fame -300/Lawsuit!]
 *(or "No eligible models")*
 
-👉 *Reply ID to write paper, or 0 back.*
+👉 *Reply ID to confirm Paper as this month's main action (month 1/2), or 0 back.*
 
 ## S8 — SAVE
 
@@ -2459,24 +2488,25 @@ tech: [comma-separated IDs]
 hw: [item xN, …] | cloud: [0-2] | vram: [av]/[tot] | slots_used: [x]/[4|8] | rewired: [yes/no]
 team: [Name($Salary, Effects) | none]
 candidates: [Name($Salary, Effects) | none]
-data: [Name(domain,Size,Quality)]; …
-models: [Name(Arch,Task,Datasets,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
+data: [Name(domain,Size,Quality)]; … | data_sources_used: [market/free item names | none]
+models: [Name(arch=ID,scale=Tier,task=ID,data=Name{domain}+…,focus=a/b/c/d,Q=x,release=type|Shelved,completed=YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
 streams: [Name $x/mo ×y left (Task, Q, vram=z)]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
-project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
-competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
+contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x%, dilemma_done=yes/no | Paper on M1 month i/M, rp_mult=x, rp_bonus=x, dilemma_done=yes/no | none]
+project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z, dilemma_done=yes/no | none]
+competitions: [Ex:won | Ex:open(until YYYY-MM,submitted=Model IDs|none,threshold=hidden|x)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows, llm_unlocked]
 === END SAVE ===
 ```
 
 - Every field is mandatory (use `none` where empty). The block must be self-sufficient: nothing outside it is needed to resume.
+- Preserve `models` in completion order; that order defines stable Model IDs (`M1`, `M2`, …) and the completion ordinal used by deterministic reviewer selection.
 - Always rendered exactly like this, in a code block, regardless of UI Profile or language — field names are canonical codes.
 - Output it at the end of every in-game June and December and on request (Save/Load module).
 - On load: apply `settings` first (language + UI Profile), validate everything against the Rules, list corrections, resume at the saved month's Action Menu.
 
 # Worked Example — *illustrative only, not Game Data*
 
-Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, and the "Product reviews" Dataset (reviews, 2/3). They start **"SpamGuard"** — BOW × CLS, Base scale, 1 month, focus 4/3/1/2, then the month resolves.
+Situation: April 2013, desktop profile. The player owns BOW, has E-Lv 1, Fame 0, two GTX 780 GPUs (6 GB installed VRAM), and the "Product reviews" Dataset (reviews, Size 2, Quality 3). They start **"SpamGuard"** — BOW × CLS, Base scale, 1 training month, focus 4/3/1/2. Training generates 5 Artifacts, so they choose Fine-Tune; May is the dedicated fine-tuning month, removes all 5 Artifacts, and completes the Model.
 
 Expected completion report (S6, desktop) in English:
 
@@ -2486,23 +2516,23 @@ Expected completion report (S6, desktop) in English:
 Local Evaluation (Benchmarks):
 | Benchmark | Your Score | SOTA Rival (Date) | SOTA Score |
 |---|---|---|---|
-| F1-Score (IMDB/Reuters) | **85.0/100** | SVM / Naive Bayes Baselines | 60.0/100 |
-| SST-2 (Stanford Sentiment) | **45.0/100** | RNTN (Stanford) | 85.0/100 |
+| F1-Score (IMDB/Reuters) | **78.0/100** | SVM / Naive Bayes Baselines | 60.0/100 |
+| SST-2 (Stanford Sentiment) | **78.0/100** | RNTN (Stanford) | 85.0/100 |
 
 Internal Analysis:
 * F1-Score: "F1-Score measures the balance between catching all spam and avoiding false alarms. Incredible precision here! It absolutely crushed the old SVM baselines to set a new SOTA."
-* SST-2: "SST-2 evaluates sentiment accuracy. Our Bag-of-Words model struggles with contextual nuances compared to the Stanford RNTN."
+* SST-2: "SST-2 evaluates sentiment accuracy. Strong data preparation helped, but the Bag-of-Words model still trails Stanford's context-sensitive RNTN."
 
-Overall Quality: 65.0/100 (👍 Good)
-⭐ Est. Fame +300 (Awarded ONLY on Release)  ·  🔬 Research Points +650
+Overall Quality: 78.0/100 (🔥 Great)
+⭐ Est. Fame +500 (Awarded ONLY on Release)  ·  🔬 Research Points +1,170
 
 Release?
-🔥 SOTA Hype! License and Product payouts are ×1.5
-1 🌐 Open-source | 2 💼 License ($29,250) | 4 🗄️ Shelve
+🔥 SOTA Hype ×1.5 · Saturated market ×0.5
+1 🌐 Open-source | 2 💼 License ($17,550) | 4 🗄️ Shelve
 *(3 📈 Product locked: needs Fame ≥ 1000)*
 ```
 
-Note how the exact formula is hidden, the License price is computed silently (65 × $150 × Demand 2 × 1.5 SOTA Hype = $29,250), and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead. After choosing a release option, the Public Reception (S6-B) screen would then render the community reviews.
+Note how the exact Quality formula is hidden. The License price is computed silently as `78 × $150 × Demand 2 × Saturated 0.5 × SOTA Hype 1.5 = $17,550`, and the locked option states its unmet Requirement. On the mobile profile the same numbers appear in the S6 vertical layout instead. After choosing a release option, the Public Reception (S6-B) screen would then render the community reviews.
 
 ---
 

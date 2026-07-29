@@ -25,27 +25,28 @@ tech: [comma-separated IDs]
 hw: [item xN, …] | cloud: [0-2] | vram: [av]/[tot] | slots_used: [x]/[4|8] | rewired: [yes/no]
 team: [Name($Salary, Effects) | none]
 candidates: [Name($Salary, Effects) | none]
-data: [Name(domain,Size,Quality)]; …
-models: [Name(Arch,Task,Datasets,Q[x],release,YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
+data: [Name(domain,Size,Quality)]; … | data_sources_used: [market/free item names | none]
+models: [Name(arch=ID,scale=Tier,task=ID,data=Name{domain}+…,focus=a/b/c/d,Q=x,release=type|Shelved,completed=YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
 streams: [Name $x/mo ×y left (Task, Q, vram=z)]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x | Paper on M1 month i/M, rp_mod=x | none]
-project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z | none]
-competitions: [Ex:won | Ex:open(until YYYY-MM)] | none
+contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x%, dilemma_done=yes/no | Paper on M1 month i/M, rp_mult=x, rp_bonus=x, dilemma_done=yes/no | none]
+project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z, dilemma_done=yes/no | none]
+competitions: [Ex:won | Ex:open(until YYYY-MM,submitted=Model IDs|none,threshold=hidden|x)] | none
 flags: [fired events with lasting effects, discounts in force, hype windows, llm_unlocked]
 === END SAVE ===
 ```
 
 - Every field is mandatory (use `none` where empty). The block must be self-sufficient: nothing outside it is needed to resume.
+- Preserve `models` in completion order; that order defines stable Model IDs (`M1`, `M2`, …) and the completion ordinal used by deterministic reviewer selection.
 - Always rendered exactly like this, in a code block, regardless of UI Profile or language — field names are canonical codes.
 - Output it at the end of every in-game June and December and on request (Save/Load module).
 - On load: apply `settings` first (language + UI Profile), validate everything against the Rules, list corrections, resume at the saved month's Action Menu.
 
 <!--
 Tiếng Việt (tóm tắt):
-SAVE block v0.3 — thêm dòng `settings` (ngôn ngữ + UI Profile) so với bản
-trước. Gồm đủ: người chơi/công ty, cài đặt, tháng, tiền, RP, REP, kỹ năng
-+ bộ đếm, công nghệ, phần cứng + slot + rewired, đội ngũ, ứng viên, dataset, model,
-dòng thu, hợp đồng, dự án đang chạy, cuộc thi, cờ sự kiện.
+SAVE block v0.4. Gồm đủ: người chơi/công ty, cài đặt, tháng, tiền, RP, Fame,
+kỹ năng + bộ đếm, công nghệ, phần cứng + slot + rewired, đội ngũ, ứng viên,
+dataset + lịch sử nguồn đã lấy, model (kể cả Scale/Focus/domain), dòng thu,
+hợp đồng/bài báo/dự án đang chạy, lịch sử nộp cuộc thi và cờ sự kiện.
 
 Mọi trường bắt buộc (trống ghi "none"); khối phải tự đủ; luôn render đúng
 nguyên dạng trong code block bất kể profile/ngôn ngữ (tên trường là mã

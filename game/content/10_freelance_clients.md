@@ -20,6 +20,7 @@ This table provides the generation data for Freelance events. The Engine invents
 | 2015–2016 | **Early Deep Learning** | Word embeddings, sentiment analysis for brands, basic translation. Clients throw around the buzzword "Deep Learning" but lack data. |
 | 2017–2018 | **The Chatbot Craze** | Everyone wants a chatbot, sequence-to-sequence customer support, VC hype. Highly unrealistic expectations. |
 | 2019–2020 | **Transformer Era** | Text generation, auto-writing SEO, massive API wrappers. Clients ask for "human-like" text and massive scale. |
+| 2021+ sandbox | **Mature Transformer Market** | Continue the 2020 market context using only technologies and historical developments already present in the Game State. Do not invent later real-world products, companies, or events. |
 
 **Axis 2: The Complication (Mechanics - selected by Y = Turn % 6)**
 | Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |

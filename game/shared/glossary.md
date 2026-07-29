@@ -127,7 +127,7 @@ Tiếng Việt:
 
 ## Fame (Danh tiếng)
 
-The Company's public standing, ranging from 0 to 5000. Fame gates contracts, hires, and investor interest. (Formerly REP).
+The Company's public standing, ranging from 0 to 5000. Fame gates contracts, hires, and investor interest.
 
 <!--
 Tiếng Việt:

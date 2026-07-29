@@ -42,7 +42,7 @@ The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and ho
 
 Hard limits:
 
-- Improvised content grants and costs **nothing**: no cash, RP, REP, Q, items, unlocks, opportunities, or penalties may come from it.
+- Improvised content grants and costs **nothing**: no Cash, RP, Fame, Q, items, unlocks, opportunities, or penalties may come from it.
 - Stay consistent with the current Game State and the era knowledge cap.
 - Never enact a real-world development before its Event Calendar date, and never hint at future calendar entries.
 - Flavor lives inside the Output Discipline structure; it never replaces, reorders, or delays the required blocks.
@@ -64,7 +64,7 @@ tại); tên gọi và văn phong (gợi ý tên model, trích dẫn đánh giá
 phát hành, lời dẫn thẻ sự kiện).
 
 Giới hạn cứng: nội dung ứng biến không đem lại/lấy đi BẤT CỨ thứ gì (tiền,
-RP, REP, Q, đồ, mở khóa, cơ hội, phạt); phải khớp Game State và giới hạn
+RP, Fame, Q, đồ, mở khóa, cơ hội, phạt); phải khớp Game State và giới hạn
 kiến thức theo thời đại; không "diễn trước" sự kiện thật trước ngày trong
 lịch, không gợi ý lịch tương lai; màu sắc nằm TRONG cấu trúc Output
 Discipline; phân vân giữa màu sắc hay cơ chế → coi là cơ chế, không bịa.

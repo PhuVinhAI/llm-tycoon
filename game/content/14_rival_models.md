@@ -66,11 +66,12 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | Sep 2020 | MMLU | GPT-3 175B (OpenAI) | 44.0 |
 | Oct 2020 | Human Evaluation | BlenderBot (Meta) | 85.1 |
 
-*(For any Benchmark not explicitly listed here at a given time, or for AI Community fillers, the Game Engine sets the Rival to "Industry Average" with a SOTA Score of `50.0`).*
+If no dated Rival entry exists for an applicable official Benchmark, display `N/A`; never invent an Industry Average or filler. The fallback `Internal QA Metric` also always displays `N/A` (Benchmarks rule).
 
 <!--
 Tiếng Việt (tóm tắt):
 Danh sách các mô hình đối thủ lịch sử. Khi show điểm Benchmark, Engine tìm 
-mô hình đối thủ mới nhất (tính đến năm hiện tại) của Benchmark đó để làm 
-tiêu chuẩn so sánh. Nếu không có, dùng "Trung bình ngành - 50 điểm".
+mô hình đối thủ mới nhất (tính đến tháng hiện tại) của đúng Benchmark đó để
+làm tiêu chuẩn so sánh. Nếu không có thì hiển thị N/A, không bịa đối thủ hay
+điểm trung bình ngành; Internal QA cũng luôn là N/A.
 -->

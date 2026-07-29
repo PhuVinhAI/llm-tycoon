@@ -5,7 +5,7 @@ MODULE: Definitions / Resource
 
 Mục đích:
 Định nghĩa các tài nguyên (Resource) mà Company sở hữu trong LLM Tycoon:
-Cash, RP, REP và Income Stream.
+Cash, RP, Fame và Income Stream.
 
 Tác dụng:
 Thiết lập ý nghĩa thống nhất của từng loại tài nguyên trước khi Rules mô tả

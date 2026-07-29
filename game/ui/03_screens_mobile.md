@@ -118,13 +118,13 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 *(List ALL applicable Benchmarks. No fillers).*
 
 **Quality: [Q]/100** ([tier])
-⭐ Est. Fame [±x] · 🔬 RP +[x]
+⭐ Est. Fame [±x] · 🔬 Research Points +[x]
 
 **Release?**
 *(If First-Mover: "🚀 First-Mover: Payouts ×2.0")*
 *(If The Clash: "⚔️ The Clash: Beat Q for Fame")*
 *(If Saturated: "📉 Saturated: Payouts ×0.5")*
-*(If SOTA & normal: "🔥 SOTA Hype: Payouts ×1.5")*
+*(If SOTA Hype and not First-Mover: "🔥 SOTA Hype: Payouts ×1.5")*
 *(If Art > 0: "⚠️ Art: Product income halved")*
 1 🌐 Open-source
 2 💼 License $[x]
@@ -160,7 +160,7 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 💰 $[cash]
 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research, Projects & Contracts)
+## S10 — Dilemma (Freelance, Research, Projects, Contracts & Papers)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story]*
@@ -200,13 +200,13 @@ You: [Score]/100 | [Rival]: [SOTA]/100
 ## S14 — Tech Tree
 
 🌳 **Tech Tree**
-🔬 **RP:** [x]
+🔬 **Research Points:** [x]
 
 **Owned:** [IDs]
 
 **Available:**
 **[ID]** [Name]
-▸ [Cost] RP (Req: [Req])
+▸ [Cost] Research Points (Req: [Req])
 ▸ [Effect]
 
 👉 *Reply ID to unlock, or 0 back.*
@@ -285,7 +285,7 @@ $[x]/mo · [Effects]
 ## S17 — Academic Publishing
 
 🎓 **Publish a Paper (2 mos)**
-⚠️ Prod: Stream cut & Fame -300. Lic: Lawsuit!
+⚠️ Prod: This Model's active stream cut & Fame -300. Lic: Lawsuit!
 
 **Eligible (Q ≥ 60.0, Unpub):**
 **M1** [Name]
@@ -293,7 +293,7 @@ $[x]/mo · [Effects]
 ▸ [Release] → [Safe/Cut & Fame -300/Lawsuit!]
 *(or "No eligible models")*
 
-👉 *Reply ID to write paper, or 0 back.*
+👉 *Reply ID to confirm Paper as this month's main action (month 1/2), or 0 back.*
 
 ## S8 — SAVE
 

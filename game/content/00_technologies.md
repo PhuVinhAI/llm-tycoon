@@ -16,7 +16,7 @@ Ghi chú thiết kế:
   2017 và pretrain quanh 2018 (các sự kiện giảm giá trong Event Calendar
   kéo người chơi theo đúng nhịp lịch sử).
 - Người chơi rush nghiên cứu có thể vượt trước lịch sử — các sự kiện sẽ
-  thưởng REP ("prior art!").
+  thưởng Fame ("prior art!").
 ===============================================================================
 -->
 
@@ -46,7 +46,7 @@ The full tree — names, costs, prerequisites, and effects — is always visible
 Tiếng Việt (tóm tắt):
 Cây công nghệ luôn hiển thị đầy đủ cho người chơi (tên, giá RP, điều kiện,
 hiệu ứng). Một công nghệ khởi điểm: BTP. NGRAM giá 1000 RP. Nhánh xương sống:
-BOW → EMB → (cùng GPUT) → RNN → LSTM → S2S → ATTN → TRF → PRET → SCALE (12000 RP).
+BOW → EMB → (cùng GPUT) → RNN → LSTM → S2S → ATTN → TRF → PRET → SCALE (8500 RP).
 Nhánh phụ: SCRAPE (thu thập dữ liệu tốt hơn), BPE (+5 Q cho các kiến trúc
 seq2seq trở lên), FINE (giảm 1 tháng tối thiểu + 5 Q cho PTRF).
 -->

@@ -78,16 +78,18 @@ These events fire exactly once per playthrough when their condition is met. The 
 
 <!--
 Tiếng Việt (tóm tắt):
-Sự kiện theo ngày (E1–E23): các bài báo lịch sử giảm 50% giá nghiên cứu
-công nghệ tương ứng nếu CHƯA mở (đã mở trước thì +Fame vinh danh); các đợt
+Sự kiện theo ngày (E0–E26, kể cả E2b): các bài báo lịch sử giảm giá nghiên
+cứu theo đúng multiplier trong bảng nếu CHƯA mở (một số sự kiện thưởng Fame
+nếu đã mở trước); các đợt
 GPU mở shop; dataset miễn phí xuất hiện; TensorFlow giảm 20% mọi nghiên cứu
 vĩnh viễn; AlphaGo nhân 1.5 thu nhập bán model trong 6 tháng; cơn sốt
 chatbot đẩy Demand CHAT = 3 đến hết 2017; BERT (10/2018) là cú sốc paradigm:
 model kiến trúc dưới TRF chỉ còn bán được ×0.5; GPT-2 (2/2019) tặng WebText 
-và tạo hype — phát hành LLM trong 2019 được +1000 điểm tổng kết; 12/2020 kết thúc game.
+và tạo hype — phát hành LLM trong 2019 được +1000 điểm tổng kết. Sau 12/2020,
+game tiếp tục sandbox với dữ liệu fallback, không tự phát sinh sự kiện lịch sử mới.
 
 Sự kiện ngưỡng: Fame 800/1500/2200 mở dịch vụ Headhunter; Fame 2500 — thiên thần
-đầu tư (nhận $25,000 hoặc từ chối +200 Fame); phát hành LLM Q ≥ 70 — Term Sheet
+đầu tư (nhận $25,000 hoặc từ chối +200 Fame); hoàn thành LLM Q ≥ 70 — Term Sheet
 $2M (nhận = THẮNG, từ chối +500 Fame chơi tiếp).
 
 Giảm giá chồng: nhân với nhau, làm tròn lên bội 5 (Rules/Research). Mọi sự

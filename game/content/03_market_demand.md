@@ -17,18 +17,20 @@ completion chỉ bắt đầu có giá gần 2019–20.
 
 Demand multiplies sale income (refer to the Model Projects rule for the exact formulas).
 
-| Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 |
-|---|---|---|---|---|
-| CLS | 2 | 2 | 1 | 1 |
-| AUTO | 1 | 2 | 2 | 2 |
-| TRANS | 1 | 2 | 2 | 1 |
-| CHAT | 1 | 2 | 2 | 3 |
-| SUMM | 1 | 1 | 2 | 2 |
-| QA | 1 | 1 | 2 | 2 |
-| CODE | 1 | 1 | 1 | 2 |
-| LLM (general) | — | — | 2 | 3 |
+| Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 | 2021+ sandbox |
+|---|---|---|---|---|---|
+| CLS | 2 | 2 | 1 | 1 | 1 |
+| AUTO | 1 | 2 | 2 | 2 | 2 |
+| TRANS | 1 | 2 | 2 | 1 | 1 |
+| CHAT | 1 | 2 | 2 | 3 | 3 |
+| SUMM | 1 | 1 | 2 | 2 | 2 |
+| QA | 1 | 1 | 2 | 2 | 2 |
+| CODE | 1 | 1 | 1 | 2 | 2 |
+| LLM (general) | — | — | 2 | 3 | 3 |
 
 Event overrides (Event Calendar) apply on top of this table — e.g., the chatbot craze, the AlphaGo hype multiplier, and the post-BERT paradigm shift.
+
+The `2021+ sandbox` column is a fixed fallback, not a forecast. Continue applying all permanent Events already fired by December 2020, but never invent later real-world market events or future technologies.
 
 <!--
 Tiếng Việt (tóm tắt):
@@ -36,5 +38,6 @@ Demand nhân vào tiền bán model: Bán bản quyền = Q × $150 × Demand; S
 = Q × Demand × $25/tháng. Bảng theo 4 thời kỳ (2013–14, 2015–16, 2017–18,
 2019–20) phản ánh sóng thị trường thật: CLS có giá sớm rồi bão hòa; TRANS
 nóng giữa thập kỷ; CHAT lên đỉnh 2019–20; CODE chỉ có giá từ 2019. Các sự
-kiện (cơn sốt chatbot, hype AlphaGo, cú sốc BERT) ghi đè lên bảng này.
+kiện (cơn sốt chatbot, hype AlphaGo, cú sốc BERT) ghi đè lên bảng này. Từ
+2021 trở đi dùng cột sandbox cố định và chỉ giữ các hiệu ứng vĩnh viễn đã nổ.
 -->

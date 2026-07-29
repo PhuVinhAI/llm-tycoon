@@ -45,7 +45,7 @@ You have $10,000 in savings, an internet connection, and a hunch that the deep l
 <!--
 Tiếng Việt (tóm tắt):
 Trạng thái đầu: 01/2013, $10,000, RP 0, Fame 0, R-Lv 1 / E-Lv 1, sở hữu BTP
-, một PC cũ (0 CU, không chiếm slot), 4 slot trống, chơi solo, một
+, một PC cũ (0 TFLOPS, không chiếm slot), 4 slot trống, chơi solo, một
 dataset "Old blog scrape" (web-mixed 1/2), chưa có model/dòng thu/hợp
 đồng/dự án/cờ nào.
 

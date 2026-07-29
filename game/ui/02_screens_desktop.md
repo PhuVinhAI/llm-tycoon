@@ -71,7 +71,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 📅 **[Month YYYY] — [main action taken]**
 *[FLAVOR: 1–2 lines describing the action. If a Technology was unlocked this turn, explain how it works here.]*
-[one line per change: +/− cash, RP, Fame, 🧩 +x Artifacts…]
+[one line per change: +/− cash, Research Points, Fame, 🧩 +x Artifacts…]
 💰 [cash after] | 🔬 Research Points [after]
 
 ## S5 — Action Menu
@@ -94,7 +94,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 | 8 🌳 Tech Tree | 9 📁 Portfolio |
 | 10 💾 Save | 0 🏠 Main Menu |
 
-💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, RP, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if RP is high. NEVER spoil exact formulas, ideal focus, or matches.]*
+💡 **Tip:** *[Generate 1 short, context-aware tip based on the player's current Cash, Research Points, active events, or available actions. e.g., Remind them they can use natural language commands, combine datasets, or check the tech tree if Research Points are high. NEVER spoil exact formulas, ideal focus, or matches.]*
 
 **Progressive Disclosure:** To prevent overwhelming the player, ONLY show actions that are currently relevant or unlocked.
 - Hide `Contracts` and `Team` entirely until Fame ≥ 800.
@@ -104,7 +104,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 
 ## S6 — Model Completion Report
 
-🏁 **[Model]** — [Architecture] × [Task] on [Dataset]
+🏁 **[Model]** — [Architecture] × [Task] on [Dataset(s)]
 *(If released with Artifacts > 0: "⚠️ Base model released with [Art] unresolved artifacts")*
 
 **Local Evaluation (Benchmarks):**
@@ -125,7 +125,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 *(If First-Mover: "🚀 First-Mover! The market is starved. Payouts are ×2.0!")*
 *(If The Clash: "⚔️ The Clash! Releasing alongside Big Tech. Beat their Q for massive Fame!")*
 *(If Saturated: "📉 Saturated Market! A Rival just dominated this space. Payouts are ×0.5")*
-*(If SOTA Hype and normal market: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
+*(If SOTA Hype and not First-Mover: "🔥 SOTA Hype! License and Product payouts are ×1.5")*
 *(If Artifacts > 0: "⚠️ Artifacts: Product payout will be halved.")*
 1 🌐 Open-source | 2 💼 License ($[x]) | 3 📈 Product ($[x]/mo × 8) | 4 🗄️ Shelve (0 Fame)
 *[locked options: state the unmet Requirement]*
@@ -153,7 +153,7 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 …
 💰 $[cash] · 0 ↩ Back
 
-## S10 — Dilemma (Freelance, Research, Projects & Contracts)
+## S10 — Dilemma (Freelance, Research, Projects, Contracts & Papers)
 
 ⚠️ **[Event Title]**
 *[FLAVOR: 2–3 lines of story combining the matrix coordinates]*
@@ -191,14 +191,14 @@ Structure of every resolved turn, in this order: event cards (if any) → month 
 ## S14 — Tech Tree
 
 🌳 **Technology Tree**
-🔬 **Available RP:** [x]
+🔬 **Available Research Points:** [x]
 
 **Owned:** [Comma-separated list of owned Tech IDs]
 
 **Available to Unlock:**
 | ID | Technology | Cost | Requires | Effect |
 |---|---|---|---|---|
-| [ID] | [Name] | [Cost] RP | [Req] | [Effect] |
+| [ID] | [Name] | [Cost] Research Points | [Req] | [Effect] |
 
 👉 *Reply with the ID to unlock (instant), or 0 to go back.*
 
@@ -277,7 +277,7 @@ Provide your configuration to start:
 
 🎓 **Publish a Paper**
 *Takes 2 months. Publishing reveals your tech to the world.*
-⚠️ **Product:** Streams cancelled & Fame -300. **License:** Triggers a massive lawsuit!
+⚠️ **Product:** This Model's active stream is cancelled & Fame -300. **License:** Triggers a massive lawsuit!
 
 **Eligible Models (Q ≥ 60.0, Unpublished):**
 | ID | Name | Arch × Task | Q | Release | Consequence |
@@ -285,7 +285,7 @@ Provide your configuration to start:
 | M1 | [Name] | [Arch] × [Task] | [Q] | [Release] | [Safe / Stream Cut & Fame -300 / Lawsuit!] |
 *(If none: "No eligible models.")*
 
-👉 *Reply with the ID to start writing a paper, or 0 to go back.*
+👉 *Reply with the ID to confirm Paper as this month's main action (month 1/2), or 0 to go back.*
 
 ## S8 — SAVE
 
@@ -310,7 +310,7 @@ thúc bằng "0 quay về menu"; S3 dashboard 5 dòng gộp cột; S4 cấu trú
 mục 2 hàng — mục chưa khả dụng vẫn liệt kê, chọn thì giải thích; S6 báo cáo
 hoàn thành model (chỉ hiện kết quả Q, 4 lựa chọn phát hành đánh số, lựa
 chọn khóa phải nêu điều kiện thiếu); S7 danh sách chợ/shop đánh số + giá;
-S10 Dilemma hiển thị tình huống 4x4; S11 Menu phụ; S12 Wizard tạo dự án;
+S10 Dilemma hiển thị tình huống theo đúng bảng của hành động; S11 Menu phụ; S12 Wizard tạo dự án;
 S13 Quản lý dữ liệu (kho + hành động); S14 Cây công nghệ; S8 SAVE dùng định dạng cố định;
 S9 màn kết (tổng điểm + danh hiệu + chơi
 lại/recap).

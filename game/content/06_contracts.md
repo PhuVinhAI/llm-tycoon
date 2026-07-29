@@ -29,7 +29,7 @@ Nguồn tiền ổn định giữa các dự án; nhu cầu khách hàng leo tha
 
 ## Mid-Contract Dilemmas
 
-Triggered when an active Contract reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2). Flavor direction is determined by `Turn % 4`:
+Triggered at most once, when an active Contract first reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2). Flavor direction is determined by `Turn % 4`:
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
@@ -40,11 +40,11 @@ Triggered when an active Contract reaches `months elapsed == floor(M ÷ 2)` (for
 
 <!--
 Tiếng Việt (tóm tắt):
-8 hợp đồng, mở khóa dựa trên cả Fame và Ngày tháng. Mỗi hợp đồng: yêu cầu
+9 hợp đồng, mở khóa dựa trên cả Fame và Ngày tháng. Mỗi hợp đồng: yêu cầu
 công nghệ (có khi kèm dataset), số tháng cam kết, tiền công cố định, và 
 công nghệ bonus (sở hữu thì tiền ×1.2). Hợp đồng thấp nhất yêu cầu Fame 800 
 để khớp với thời điểm UI mở khóa menu.
-Giữa hợp đồng (tháng = ⌊M/2⌋) sẽ có sự kiện Dilemma với 4 kịch bản ngẫu 
-nhiên (Scope Creep, Messy Data, Integration, Early Delivery) buộc người chơi 
+Giữa hợp đồng (tháng = ⌊M/2⌋) có đúng một Dilemma; kịch bản được chọn tất
+định bằng Turn % 4 (Scope Creep, Messy Data, Integration, Early Delivery), buộc người chơi
 đánh đổi thời gian (M+1), Tiền hoặc Danh tiếng.
 -->

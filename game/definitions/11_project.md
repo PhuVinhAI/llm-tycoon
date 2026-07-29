@@ -25,7 +25,7 @@ Trách nhiệm:
 
 A Project is a multi-month commitment by a Company to build a Model.
 
-A Project is declared with a fixed plan: an Architecture, a Task, a Dataset, a number of months, and a focus allocation. Once started, the committed months fill the Company's main activity until the Project completes or is cancelled.
+A Project is declared with a fixed plan: an Architecture, a Scale, an optional inherited Model, a Task, a Dataset mixture of 1 to 3 Datasets, a number of months, and a focus allocation. Once started, the committed months fill the Company's main activity until the Project completes or is cancelled.
 
 The special endgame effort to train the first Large Language Model is also a Project, with additional requirements defined by the Rules.
 
@@ -37,11 +37,14 @@ A Project may be associated with information such as:
 
 * Model name
 * Architecture
+* Scale
+* Optional inherited Model
 * Task
-* Dataset
+* Dataset mixture (1 to 3 Datasets)
 * Committed months and months elapsed
 * Focus allocation (Data / Model / Training / Eval)
-* Compute accumulated (CU-months)
+* Compute accumulated (TFLOPS-months)
+* Whether the one-time midpoint Dilemma evaluation is done
 
 ---
 
@@ -57,15 +60,17 @@ A Project may be associated with information such as:
 Tiếng Việt:
 Project là cam kết kéo dài nhiều tháng của Company để xây một Model.
 
-Project được khai báo với kế hoạch cố định: Architecture, Task, Dataset, số
-tháng, và phân bổ trọng tâm. Khi đã bắt đầu, các tháng cam kết chiếm hoạt
-động chính của Company cho đến khi hoàn thành hoặc hủy.
+Project được khai báo với kế hoạch cố định: Architecture, Scale, Model kế
+thừa tùy chọn, Task, hỗn hợp 1–3 Dataset, số tháng và phân bổ trọng tâm. Khi
+đã bắt đầu, các tháng cam kết chiếm hoạt động chính của Company cho đến khi
+hoàn thành hoặc hủy.
 
 Nỗ lực cuối game — huấn luyện Large Language Model đầu tiên — cũng là một
 Project, với các yêu cầu bổ sung do Rules định nghĩa.
 
-Thuộc tính: tên Model; Architecture; Task; Dataset; số tháng cam kết/đã qua;
-phân bổ trọng tâm (Data/Model/Training/Eval); compute tích lũy (CU-month).
+Thuộc tính: tên Model; Architecture; Scale; Model kế thừa; Task; 1–3 Dataset;
+số tháng cam kết/đã qua; phân bổ trọng tâm (Data/Model/Training/Eval);
+compute tích lũy (TFLOPS-month); cờ đã đánh giá Dilemma giữa dự án.
 
 Quan hệ: do Company thực hiện; tiêu thụ tháng và compute; hoàn thành tạo
 đúng một Model; hủy thì không tạo gì; Project đang chạy nằm trong SAVE Block.

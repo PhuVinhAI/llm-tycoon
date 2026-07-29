@@ -64,6 +64,6 @@ Thuộc tính: ID; khách hàng và mô tả; ngưỡng Fame và Ngày tháng; y
 (Technology, Dataset); số tháng cam kết; tiền công; điều kiện thưởng. Giá trị cụ thể nằm
 ở Content.
 
-Quan hệ: được mở khi REP đạt ngưỡng; khi nhận sẽ chiếm các tháng cam kết;
-hoàn thành nhận Cash và REP; mỗi Contract chỉ làm được một lần.
+Quan hệ: được mở khi Fame đạt ngưỡng; khi nhận sẽ chiếm các tháng cam kết;
+hoàn thành nhận Cash và Fame; mỗi Contract chỉ làm được một lần.
 -->

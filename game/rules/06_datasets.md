@@ -39,7 +39,7 @@ Trách nhiệm:
 ## Usage
 
 - A Project uses **1 to 3 Datasets** (a Data Mixture). The Datasets are not consumed — they can be reused (but see the repeat penalty in Model Projects).
-- A Project requires the **Combined Size** (Max Size + Count - 1) to be ≥ the Architecture's minimum Size (Content).
+- **Combined Size** = Max Size + Count − 1 (cap 5), and **Combined Quality** = floor(Average Quality). Architecture Baseline Data Size and Scale Ideal Data Size affect Quality; they are not hard start requirements. The LLM Project's explicit Combined Size 5 and Combined Quality ≥ 3 requirements remain hard.
 
 <!--
 Tiếng Việt (tóm tắt):
@@ -50,9 +50,10 @@ chợ dữ liệu (tức thời, mỗi món một lần); Nhận miễn phí khi
 Nâng cấp: Làm sạch (+1 Quality, tối đa 5); Gộp hai dataset cùng Domain
 (Size = Size lớn hơn +1, trần 5; Quality = mức thấp hơn; hai bản gốc mất).
 
-Domain fit trong công thức Quality: Domain nằm trong danh sách hợp của Task
-→ +3; web-mixed = 0 với mọi Task trừ AUTO (+3) và TRANS (−3); còn lại −3.
+Domain Fit khi hoàn thành được tính riêng cho từng Benchmark theo Target
+Domains: user-logs đúng Task hoặc khớp trực tiếp +20; nếu không khớp nhưng có
+web-mixed +5; còn lại −15. Synergy giữa dự án dùng thang riêng +3/0/−3.
 
-Sử dụng: mỗi Project dùng đúng 1 Dataset, không bị tiêu hao (nhưng xem phạt
-lặp lại ở Model Projects); Size phải ≥ mức tối thiểu của Architecture.
+Sử dụng: mỗi Project dùng 1–3 Datasets, không bị tiêu hao (nhưng xem phạt
+lặp lại ở Model Projects); Combined Size/Quality tính theo luật Model Projects.
 -->
