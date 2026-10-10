@@ -14,11 +14,25 @@
 
 ## Mid-Contract Dilemmas
 
-Triggered at most once, when an active Contract first reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2). Flavor direction is determined by `Turn % 4`:
+Triggered once at monthsElapsed == floor(initialMonths / 2), for initialMonths ≥2. Draw through draw_dilemma(state, 'contract'):
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
 | 0 | **Scope Creep** (Client wants a new feature mid-way) | Refuse the change.<br>Yield: `Normal` | Accept the extra work.<br>Yield: `M +1`, `Pay +30%` |
-| 1 | **Messy Client Data** (The provided data is garbage) | Train on it anyway.<br>Yield: `Pay -20%` | Clean it manually.<br>Yield: `M +1`, `Fame +50` |
-| 2 | **Integration Hell** (Legacy systems are blocking deployment) | Hack a quick fix.<br>Yield: `Normal` | Build a proper API.<br>Yield: `M +1`, `Pay +20%`, `Fame +100` |
-| 3 | **Early Delivery Request** (Client needs it ASAP) | Decline.<br>Yield: `Normal` | Crunch time.<br>Yield: `Pay +20%`, `Cash -$1,000` (cloud/coffee) |
+| 1 | **Messy Client Data** (The provided data is garbage) | Train on it anyway.<br>Yield: `Pay -20%` | Clean it manually.<br>Yield: `M +1`, `Completion Fame +50` |
+| 2 | **Integration Hell** (Legacy systems are blocking deployment) | Hack a quick fix.<br>Yield: `Normal` | Build a proper API.<br>Yield: `M +1`, `Pay +20%`, `Completion Fame +100` |
+| 3 | **Early Delivery Request** (Client needs it ASAP) | Decline.<br>Yield: `Normal` | Crunch time.<br>Yield: `Pay +10%`, `Completion Fame -150` (quality shortcuts) |
+
+## Client dataset on completion
+
+| Contract | Task | Domain |
+|---|---|---|
+| C01 | CLS | news |
+| C02 | CLS | news |
+| C10 | CLS | reviews |
+| C11 | AUTO | dialogue |
+| C12 | CLS | reviews |
+| C21 | TRANS | parallel |
+| C22 | CLS | dialogue |
+| C31 | CHAT | dialogue |
+| C32 | QA | QA |

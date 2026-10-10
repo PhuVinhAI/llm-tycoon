@@ -3,7 +3,7 @@
 ## Earning RP
 
 - The **Research** main action generates a Dilemma (Actions rule) with a base yield of RP = 400 + 200 × R-Lv + staff bonuses (Content).
-- Completed Models grant RP = floor(Q) × 15 (Model Projects rule).
+- Completed Models grant RP = (floor(Q) × 15 + pending completion bonus) × novelty, rounded once (Model Projects rule).
 - Events may grant RP directly (Content).
 - RP accumulates in a single pool with no cap.
 

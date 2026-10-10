@@ -1,30 +1,10 @@
-<!--
-===============================================================================
-FILE: 08_events_calendar.md
-MODULE: Content / Event Calendar
-
-Mục đích:
-Lịch sự kiện cố định 2013–2020 — nguồn "bất ngờ có kịch bản" duy nhất của
-game, thay thế hoàn toàn cho ngẫu nhiên.
-
-Tác dụng:
-Tái hiện dòng lịch sử AI thật: word2vec (2013), seq2seq (2014), attention
-(2015), TensorFlow (2015), AlphaGo (2016), Transformer (2017), GPT-1/BERT
-(2018), GPT-2 (2019). Người chơi bám theo lịch sử thì được giảm giá nghiên
-cứu; vượt trước lịch sử thì được vinh danh (+Fame).
-
-Lưu ý cho Game Engine:
-TUYỆT MẬT với người chơi — chỉ tiết lộ theo ui/presentation.md và quy tắc Rumor Mill.
-===============================================================================
--->
-
 # Event Calendar — ⚠️ engine-only, never reveal in advance
 
 ## Dated events
 
 | # | Date | Event | Effect |
 |---|---|---|---|
-| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
+| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action to earn RP toward **NGRAM** (1000 RP; usually two Research months). Then run a CPU Tiny model and offer Analyze after completion. |
 | E1 | Jan 2013 | 📄 *word2vec core preprint (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl becomes widely accessible* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
 | E2b | Jan 2014 | 📚 *BookCorpus published (Smashwords scrape)* | Free Dataset claimable: BookCorpus (books 4/4) |
@@ -58,8 +38,8 @@ TUYỆT MẬT với người chơi — chỉ tiết lộ theo ui/presentation.md
 | # | Trigger | Event | Effect |
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
-| T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
+| T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000 (also capitalRaised +25000), or decline for +200 Fame (bootstrapped pride) |
+| T3 | LLM completed with Q ≥ 80.0 and every target benchmark ≥ 65.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000 (capitalRaised +2000000, only once), WIN ending triggered, game continues. Decline → +500 Fame ×novelty; offer may recur on a later qualifying LLM, game continues. |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 
@@ -68,30 +48,10 @@ These events fire exactly once per playthrough when their condition is met. The 
 | # | Trigger | Headline Theme | Effect |
 |---|---|---|---|
 | M1 | First Model achieves **SOTA Hype** | 📰 **David vs Goliath!** Indie lab beats Big Tech on global benchmarks. | Fame +200 |
-| M2 | First Model achieves **Q ≥ 90.0** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
+| M2 | First Model achieves **Q ≥ 85.0** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
 | M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
 | M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
-| M6 | First Model achieves **Q ≥ 55.0** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +2500 |
+| M6 | First Model achieves **Q ≥ 55.0** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +1500 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*
-
-<!--
-Tiếng Việt (tóm tắt):
-Sự kiện theo ngày (E0–E26, kể cả E2b): các bài báo lịch sử giảm giá nghiên
-cứu theo đúng multiplier trong bảng nếu CHƯA mở (một số sự kiện thưởng Fame
-nếu đã mở trước); các đợt
-GPU mở shop; dataset miễn phí xuất hiện; TensorFlow giảm 20% mọi nghiên cứu
-vĩnh viễn; AlphaGo nhân 1.5 thu nhập bán model trong 6 tháng; cơn sốt
-chatbot đẩy Demand CHAT = 3 đến hết 2017; BERT (10/2018) là cú sốc paradigm:
-model kiến trúc dưới TRF chỉ còn bán được ×0.5; GPT-2 (2/2019) tặng WebText 
-và tạo hype — phát hành LLM trong 2019 được +1000 điểm tổng kết. Sau 12/2020,
-game tiếp tục sandbox với dữ liệu fallback, không tự phát sinh sự kiện lịch sử mới.
-
-Sự kiện ngưỡng: Fame 800/1500/2200 mở dịch vụ Headhunter; Fame 2500 — thiên thần
-đầu tư (nhận $25,000 hoặc từ chối +200 Fame); hoàn thành LLM Q ≥ 70 — Term Sheet
-$2M (nhận = THẮNG, từ chối +500 Fame chơi tiếp).
-
-Giảm giá chồng: nhân với nhau, làm tròn lên bội 5 (Rules/Research). Mọi sự
-kiện đã nổ và hiệu lực kéo dài đều lưu thành cờ trong Game State.
--->

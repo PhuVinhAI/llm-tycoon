@@ -2,8 +2,8 @@
 
 | Score | Title |
 |---|---|
-| ≥ 33000 | 👑 Home Lab Legend |
-| 25000–32999 | 🚀 AI Pioneer |
-| 15000–24999 | 🔬 Indie Researcher |
-| < 15000 | 🌱 Hobbyist |
+| ≥ 35000 | 👑 Home Lab Legend |
+| 28000–34999 | 🚀 AI Pioneer |
+| 18000–27999 | 🔬 Indie Researcher |
+| < 18000 | 🌱 Hobbyist |
 | Bankruptcy | 💀 Burned Out (score 0) |

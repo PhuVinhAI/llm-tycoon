@@ -24,7 +24,7 @@ Use summary cards. Hardware and dataset details may be expanded on request. Deri
 
 Fixed semantic order: each triggered event/news card → month's action and ledger → S3 → S5.
 
-Each event gets its own headline, 2–3 short educational or atmospheric sentences, and explicit mechanical effects if any. Display current dated news and rumors only when the Events rule schedules them. Explain a scientific breakthrough in accessible language.
+Render every queued source ID from flow.newsOutbox/eventCards, including zero-effect news. Each gets its source headline, 1–2 explanatory sentences and exact effects. Do not replace a source row with invented news. Emit text before acknowledge_news; include news before a midmonth dilemma, not only at the final report. Display current dated news and rumors only when the Events rule schedules them. Explain a scientific breakthrough in accessible language.
 
 Show the main action and 1–2 sentences of flavor; each mechanical change, including generated Artifacts; resulting balances; skills that rose; datasets from expired streams; technology explanations where applicable.
 
@@ -36,13 +36,13 @@ Idle: Freelance, Research, New Model, Data, eligible Contracts, Shop, Team, Tech
 
 Commitment active: Continue matching Project/Contract/Paper, Cancel, and legal instant destinations. Cash below zero forces Freelance and pauses commitments per the Economy rule. Never display another illegal main action as available.
 
-Contracts and Team require their announced unlock; initially hide them until Fame 800. An announced unlock remains available if Fame falls. Shop appears after GPUT or neural architecture technology. Paper appears if a model has Q ≥ 60 and is unpublished.
+Contracts and Team require their announced unlock; initially hide them until Fame 800. An announced unlock remains available if Fame falls. Shop and Data Market are always accessible; CPU NGRAM/BOW may run without a GPU. Paper appears if a model has Q ≥ 60 and is unpublished.
 
 Always provide access to Save, Main Menu, and legal actions needed to continue. Include one short contextual tip about resources or navigation. Tips never disclose an ideal allocation or unseen pairing.
 
 ## S6 — Model Completion / Release
 
-Model name; Architecture × Task; Scale and datasets; unresolved Artifacts; **all** applicable benchmarks, scores to one decimal, dated current rival and score or N/A; brief explanation of each metric and qualitative result; overall Q and reception tier; RP already earned; estimated Fame (awarded only on release).
+Model name; Architecture × Task; Scale and datasets; unresolved Artifacts; **all** applicable benchmarks, scores to one decimal, dated current rival and score or N/A; brief explanation of each metric and qualitative result; overall Q and reception tier; RP already earned; estimated Fame (awarded only on release); Target/Expanded labels, novelty, historical/current SOTA distinction.
 
 Provide Open-source, License with exact payout, Product with exact monthly payout / eight months / VRAM reservation, and Shelve with zero Fame. Show unmet Requirements for locked choices. Apply Failure-model restrictions.
 
@@ -78,7 +78,7 @@ Menu title, available actions, instant/month classification, relevant costs, Bac
 
 ## S12 — Project Wizard
 
-Available compute / VRAM; owned Architectures with base compute requirements; eligible Scales with required VRAM; optional TRF/PTRF inheritance; available Tasks with descriptions; 1–3 owned Datasets; minimum months and exact months needed for full compute for the configured plan; Focus: exactly 10 integer points across Data/Model/Training/Eval; player-chosen name.
+Available compute / VRAM; owned Architectures with fixed compute requirements, projected monthly effective compute; eligible Scales with required VRAM; optional TRF/PTRF inheritance; available Tasks with descriptions; 1–3 owned Datasets; minimum months and exact training months needed for full compute, upfront/monthly expense and expected runway; Focus: exactly 10 integer points across Data/Model/Training/Eval; player-chosen name.
 
 Show only Match/Domain knowledge earned by analyzing that precise pairing. Do not warn about hidden quality penalties. Examples use placeholders, never optimal values. Persist the draft as fields are filled. Filling the form takes no month; confirming a valid plan is a main action and runs month 1.
 
@@ -92,7 +92,7 @@ Current Research Points, owned Technology IDs, visible tree names, current disco
 
 ## S15 — Portfolio and Streams
 
-Streams: model ID/name, monthly income, remaining months, reserved VRAM. Models: completion-order M IDs, name, Architecture × Task, Scale, Q, release status, analyzed and published flags.
+Streams: model ID/name, monthly income, remaining months, reserved VRAM. Models: completion-order M IDs, name, Architecture × Task, Scale, Q, release status, analyzed/published/codePublic flags and novelty.
 
 Actions: Analyze, Release shelved model, Shutdown Product, Paper if eligible, Back. A completed model never gets a new ID merely because a table was sorted.
 

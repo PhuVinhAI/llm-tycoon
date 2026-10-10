@@ -4,7 +4,7 @@
 
 | # | Date | Event | Effect |
 |---|---|---|---|
-| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action this month to earn Research Points and unlock **NGRAM**. |
+| E0 | Jan 2013 | 📰 *Welcome to NLP (Tutorial)* | Headline: "The State of AI". Explain that the Player starts with only **BTP (Basic Text Processing)**. Guide them to use the **Research** action to earn RP toward **NGRAM** (1000 RP; usually two Research months). Then run a CPU Tiny model and offer Analyze after completion. |
 | E1 | Jan 2013 | 📄 *word2vec core preprint (Mikolov et al.)* | EMB cost ×0.5 if locked; if owned: +500 Fame ("prior art!") |
 | E2 | Dec 2013 | 🌐 *Common Crawl becomes widely accessible* | Free Dataset claimable: Common Crawl raw (web-mixed 5/1) |
 | E2b | Jan 2014 | 📚 *BookCorpus published (Smashwords scrape)* | Free Dataset claimable: BookCorpus (books 4/4) |
@@ -38,8 +38,8 @@
 | # | Trigger | Event | Effect |
 |---|---|---|---|
 | T1 | First month Fame ≥ 800 / 1500 / 2200 | 👥 Headhunter available | Announce that a headhunter can now recruit the respective Archetype |
-| T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000, or decline for +200 Fame (bootstrapped pride) |
-| T3 | LLM completed with Q ≥ 70.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000, WIN ending triggered, game continues. Decline → +500 Fame, game continues. |
+| T2 | First month Fame ≥ 2500 | 😇 **Angel investor** | Choice: accept +$25,000 (also capitalRaised +25000), or decline for +200 Fame (bootstrapped pride) |
+| T3 | LLM completed with Q ≥ 80.0 and every target benchmark ≥ 65.0 | 💼 **The Term Sheet** | A VC offers $2,000,000. Accept → +$2,000,000 (capitalRaised +2000000, only once), WIN ending triggered, game continues. Decline → +500 Fame ×novelty; offer may recur on a later qualifying LLM, game continues. |
 
 ## Dynamic Press Coverage (Milestones & Twists)
 
@@ -48,10 +48,10 @@ These events fire exactly once per playthrough when their condition is met. The 
 | # | Trigger | Headline Theme | Effect |
 |---|---|---|---|
 | M1 | First Model achieves **SOTA Hype** | 📰 **David vs Goliath!** Indie lab beats Big Tech on global benchmarks. | Fame +200 |
-| M2 | First Model achieves **Q ≥ 90.0** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
+| M2 | First Model achieves **Q ≥ 85.0** | 📰 **A Glimpse of the Future?** [Company]'s new model [Model Name] shocks the academic world. | RP +500 |
 | M3 | Model released (License/Product) with **Artifacts ≥ 15** | 📰 **AI Gone Rogue!** [Company] faces backlash over hallucinating, biased AI. | Fame −150 |
 | M4 | Cash drops below **$0** for the first time | 📰 **Rumors:** Is [Company] running out of runway? Whispers of financial trouble. | Flavor only |
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
-| M6 | First Model achieves **Q ≥ 55.0** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +2500 |
+| M6 | First Model achieves **Q ≥ 55.0** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +1500 |
 
 *(Discount stacking and event tracking follow the Research and Events rules).*

@@ -1,7 +1,7 @@
 # Historical SOTA (Rival Models)
 
 When rendering the Benchmark comparison in the Model Completion Report (S6), the Game Engine must find the current SOTA Rival for each Benchmark. 
-**Rule:** Find the most recent entry in this table for the specific Benchmark where the `Date` is ≤ the current in-game Month and Year.
+**Rule:** Find the highest normalized score for this specific Benchmark among rows whose Date is ≤ the in-game month; ties choose the latest date. Scores are game indices, not raw metrics. Rival launch news still fires for every listed release.
 
 | Date | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
 |---|---|---|---|
@@ -44,7 +44,7 @@ When rendering the Benchmark comparison in the Model Completion Report (S6), the
 | May 2019 | SuperGLUE | RoBERTa (Meta) | 84.1 |
 | Jul 2019 | GLUE Benchmark | RoBERTa (Meta) | 88.2 |
 | Oct 2019 | SuperGLUE | T5 (Google) | 88.9 |
-| Oct 2019 | CNN/DailyMail | BART (Meta) | 42.9 |
+| Oct 2019 | CNN/DailyMail | BART (Meta) | 84.0 |
 | Jan 2020 | Human Evaluation | Meena (Google) | 80.0 |
 | May 2020 | HellaSwag | GPT-3 (OpenAI) | 85.1 |
 | May 2020 | LAMBADA | GPT-3 (OpenAI) | 86.2 |

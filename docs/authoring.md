@@ -22,7 +22,7 @@ README routing must include the action's actual dependencies and relevant sectio
 
 `session/` is mutable player data, created only during play and excluded from packages. Build prunes retired files from the previous package inventory, not user data. Never hand-edit release files; change source then rebuild.
 
-Version 1.0.0 / `llm-tycoon.save.v1` is the only supported save contract. No silent conversions. The Python helper supplies persistence and structural validation; GPT-6 still executes Rules.
+Version 1.0.0 / `llm-tycoon.save.v1` is the only supported save contract. No silent conversions. The Python helper supplies persistence, monthly news guards and targeted gameplay calculations; GPT-6 interprets actions and applies remaining Rules. Tables remain canonical, read directly by runtime/gameplay.py. Any calendar edit must pass the source-row scheduling tests; do not hardcode a second dated news catalog.
 
 ## Verification
 

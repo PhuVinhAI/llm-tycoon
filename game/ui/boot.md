@@ -2,7 +2,7 @@
 
 ## Startup
 
-Import the Python helper under `runtime/usage.md`; check for a saved run or recovery journal. If present, load/recover and resume the saved language, view, draft and pending choice. Do not ask for names or device again.
+Import the Python helper under `runtime/usage.md`; check for a saved run or recovery journal. If present, load/recover and resume the saved language, view, draft and pending choice. Emit any unshown flow.newsOutbox cards before resuming choices, then acknowledge their actual text and commit. Do not ask for names or device again.
 
 Without a run, show LLM Tycoon 1.0, Chapter 1: Home Lab, a short pitch and S1. Infer language when clear. Do not create a run until New Game is chosen and player/company names are provided.
 
@@ -10,7 +10,7 @@ Without a run, show LLM Tycoon 1.0, Chapter 1: Home Lab, a short pitch and S1. I
 
 | Option | Behavior |
 |---|---|
-| New Game | Collect both names without suggestions. Read `scenarios/home_lab.md` and `runtime/schema.md`; use `new_state` and commit once as `new_game`, then opening narration and S3/S5. Replacement follows Runtime's archive policy. |
+| New Game | Collect both names without suggestions. Read `scenarios/home_lab.md` and `runtime/schema.md`; use `new_state` and commit once as `new_game`, then opening narration and S3/S5. On the first main action, begin_month queues January tutorial and historical news. Replacement follows Runtime's archive policy. |
 | Continue / Import | Resume the local run or import an available JSON/save ZIP under `runtime/contract.md`. Ask for an upload only if no file is available. |
 | How to Play | Render S2 using the guide below, then return to S1. |
 | About | Translate the Game Info below, add a short pitch, then S1. |
@@ -39,7 +39,7 @@ Keep the guide short and show no future content.
 | Chapter | 1 — Home Lab |
 | Genre / Players | Business simulation, tycoon / 1 |
 | Setting | AI history from 2013 through 2020, then sandbox |
-| Goal | Train the world's first LLM |
+| Goal | Train a successful general LLM and grow beyond the home lab |
 | Runtime | GPT-6 with Python execution, writable files and adaptive Intelligent UI |
 | Persistence | JSON state, JSONL history, portable save ZIP |
 | Languages | Player's language |

@@ -17,13 +17,13 @@ Read `runtime/schema.md` when creating/changing records; select its relevant sec
 
 ## Read routing
 
-Follow `engine.md` for the action loop. Every action loads committed state; every result is calculated in Python and committed before it is shown. The UI reads the active section of `ui/views.md`.
+Follow `engine.md` for the action loop. Every action loads committed state. Every new month MUST call begin_month, commit the Events checkpoint, resolve the queued data rows and show/acknowledge all news before Action. finish_month and commit enforce this; never manually advance clock. Unshown outbox cards resume before a choice after context reset. Gameplay effects are computed/committed before their report; news display receipts are committed immediately after emission. The UI reads the active section of `ui/views.md`.
 
 The table identifies dependencies to read **in addition to** retained startup instructions and current state. Read only relevant sections/dated rows, but follow all triggered Rule references. If context no longer contains a dependency, reread it.
 
 | Action or phase | Documents / sections |
 |---|---|
-| Every main action/month, including Continue | `rules/00_time_and_turns.md`, `rules/01_actions.md`, `rules/02_economy.md`, `rules/04_skills.md`, `rules/05_reputation.md`, `rules/07_hardware.md`, `rules/11_events_and_competitions.md`; current/triggered rows of `content/08_events_calendar.md`, `content/13_benchmarks.md`, `content/14_rival_models.md`. Check lasting effects, streams, active commitment and triggered dependencies. |
+| Every main action/month, including Continue | `rules/00_time_and_turns.md`, `rules/01_actions.md`, `rules/02_economy.md`, `rules/04_skills.md`, `rules/05_reputation.md`, `rules/07_hardware.md`, `rules/11_events_and_competitions.md`; Call due_events/queue_due_events, not a memory-based calendar check; read returned current/triggered rows of `content/08_events_calendar.md`, `content/13_benchmarks.md`, `content/14_rival_models.md`. Check lasting effects, streams, active commitment and triggered dependencies. |
 | Freelance | Actions plus `content/10_freelance_clients.md` |
 | Research | `rules/03_research.md`, `content/11_research_events.md`, employed bonuses in `content/07_employees.md` |
 | Technology / unlock | Research, `content/00_technologies.md`, granted designs in `content/01_architectures.md`; stored discounts |
@@ -32,7 +32,7 @@ The table identifies dependencies to read **in addition to** retained startup in
 | Project setup / wizard | `rules/08_model_projects.md` → **Declaring a Project (the start wizard)**; Datasets, Hardware, Skills; `content/00_technologies.md`, `content/01_architectures.md`, `content/02_tasks_and_matching.md`, staff |
 | Project month / fine-tuning / midpoint | Model Projects → **Artifacts & Fine-Tuning**, **Project Dilemmas (Mid-Project)**; setup dependencies; `content/12_project_dilemmas.md`, Benchmarks |
 | Model completion | Model Projects → **The Bottom-Up Quality Calculation**, **Reception & Fame**; setup dependencies, `content/13_benchmarks.md`, `content/14_rival_models.md` |
-| Release / shelved release | Model Projects → **Release & The Market Hype Cycle** and **Reception & Fame**; Reputation, Hardware, `content/03_market_demand.md`, Benchmarks including Public Reviewers, Rival Models, active Events |
+| Release / shelved release | Model Projects → **Release & The Market Hype Cycle** and **Reception & Fame**; Reputation, Hardware, `content/03_market_demand.md`, Benchmarks including Public Reviewers, Rival Models, active Events; current_sota and market_window helpers |
 | Analyze | Model Projects → **Post-Mortem Analysis (Portfolio)**, quality/midpoint sections; original design/Task/Domain tables |
 | Streams / shutdown | Model Projects → release section; Time, Hardware, Economy, Datasets; stored stream records |
 | Contract | `rules/09_contracts.md`, Actions, `content/06_contracts.md` including dilemmas |
@@ -53,7 +53,7 @@ Use `read_document(path, heading)` to print just one section into context. Its h
 
 The shipped folders contain immutable instructions, Rules, Content, UI, starting scenario and Python persistence. Runtime data is created separately under `session/`; the game ZIP never includes progress.
 
-GPT-6 applies the Rules and tells the story; Python performs numeric work and persistence. The helper is not a complete gameplay engine. Save exports carry pending choices and available history into another chat with this game package.
+GPT-6 applies the Rules and tells the story; Python performs numeric work and persistence. The helper schedules mandatory data news, guards monthly completion and supplies targeted deterministic gameplay calculations; remaining actions follow Rules. Save exports carry pending choices and available history into another chat with this game package.
 
 Every shipped file is mapped below. Do not concatenate them or automatically read the entire map's targets.
 
@@ -98,6 +98,7 @@ Every shipped file is listed here. Read a linked document only when its topic is
 | [rules/13_endings_and_scoring.md](rules/13_endings_and_scoring.md) | Endings and Scoring |
 | [rules/14_papers.md](rules/14_papers.md) | Academic Papers |
 | [runtime/contract.md](runtime/contract.md) | Runtime Contract |
+| [runtime/gameplay.py](runtime/gameplay.py) | Python state, transactions, import, export and history |
 | [runtime/schema.md](runtime/schema.md) | State Schema — LLM Tycoon 1.0 |
 | [runtime/state.py](runtime/state.py) | Python state, transactions, import, export and history |
 | [runtime/usage.md](runtime/usage.md) | Python API |

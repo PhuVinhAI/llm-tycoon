@@ -1,29 +1,11 @@
-<!--
-===============================================================================
-FILE: 10_employees.md
-MODULE: Rules / Employees
-
-Mục đích:
-Định nghĩa cơ chế tuyển dụng trong chương Home Lab.
-
-Tác dụng:
-Home lab chỉ chứa được một đội nhỏ — tối đa 2 người — mỗi người một thế
-mạnh rõ rệt, buộc người chơi chọn hướng build.
-
-Trách nhiệm:
-- Định nghĩa giới hạn, thuê, sa thải, lương.
-- Không liệt kê ứng viên cụ thể (nằm ở content/).
-===============================================================================
--->
-
 # Employees
 
 ## Generation & Hiring
 
 - **Headhunter Search:** Hiring is an instant action initiated from the Team menu. The Player pays the Archetype's Headhunter Fee (Content). The game pauses and generates exactly **3 candidates** for that Archetype.
-- **Generation:** Using Creative License, invent a name and brief background for each candidate that naturally fits the player's chosen language; those flavor details have no mechanical effect. Mechanical values are deterministic: Candidate 1 uses every minimum Salary/stat bound, Candidate 2 uses the midpoint of every bound (round half up to a whole number), and Candidate 3 uses every maximum bound. A fixed effect with no range is identical for all three. Always present them in that order: Low Salary/Stats, Mid Salary/Stats, High Salary/Stats.
+- **Generation:** Using Creative License, invent a name and brief background for each candidate that naturally fits the player's chosen language; those flavor details have no mechanical effect. Mechanical values follow Content's low/mid/high bounds; flat stats use minimum/midpoint/maximum with half-up rounding. Optimizer effectiveness specifically improves as its multiplier decreases: 0.85/0.75/0.65. A fixed effect with no range is identical for all three. Always present them in that order: Low Salary/Stats, Mid Salary/Stats, High Salary/Stats.
 - **The Interview:** Render the Interview screen (S16). The Player must choose 1 candidate to hire, or 0 to reject all. The Headhunter Fee is **never refunded**, even if no one is hired.
-- Maximum **2** Employees at a time — the lab is one small room. The Engine must block searches if the lab is full.
+- At most one Employee per Archetype. Maximum **2** Employees at a time — the lab is one small room. Block searches if the lab is full or that Archetype is already employed.
 - Salary is paid starting from the month of hire (Economy rule).
 
 ## Firing
@@ -33,19 +15,4 @@ Trách nhiệm:
 ## Effects
 
 - Each Employee's generated effects apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
-- When multiple Employees apply, add all flat RP, Q, or Dataset Quality bonuses. Multiply all compute-requirement multipliers, then round the final requirement up to the nearest whole TFLOPS-month. Dataset Quality remains capped at 5.
-
-<!--
-Tiếng Việt (tóm tắt):
-Sinh & Tuyển: Người chơi trả tiền Headhunter (hành động tức thời). Engine 
-sinh ra 3 ứng viên có sự đánh đổi (ví dụ: rẻ/yếu vs đắt/mạnh). Người chơi 
-chọn 1 hoặc từ chối tất cả (tiền Headhunter không hoàn lại). Tối đa 2 nhân viên.
-Không cho phép tìm kiếm nếu lab đã đầy người.
-
-Sa thải: tức thời, hiệu lực ngay, không phạt, không trợ cấp. Nhân viên bị sa
-thải sẽ biến mất vĩnh viễn.
-
-Hiệu ứng: bonus của từng nhân viên (Content) tự động áp dụng khi còn làm
-việc — bonus nghiên cứu vào sản lượng Research, bonus chất lượng vào công
-thức Quality, giảm yêu cầu compute vào bước kiểm tra compute.
--->
+- Flat RP and Dataset Quality bonuses add; Dataset Quality caps at 5. Training quality bonuses are averaged over months worked. Optimizers change monthly effective training compute, not the fixed project requirement. Use Model Projects for the exact calculation.

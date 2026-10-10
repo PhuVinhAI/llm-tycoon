@@ -34,7 +34,14 @@
   },
   "counters": {
     "research": 0,
-    "models": 0
+    "models": 0,
+    "capitalRaised": 0,
+    "dilemmas": {
+      "freelance": 0,
+      "research": 0,
+      "contract": 0,
+      "paper": 0
+    }
   },
   "technology": {
     "owned": [
@@ -85,7 +92,8 @@
     "draft": {},
     "month": null,
     "pendingChoice": null,
-    "lastReport": null
+    "lastReport": null,
+    "newsOutbox": []
   },
   "ending": {
     "bankruptcy": false,

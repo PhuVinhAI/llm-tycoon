@@ -9,10 +9,10 @@ Fame ranges from 0 to 5000 (floor 0, cap 5000).
 | Source | Fame change |
 |---|---|
 | Model reception: Breakthrough / Great / Good / Mediocre / Failure | +800 / +500 / +300 / +100 / −100 |
-| Open-source release | reception Fame × 2 (replaces the normal reception Fame) |
+| Open-source release | positive reception Fame ×1.5 ×novelty (replaces normal reception); penalties unchanged |
 | Contract completed / cancelled | +100 / −200 |
 | Project cancelled | −100 |
-| Academic Paper completed / cancelled | +300 / −100 (before any separate Dilemma or release-specific effects) |
+| Academic Paper completed / cancelled | (300 + pending positive dilemma Fame) ×novelty / −100; immediate costs remain |
 | Competition won | per the competition (Content) |
 | Event-granted | per the event (Content) |
 

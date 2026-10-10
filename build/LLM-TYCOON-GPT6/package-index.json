@@ -77,7 +77,7 @@
         }
       ],
       "bytes": 701,
-      "sha256": "5ecbfd076ba13100f249f61c80ca18d1cb0e38fca930fe28b799ed1e469e719a"
+      "sha256": "b8f1560532dcf7970aba6a7e3770d0bcc3649cb982da64f3966bc1b52793e3a5"
     },
     {
       "path": "content/05_datasets.md",
@@ -120,10 +120,15 @@
           "heading": "Mid-Contract Dilemmas",
           "level": 2,
           "line": 15
+        },
+        {
+          "heading": "Client dataset on completion",
+          "level": 2,
+          "line": 26
         }
       ],
-      "bytes": 1844,
-      "sha256": "35c0ebb0df97dc4da5fcb9d55ef3d41ee27efead3a6cf5c99a0f1108872972bd"
+      "bytes": 2142,
+      "sha256": "a1728b69d117b96ec4a19123839ea2120ea3229711d20b4ab2a3bac8906f2800"
     },
     {
       "path": "content/07_employees.md",
@@ -135,8 +140,8 @@
           "line": 1
         }
       ],
-      "bytes": 1001,
-      "sha256": "46b7234da133f659b3f324c290c444fcead0503d056b1d23718e4c61de7ae609"
+      "bytes": 1127,
+      "sha256": "5e66a2a63ffdf3e87335eca84f1a24dfa2ab4bdc2b40961cb85e62be8881055c"
     },
     {
       "path": "content/08_events_calendar.md",
@@ -163,8 +168,8 @@
           "line": 44
         }
       ],
-      "bytes": 5453,
-      "sha256": "c92ba046d49516ff3c8e52e3200a478c93118cf2503ac840d494e5721cd0fd08"
+      "bytes": 5679,
+      "sha256": "a1017dae1368b41a261bfceba5b5d1e4b638b99195110403b9364a552a4d8fed"
     },
     {
       "path": "content/09_scoring_titles.md",
@@ -177,7 +182,7 @@
         }
       ],
       "bytes": 230,
-      "sha256": "85c8621ea79e184ace7b68a5cadff73e672b14cad5cce39d3fa9b3b6782f4925"
+      "sha256": "a19adaec56b34d98be4c06c8bdcf8457c41aceb4a9080892ab4e18c16b9b9188"
     },
     {
       "path": "content/10_freelance_clients.md",
@@ -189,8 +194,8 @@
           "line": 1
         }
       ],
-      "bytes": 2213,
-      "sha256": "913fcd8386e0d8af758cc0155cbaa8c4c451c5d6e311e9cb78f83c6a5b75a094"
+      "bytes": 2294,
+      "sha256": "cf8807a92a9416bd9c56d93856d2618170265482938530aa090385824d5f8642"
     },
     {
       "path": "content/11_research_events.md",
@@ -202,8 +207,8 @@
           "line": 1
         }
       ],
-      "bytes": 2096,
-      "sha256": "1cd3159fb32befb6d4842599cc882eccac0226229a838973293c7dd09d3c43e5"
+      "bytes": 2183,
+      "sha256": "52d077308e59c99b085f32f302d45e822f54ecc301aac285cb4c33c9e554a791"
     },
     {
       "path": "content/12_project_dilemmas.md",
@@ -245,8 +250,8 @@
           "line": 55
         }
       ],
-      "bytes": 3316,
-      "sha256": "31a98fe89e69a377380e71114b7957ff6180afd00e760cded89713874e5bbfe8"
+      "bytes": 3350,
+      "sha256": "d519c9d4c2fe8047cbe88b2643e3eb1a4da093b4d31ecc39ae41576e1c6cbb0e"
     },
     {
       "path": "content/13_benchmarks.md",
@@ -268,8 +273,8 @@
           "line": 35
         }
       ],
-      "bytes": 2905,
-      "sha256": "ebcb8ea92f78d433d973470d0b40623d80fd6c92fea50bc296f9b8af5f907b06"
+      "bytes": 3198,
+      "sha256": "e4bddb7f4eb23684e3820f903ef11d74cbbf6219add0325eec622e3c8feccc0c"
     },
     {
       "path": "content/14_rival_models.md",
@@ -281,8 +286,8 @@
           "line": 1
         }
       ],
-      "bytes": 3279,
-      "sha256": "ed67fd5da1adb505676abc42f5332a9feaa7240770616ec5072697b75d59dda2"
+      "bytes": 3388,
+      "sha256": "eccbf1e9c2c158203c8f8908d704d434df15df5185b874fb06bb54ae8cd5cd86"
     },
     {
       "path": "content/15_papers.md",
@@ -294,8 +299,8 @@
           "line": 1
         }
       ],
-      "bytes": 894,
-      "sha256": "0811da5f90892b6752c9b36f7f0b9f1c6ce59ce522e1c7c58d01d5e423e833f2"
+      "bytes": 965,
+      "sha256": "80e14587a3d038658a7426878d39de1a7ef7fa983e49dadaaacca0f520a0a198"
     },
     {
       "path": "engine.md",
@@ -327,8 +332,8 @@
           "line": 32
         }
       ],
-      "bytes": 3632,
-      "sha256": "61cd2dc1d5a4cd1c93fbd373336605c88f39b5211496c37664ee58e36dc1480e"
+      "bytes": 4416,
+      "sha256": "18d0381ff63fd0a2fe48737363e2f9c56c55497d745754af5700436c98f482bd"
     },
     {
       "path": "README.md",
@@ -360,8 +365,8 @@
           "line": 60
         }
       ],
-      "bytes": 9250,
-      "sha256": "d374f720d712e71d9fddb9926584d85e1ae62b139d6e284ee0f5e619b66932c2"
+      "bytes": 9920,
+      "sha256": "d8c6f49d1b4e7b1fed1bb84a18de98d58eebec874128204b971eea5289aaf70a"
     },
     {
       "path": "reference/terms.md",
@@ -401,8 +406,8 @@
           "line": 19
         }
       ],
-      "bytes": 2102,
-      "sha256": "7984bd4cbbed88cfdd32e7d1324dd5f50de7376bddb99706b37726d6f96f9ea5"
+      "bytes": 2460,
+      "sha256": "5bc5da4f16beeb41cc36bb3688b5a6dd17ee9ca8e806cde05590cdf5c457853a"
     },
     {
       "path": "rules/01_actions.md",
@@ -429,8 +434,8 @@
           "line": 28
         }
       ],
-      "bytes": 3628,
-      "sha256": "7079f897dadb0aae78511f2bfc5486362e6361ec6bc84148a259f63667300e08"
+      "bytes": 3715,
+      "sha256": "4bfc61babbc2318955d3459d517f1f5665e48bd6a48d30638f230fa4349c2a36"
     },
     {
       "path": "rules/02_economy.md",
@@ -485,8 +490,8 @@
           "line": 16
         }
       ],
-      "bytes": 911,
-      "sha256": "2034526355b4a79704ff219162b6b6d95624e7b5d483e9ae22d51743840a5b61"
+      "bytes": 965,
+      "sha256": "9193856f8eafb81afc08cdfe592aeaefa6df7600c5d4d5cd68a240a4944d5efa"
     },
     {
       "path": "rules/04_skills.md",
@@ -513,8 +518,8 @@
           "line": 14
         }
       ],
-      "bytes": 642,
-      "sha256": "f69d3d36acb92c6d051c2dadd4a3474d2b43954e2b23009c82f7f61171876e00"
+      "bytes": 662,
+      "sha256": "5f516ae9a4f4593129cde63bbfd493473ec35c12c18315eee3897ee22a80a63c"
     },
     {
       "path": "rules/05_reputation.md",
@@ -541,8 +546,8 @@
           "line": 19
         }
       ],
-      "bytes": 927,
-      "sha256": "7193a1a2b8bad304fd3618edd93a51f53ae9e60f5e09fdadfb9fbd0444aa9fa8"
+      "bytes": 968,
+      "sha256": "d7c5effb2d076c20827b499f7648f5b07c84f75a363d0ef3b7cff95f125dcea6"
     },
     {
       "path": "rules/06_datasets.md",
@@ -574,8 +579,8 @@
           "line": 18
         }
       ],
-      "bytes": 1310,
-      "sha256": "b4eb5b91fb500249138cff1e410da0c96448785db30a8fd6388956c412f99ccd"
+      "bytes": 1577,
+      "sha256": "54f0712b9afcf71c45b20c4168b3d738235a5d70a722c7ff30db6c4c1968925b"
     },
     {
       "path": "rules/07_hardware.md",
@@ -607,8 +612,8 @@
           "line": 22
         }
       ],
-      "bytes": 1833,
-      "sha256": "5972cbbee37bfa81c0dd7bfda5dfb4c2acbc339a89e3210c8d82eec1156de2ad"
+      "bytes": 1871,
+      "sha256": "65213f04d055d002e583ed48cffb5764c52b60a58e240fa03da0fde34c544928"
     },
     {
       "path": "rules/08_model_projects.md",
@@ -627,36 +632,36 @@
         {
           "heading": "Artifacts & Fine-Tuning",
           "level": 2,
-          "line": 27
+          "line": 34
         },
         {
           "heading": "Project Dilemmas (Mid-Project)",
           "level": 2,
-          "line": 37
+          "line": 45
         },
         {
           "heading": "The Bottom-Up Quality Calculation",
           "level": 2,
-          "line": 55
+          "line": 53
         },
         {
           "heading": "Reception & Fame",
           "level": 2,
-          "line": 103
+          "line": 79
         },
         {
           "heading": "Release & The Market Hype Cycle",
           "level": 2,
-          "line": 118
+          "line": 91
         },
         {
           "heading": "Post-Mortem Analysis (Portfolio)",
           "level": 2,
-          "line": 141
+          "line": 114
         }
       ],
-      "bytes": 14322,
-      "sha256": "fc2b3e7a7cdc2c96f2e7e105798a753e5a48c2676c536ea50f5557ea5772f5db"
+      "bytes": 10441,
+      "sha256": "a2d66f9453814d50e8c591302e1aab566f6b8d292d3b1f66bf7b04f749db8fac"
     },
     {
       "path": "rules/09_contracts.md",
@@ -688,8 +693,8 @@
           "line": 20
         }
       ],
-      "bytes": 1995,
-      "sha256": "c7a5827b09d9ff769d19e094f21946b1c2082ce121b53ccdfddd340f078df7ff"
+      "bytes": 2404,
+      "sha256": "18a977e6e80bd466be9c2736ec61c996b728dc6a25d6c8f257b1926fe10df810"
     },
     {
       "path": "rules/10_employees.md",
@@ -716,8 +721,8 @@
           "line": 15
         }
       ],
-      "bytes": 1736,
-      "sha256": "7ba99f589ee2e1acb79a21b8ee35fdd96155a101da0306ecc0d4a73da3cddbc4"
+      "bytes": 1823,
+      "sha256": "ff29dfc2f3e13f1ab43e1fc957cb726d193ddafd3acbe96d109054c64e6cf446"
     },
     {
       "path": "rules/11_events_and_competitions.md",
@@ -736,16 +741,16 @@
         {
           "heading": "Lasting effects",
           "level": 2,
-          "line": 12
+          "line": 23
         },
         {
           "heading": "Competitions",
           "level": 2,
-          "line": 16
+          "line": 27
         }
       ],
-      "bytes": 2208,
-      "sha256": "16d114d212c6d74b9dabcf007bcc5135f9b7b59cfb2a07aaec9d639c90f3cff9"
+      "bytes": 2973,
+      "sha256": "f87d8df22b19f86de772dbe4819c057e2a525141cac7c8ebbc94a98926ee3770"
     },
     {
       "path": "rules/12_llm_project.md",
@@ -772,8 +777,8 @@
           "line": 19
         }
       ],
-      "bytes": 2543,
-      "sha256": "7b4210ab262e72e4248471e3b6d4456f8553ca9609a48db301d5745aa5c366cb"
+      "bytes": 1943,
+      "sha256": "a99414518c47434af9b692ae36597c96bc55f0d0edcfd6bfe04790a6c4171e42"
     },
     {
       "path": "rules/13_endings_and_scoring.md",
@@ -792,11 +797,11 @@
         {
           "heading": "Score",
           "level": 2,
-          "line": 10
+          "line": 8
         }
       ],
-      "bytes": 694,
-      "sha256": "9256ac2e06ac3c6b93f7355ed472ae599e177055a4744b93ad9f37a3e1b4dda5"
+      "bytes": 1042,
+      "sha256": "c17eacb1f1eddabbc24fdde0e07ba8b93c99843dbcba29759c30bae7176e246b"
     },
     {
       "path": "rules/14_papers.md",
@@ -820,16 +825,16 @@
         {
           "heading": "Mid-Paper Dilemmas",
           "level": 2,
-          "line": 15
+          "line": 11
         },
         {
           "heading": "Completion",
           "level": 2,
-          "line": 21
+          "line": 17
         }
       ],
-      "bytes": 2033,
-      "sha256": "06f8186425e3effbe4e77327cdb26cdf95f523d163e7bfea0baffcd12cbe5980"
+      "bytes": 1337,
+      "sha256": "cd3b25ce4af081a6b9b60edf4d36212b2fe08df6d3460e67fb6e53940ed6a379"
     },
     {
       "path": "runtime/contract.md",
@@ -861,13 +866,25 @@
           "line": 30
         },
         {
-          "heading": "History",
+          "heading": "Monthly news and clock guards",
           "level": 2,
           "line": 40
+        },
+        {
+          "heading": "History",
+          "level": 2,
+          "line": 44
         }
       ],
-      "bytes": 4302,
-      "sha256": "b44167d1cb0ce0fe7a00c0078507b5d8215d98d091bc62f4f7db783c433b8ade"
+      "bytes": 4991,
+      "sha256": "db8a01397cd59c60fc6162b18f9b18d2e9e166f11a501cff5b657191a9065710"
+    },
+    {
+      "path": "runtime/gameplay.py",
+      "topic": "Python state, transactions, import, export and history",
+      "sections": [],
+      "bytes": 34071,
+      "sha256": "9112fd471cc1b1fdb8e396f22257b36cad5e767f6de5937e62b77528ec264674"
     },
     {
       "path": "runtime/schema.md",
@@ -896,33 +913,33 @@
         {
           "heading": "Month checkpoint and pending choices",
           "level": 2,
-          "line": 61
+          "line": 62
         },
         {
           "heading": "Calendar semantics",
           "level": 2,
-          "line": 78
+          "line": 82
         },
         {
           "heading": "Validation and repairs",
           "level": 2,
-          "line": 82
+          "line": 86
         },
         {
           "heading": "Structured transaction event",
           "level": 2,
-          "line": 88
+          "line": 92
         }
       ],
-      "bytes": 7971,
-      "sha256": "642ccf27cc1fefe23a632bd7a0db521eee5833d6a448e2d04acf78582e22b278"
+      "bytes": 9811,
+      "sha256": "a63dfe8f9f4dfc071119c2c2af0dd4669e430be37afc466f3e2a25c6e3ef8601"
     },
     {
       "path": "runtime/state.py",
       "topic": "Python state, transactions, import, export and history",
       "sections": [],
-      "bytes": 34350,
-      "sha256": "345a99e2d09976cd9ccc34bda6d69f504807bafe8dcc661c44e04f375ab67645"
+      "bytes": 46682,
+      "sha256": "cb90a90bb8bde1ef4b9f5af25ed916f49bdae10563dbb75a147bb252516a9811"
     },
     {
       "path": "runtime/usage.md",
@@ -941,23 +958,28 @@
         {
           "heading": "API",
           "level": 2,
-          "line": 25
+          "line": 26
         },
         {
           "heading": "Read only what is needed",
           "level": 2,
-          "line": 44
+          "line": 65
+        },
+        {
+          "heading": "Mandatory month sequence",
+          "level": 2,
+          "line": 74
         }
       ],
-      "bytes": 2560,
-      "sha256": "00cce74ad79376e3e1dc987fb7a44db5f61350b20c6852da766944eaf88bc096"
+      "bytes": 6348,
+      "sha256": "dda50bc32c7ee89db2fe508c034e1149f1367af82b032cf5ccdc8d3a9f615641"
     },
     {
       "path": "scenarios/home_lab.json",
       "topic": "Machine-readable Home Lab starting state",
       "sections": [],
-      "bytes": 1708,
-      "sha256": "9f8cb5a1110e53c7589381c982225d30edf99e6b8dec41873a328d9a71c68607"
+      "bytes": 1860,
+      "sha256": "e0a54d9cd3c243379243a7704a5ceea2c85f897c7e4b7b148eb11a3f253a28e7"
     },
     {
       "path": "scenarios/home_lab.md",
@@ -974,8 +996,8 @@
           "line": 5
         }
       ],
-      "bytes": 1004,
-      "sha256": "682057b85ef80475a1be26d330126ede13769fe1e648ae27dd00c50f5875dcf3"
+      "bytes": 1121,
+      "sha256": "1b5a90fce8851f536d34923e9f8130d607ab018e397d0e53eb6f3f36e92bf025"
     },
     {
       "path": "ui/boot.md",
@@ -1007,8 +1029,8 @@
           "line": 34
         }
       ],
-      "bytes": 2313,
-      "sha256": "c51354d4c3f04dfcab7820cfa8eef043e28b38cbd9e642d424cbd8264f35b5b1"
+      "bytes": 2539,
+      "sha256": "7c5173f34bee6bd8af0a5dd681b5d5c537fb121ef36cea1230936b7b5555b533"
     },
     {
       "path": "ui/presentation.md",
@@ -1148,8 +1170,8 @@
           "line": 105
         }
       ],
-      "bytes": 7467,
-      "sha256": "eaf2680f9c8013db3659eea0f7bebeef415dc9ffb01e0df978a22bc555b6523d"
+      "bytes": 7844,
+      "sha256": "a14fd82bc9a13c1aa38c5a37ee8b4ff1e008391011770c3056635c37a352c535"
     }
   ]
 }

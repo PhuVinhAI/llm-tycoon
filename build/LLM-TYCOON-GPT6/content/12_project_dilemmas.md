@@ -18,7 +18,7 @@ Flavor direction determined by `Turn % 4`:
 | Option | Yield / Effect |
 |---|---|
 | 1. **The Polish** (Spend extra time to perfect it) | `M (total months) +1`, `q_mod +5` |
-| 2. **The Spin-off** (Publish intermediate findings) | `RP +800`, `q_mod +0` |
+| 2. **The Spin-off** (Publish intermediate findings) | `Completion RP +800`, `q_mod +0` |
 
 ### 2. For Massive Scales (Large, Massive, Frontier)
 Flavor direction determined by `Turn % 4`:
@@ -32,7 +32,7 @@ Flavor direction determined by `Turn % 4`:
 | Option | Yield / Effect |
 |---|---|
 | 1. **The Grand Polish** (Extend training to lock in these emergent capabilities) | `M (total months) +1`, `q_mod +8` |
-| 2. **The Academic Shockwave** (Publish a massive preprint to ArXiv immediately) | `RP +2,000`, `q_mod +0` |
+| 2. **The Academic Shockwave** (Publish a massive preprint to ArXiv upon project completion) | `Completion RP +2,000`, `q_mod +0` |
 
 ---
 

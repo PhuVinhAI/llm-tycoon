@@ -21,6 +21,7 @@ runtime/
   schema.md               # cấu trúc trạng thái
   usage.md                # API Python và đọc theo mục
   state.py                # helper Python; import trực tiếp
+  gameplay.py             # lịch tin tức, Quality, phát hành và thưởng
 scenarios/
   home_lab.md             # bối cảnh mở màn
   home_lab.json           # trạng thái đầu chuẩn
@@ -45,3 +46,5 @@ py -3.7 -m unittest discover -s tests/python -v
 Nguồn chơi nằm trong `game/`; hướng dẫn sửa nguồn ở [docs/authoring.md](docs/authoring.md). Các README của người phát triển và tài liệu authoring không vào ZIP.
 
 GPT-6 diễn giải, áp dụng Rules và kể chuyện; Python tính số, kiểm tra và lưu/khôi phục. Helper chưa mã hóa toàn bộ gameplay thành engine độc lập. Kiểm tra phần mềm xác minh đóng gói, đọc tài liệu và save/resume; độ đúng khi chơi vẫn phụ thuộc model áp dụng luật, cần playtest.
+
+Mỗi tháng bắt đầu bằng `begin_month`: Python lấy tin đúng ngày từ calendar, benchmark và rival data. Tin chưa hiển thị được giữ trong save; `finish_month` và commit chặn bỏ sót nguồn tin hoặc tự nhảy tháng. AI phải gửi nội dung thẻ trước khi ghi xác nhận hiển thị. Các thay đổi gameplay ghi tại [docs/gameplay-changes.md](docs/gameplay-changes.md).

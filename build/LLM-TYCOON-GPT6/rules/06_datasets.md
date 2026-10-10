@@ -17,5 +17,6 @@
 
 ## Usage
 
+- Mixtures require distinct IDs and distinct (domain, size, quality, taskId) records; renaming does not create coverage. Combine requires distinct owned IDs of one Domain and preserves source provenance in sourceId (joined sorted source IDs); originals are consumed.
 - A Project uses **1 to 3 Datasets** (a Data Mixture). The Datasets are not consumed — they can be reused (but see the repeat penalty in Model Projects).
 - **Combined Size** = Max Size + Count − 1 (cap 5), and **Combined Quality** = floor(Average Quality). Architecture Baseline Data Size and Scale Ideal Data Size affect Quality; they are not hard start requirements. The LLM Project's explicit Combined Size 5 and Combined Quality ≥ 3 requirements remain hard.

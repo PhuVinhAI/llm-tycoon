@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import importlib.util
 import json
 import math
 import os
@@ -16,6 +17,31 @@ from pathlib import Path
 
 SCRIPT_ROOT = Path(__file__).resolve().parent
 PACKAGE_ROOT = SCRIPT_ROOT.parent
+_spec = importlib.util.spec_from_file_location("tycoon_gameplay", SCRIPT_ROOT / "gameplay.py")
+_gameplay = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_gameplay)
+scheduled_events = _gameplay.scheduled_events
+due_events = _gameplay.due_events
+draw_dilemma = _gameplay.draw_dilemma
+project_quality = _gameplay.project_quality
+fixed_requirement = _gameplay.fixed_requirement
+training_compute = _gameplay.training_compute
+market_window = _gameplay.market_window
+current_sota = _gameplay.current_sota
+campaign_score = _gameplay.campaign_score
+create_project = _gameplay.create_project
+advance_project = _gameplay.advance_project
+extend_project = _gameplay.extend_project
+project_midpoint = _gameplay.project_midpoint
+complete_project = _gameplay.complete_project
+cancel_commitment = _gameplay.cancel_commitment
+complete_paper = _gameplay.complete_paper
+complete_contract = _gameplay.complete_contract
+quote_release = _gameplay.quote_release
+release_model = _gameplay.release_model
+product_logs = _gameplay.product_logs
+resolve_term_sheet = _gameplay.resolve_term_sheet
+freeze_campaign = _gameplay.freeze_campaign
 VERSION = "1.0.0"
 SCHEMA = "llm-tycoon.save.v1"
 VIEWS = {"S0", "S1", "S2", "S3", "S4", "S5", "S6", "S6-B", "S7", "S8",
@@ -127,9 +153,12 @@ def validate(state):
     _number(state["resources"]["cash"], "cash", integer=True)
     _number(state["resources"]["researchPoints"], "researchPoints", 0, integer=True)
     _number(state["resources"]["fame"], "fame", 0, 5000, integer=True)
-    _keys(state["counters"], ["research", "models"], "counters")
-    for key in ["research", "models"]:
+    _keys(state["counters"], ["research", "models", "capitalRaised", "dilemmas"], "counters")
+    for key in ["research", "models", "capitalRaised"]:
         _number(state["counters"][key], "counter " + key, 0, integer=True)
+    _keys(state["counters"]["dilemmas"], ["freelance", "research", "contract", "paper"], "dilemmas")
+    for count in state["counters"]["dilemmas"].values():
+        _number(count, "dilemma count", 0, integer=True)
     _keys(state["technology"], ["owned"], "technology")
     _strings(state["technology"]["owned"], "technology IDs", unique=True)
     hw = state["hardware"]
@@ -149,6 +178,8 @@ def validate(state):
     _ids(state["team"]["employees"], "employees")
     _ids(state["team"]["candidates"], "candidates")
     _need(len(state["team"]["employees"]) <= 2, "Team exceeds two employees")
+    _need(len({p["archetype"] for p in state["team"]["employees"]}) == len(state["team"]["employees"]),
+          "Only one employee per archetype")
     _need(len(state["team"]["candidates"]) in (0, 3), "Interview needs exactly three candidates")
     for person in state["team"]["employees"] + state["team"]["candidates"]:
         _keys(person, ["name", "archetype", "salary", "effects", "background"], "person")
@@ -181,7 +212,14 @@ def validate(state):
     for i, model in enumerate(state["models"], 1):
         _keys(model, ["name", "architecture", "scale", "task", "datasets", "focus", "quality",
                       "artifacts", "completedDate", "release", "releaseDate", "analyzed",
-                      "published", "sotaHype", "isLlm", "benchmarks"], "model")
+                      "published", "sotaHype", "isLlm", "benchmarks", "targetBenchmarkIds",
+                      "noveltyMultiplier", "codePublic"], "model")
+        _strings(model["targetBenchmarkIds"], "targetBenchmarkIds", unique=True)
+        _number(model["noveltyMultiplier"], "noveltyMultiplier", .25, 1)
+        _need(isinstance(model["codePublic"], bool), "codePublic must be boolean")
+        _need(model["scale"] in _gameplay.SCALES, "Unknown model scale")
+        _need(model["architecture"] not in {"NGRAM", "BOW"} or model["scale"] in {"Tiny", "Base"},
+              "CPU model scale must be Tiny/Base")
         _need(model["id"] == "M" + str(i), "Models must retain completion order")
         _number(model["quality"], "model quality", 0, 100)
         _number(model["artifacts"], "model artifacts", 0, integer=True)
@@ -195,6 +233,9 @@ def validate(state):
         for dataset in model["datasets"]:
             check_dataset(dataset)
             _need(int(dataset["id"][1:]) < state["data"]["nextDatasetId"], "Model snapshot ID would be recycled")
+        _need(len({d["id"] for d in model["datasets"]}) == len(model["datasets"])
+              and len({_gameplay.dataset_key(d) for d in model["datasets"]}) == len(model["datasets"]),
+              "Model mixture contains duplicate coverage")
         for key in ["analyzed", "published", "sotaHype", "isLlm"]:
             _need(isinstance(model[key], bool), key + " must be boolean")
         _need(isinstance(model["benchmarks"], list), "benchmarks must be array")
@@ -229,12 +270,29 @@ def validate(state):
         _need(isinstance(commitment["dilemmaDone"], bool), "dilemmaDone must be boolean")
         required = {
             "project": ["name", "architecture", "scale", "task", "datasets", "inheritModelId", "focus",
-                        "computeAccumulated", "qualityModifier", "artifacts", "phase", "isLlm"],
-            "contract": ["payModifierPercent"],
-            "paper": ["modelId", "researchMultiplier", "researchBonus", "immediateConsequencesApplied"]
+                        "computeAccumulated", "qualityModifier", "artifacts", "phase", "isLlm",
+                        "fixedComputeRequirement", "engineeringLevel", "technologyQualityBonus",
+                        "staffQualitySum", "trainingMonthsElapsed", "initialTrainingMonths",
+                        "trainingMonthsTotal", "targetBenchmarkIds", "completionResearchBonus"],
+            "contract": ["payModifierPercent", "completionFameBonus", "initialMonths"],
+            "paper": ["modelId", "researchMultiplier", "researchBonus", "immediateConsequencesApplied",
+                      "completionFameBonus"]
         }[kind]
         _keys(commitment, required, kind)
         if kind == "project":
+            _need(commitment["scale"] in _gameplay.SCALES, "Unknown project scale")
+            _need(commitment["architecture"] not in {"NGRAM", "BOW"} or commitment["scale"] in {"Tiny", "Base"},
+                  "CPU project scale must be Tiny/Base")
+            for key in ["fixedComputeRequirement", "technologyQualityBonus", "staffQualitySum", "completionResearchBonus"]:
+                _number(commitment[key], key, 0)
+            _number(commitment["engineeringLevel"], "engineeringLevel", 1, 5, integer=True)
+            _number(commitment["initialTrainingMonths"], "initialTrainingMonths", 1, integer=True)
+            _number(commitment["trainingMonthsTotal"], "trainingMonthsTotal", commitment["initialTrainingMonths"], integer=True)
+            _number(commitment["trainingMonthsElapsed"], "trainingMonthsElapsed", 0, commitment["trainingMonthsTotal"], integer=True)
+            _need(commitment["trainingMonthsElapsed"] <= commitment["monthsElapsed"]
+                  and commitment["trainingMonthsTotal"] <= commitment["monthsTotal"], "Inconsistent training/total months")
+            _need(commitment["fixedComputeRequirement"] == fixed_requirement(commitment), "Fixed compute requirement disagrees with setup")
+            _strings(commitment["targetBenchmarkIds"], "targetBenchmarkIds", unique=True)
             _need(commitment["phase"] in {"training", "fine-tuning"}, "Invalid project phase")
             _number(commitment["computeAccumulated"], "computeAccumulated", 0)
             _number(commitment["qualityModifier"], "qualityModifier")
@@ -251,12 +309,18 @@ def validate(state):
             for dataset in commitment["datasets"]:
                 check_dataset(dataset)
                 _need(int(dataset["id"][1:]) < state["data"]["nextDatasetId"], "Project snapshot ID would be recycled")
+            _need(len({d["id"] for d in commitment["datasets"]}) == len(commitment["datasets"])
+                  and len({_gameplay.dataset_key(d) for d in commitment["datasets"]}) == len(commitment["datasets"]),
+                  "Project mixture contains duplicate coverage")
         elif kind == "contract":
             _number(commitment["payModifierPercent"], "payModifierPercent")
+            _number(commitment["completionFameBonus"], "completionFameBonus")
+            _number(commitment["initialMonths"], "initialMonths", 1, commitment["monthsTotal"], integer=True)
         else:
             _need(commitment["modelId"] in [m["id"] for m in state["models"]], "Paper references unknown model")
             _number(commitment["researchMultiplier"], "researchMultiplier", 0)
             _number(commitment["researchBonus"], "researchBonus")
+            _number(commitment["completionFameBonus"], "completionFameBonus", 0)
             _need(isinstance(commitment["immediateConsequencesApplied"], bool),
                   "immediateConsequencesApplied must be boolean")
     _keys(state["world"], ["firedEvents", "effects", "unlocks", "competitions", "llmUnlocked"], "world")
@@ -285,11 +349,20 @@ def validate(state):
         for key in ["prizeCash", "prizeFame"]:
             _number(competition[key], key, 0, integer=True)
     _need(isinstance(state["world"]["llmUnlocked"], bool), "llmUnlocked must be boolean")
-    _keys(state["flow"], ["draft", "month", "pendingChoice", "lastReport"], "flow")
+    _keys(state["flow"], ["draft", "month", "pendingChoice", "lastReport", "newsOutbox"], "flow")
+    _ids(state["flow"]["newsOutbox"], "news outbox")
+    for card in state["flow"]["newsOutbox"]:
+        _keys(card, ["date", "kind", "title", "effect", "source", "shown", "publicText"], "news card")
+        _date(card["date"])
+        _need(isinstance(card["shown"], bool), "News shown must be boolean")
+        _need(isinstance(card["publicText"], str) and (not card["shown"] or bool(card["publicText"].strip())),
+              "Shown news needs its emitted public text")
     _need(isinstance(state["flow"]["draft"], dict), "draft must be object")
     month = state["flow"]["month"]
     if month is not None:
-        _keys(month, ["date", "turn", "mainAction", "nextPhase", "appliedSteps", "ledger", "eventCards"], "month")
+        _keys(month, ["date", "turn", "mainAction", "nextPhase", "appliedSteps", "ledger", "eventCards",
+                      "newsRequiredIds"], "month")
+        _strings(month["newsRequiredIds"], "newsRequiredIds", unique=True)
         _need(month["date"] == state["clock"]["date"] and month["turn"] == state["clock"]["turn"],
               "Month checkpoint disagrees with clock")
         _need(month["nextPhase"] in PHASES, "Invalid next phase")
@@ -327,6 +400,121 @@ def new_state(player, company, language):
     state["player"] = {"name": player, "company": company}
     state["settings"]["language"] = language
     return validate(state)
+
+
+def queue_due_events(state):
+    """Queue source rows without applying their mechanical effects."""
+    month = state["flow"]["month"]
+    items = due_events(state) if month is not None else _gameplay.milestone_events(state)
+    for event in items:
+        if event["id"] in state["world"]["firedEvents"]:
+            continue
+        if month is not None and event["id"] not in month["newsRequiredIds"]:
+            month["newsRequiredIds"].append(event["id"])
+        if not any(card["id"] == event["id"] for card in state["flow"]["newsOutbox"]):
+            card = dict(event, shown=False, publicText="")
+            state["flow"]["newsOutbox"].append(card)
+            if month is not None:
+                month["eventCards"].append(copy.deepcopy(card))
+    return copy.deepcopy(state["flow"]["newsOutbox"])
+
+
+def begin_month(state, action):
+    _need(state["flow"]["month"] is None and state["flow"]["pendingChoice"] is None,
+          "Resume the unfinished month/choice first")
+    _need(not state["ending"]["bankruptcy"], "Bankruptcy ended this run")
+    _need(not any(not c["shown"] for c in state["flow"]["newsOutbox"]), "Display outstanding news first")
+    _need(isinstance(action, dict) and bool(action), "Main action parameters required")
+    state["flow"]["newsOutbox"] = []
+    state["flow"]["month"] = dict(state["clock"], mainAction=copy.deepcopy(action), nextPhase="events",
+                                  appliedSteps=[], ledger=[], eventCards=[], newsRequiredIds=[])
+    return queue_due_events(state)
+
+
+def acknowledge_news(state, rendered):
+    """Call only AFTER emitting these exact public card texts to the player."""
+    _need(isinstance(rendered, dict), "Provide IDs and actually emitted card text")
+    cards = {c["id"]: c for c in state["flow"]["newsOutbox"]}
+    for identifier, public_text in rendered.items():
+        _need(identifier in cards, "Unknown queued news: " + identifier)
+        _need(isinstance(public_text, str) and len(public_text.strip()) >= 20,
+              "News acknowledgement needs full emitted text")
+        cards[identifier].update(shown=True, publicText=public_text)
+    month = state["flow"]["month"]
+    if month is not None:
+        for card in month["eventCards"]:
+            if card["id"] in rendered:
+                card.update(shown=True, publicText=rendered[card["id"]])
+
+
+def _assert_month_news(state, allow_event_choice=False):
+    month = state["flow"]["month"]
+    _need(month is not None, "Missing mandatory month checkpoint")
+    choice = state["flow"]["pendingChoice"]
+    waiting = choice.get("eventId") if allow_event_choice and choice is not None and choice["kind"] == "event_choice" else None
+    due = [e for e in due_events(state) if e["id"] != waiting]
+    _need(not due, "Unresolved monthly events: " + ", ".join(e["id"] for e in due))
+    cards = {c["id"]: c for c in state["flow"]["newsOutbox"]}
+    missing = [i for i in month["newsRequiredIds"] if i not in cards or not cards[i]["shown"]
+               or (i not in state["world"]["firedEvents"] and i != waiting)]
+    _need(not missing, "News not resolved/displayed: " + ", ".join(missing))
+    _need(not any(not c["shown"] for c in cards.values()), "Unshown news remains in outbox")
+    _need(set(month["newsRequiredIds"]).issubset({c["id"] for c in month["eventCards"]}),
+          "Month report is missing required news cards")
+
+
+def finish_month(state, report):
+    _need(state["flow"]["pendingChoice"] is None, "Resolve the pending choice before finishing")
+    _need(state["flow"]["month"] is not None and state["flow"]["month"]["nextPhase"] == "report",
+          "Finish all phases before report")
+    _assert_month_news(state)
+    _need(isinstance(report, dict), "Structured report required")
+    month = state["flow"]["month"]
+    state["flow"]["lastReport"] = dict(report, date=month["date"], turn=month["turn"],
+                                       eventCards=copy.deepcopy(month["eventCards"]),
+                                       newsRequiredIds=list(month["newsRequiredIds"]))
+    state["flow"]["month"] = None
+    state["flow"]["newsOutbox"] = []
+    year, number = map(int, state["clock"]["date"].split("-"))
+    year, number = (year + 1, 1) if number == 12 else (year, number + 1)
+    state["clock"] = {"date": "%04d-%02d" % (year, number), "turn": state["clock"]["turn"] + 1}
+
+
+def _check_transition(prior, candidate, event):
+    if prior is None:
+        return
+    if event["type"] == "month_completed":
+        _need(prior["flow"]["month"] is not None, "month_completed requires begin_month checkpoint")
+        _need(event["date"] == prior["clock"]["date"] and event["turn"] == prior["clock"]["turn"],
+              "Month event must use resolving date/turn")
+        _need(candidate["clock"]["turn"] == prior["clock"]["turn"] + 1
+              and candidate["flow"]["month"] is None and candidate["flow"]["pendingChoice"] is None,
+              "A completed month must advance exactly once with no unfinished choice")
+        report = candidate["flow"]["lastReport"]
+        _need(isinstance(report, dict) and report.get("date") == event["date"], "finish_month report required")
+        probe = copy.deepcopy(candidate)
+        probe["clock"] = copy.deepcopy(prior["clock"])
+        probe["flow"]["month"] = dict(prior["flow"]["month"], eventCards=report.get("eventCards", []),
+                                        newsRequiredIds=report.get("newsRequiredIds", []))
+        probe["flow"]["newsOutbox"] = report.get("eventCards", [])
+        _need(set(prior["flow"]["month"]["newsRequiredIds"]).issubset(report.get("newsRequiredIds", [])),
+              "Required news cannot disappear at report")
+        _assert_month_news(probe)
+    else:
+        _need(candidate["clock"] == prior["clock"], "Only month_completed may advance the clock")
+        month = candidate["flow"]["month"]
+        if prior["flow"]["month"] is not None:
+            _need(month is not None, "Cannot discard unfinished month")
+            _need(set(prior["flow"]["month"]["newsRequiredIds"]).issubset(month["newsRequiredIds"]),
+                  "Required news cannot be removed")
+            _need({c["id"] for c in prior["flow"]["newsOutbox"]}.issubset(
+                {c["id"] for c in candidate["flow"]["newsOutbox"]}), "Queued news cannot be discarded")
+        elif month is not None:
+            expected = {e["id"] for e in due_events(prior)}
+            _need(month["nextPhase"] == "events" and expected.issubset(month["newsRequiredIds"]),
+                  "Begin every month in Events with all canonical news queued")
+        if month is not None and month["nextPhase"] != "events":
+            _assert_month_news(candidate, allow_event_choice=True)
 
 
 def read_document(path, heading=None):
@@ -507,7 +695,10 @@ class Runtime:
         if matches:
             _need(prior is not None and matches[0]["runId"] == prior["meta"]["runId"],
                   "Action ID belongs to another run")
-            _need(all(matches[0].get(k) == event.get(k) for k in event), "Action ID reused with different event")
+            original = copy.deepcopy(matches[0])
+            if "details" in event and isinstance(event["details"], dict):
+                original["details"] = {k: original.get("details", {}).get(k) for k in event["details"]}
+            _need(all(original.get(k) == event.get(k) for k in event), "Action ID reused with different event")
             return prior
         revision = prior["meta"]["revision"] if prior is not None else 0
         _need(revision == expected_revision, "State revision changed; reload before applying this action")
@@ -517,9 +708,12 @@ class Runtime:
             _need(value["meta"]["runId"] == prior["meta"]["runId"], "Cannot replace run by commit")
         else:
             _need(event["type"] in {"new_game", "import"}, "Initial transaction must create or import a run")
+        _check_transition(prior, value, event)
         value["meta"].update(revision=revision + 1, updatedAt=now_iso(), lastActionId=event["actionId"])
         validate(value)
         logged = copy.deepcopy(event)
+        if event["type"] == "month_completed":
+            logged.setdefault("details", {})["news"] = copy.deepcopy(value["flow"]["lastReport"]["eventCards"])
         logged.update(revision=revision + 1, runId=value["meta"]["runId"], loggedAt=value["meta"]["updatedAt"],
                       view=value["view"]["current"],
                       before=copy.deepcopy(prior["resources"]) if prior is not None else None,

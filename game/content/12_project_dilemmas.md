@@ -1,19 +1,3 @@
-<!--
-===============================================================================
-FILE: 12_project_dilemmas.md
-MODULE: Content / Project Dilemmas
-
-Mục đích:
-Ma trận sự kiện phát sinh giữa dự án dựa trên điểm Synergy (độ hợp lý của setup)
-và Scale (Tiny/Base vs Large/Massive/Frontier).
-
-Tác dụng:
-Phạt người chơi nếu setup dự án bừa bãi (Synergy thấp) và thưởng nếu setup
-hoàn hảo (Synergy cao). Tạo ra các quyết định đánh đổi (Trade-off) giữa Quality,
-Thời gian, và Tiền bạc. Scale càng lớn thì rủi ro và phần thưởng càng cao.
-===============================================================================
--->
-
 # Project Dilemmas
 
 Triggered mid-project based on the Synergy score (see Model Projects rule). The Engine checks the Model's **Scale** to render the appropriate flavor and choices.
@@ -34,7 +18,7 @@ Flavor direction determined by `Turn % 4`:
 | Option | Yield / Effect |
 |---|---|
 | 1. **The Polish** (Spend extra time to perfect it) | `M (total months) +1`, `q_mod +5` |
-| 2. **The Spin-off** (Publish intermediate findings) | `RP +800`, `q_mod +0` |
+| 2. **The Spin-off** (Publish intermediate findings) | `Completion RP +800`, `q_mod +0` |
 
 ### 2. For Massive Scales (Large, Massive, Frontier)
 Flavor direction determined by `Turn % 4`:
@@ -48,7 +32,7 @@ Flavor direction determined by `Turn % 4`:
 | Option | Yield / Effect |
 |---|---|
 | 1. **The Grand Polish** (Extend training to lock in these emergent capabilities) | `M (total months) +1`, `q_mod +8` |
-| 2. **The Academic Shockwave** (Publish a massive preprint to ArXiv immediately) | `RP +2,000`, `q_mod +0` |
+| 2. **The Academic Shockwave** (Publish a massive preprint to ArXiv upon project completion) | `Completion RP +2,000`, `q_mod +0` |
 
 ---
 
@@ -81,9 +65,3 @@ Flavor direction determined by `Turn % 4`:
 |---|---|
 | 1. **Brute Force** (Ignore the errors, bypass safety checks, and let it run hot) | `q_mod -15`, `Fame -50` (due to unstable outputs) |
 | 2. **Emergency Infrastructure** (Delay the project 1 month and pay cloud/hardware emergency costs) | `M (total months) +1`, `Cash -$2,500` (cloud/coffee/rewiring), `q_mod +0` |
-
-<!--
-Tiếng Việt (tóm tắt):
-Phân hóa theo Scale — Tiny/Base: Breakthrough (+5 Q hoặc +800 RP) / Complication (-8 Q hoặc +1 tháng).
-Large/Massive/Frontier: Breakthrough (+8 Q hoặc +2000 RP) / Complication (-15 Q + -50 Fame hoặc +1 tháng + -$2,500).
--->

@@ -8,4 +8,4 @@ January 2013. You've quit your job. The spare room of your tiny rented apartment
 
 You have $10,000 in savings, an internet connection, and a hunch that deep learning's wave in image recognition is about to hit language. Your knowledge of Basic Text Processing — regex, word counts and cleaning text — is the foundation. Nobody has heard of you yet.
 
-Translate and embellish this setting without changing the template. The old PC is narrative-only: no compute, VRAM or occupied slot. Introduce the actual saved company and player, then render S3/S5.
+Translate and embellish this setting without changing the template. The old PC occupies no GPU slot and contributes no GPU TFLOPS/VRAM, but supports NGRAM/BOW Tiny/Base CPU projects and CPU inference. Shop and Data Market are accessible immediately. Introduce the actual saved company and player, then render S3/S5.

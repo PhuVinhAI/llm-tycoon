@@ -34,12 +34,13 @@ class RuntimeTests(unittest.TestCase):
 
     def pending(self, state):
         state = copy.deepcopy(state)
+        if state["flow"]["month"] is None:
+            rt.begin_month(state, {"action": "research"})
+            state["world"]["firedEvents"].extend(e["id"] for e in rt.due_events(state))
+            rt.acknowledge_news(state, {c["id"]: "Displayed canonical headline: " + c["title"]
+                                        for c in state["flow"]["newsOutbox"]})
         state["view"]["current"] = "S10"
-        state["flow"]["month"] = {
-            "date": "2013-01", "turn": 1, "mainAction": {"action": "research"},
-            "nextPhase": "action", "appliedSteps": ["E0", "E1"],
-            "ledger": [{"resource": "researchPoints", "delta": 0}], "eventCards": [{"id": "E1"}]
-        }
+        state["flow"]["month"]["nextPhase"] = "action"
         state["flow"]["pendingChoice"] = {
             "id": "research-1", "kind": "research", "view": "S10", "date": "2013-01", "turn": 1,
             "title": "Chọn hướng", "sourceFiles": ["content/11_research_events.md"],
@@ -48,6 +49,20 @@ class RuntimeTests(unittest.TestCase):
             "resume": {"phase": "action", "target": "research"}
         }
         return state
+
+    def begin_saved_month(self, state):
+        rt.begin_month(state, {"action": "research"})
+        state = self.runtime.commit(state, self.event("begin", "checkpoint"), state["meta"]["revision"])
+        state["world"]["firedEvents"].extend(e["id"] for e in rt.due_events(state))
+        rt.acknowledge_news(state, {c["id"]: "Displayed canonical headline: " + c["title"]
+                                    for c in state["flow"]["newsOutbox"]})
+        state["flow"]["month"]["nextPhase"] = "action"
+        return self.runtime.commit(state, self.event("events-ready", "checkpoint"), state["meta"]["revision"])
+
+    def finish_saved_month(self, state, **details):
+        state["flow"]["month"]["nextPhase"] = "report"
+        rt.finish_month(state, {"action": "research"})
+        return self.runtime.commit(state, self.event("month", "month_completed", **details), state["meta"]["revision"])
 
     def test_rounding_uses_decimal_half_up(self):
         self.assertEqual(rt.round_half_up(2.5), 3)
@@ -164,9 +179,9 @@ class RuntimeTests(unittest.TestCase):
             self.runtime.commit(state, self.event("replace", "navigation"), 1)
 
     def test_pending_choice_resume_keeps_exact_options_and_month_checkpoint(self):
-        state = self.start()
+        state = self.begin_saved_month(self.start())
         candidate = self.pending(state)
-        saved = self.runtime.commit(candidate, self.event("pause", "checkpoint"), 1)
+        saved = self.runtime.commit(candidate, self.event("pause", "checkpoint"), state["meta"]["revision"])
         reloaded = rt.Runtime(self.runtime.root).load()
         self.assertEqual(reloaded["flow"], saved["flow"])
         self.assertEqual(reloaded["view"]["current"], "S10")
@@ -183,7 +198,7 @@ class RuntimeTests(unittest.TestCase):
                     state["flow"]["pendingChoice"]["options"].append(
                         copy.deepcopy(state["flow"]["pendingChoice"]["options"][0]))
                 else:
-                    state["flow"]["month"]["appliedSteps"].append("E1")
+                    state["flow"]["month"]["appliedSteps"].extend(["E1", "E1"])
                 with self.assertRaises(rt.StateError):
                     rt.validate(state)
 
@@ -195,7 +210,8 @@ class RuntimeTests(unittest.TestCase):
             "datasets": copy.deepcopy(state["data"]["datasets"]), "focus": [3, 3, 2, 2],
             "quality": 60, "artifacts": 0, "completedDate": "2013-01", "release": "Product",
             "releaseDate": "2013-01", "analyzed": False, "published": False,
-            "sotaHype": False, "isLlm": False, "benchmarks": []
+            "sotaHype": False, "isLlm": False, "benchmarks": [],
+            "codePublic": False, "noveltyMultiplier": 1, "targetBenchmarkIds": ["Internal QA Metric"]
         }]
         state["streams"] = [{
             "id": "stream-M1", "modelId": "M1", "monthlyCash": 1000, "monthsRemaining": 0,
@@ -282,10 +298,7 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(len(target.events()), 2)
 
     def test_json_import_marks_history_gap_and_preserves_current_state(self):
-        self.start()
-        candidate = self.runtime.load()
-        candidate["clock"] = {"date": "2013-02", "turn": 2}
-        self.runtime.commit(candidate, self.event("month", "month_completed", action="research"), 1)
+        self.finish_saved_month(self.begin_saved_month(self.start()), action="research")
         incoming = self.runtime.export_json()
         original = incoming.read_bytes()
         target = rt.Runtime(self.root / "target")
@@ -333,17 +346,17 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(target.load()["resources"]["cash"], 10000)
 
     def test_history_counts_completed_months_not_choice_checkpoints(self):
-        state = self.start()
+        state = self.begin_saved_month(self.start())
         for action, kind, detail in [
-            ("checkpoint", "checkpoint", {}), ("choice", "choice", {}),
-            ("month", "month_completed", {"action": "research", "technologyUnlocked": ["NGRAM"]})
+            ("checkpoint", "checkpoint", {}), ("choice", "choice", {})
         ]:
             state = self.runtime.commit(state, self.event(action, kind, **detail), state["meta"]["revision"])
+        self.finish_saved_month(state, action="research", technologyUnlocked=["NGRAM"])
         history = self.runtime.history_export().read_text(encoding="utf-8")
         self.assertIn("research ×1", history)
         self.assertIn("Technology: NGRAM", history)
         self.assertNotIn("checkpoint ×", history)
-        self.assertEqual(len(self.runtime.events(year=2013)), 4)
+        self.assertEqual(len(self.runtime.events(year=2013)), 6)
         self.assertEqual(self.runtime.events(year=2014), [])
 
     def test_corrupt_canonical_log_is_not_silently_reset(self):

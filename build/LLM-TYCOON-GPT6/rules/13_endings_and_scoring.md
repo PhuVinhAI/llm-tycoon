@@ -2,20 +2,23 @@
 
 ## Endings
 
-| Ending | Trigger |
-|---|---|
-| 🏆 **From Home Lab to Headquarters** (WIN) | Accept the Term Sheet upon completing an LLM with Q ≥ 70. The game continues in sandbox mode. |
-| 💀 **Burned Out** | Bankruptcy: cash < −$5,000 (Economy rule). Score = 0. |
+- WIN: accept qualifying LLM Term Sheet. Freeze campaign result after release choice; sandbox continues.
+- Burned Out: month-end Cash <−$5,000. Score 0, run ends. Preserve any previous campaign WIN in history while reporting sandbox bankruptcy separately.
 
 ## Score
 
-```
-Score = 3 × Fame
-      + 100 × Best Model Q
-      + 500 × (completed Projects + completed Contracts)
-      + 100 × floor(Cash ÷ $1,000)
-      + WIN only: 4000
-      + LLM released during 2019: +1000 (perfect timing)
-```
+Use campaign_score(state). Investment is not operating earnings:
 
-Present the ending as a short narrated epilogue, then the final total score, then the title from the Content's titles table. Do not show the score breakdown.
+~~~
+3 × Fame
++ 100 × Best Model Q
++ 400 × min(10, distinct model setups + completed contracts)
++ 100 × min(50, floor(max(0, Cash −capitalRaised) / 1000))
++ 4000 if WIN
++ max(0, 6000 −75 × (Turn −1)) if WIN
++ 1000 if an LLM was released during 2019
+~~~
+
+Distinct setups follow Model Projects equivalence; names/IDs/repeats cannot farm this component. capitalRaised includes Angel/Term Sheet, not initial savings. Half-up final total. Bankruptcy scores 0.
+
+Store first-win date/turn/score/title/achievements in ending.lastResult after release choice. Do not update during sandbox or award investment again. Show epilogue, total and Content title; hide breakdown.

@@ -2,149 +2,115 @@
 
 ## Declaring a Project (the start wizard)
 
-The Player may fill or revise the wizard without advancing time. Confirming a valid declaration **starts the Project as this month's main action and immediately advances month 1**. The declaration contains:
+Filling or revising the wizard takes no month. Confirming a valid declaration starts this month's main action and advances month 1. Declare:
 
-1. **Architecture** — must be granted by an owned Technology. Neural Architectures also require GPUT and Total TFLOPS/mo ≥ 100 (Hardware rule).
-2. **Scale (Parameter Tier)** — Defines the size of the model. The Company must have enough **Available VRAM** to start the Project.
-   - **Tiny (<10M):** 2 GB VRAM req. Compute req ×0.5. Ideal Data Size ≥ 1.
-   - **Base (~50M):** 4 GB VRAM req. Compute req ×1.0. Ideal Data Size ≥ 2.
-   - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
-   - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
-   - **Frontier (100B+):** 320 GB VRAM req. Compute req ×20.0. Ideal Data Size 5. *(Only available if `world.llmUnlocked` flag is true).*
-3. **Inherit (Optional)** — Available only when the selected Architecture is TRF or PTRF. Name a previously completed Model whose Architecture is also TRF or PTRF. If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
-4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
-5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
-6. **Months (M)** — at least the adjusted minimum months. Apply FINE and Inherit minimum-month reductions cumulatively, with a final minimum of 1.
-7. **Focus** — exactly 10 points split across **Data / Model / Training / Eval**.
-8. **Name** — the Model's name.
+1. Architecture granted by owned technology. Neural architectures require GPUT and at least 100 TFLOPS/mo.
+2. Scale from the table below. NGRAM/BOW only support Tiny or Base and run on the starting CPU without GPU VRAM; their scale modifier is 0 / +3 instead of the neural modifier. CPU Product inference also reserves 0 GB. All neural projects need the listed Available VRAM throughout training and fine-tuning.
+3. Optional inheritance for TRF/PTRF from a completed TRF/PTRF. Compute requirement ×0.6; minimum training months −1, floor 1. The LLM overrides minimum reductions.
+4. Task. LLM (general) requires completing the special LLM Project first.
+5. One to three distinct owned datasets. Duplicate IDs or identical (domain, size, quality, taskId) entries in one mixture are invalid. Snapshot datasets at start. Combined Size = max(size) + count −1, cap 5; Combined Quality = floor(average quality). Mixture compute multipliers: 1 / 1.25 / 1.5.
+6. Training months M, at least the architecture minimum after FINE/inheritance reductions.
+7. Exactly ten integer Focus points: Data / Model / Training / Eval.
+8. Player-chosen name.
 
-**Discovery Mechanic:** Do not warn the player about bad synergies or incorrect focus before they start. Let them fail. In the Project Wizard, if the player has previously **analyzed** a Model (via the Portfolio action) with a specific Architecture × Task pairing, reveal the Match quality (Perfect/Good/Weak/Poor) for that pairing. If they have **analyzed** a Model using a specific Domain for a Task, reveal the Domain fit. Otherwise, keep it strictly hidden.
+| Neural scale | Training VRAM | Compute multiplier | Ideal data size | Quality modifier | Market segment multiplier |
+|---|---|---|---|---|---|
+| Tiny | 2 GB | 0.5 | 1 | −10 | 0.8 |
+| Base | 4 GB | 1 | 2 | 0 | 1 |
+| Large | 12 GB | 4 | 3 | +8 | 1.2 |
+| Massive | 40 GB | 15 | 4 | +16 | 1.5 |
+| Frontier | 320 GB | 20 | 5 | +25 | 2 |
 
-Architecture `Baseline Data Size` and Scale `Ideal Data Size` are Quality targets, not hard start Requirements. A normal Project may start below either target and suffer the formula's missing bonus or Data Starvation penalty; do not warn about those hidden consequences. The LLM Project's explicit Combined Size 5 and Combined Quality ≥ 3 requirements remain hard.
+Frontier requires world.llmUnlocked, except the special LLM Project. CPU Tiny/Base segment multipliers remain 0.8/1.
 
-Validate every requirement before starting; if any fails, refuse with the reason and do not start.
+At start, store all currently available task benchmark IDs as targetBenchmarkIds; these form the project's frozen evaluation target. If none exist, use Internal QA Metric. New benchmarks appear as expanded tests at completion but do not change Q. The special LLM targets all available general benchmarks at completion.
+
+Snapshot technology quality bonuses, minimum-month reductions, E-Lv, and architecture requirement at start. Staff effects apply per actual training month: average quality bonuses across training months; optimizer multipliers affect each month's effective compute. Hiring at the last moment cannot reduce previously required work. Fine-tuning does not add training compute or training-month bonuses.
+
+Compute per training month = installed + active cloud TFLOPS, multiplied by (0.8 + 0.05 × Training focus), then divided by the product of that month's optimizer multipliers. Accumulate without monthly rounding. The fixed requirement excludes employees. Declare projected months for that effective compute; future staffing/hardware changes alter the projection.
+
+Show upfront cost, monthly fixed/project cost, present streams and projected minimum runway before confirmation. Check all hard requirements before charging or advancing. Data size targets and focus recipes remain hidden; earned Analyze hints are qualitative. Data/Model allocation affects architecture fit; Training allocation affects speed; Eval allocation reduces anomalies.
 
 ## Artifacts & Fine-Tuning
 
-During every Project month, the raw training process generates output anomalies called **Artifacts**.
-- **Generated per month:** `Art_gen = max(1, 4 + floor(Architecture Base Q ÷ 10) - E-Lv)`. Add this to the Project's total `Artifacts`.
-- The UI displays current `Artifacts` in the Dashboard and `+Art` in the monthly ledger.
+Each training month generates max(1, 4 + floor(architecture Base Q / 10) − starting E-Lv − floor(Eval focus / 2)) Artifacts. Show changes in the ledger.
 
-When `months elapsed == M`, if `Artifacts > 0`, the Project enters the **Fine-Tuning Phase**. The engine pauses and presents a Dilemma (S10):
-- **Option 1: Release Base Model.** The project completes immediately. `Q` suffers a penalty of `-floor(Artifacts ÷ 2)` due to raw, unaligned outputs.
-- **Option 2: Fine-Tune (1 month).** Extends `M` by 1. The next month's action is dedicated to fine-tuning; it generates no new Artifacts and reduces existing `Artifacts` by `8 + (3 × E-Lv)`. At the end of that month, if `Artifacts > 0`, this Dilemma repeats; if `Artifacts ≤ 0`, set Artifacts to 0 and the Project completes automatically.
+After M training months, pause if Artifacts remain:
+
+- Complete raw: penalty −floor(Artifacts / 2) to Base Points.
+- Fine-tune one month: no new Artifacts, no training compute; remove 8 + 3 × starting E-Lv + Eval focus, floor 0. Extend total months by one. Repeat if Artifacts remain.
+
+Track training months separately from total months; a fine-tuning extension never re-evaluates midpoint or changes the frozen target.
 
 ## Project Dilemmas (Mid-Project)
 
-When a Project reaches `months elapsed == floor(M ÷ 2)` (for M ≥ 2), the engine calculates its **Synergy Score**:
-`Synergy = Match(Arch × Task) + Domain fit + Focus score`
+Evaluate once at elapsed training month floor(initial training months / 2) for M ≥2. Synergy = architecture/task Match + Project Domain Fit + Focus score.
 
-For this mid-project calculation, use a single **Project Domain Fit** on the original −3/0/+3 scale (do not use the per-Benchmark ±20 values from the completion formula):
-- **+3:** at least one selected Dataset is `user-logs` for this Task, or its Domain matches a Target Domain of at least one applicable Benchmark available by the current date.
-- **0:** there is no applicable official Benchmark, or no direct match exists but at least one selected Dataset is `web-mixed`.
-- **−3:** applicable Benchmarks exist and every selected Dataset mismatches all of their Target Domains.
+Project Domain Fit: +3 if at least half the selected datasets directly fit one current target benchmark, 0 if no official target or at least one dataset is web-mixed or same-task user logs, otherwise −3. User logs use saved taskId and actual domain; their name has no mechanical effect.
 
-- If **Synergy ≥ 16**, trigger a **Breakthrough** dilemma (Content / Project Dilemmas).
-- If **Synergy ≤ 8**, trigger a **Complication** dilemma (Content).
-- If 9–15, the project proceeds smoothly with no interruption.
-
-The mid-project Dilemma is evaluated **at most once per Project**. Store `dilemma_done=yes` as soon as the evaluation occurs, even when Synergy 9–15 produces no Dilemma. A later change to `M` never evaluates it again.
-
-When triggered, pause the game, render the Dilemma (S10), and wait for the Player's choice. The resulting `q_mod` is added to the Project's state and applied at completion. `M +1` increases the total committed months.
+Synergy ≥16 triggers Breakthrough; ≤8 triggers Complication; 9–15 proceeds normally. Mark dilemmaDone even when there is no choice. Apply q_mod and extensions under Content. RP rewards are **completion rewards**, recorded in completionResearchBonus; never paid at midpoint. Cancellation forfeits them. Additional training from a dilemma produces normal compute/artifacts, without changing midpoint.
 
 ## The Bottom-Up Quality Calculation
 
-Compute scores silently at completion. Never reveal the formula or exact breakdown to the player.
+Use create_project to validate/snapshot, advance_project for each actual Action month, project_midpoint for the once-only check, extend_project for extensions and complete_project for final rewards. project_quality(project, models, completion_date) can inspect the calculation. Never reveal formulas during play.
 
-**Step 1: Calculate Base Points**
-```
-Base Points = Base(Architecture)                … Content: architectures table
-            + Scale Modifier                    … Tiny: −5 | Base: 0 | Large: +5 | Massive: +15 | Frontier: +25
-            + (2 × Combined Dataset Quality)
-            + 5                                 … Combined Size meets the Architecture's Baseline Data Size
-            − 20 if Data Starvation             … Combined Size is LESS than the Scale's Ideal Data Size
-            + Compute score                     … see below
-            + Focus score                       … see below
-            + (2 × E-Lv)
-            + Technology & staff bonuses        … BPE +5 (S2S/S2SA/TRF/PTRF); FINE +5 (PTRF); staff
-            + q_mod                             … from Project Dilemmas
-            − floor(Artifacts ÷ 2)              … Penalty if released with remaining Artifacts
-            − 15 if Catastrophic Forgetting     … Dataset Count > 1 AND Architecture is below TRF
-            − 15 if repeat                      … same Arch + Task + unordered set of Dataset(s) as previous Model
-```
+~~~
+Base Points = Architecture Base Q + Scale modifier
+            + 2 × Combined Quality
+            + 5 if Combined Size meets architecture baseline
+            − 20 if below Scale ideal data size
+            + Compute score + Focus score + 2 × starting E-Lv
+            + snapshotted technology bonus + average training staff quality bonus
+            + q_mod − floor(Artifacts / 2)
+            − 15 if multiple datasets and architecture below TRF
+            − 6 × min(3, previous equivalent models)
+~~~
 
-*Compute score:* ≥ 2× req (+8); ≥ req (+5); ≥ req÷2 (−5); < req÷2 (−15). Req 0 always scores +5.
-*Focus score:* `10 − Σ |allocated − ideal|` across the four aspects (floor 0).
+Compute score: effective compute ≥2×fixed requirement: +8; ≥requirement: +5; ≥half: −5; otherwise −15. CPU requirement 0 always +5. Focus score = max(0, 10 − sum absolute differences from architecture ideal).
 
-**Step 2: Calculate Individual Benchmark Scores**
-Identify ALL applicable Benchmarks (matching Task & Date ≤ current Month/Year). For EACH Benchmark, calculate its specific score (0.0-100.0):
-```
-Benchmark Score = Base Points
-                + Match(Architecture × Task)       … Content: match matrix
-                + Domain Fit                       … see below
-```
-*Domain Fit logic for each Benchmark:*
-- Apply the first matching condition below; these values are mutually exclusive and never summed.
-- If ANY Dataset's Domain is `user-logs` AND its Name contains the current Project's Task ID: **+20** (Perfect closed-loop data).
-- Otherwise, if ANY Dataset Domain is in the Benchmark's `Target Domains`: **+20**.
-- Otherwise, if ANY Dataset Domain is `web-mixed` (general knowledge): **+5**.
-- Otherwise: **−15**.
-- For the fallback `Internal QA Metric` used when no official Benchmark exists, Domain Fit is **0**.
+For each benchmark, average dataset fits **weighted by dataset Size**: matching target domain +12, other web-mixed +3, other same-task user logs +3, otherwise −10. Conditions are exclusive in that order. Internal QA fit =0. Raw score = Base Points + Architecture/Task Match + weighted fit.
 
-*Clamp each Benchmark Score between 0.0 and 100.0, rounded to 1 decimal place.*
+Normalize with diminishing returns: raw ≤70 → max(0, raw); raw >70 → 70 + 30 × (raw −70) / (raw −70 +40). Round half up to one decimal. Inheritance caps **each score** at parent Q +15. Scores are normalized game indices, not raw historical metrics.
 
-**Step 3: Final Quality (Q) & UI Display**
-- **Q** = Average of all `Benchmark Scores` (floor 0.0, cap 100.0, rounded to 1 decimal place).
-- *Inherit Cap:* If the Project inherited from a previous Model, **Q** cannot exceed `(Inherited Model's Q + 15.0)`.
-- When rendering the UI (S6), display each Benchmark's score.
-- For each official Benchmark, identify its current State-of-the-Art (SOTA) rival from the **Historical SOTA** table (Content): select the most recent row for that exact Benchmark whose `Date` is ≤ the current in-game Month and Year. If none exists, display `N/A`. `Internal QA Metric` always has no rival.
-- The Engine uses Creative License to write a 1–2 sentence **Internal Analysis** quote. **Crucially**, this quote MUST: 1) Briefly explain what the benchmark actually measures in simple layman's terms, and 2) Provide a technical analysis comparing the Player's local test results against the public SOTA.
+Display all task benchmarks available at completion, marking Target or Expanded; include frozen Internal QA if targeted. Q = mean target scores, half-up to one decimal. LLM targets all general benchmarks available at completion. Store scores and target IDs permanently. Official rival = highest normalized score available by completion, ties latest date, or N/A. Explain each metric simply.
+
+Equivalent setup = same architecture, task, scale and unordered dataset (domain, size, quality, taskId) tuples. IDs, names and Focus are excluded. Count equivalents across **all** prior completed models. noveltyMultiplier = max(0.25, 0.5 ** count); store at completion. Improved dataset stats or scale can constitute a new setup.
 
 ## Reception & Fame
 
-The overall `Q` tier determines the **Estimated Reception Fame**:
-
-| Q | Reception | Est. Fame |
+| Q | Reception | Base Fame |
 |---|---|---|
-| ≥ 85.0 | 🌟 Breakthrough | +800 |
-| 70.0–84.9 | 🔥 Great | +500 |
-| 55.0–69.9 | 👍 Good | +300 |
-| 40.0–54.9 | 😐 Mediocre | +100 |
-| < 40.0 | 💔 Failure | −100 |
+| ≥85 | Breakthrough | +800 |
+| 70–84.9 | Great | +500 |
+| 55–69.9 | Good | +300 |
+| 40–54.9 | Mediocre | +100 |
+| <40 | Failure | −100 |
 
-**CRITICAL RULE:** This Fame is NOT awarded immediately. It is only awarded if and when the Player chooses to Release the model (Open-source, License, or Product). If the Player chooses **Shelve**, they receive **0 Fame**. 
-Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge gained from building it) and counts toward E-Lv.
+Reception is awarded only on release. Positive Fame multiplies by novelty; penalties do not. Shelve grants none. Completion RP = (floor(Q) ×15 + completionResearchBonus) ×novelty, rounded once. Only models without an equivalent predecessor increment the engineering counter; each Contract still increments it once.
 
 ## Release & The Market Hype Cycle
 
-A completed Model may be released at most once: Open-source, License or Product. Shelving is not a release. A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40.0) may only be open-sourced or shelved.
+A model releases once as Open-source, License or Product; Shelve is not a release. Release immediately or later from Portfolio. Q <40 only allows Open-source/Shelve. Public code or a paper published while Shelved restricts later release to Open-source.
 
-**The Market Hype Cycle:** When releasing a Model (License or Product), map each Historical SOTA row through its Benchmark's Applicable Tasks and keep rows matching the Model's Task. Choose the row whose release date has the smallest absolute month distance from the current release month; a tie chooses the earlier date, then the row appearing first in the table. This lookup may use future rows for timing mechanics, but must never reveal or foreshadow them. Let **R** be that Rival's release date. If no row matches the Task, use normal market rules (no Hype Cycle window).
-1. **First-Mover (Build-up):** If released between `R - 3 months` and `R - 1 month` (inclusive). The market is starved. **Multiplier: Cash/Income × 2.0**.
-2. **The Clash (Head-to-head):** If released in exactly month `R` or `R + 1 month`. Direct comparison. Cash is normal (× 1.0). **Bonus:** If the Player's Q > the Rival's SOTA Score, award **+1000 Fame** for beating Big Tech.
-3. **Saturated (Late-comer):** If released between `R + 2 months` and `R + 7 months`. The market is dominated by the Rival. **Multiplier: Cash/Income × 0.5**.
-*(If outside all these windows, normal market rules apply).*
+Task-specific rival milestones at the same date count once. Scheduled rumor of a milestone in the next 1–3 months → First-Mover ×1.5; otherwise latest milestone: R/R+1 Clash ×1, R+2..R+7 Saturated ×0.75, outside that Normal ×1. Use market_window(task, date). No other forecasts.
 
-*Public Reception (S6-B):* Whenever a Model is released (Open-source, License, or Product), the Engine must immediately render the **Public Reception (S6-B)** screen before returning to the Action Menu. The Engine selects exactly 4 Public Reviewers (Content) and uses Creative License to write 1-sentence reviews reacting to the Model's final Q (formatted to 1 decimal place), SOTA status, and any remaining Artifacts.
+Recompute **current SOTA** at release against matching target scores and current dated rivals. At least half of targets having a rival must exceed it; none may lag by >10. Historical SOTA at completion remains recorded but grants no perpetual commercial bonus. Current SOTA cash ×1.25 except First-Mover. Clash current SOTA grants +500 Fame ×novelty once.
 
-*SOTA Hype:* If the Model's Benchmark Score strictly exceeded the corresponding dated SOTA Rival's score on *at least one* official Benchmark at the time of completion, it retains the **SOTA Hype** status for its eventual release. A Benchmark with rival `N/A` cannot grant SOTA Hype.
-*Market Timing:* Financial payouts use the Demand and Event Modifiers of the **current month of release**, allowing players to hoard models for market booms.
-*Paper Limitation:* If a `Shelved` model has been published via an Academic Paper (`pub=yes`), it may **only** be released as Open-source (proprietary tech is already leaked).
+Demand/hype/event prices are fixed at release; existing Product streams retain their quote for eight months.
 
 | Release | Effect |
 |---|---|
-| 🌐 **Open-source** | Fame = reception Fame × 2 (replaces normal reception Fame); RP +500 extra. If released with Artifacts > 0, the community loves tinkering with the raw base model: **+300 extra Fame**. No cash. |
-| 💼 **License** (one-time sale) | Cash = Q × $150 × Demand (Content, current era + active event modifiers) × **Market Hype Multiplier** (2.0 / 1.0 / 0.5). If SOTA Hype (and not First-Mover): **Cash × 1.5**. Q < 40.0 → $0, no buyer. |
-| 📈 **Product** | Requires Fame ≥ 1000, Q ≥ 55.0, and enough unreserved **installed Hardware VRAM** after cloud deactivation to reserve **Inference VRAM** = Scale VRAM Req ÷ 2 (minimum 1 GB). Cloud VRAM cannot satisfy this persistent reservation. Creates an Income Stream: Q × Demand × $25 × **Market Hype Multiplier** per month for 8 months. Track Task, Q, and reserved VRAM in the stream to generate User Logs upon expiry. If SOTA Hype (and not First-Mover): **Income × 1.5**. If Artifacts > 0: **Income × 0.5**. Reception Fame applies normally. |
-| 🗄️ **Shelve** | Nothing. The Model stays in the portfolio, waiting for a future release, a Competition, or a Paper. |
+| Open-source | Positive reception Fame ×1.5 ×novelty; negative unchanged; extra RP 200 ×novelty. No cash or bonus for Artifacts. |
+| License | Cash = Q ×$90 ×Demand ×segment ×hype ×current-SOTA ×novelty ×active license event multipliers. |
+| Product | Fame ≥1000, Q ≥55. Neural inference reserves half Scale VRAM from installed hardware; CPU reserves 0. Cash/month = Q ×$25 ×Demand ×segment ×hype ×current-SOTA ×novelty ×active product event multipliers ×max(0.5, 1 −Artifacts/40), for eight months. |
+| Shelve | No reception Fame; future release, Competition, Analyze or Paper remains possible. |
+
+Streams pay starting **next month** after release. Normal expiry produces User Logs in the largest original dataset domain (tie original order), Size/Quality 3 if Q ≥75, else 2; taskId = model task, sourceId = model ID. Logs help the actual task/domain, not every benchmark. Shutdown/publication forfeits remaining income/logs.
+
+Immediately render four dated Public Reviewers, actual changes, current/historical SOTA distinction and stream reservation before returning to menu.
+
+Use quote_release to show legal choices/prices and release_model to apply the chosen release. Call product_logs only on normal expiry, then remove its stream. Never generate logs on shutdown or Paper cancellation.
 
 ## Post-Mortem Analysis (Portfolio)
 
-The Player can view their Portfolio (S15) and ask to **Analyze** any completed Model.
-- This is an instant, free action. Each Model can only be analyzed once.
-- **Mechanical Effect:** Mark the model as **Analyzed** in the Game State (and Canonical Save File). This permanently unlocks the Match (Architecture × Task) and Fit (Task × Domain) UI hints in the Project Wizard (S12) for these specific combinations.
-- The Engine acts as a senior AI researcher reviewing the project.
-- **Format:** Output a 3-4 paragraph analysis.
-- **Content:** Discuss the *Synergy* (how well the Architecture fit the Task, and if the Dataset Domain was appropriate) and the *Focus allocation* (what they did right or wrong).
-- **Constraint:** NEVER reveal the exact numerical formulas, ideal focus numbers, or exact match scores. Use qualitative, educational feedback (e.g., "Transformers are massive overkill and data-starved for simple spam filtering," or "You spent too much time on Model design when N-grams just need pure Data cleaning").
-- After the analysis, re-render the Portfolio (S15).
+Analyze once per model, instant/free. Mark analyzed; reveal qualitative pairing/domain hints for its setup, never numerical recipes. In 2–3 short paragraphs discuss coverage, task fit, compute, artifacts and Training/Eval trade-offs, with one observed improvement direction. Restore Portfolio. Prominently offer Analyze after the first model.

@@ -1,25 +1,19 @@
 # Academic Papers
 
 ## Availability
-- The **Publish Paper** menu (S17) is accessible from the Action Menu (S5).
-- A Model is eligible for a Paper if it has **Q ≥ 60.0** and has not yet been published (`pub=no`).
+
+Model Q ≥60, unpublished, no commitment. Selecting takes no month; confirmation starts two committed months and advances month 1.
 
 ## Starting a Paper
-- Choosing a Model in S17 prepares the selection, but **starting the Paper is a main action**. It immediately advances month 1 of the commitment; it is not an instant action.
-- **Commitment:** Writing a Paper begins with exactly **2 committed months** (`M = 2`).
-- **Immediate Consequences:** Publishing proprietary tech has immediate effects based on the Model's original Release status:
-  - **Product:** If its Income Stream is still active, that Model's stream is immediately **cancelled**, forfeiting all remaining payouts and its future User Logs. Furthermore, giving away proprietary commercial IP angers investors: **Fame −300**.
-  - **License:** Triggers a **Breach of Contract Lawsuit**. The client sues for leaking trade secrets. The Company immediately loses **Cash = Q × $200** and **Fame −500**. (The Paper still proceeds).
-  - **Open-source / Shelved:** Safe to publish. No immediate penalties.
+
+Show consequences first. Product: cancel that model's stream/logs and Fame −300. License: immediate lawsuit Cash −Q ×$200, Fame −500. Open-source/Shelved: no penalty. Consequences stay after cancellation. The model cannot commercially release while its Paper is active.
 
 ## Mid-Paper Dilemmas
-- When a Paper reaches `months elapsed == 1`, mark `dilemma_done=yes`, pause, and present a **Paper Dilemma** (Content). This happens exactly once; a later change to `M` never triggers another Paper Dilemma.
-- Render the Dilemma (S10) and wait for the Player's choice.
-- The outcome may modify the total months (`M`), the final RP multiplier/bonus, or grant immediate Cash/Fame. Track any RP modifiers in the Game State.
-- At completion, calculate base RP = `Q × 40`, apply the dilemma multiplier first, then add any flat Final RP bonus, and round half up to a whole RP.
+
+At month 1 draw/persist one dilemma with draw_dilemma; never redraw on resume/extension. Costs/penalties apply immediately. **Positive dilemma Fame is pending completionFameBonus**, paid at publication. RP modifiers are final rewards. Release code/weights immediately sets codePublic=yes; cancellation leaves code public and restricts a Shelved model to Open-source.
+
+Final RP = Q ×40 ×novelty ×researchMultiplier + researchBonus ×novelty, half-up. Completion Fame = (300 +completionFameBonus) ×novelty. Starting/cancelling grants no positive Fame/RP.
 
 ## Completion
-- On the final month, the Paper is published.
-- **Yield:** The Company receives the final RP calculated above and **Fame +300**.
-- The Model is permanently marked as `published` and cannot be used for a Paper again.
-- Cancelling mid-paper: Fame −100, no RP (Actions rule).
+
+Use complete_paper to pay once, mark published/codePublic and clear commitment. Published models cannot supply another Paper. Cancel through cancel_commitment: Fame −100, no pending rewards; costs/disclosure remain. Shelved published models can only release Open-source.

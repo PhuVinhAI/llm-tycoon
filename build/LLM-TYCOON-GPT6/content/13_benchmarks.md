@@ -1,8 +1,8 @@
 # Historical Benchmarks
 
-When generating the Local Evaluation for a completed Model, the Game Engine must use **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
+When generating the Local Evaluation for a completed Model, the Game Engine must show **ALL applicable Benchmarks** from the table below (matching the Task and available by the current in-game date).
 
-Do not pad or fill the list. Show exactly as many Benchmarks as are available. If 0 official Benchmarks exist for a Task at the current date, use one `Internal QA Metric`; it has Domain Fit **0** and no SOTA Rival, so display `N/A` instead of inventing a comparison.
+Q uses the frozen Target IDs from project start; other tests are Expanded and do not change Q. The special LLM targets all general tests at completion. Every score is a normalized game index: higher is better. Real perplexity is lower-is-better; never label the game index as raw perplexity. Do not pad or fill the list. Show exactly as many Benchmarks as are available. If 0 official Benchmarks exist for a Task at the current date, use one `Internal QA Metric`; it has Domain Fit **0** and no SOTA Rival, so display `N/A` instead of inventing a comparison.
 
 ## 1. Official Benchmarks
 

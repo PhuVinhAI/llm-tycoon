@@ -37,6 +37,10 @@ Trust accumulated balances, dates and completed history. Recompute derived skill
 
 A canonical load checks final action/revision/run/balances against the log. If the log is missing, import a copy of the JSON into an empty session and disclose the history gap. Never reset an invalid save; preserve corrupt data separately before resolving it. A failed write does not justify presenting an uncommitted result.
 
+## Monthly news and clock guards
+
+All new main actions start with begin_month and a committed Events checkpoint. The save keeps flow.newsOutbox and month.newsRequiredIds separately from world.firedEvents. Emitting news and resolving mechanics are distinct obligations. Acknowledge only actual emitted text; persist before leaving Events. New milestone conditions trigger another scan. finish_month preserves all cards in lastReport and advances exactly once; commit rejects skipped news/choices, removed checkpoints and arbitrary clock changes. After recovery/import, show unacknowledged news before resuming. No full content reload is needed: Python retrieves exact due rows each month.
+
 ## History
 
 Each event records action ID, revision, resolving date/turn, type, label, actual before/after balances and optional structured changes/source paths. Narration is separate.
