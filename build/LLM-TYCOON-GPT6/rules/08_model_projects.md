@@ -117,7 +117,7 @@ Every completed Model immediately grants **RP + (floor(Q) × 15)** (knowledge ga
 
 ## Release & The Market Hype Cycle
 
-A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40.0) may only be open-sourced or shelved.
+A completed Model may be released at most once: Open-source, License or Product. Shelving is not a release. A Model may be released immediately upon completion (S6) or later from the Portfolio (S15) if it is currently `Shelved`. Releasing a shelved model is an instant action. A Failure model (Q < 40.0) may only be open-sourced or shelved.
 
 **The Market Hype Cycle:** When releasing a Model (License or Product), map each Historical SOTA row through its Benchmark's Applicable Tasks and keep rows matching the Model's Task. Choose the row whose release date has the smallest absolute month distance from the current release month; a tie chooses the earlier date, then the row appearing first in the table. This lookup may use future rows for timing mechanics, but must never reveal or foreshadow them. Let **R** be that Rival's release date. If no row matches the Task, use normal market rules (no Hype Cycle window).
 1. **First-Mover (Build-up):** If released between `R - 3 months` and `R - 1 month` (inclusive). The market is starved. **Multiplier: Cash/Income × 2.0**.

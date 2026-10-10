@@ -24,7 +24,7 @@ The data is grounded in real AI history (2013–2020): papers, hardware releases
 
 # Ordering
 
-Files are numbered in reading order. The build assembles them in file-name order.
+Numbering groups related tables. Runtime reads the relevant sections and date-appropriate rows through the root README; it does not concatenate this directory.
 
 ## Tiếng Việt
 

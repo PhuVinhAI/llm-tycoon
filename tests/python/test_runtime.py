@@ -7,7 +7,7 @@ import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
-SOURCE = Path(__file__).resolve().parents[2] / "game" / "runtime" / "llm_tycoon_runtime.py"
+SOURCE = Path(__file__).resolve().parents[2] / "game" / "runtime" / "state.py"
 SPEC = importlib.util.spec_from_file_location("tycoon", SOURCE)
 rt = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(rt)
@@ -54,6 +54,50 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(rt.round_half_up(-2.5), -3)
         self.assertEqual(rt.round_half_up("74.85", 1), 74.9)
         self.assertEqual(rt.round_half_up("1.005", 2), 1.01)
+
+    def test_default_runtime_is_separate_from_immutable_package(self):
+        self.assertEqual(rt.runtime.root, SOURCE.parent.parent / "session")
+        self.assertEqual(rt.runtime.save_path, SOURCE.parent.parent / "session" / "state" / "save.json")
+
+    def test_section_reader_includes_subheadings_and_ignores_fenced_headings(self):
+        document = self.root / "example.md"
+        document.write_text(
+            "# File\n\n## First\nBody\n### Child\nKeep me\n~~~python\n## Fake\n~~~\n"
+            "## Second\nOther\n", encoding="utf-8")
+        with patch.object(rt, "PACKAGE_ROOT", self.root):
+            selected = rt.read_document("example.md", "First")
+            self.assertTrue(selected.startswith("## First"))
+            self.assertIn("### Child", selected)
+            self.assertIn("## Fake", selected)
+            self.assertNotIn("## Second", selected)
+            self.assertEqual(rt.read_document("example.md"), document.read_text(encoding="utf-8"))
+            with self.assertRaises(rt.StateError):
+                rt.read_document("example.md", "Missing")
+            with self.assertRaises(rt.StateError):
+                rt.read_document("example.md", "Fake")
+            with self.assertRaises(rt.StateError):
+                rt.read_document("../outside.md")
+            with self.assertRaises(rt.StateError):
+                rt.read_document(str(document.resolve()))
+
+    def test_inspect_save_validates_before_any_replacement_without_writes(self):
+        self.start()
+        path = self.runtime.export_bundle()
+        before = self.runtime.save_path.read_bytes()
+        before_events = self.runtime.events_path.read_bytes()
+        inspected = rt.inspect_save(path)
+        self.assertEqual(inspected["state"], self.runtime.load())
+        self.assertEqual(inspected["events"], self.runtime.events())
+        self.assertEqual(self.runtime.save_path.read_bytes(), before)
+        self.assertEqual(self.runtime.events_path.read_bytes(), before_events)
+        self.assertFalse(self.runtime.journal_path.exists())
+        bad = self.root / "bad.json"
+        corrupted = copy.deepcopy(inspected["state"])
+        corrupted["meta"]["version"] = "wrong"
+        bad.write_text(json.dumps(corrupted), encoding="utf-8")
+        with self.assertRaises(rt.StateError):
+            rt.inspect_save(bad)
+        self.assertEqual(self.runtime.save_path.read_bytes(), before)
 
     def test_new_state_matches_scenario_and_has_unique_run(self):
         self.assertEqual(self.initial["resources"], {"cash": 10000, "researchPoints": 0, "fame": 0})

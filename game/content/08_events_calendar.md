@@ -14,7 +14,7 @@ Tái hiện dòng lịch sử AI thật: word2vec (2013), seq2seq (2014), attent
 cứu; vượt trước lịch sử thì được vinh danh (+Fame).
 
 Lưu ý cho Game Engine:
-TUYỆT MẬT với người chơi — không bao giờ tiết lộ trước (system/07).
+TUYỆT MẬT với người chơi — chỉ tiết lộ theo ui/presentation.md và quy tắc Rumor Mill.
 ===============================================================================
 -->
 

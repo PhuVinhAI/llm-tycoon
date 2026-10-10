@@ -1,9 +1,10 @@
 import { expect, test } from 'bun:test';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { assemblePackage, type PackageIO } from '../src/build/assemble.ts';
+import { runBuild } from '../src/build/build.ts';
 import { MANIFEST, PACKAGE_NAME } from '../src/build/manifest.ts';
 import { zipPackage } from '../src/build/zip.ts';
 import { PATHS } from '../src/config/paths.ts';
@@ -27,19 +28,32 @@ test('one root README maps every shipped file and all routing paths exist', () =
   for (const file of files) {
     expect(readme).toContain(`[${file.path}](${file.path})`);
   }
-  const instructions = readme.split('## Complete file map')[0] ?? '';
-  for (const match of instructions.matchAll(
-    /`((?:system|shared|definitions|rules|content|ui|runtime|scenarios|meta)\/[\w./-]+\.(?:md|json|py))`/g,
-  )) {
-    const path = match[1] ?? '';
-    if (!path.startsWith('runtime/state/')) expect(paths.has(path)).toBe(true);
+  for (const file of files.filter((file) => file.path.endsWith('.md'))) {
+    for (const match of file.content.matchAll(/`((?:[\w-]+\/)*[\w.-]+\.(?:md|json|py))`/g)) {
+      const path = match[1] ?? '';
+      if (
+        !path.startsWith('session/') &&
+        !['save.json', 'events.jsonl', 'package-index.json'].includes(path)
+      ) {
+        expect(paths.has(path)).toBe(true);
+      }
+    }
   }
-  for (const group of ['system', 'definitions', 'rules', 'content', 'scenarios', 'ui', 'runtime']) {
+  for (const group of ['rules', 'content', 'scenarios', 'ui', 'runtime']) {
     for (const name of io
       .list(`game/${group}`)
       .filter((name) => /\.(md|json|py)$/.test(name) && name !== 'README.md')) {
       expect(paths.has(`${group}/${name}`)).toBe(true);
     }
+  }
+  const projectRules =
+    files.find((file) => file.path === 'rules/08_model_projects.md')?.content ?? '';
+  const routingRows = readme
+    .split('\n')
+    .filter((line) => line.startsWith('|'))
+    .join('\n');
+  for (const match of routingRows.matchAll(/\*\*([^*]+)\*\*/g)) {
+    expect(projectRules).toContain(`## ${match[1]}`);
   }
 });
 
@@ -59,14 +73,19 @@ test('index hashes describe final content including the generated README map', (
         .update(actual?.content ?? '')
         .digest('hex'),
     );
+    for (const section of record.sections) {
+      const line = actual?.content.split('\n')[section.line - 1] ?? '';
+      expect(line).toBe(`${'#'.repeat(section.level)} ${section.heading}`);
+    }
   }
 });
 
 test('release keeps full game content and excludes mutable state and retired prompt formats', () => {
-  expect(files.length).toBeGreaterThan(60);
+  expect(files.some((file) => file.path === 'engine.md')).toBe(true);
+  expect(files.some((file) => file.path === 'reference/terms.md')).toBe(true);
   for (const file of files) {
     expect(file.path).not.toMatch(
-      /(^dev\/|runtime\/(state|exports|archives)\/|screens_(desktop|mobile)|00_header|99_footer)/,
+      /(^session\/|^(dev|system|shared|definitions|meta)\/|runtime\/(state|exports|archives)\/|screens_(desktop|mobile)|00_header|99_footer|example_turn)/,
     );
     if (file.path.endsWith('.md')) {
       expect(file.content).not.toContain('<!--');
@@ -78,7 +97,7 @@ test('release keeps full game content and excludes mutable state and retired pro
   expect(files.some((f) => f.path === 'content/08_events_calendar.md')).toBe(true);
   expect(files.some((f) => f.path === 'content/15_papers.md')).toBe(true);
   const scenario = JSON.parse(
-    files.find((f) => f.path === 'scenarios/00_home_lab.json')?.content ?? '{}',
+    files.find((f) => f.path === 'scenarios/home_lab.json')?.content ?? '{}',
   );
   expect(scenario.resources).toEqual({ cash: 10000, researchPoints: 0, fame: 0 });
   expect(scenario.clock).toEqual({ date: '2013-01', turn: 1 });
@@ -106,10 +125,20 @@ with zipfile.ZipFile(sys.argv[1]) as archive:
     assert archive.testzip() is None
     assert archive.namelist().count('README.md') == 1
     archive.extractall(str(root))
-spec = importlib.util.spec_from_file_location('tycoon', root / 'runtime/llm_tycoon_runtime.py')
+spec = importlib.util.spec_from_file_location('tycoon', root / 'runtime/state.py')
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-runtime = module.Runtime(root / 'runtime')
+runtime = module.runtime
+assert runtime.root == root / 'session'
+assert not (root / 'session').exists()
+index = json.loads((root / 'package-index.json').read_text(encoding='utf-8'))
+for record in index['files']:
+    for section in record['sections']:
+        selected = module.read_document(record['path'], section['heading'])
+        assert selected.startswith('#' * section['level'] + ' ' + section['heading'])
+wizard = module.read_document('ui/views.md', 'S12 — Project Wizard')
+assert '## S13' not in wizard
+assert 'argparse' not in (root / 'runtime/state.py').read_text(encoding='utf-8')
 state = runtime.commit(module.new_state('Player', 'Studio', 'vi'),
     {'actionId': 'new', 'type': 'new_game', 'label': 'New Game', 'date': '2013-01', 'turn': 1}, 0)
 save = runtime.export_bundle()
@@ -117,6 +146,7 @@ resumed = module.Runtime(root / 'resumed').import_save(save)
 assert resumed['resources'] == state['resources']
 assert resumed['meta']['runId'] == state['meta']['runId']
 assert len(module.Runtime(root / 'resumed').events()) == 2
+assert not (root / 'runtime/state').exists()
 print('verified')
 `;
     const python = process.platform === 'win32' ? ['py', '-3.7'] : ['python3'];
@@ -134,4 +164,27 @@ test('built artifact exactly matches current sources and root README', () => {
     readFileSync(join(PATHS.root, 'build', `${PACKAGE_NAME}.zip`)).equals(zipPackage(files)),
   ).toBe(true);
   expect(readFileSync(join(PATHS.root, 'build', PACKAGE_NAME, 'README.md'), 'utf8')).toBe(readme);
+});
+
+test('rebuild removes retired package files while preserving session data', () => {
+  const temporary = mkdtempSync(join(tmpdir(), 'llmt-rebuild-'));
+  const root = join(temporary, 'package');
+  try {
+    runBuild({ outputRoot: root });
+    const previous = JSON.parse(readFileSync(join(root, 'package-index.json'), 'utf8'));
+    previous.files.push({ path: 'retired.md' });
+    writeFileSync(join(root, 'retired.md'), 'retired instructions');
+    writeFileSync(join(root, 'package-index.json'), JSON.stringify(previous));
+    const session = join(root, 'session');
+    mkdirSync(session, { recursive: true });
+    writeFileSync(join(session, 'player-progress.json'), 'preserved progress');
+    writeFileSync(join(root, 'unmanaged.txt'), 'preserved user file');
+    runBuild({ outputRoot: root });
+    expect(() => readFileSync(join(root, 'retired.md'))).toThrow();
+    expect(readFileSync(join(session, 'player-progress.json'), 'utf8')).toBe('preserved progress');
+    expect(readFileSync(join(root, 'unmanaged.txt'), 'utf8')).toBe('preserved user file');
+    expect(readFileSync(join(temporary, 'package.zip')).equals(zipPackage(files))).toBe(true);
+  } finally {
+    rmSync(temporary, { recursive: true, force: true });
+  }
 });

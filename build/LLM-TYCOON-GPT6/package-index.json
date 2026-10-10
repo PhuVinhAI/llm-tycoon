@@ -7,410 +7,1149 @@
     {
       "path": "content/00_technologies.md",
       "topic": "Technologies",
+      "sections": [
+        {
+          "heading": "Technologies",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 1240,
       "sha256": "e66f83bdb86f34d858aea97a208f4647d76a33ec6215765d207613e8240842f9"
     },
     {
       "path": "content/01_architectures.md",
       "topic": "Architectures",
+      "sections": [
+        {
+          "heading": "Architectures",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 1127,
       "sha256": "a53c726edea4dc055378986594fd83caa1c6fca549b539480917d053030f310f"
     },
     {
       "path": "content/02_tasks_and_matching.md",
       "topic": "Tasks and Matching",
+      "sections": [
+        {
+          "heading": "Tasks and Matching",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Tasks",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Architecture × Task match matrix",
+          "level": 2,
+          "line": 18
+        }
+      ],
       "bytes": 1565,
       "sha256": "2e57dd7e631d15597063e03b5fa15ded272f67947046bac337f61bc1a27e3ac6"
     },
     {
       "path": "content/03_market_demand.md",
       "topic": "Market Demand",
+      "sections": [
+        {
+          "heading": "Market Demand",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 810,
       "sha256": "4829ba2c4150d24b5f8fe2a865cb21a023c9756346f9b60fba5191aacbbcbb52"
     },
     {
       "path": "content/04_hardware_shop.md",
       "topic": "Hardware Shop",
+      "sections": [
+        {
+          "heading": "Hardware Shop",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 701,
       "sha256": "5ecbfd076ba13100f249f61c80ca18d1cb0e38fca930fe28b799ed1e469e719a"
     },
     {
       "path": "content/05_datasets.md",
       "topic": "Datasets",
+      "sections": [
+        {
+          "heading": "Datasets",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Market (buy once each, instant)",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Free (claim once each, when available)",
+          "level": 2,
+          "line": 16
+        },
+        {
+          "heading": "Collectable Domains",
+          "level": 2,
+          "line": 29
+        }
+      ],
       "bytes": 1387,
       "sha256": "abb26fb4b9e22b4f0a68ca0e080036f83d775dc7bce89231c0e809f5ed566afb"
     },
     {
       "path": "content/06_contracts.md",
       "topic": "Contracts",
+      "sections": [
+        {
+          "heading": "Contracts",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Mid-Contract Dilemmas",
+          "level": 2,
+          "line": 15
+        }
+      ],
       "bytes": 1844,
       "sha256": "35c0ebb0df97dc4da5fcb9d55ef3d41ee27efead3a6cf5c99a0f1108872972bd"
     },
     {
       "path": "content/07_employees.md",
       "topic": "Employee Archetypes",
+      "sections": [
+        {
+          "heading": "Employee Archetypes",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 1001,
       "sha256": "46b7234da133f659b3f324c290c444fcead0503d056b1d23718e4c61de7ae609"
     },
     {
       "path": "content/08_events_calendar.md",
       "topic": "Event Calendar — ⚠️ engine-only, never reveal in advance",
+      "sections": [
+        {
+          "heading": "Event Calendar — ⚠️ engine-only, never reveal in advance",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Dated events",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Threshold events",
+          "level": 2,
+          "line": 36
+        },
+        {
+          "heading": "Dynamic Press Coverage (Milestones & Twists)",
+          "level": 2,
+          "line": 44
+        }
+      ],
       "bytes": 5453,
       "sha256": "c92ba046d49516ff3c8e52e3200a478c93118cf2503ac840d494e5721cd0fd08"
     },
     {
       "path": "content/09_scoring_titles.md",
       "topic": "Score Titles",
+      "sections": [
+        {
+          "heading": "Score Titles",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 230,
       "sha256": "85c8621ea79e184ace7b68a5cadff73e672b14cad5cce39d3fa9b3b6782f4925"
     },
     {
       "path": "content/10_freelance_clients.md",
       "topic": "Freelance Era-Aware Dilemmas",
+      "sections": [
+        {
+          "heading": "Freelance Era-Aware Dilemmas",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 2213,
       "sha256": "913fcd8386e0d8af758cc0155cbaa8c4c451c5d6e311e9cb78f83c6a5b75a094"
     },
     {
       "path": "content/11_research_events.md",
       "topic": "Research Era-Aware Dilemmas",
+      "sections": [
+        {
+          "heading": "Research Era-Aware Dilemmas",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 2096,
       "sha256": "1cd3159fb32befb6d4842599cc882eccac0226229a838973293c7dd09d3c43e5"
     },
     {
       "path": "content/12_project_dilemmas.md",
       "topic": "Project Dilemmas",
+      "sections": [
+        {
+          "heading": "Project Dilemmas",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Breakthrough (Synergy ≥ 16)",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "1. For Small Scales (Tiny, Base)",
+          "level": 3,
+          "line": 9
+        },
+        {
+          "heading": "2. For Massive Scales (Large, Massive, Frontier)",
+          "level": 3,
+          "line": 23
+        },
+        {
+          "heading": "Complication (Synergy ≤ 8)",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "1. For Small Scales (Tiny, Base)",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "2. For Massive Scales (Large, Massive, Frontier)",
+          "level": 3,
+          "line": 55
+        }
+      ],
       "bytes": 3316,
       "sha256": "31a98fe89e69a377380e71114b7957ff6180afd00e760cded89713874e5bbfe8"
     },
     {
       "path": "content/13_benchmarks.md",
       "topic": "Historical Benchmarks",
+      "sections": [
+        {
+          "heading": "Historical Benchmarks",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Official Benchmarks",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. Public Reviewers (For Release)",
+          "level": 2,
+          "line": 35
+        }
+      ],
       "bytes": 2905,
       "sha256": "ebcb8ea92f78d433d973470d0b40623d80fd6c92fea50bc296f9b8af5f907b06"
     },
     {
       "path": "content/14_rival_models.md",
       "topic": "Historical SOTA (Rival Models)",
+      "sections": [
+        {
+          "heading": "Historical SOTA (Rival Models)",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 3279,
       "sha256": "ed67fd5da1adb505676abc42f5332a9feaa7240770616ec5072697b75d59dda2"
     },
     {
       "path": "content/15_papers.md",
       "topic": "Paper Dilemmas",
+      "sections": [
+        {
+          "heading": "Paper Dilemmas",
+          "level": 1,
+          "line": 1
+        }
+      ],
       "bytes": 894,
       "sha256": "0811da5f90892b6752c9b36f7f0b9f1c6ce59ce522e1c7c58d01d5e423e833f2"
     },
     {
-      "path": "definitions/00_player.md",
-      "topic": "Player",
-      "bytes": 751,
-      "sha256": "f4845654e5451491569b3f5f7ea4cc433c130d460c986e2b013b045891ef8acf"
-    },
-    {
-      "path": "definitions/01_company.md",
-      "topic": "Company",
-      "bytes": 904,
-      "sha256": "fac208e7ac5bda654f1f28ed66804a3fcd58b5c4c2e78cadbd6824bbc8740873"
-    },
-    {
-      "path": "definitions/02_employee.md",
-      "topic": "Employee",
-      "bytes": 720,
-      "sha256": "24acbca429ed926c086e469211084b05ba548bb6749d4c9717e48379fac95b84"
-    },
-    {
-      "path": "definitions/03_resource.md",
-      "topic": "Resource",
-      "bytes": 1220,
-      "sha256": "9eeac363a5a94cba42ff2d1d3dc626bba2812dbbbb714aa9814d46aae9cad57e"
-    },
-    {
-      "path": "definitions/04_skill.md",
-      "topic": "Skill",
-      "bytes": 745,
-      "sha256": "dd9ca2e30cb72d369bdb17abec12a96960d023ad0c16cd7558089e209f1189ba"
-    },
-    {
-      "path": "definitions/05_technology.md",
-      "topic": "Technology",
-      "bytes": 831,
-      "sha256": "53b71789daf0814c016a6e37e7a99e52e17cd662cf86d269e172e03b95819e85"
-    },
-    {
-      "path": "definitions/06_architecture.md",
-      "topic": "Architecture",
-      "bytes": 878,
-      "sha256": "2e3474279c419b547548c150f0b11864a2d7b865299bb5a2b977f14a307b92c3"
-    },
-    {
-      "path": "definitions/07_task.md",
-      "topic": "Task",
-      "bytes": 763,
-      "sha256": "00873332d04953b0e7efde8dfe5e4640e33e2bf8bac6be23171b2474fbc1439f"
-    },
-    {
-      "path": "definitions/08_dataset.md",
-      "topic": "Dataset",
-      "bytes": 770,
-      "sha256": "b979933a015e3eac367941dea99c0eee72d20184b7960b0c14cb9e84f71be381"
-    },
-    {
-      "path": "definitions/09_hardware.md",
-      "topic": "Hardware",
-      "bytes": 1033,
-      "sha256": "dd225c8ebee18d963cd55613cb81b43ae35cddf3bd2d2f5731bbffd6b04328f6"
-    },
-    {
-      "path": "definitions/10_model.md",
-      "topic": "Model",
-      "bytes": 968,
-      "sha256": "440ff0b3ca857014ecd76c055a652400bf17bb8b3f003d2645c4936e498fec7d"
-    },
-    {
-      "path": "definitions/11_project.md",
-      "topic": "Project",
-      "bytes": 1189,
-      "sha256": "620c32c1a12407840ddd1e513a0f3101a98f161a93af1b3def67b4231bda8a7c"
-    },
-    {
-      "path": "definitions/12_contract.md",
-      "topic": "Contract",
-      "bytes": 901,
-      "sha256": "5eeca185c1099776f219700a4dcb95f2a4509ac13955c14f8ff8d46605a618aa"
-    },
-    {
-      "path": "meta/01_game_info.md",
-      "topic": "Game Info",
-      "bytes": 829,
-      "sha256": "96dd3797b31fe610daa8146f4bd60d19db37764d1268542571172ae1b6cc6602"
+      "path": "engine.md",
+      "topic": "Engine Instructions",
+      "sections": [
+        {
+          "heading": "Engine Instructions",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Authority",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Action loop",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Player decisions and time",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Reading and continuity",
+          "level": 2,
+          "line": 32
+        }
+      ],
+      "bytes": 3632,
+      "sha256": "61cd2dc1d5a4cd1c93fbd373336605c88f39b5211496c37664ee58e36dc1480e"
     },
     {
       "path": "README.md",
       "topic": "🏭 LLM TYCOON — GPT-6",
-      "bytes": 13118,
-      "sha256": "c85d97dd1a2f8ee71fe5cf13040cb64ce6def63aab475acb911a3a434861fd9e"
+      "sections": [
+        {
+          "heading": "🏭 LLM TYCOON — GPT-6",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Startup",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Read routing",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Package and session",
+          "level": 2,
+          "line": 52
+        },
+        {
+          "heading": "Complete file map",
+          "level": 2,
+          "line": 60
+        }
+      ],
+      "bytes": 9250,
+      "sha256": "d374f720d712e71d9fddb9926584d85e1ae62b139d6e284ee0f5e619b66932c2"
+    },
+    {
+      "path": "reference/terms.md",
+      "topic": "Game Terms",
+      "sections": [
+        {
+          "heading": "Game Terms",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "bytes": 3062,
+      "sha256": "4ac3ca348f88fbc77f61f0e96e18941c211fd0afe8b1813a745e8bfce36727cd"
     },
     {
       "path": "rules/00_time_and_turns.md",
       "topic": "Time and Turns",
+      "sections": [
+        {
+          "heading": "Time and Turns",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Timeline",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Order of operations — every month, in this exact order",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Committed Months (Step-by-Step)",
+          "level": 2,
+          "line": 19
+        }
+      ],
       "bytes": 2102,
       "sha256": "7984bd4cbbed88cfdd32e7d1324dd5f50de7376bddb99706b37726d6f96f9ea5"
     },
     {
       "path": "rules/01_actions.md",
       "topic": "Actions",
+      "sections": [
+        {
+          "heading": "Actions",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Main actions (one per month)",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Instant actions (free, any number per turn)",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Commitment and cancelling",
+          "level": 2,
+          "line": 28
+        }
+      ],
       "bytes": 3628,
       "sha256": "7079f897dadb0aae78511f2bfc5486362e6361ec6bc84148a259f63667300e08"
     },
     {
       "path": "rules/02_economy.md",
       "topic": "Economy",
+      "sections": [
+        {
+          "heading": "Economy",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Fixed monthly costs",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Rounding",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Running out of money",
+          "level": 2,
+          "line": 18
+        }
+      ],
       "bytes": 823,
       "sha256": "d3f9da14cc95f94be8cb87830b887bc7875f3c8bf58464f6d2b79936f1173e88"
     },
     {
       "path": "rules/03_research.md",
       "topic": "Research",
+      "sections": [
+        {
+          "heading": "Research",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Earning RP",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Unlocking Technologies",
+          "level": 2,
+          "line": 10
+        },
+        {
+          "heading": "Discounts",
+          "level": 2,
+          "line": 16
+        }
+      ],
       "bytes": 911,
       "sha256": "2034526355b4a79704ff219162b6b6d95624e7b5d483e9ae22d51743840a5b61"
     },
     {
       "path": "rules/04_skills.md",
       "topic": "Skills",
+      "sections": [
+        {
+          "heading": "Skills",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Growth",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Tracking",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Effects",
+          "level": 2,
+          "line": 14
+        }
+      ],
       "bytes": 642,
       "sha256": "f69d3d36acb92c6d051c2dadd4a3474d2b43954e2b23009c82f7f61171876e00"
     },
     {
       "path": "rules/05_reputation.md",
       "topic": "Fame (Danh tiếng)",
+      "sections": [
+        {
+          "heading": "Fame (Danh tiếng)",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Scale",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Sources",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Thresholds",
+          "level": 2,
+          "line": 19
+        }
+      ],
       "bytes": 927,
       "sha256": "7193a1a2b8bad304fd3618edd93a51f53ae9e60f5e09fdadfb9fbd0444aa9fa8"
     },
     {
       "path": "rules/06_datasets.md",
       "topic": "Datasets",
+      "sections": [
+        {
+          "heading": "Datasets",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Acquiring",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Improving",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Domain fit",
+          "level": 2,
+          "line": 14
+        },
+        {
+          "heading": "Usage",
+          "level": 2,
+          "line": 18
+        }
+      ],
       "bytes": 1310,
       "sha256": "b4eb5b91fb500249138cff1e410da0c96448785db30a8fd6388956c412f99ccd"
     },
     {
       "path": "rules/07_hardware.md",
       "topic": "Hardware",
+      "sections": [
+        {
+          "heading": "Hardware",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Slots",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Compute & Capacity",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Buying and selling",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Cloud rental (available per the Event Calendar)",
+          "level": 2,
+          "line": 22
+        }
+      ],
       "bytes": 1833,
       "sha256": "5972cbbee37bfa81c0dd7bfda5dfb4c2acbc339a89e3210c8d82eec1156de2ad"
     },
     {
       "path": "rules/08_model_projects.md",
       "topic": "Model Projects",
-      "bytes": 14214,
-      "sha256": "aaac1e39e09c5b58518b5c6f08754c629bb96c9673b91837ef257d0e84dc7f06"
+      "sections": [
+        {
+          "heading": "Model Projects",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Declaring a Project (the start wizard)",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Artifacts & Fine-Tuning",
+          "level": 2,
+          "line": 27
+        },
+        {
+          "heading": "Project Dilemmas (Mid-Project)",
+          "level": 2,
+          "line": 37
+        },
+        {
+          "heading": "The Bottom-Up Quality Calculation",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "Reception & Fame",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "Release & The Market Hype Cycle",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "Post-Mortem Analysis (Portfolio)",
+          "level": 2,
+          "line": 141
+        }
+      ],
+      "bytes": 14322,
+      "sha256": "fc2b3e7a7cdc2c96f2e7e105798a753e5a48c2676c536ea50f5557ea5772f5db"
     },
     {
       "path": "rules/09_contracts.md",
       "topic": "Contracts",
+      "sections": [
+        {
+          "heading": "Contracts",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Availability",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Accepting and working",
+          "level": 2,
+          "line": 8
+        },
+        {
+          "heading": "Mid-Contract Dilemmas",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Completion & Payout",
+          "level": 2,
+          "line": 20
+        }
+      ],
       "bytes": 1995,
       "sha256": "c7a5827b09d9ff769d19e094f21946b1c2082ce121b53ccdfddd340f078df7ff"
     },
     {
       "path": "rules/10_employees.md",
       "topic": "Employees",
+      "sections": [
+        {
+          "heading": "Employees",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Generation & Hiring",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Firing",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "Effects",
+          "level": 2,
+          "line": 15
+        }
+      ],
       "bytes": 1736,
       "sha256": "7ba99f589ee2e1acb79a21b8ee35fdd96155a101da0306ecc0d4a73da3cddbc4"
     },
     {
       "path": "rules/11_events_and_competitions.md",
       "topic": "Events and Competitions",
+      "sections": [
+        {
+          "heading": "Events and Competitions",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Firing events & Historical News",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Lasting effects",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Competitions",
+          "level": 2,
+          "line": 16
+        }
+      ],
       "bytes": 2208,
       "sha256": "16d114d212c6d74b9dabcf007bcc5135f9b7b59cfb2a07aaec9d639c90f3cff9"
     },
     {
       "path": "rules/12_llm_project.md",
       "topic": "The LLM Project",
+      "sections": [
+        {
+          "heading": "The LLM Project",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Requirements to start",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Quality",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "Outcomes",
+          "level": 2,
+          "line": 19
+        }
+      ],
       "bytes": 2543,
       "sha256": "7b4210ab262e72e4248471e3b6d4456f8553ca9609a48db301d5745aa5c366cb"
     },
     {
       "path": "rules/13_endings_and_scoring.md",
       "topic": "Endings and Scoring",
+      "sections": [
+        {
+          "heading": "Endings and Scoring",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Endings",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Score",
+          "level": 2,
+          "line": 10
+        }
+      ],
       "bytes": 694,
       "sha256": "9256ac2e06ac3c6b93f7355ed472ae599e177055a4744b93ad9f37a3e1b4dda5"
     },
     {
       "path": "rules/14_papers.md",
       "topic": "Academic Papers",
+      "sections": [
+        {
+          "heading": "Academic Papers",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Availability",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Starting a Paper",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Mid-Paper Dilemmas",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Completion",
+          "level": 2,
+          "line": 21
+        }
+      ],
       "bytes": 2033,
       "sha256": "06f8186425e3effbe4e77327cdb26cdf95f523d163e7bfea0baffcd12cbe5980"
     },
     {
-      "path": "runtime/00_runtime_contract.md",
+      "path": "runtime/contract.md",
       "topic": "Runtime Contract",
-      "bytes": 3873,
-      "sha256": "9b3b7464340f8646de10b0be8f52c1f2d9b7fa3d0cdaab7fdb2a8c061a3dcd40"
+      "sections": [
+        {
+          "heading": "Runtime Contract",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "State and transactions",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "Commit boundaries",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "Export",
+          "level": 2,
+          "line": 22
+        },
+        {
+          "heading": "Import, replacement and recovery",
+          "level": 2,
+          "line": 30
+        },
+        {
+          "heading": "History",
+          "level": 2,
+          "line": 40
+        }
+      ],
+      "bytes": 4302,
+      "sha256": "b44167d1cb0ce0fe7a00c0078507b5d8215d98d091bc62f4f7db783c433b8ade"
     },
     {
-      "path": "runtime/01_python_helper.md",
-      "topic": "Python Helper",
-      "bytes": 2565,
-      "sha256": "189bc64896b900793268fda19cb0c1dc7dac9a158d78c57427f5822b5bbe1801"
-    },
-    {
-      "path": "runtime/02_state_schema.md",
+      "path": "runtime/schema.md",
       "topic": "State Schema — LLM Tycoon 1.0",
-      "bytes": 8014,
-      "sha256": "42cadba7f682c0cc905b9e2d16347ab2ea1f75120581ad411931b885f66deada"
+      "sections": [
+        {
+          "heading": "State Schema — LLM Tycoon 1.0",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Top-level fields",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Rule shorthand",
+          "level": 2,
+          "line": 31
+        },
+        {
+          "heading": "Record contracts",
+          "level": 2,
+          "line": 46
+        },
+        {
+          "heading": "Month checkpoint and pending choices",
+          "level": 2,
+          "line": 61
+        },
+        {
+          "heading": "Calendar semantics",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "Validation and repairs",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Structured transaction event",
+          "level": 2,
+          "line": 88
+        }
+      ],
+      "bytes": 7971,
+      "sha256": "642ccf27cc1fefe23a632bd7a0db521eee5833d6a448e2d04acf78582e22b278"
     },
     {
-      "path": "runtime/llm_tycoon_runtime.py",
+      "path": "runtime/state.py",
       "topic": "Python state, transactions, import, export and history",
-      "bytes": 33352,
-      "sha256": "f9c7af1a1b5b056b52207c1ac5b9a591429ecd0f058162dac1db06c619ba96f0"
+      "sections": [],
+      "bytes": 34350,
+      "sha256": "345a99e2d09976cd9ccc34bda6d69f504807bafe8dcc661c44e04f375ab67645"
     },
     {
-      "path": "scenarios/00_home_lab.json",
+      "path": "runtime/usage.md",
+      "topic": "Python API",
+      "sections": [
+        {
+          "heading": "Python API",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Import and startup",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "API",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Read only what is needed",
+          "level": 2,
+          "line": 44
+        }
+      ],
+      "bytes": 2560,
+      "sha256": "00cce74ad79376e3e1dc987fb7a44db5f61350b20c6852da766944eaf88bc096"
+    },
+    {
+      "path": "scenarios/home_lab.json",
       "topic": "Machine-readable Home Lab starting state",
+      "sections": [],
       "bytes": 1708,
       "sha256": "9f8cb5a1110e53c7589381c982225d30edf99e6b8dec41873a328d9a71c68607"
     },
     {
-      "path": "scenarios/00_home_lab.md",
-      "topic": "Scenario: Home Lab",
-      "bytes": 1591,
-      "sha256": "ceafee505ed0cb29c2f55d4bd824b1082cb6e34705f185a21c6f093443239ba3"
+      "path": "scenarios/home_lab.md",
+      "topic": "Home Lab Opening",
+      "sections": [
+        {
+          "heading": "Home Lab Opening",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Opening narration",
+          "level": 2,
+          "line": 5
+        }
+      ],
+      "bytes": 1004,
+      "sha256": "682057b85ef80475a1be26d330126ede13769fe1e648ae27dd00c50f5875dcf3"
     },
     {
-      "path": "shared/glossary.md",
-      "topic": "Glossary",
-      "bytes": 2946,
-      "sha256": "5e7d0bf422eb1e0de043727429802ce588125d065512016d2077c9d8beec049c"
-    },
-    {
-      "path": "system/00_role.md",
-      "topic": "Role",
-      "bytes": 387,
-      "sha256": "4256c13e88a7138bfbb227233f31c3a455346aa09c040d4b742f8175e2f1456b"
-    },
-    {
-      "path": "system/01_purpose.md",
-      "topic": "Purpose",
-      "bytes": 530,
-      "sha256": "88d90b7e6b2be40a2ac0f4691bd3655dde1b1bb0af5ed491858b357bd86c408c"
-    },
-    {
-      "path": "system/02_operating_principles.md",
-      "topic": "Operating Principles",
-      "bytes": 1350,
-      "sha256": "a2c6a2fc96cfce295e3d97dcea4b69e584b774168f42e3f5e83c1ad71dcb156f"
-    },
-    {
-      "path": "system/03_workflow.md",
-      "topic": "Workflow",
-      "bytes": 1660,
-      "sha256": "fc8e87ba01d6dc4d267384ae107c8f44ff1abecbb6cf9540798f23eaa8b4b559"
-    },
-    {
-      "path": "system/04_conflict_resolution.md",
-      "topic": "Conflict Resolution",
-      "bytes": 1171,
-      "sha256": "3c1244eafed5398ce4701fe4ab2c302172aa82617b8673bbc185aebb39f9662c"
-    },
-    {
-      "path": "system/05_authority.md",
-      "topic": "Authority",
-      "bytes": 736,
-      "sha256": "36edb5106703b8ff425b6b9b8765b64e3d3a2d8fd728abec1ca64ad7e1ca7369"
-    },
-    {
-      "path": "system/06_language.md",
-      "topic": "Language",
-      "bytes": 606,
-      "sha256": "f19547b78442020c90242390a4bb8c024af74f5e32f419f9acd584cdbc6a4e21"
-    },
-    {
-      "path": "system/07_output_discipline.md",
-      "topic": "Output Discipline",
-      "bytes": 2306,
-      "sha256": "1df0f3ef2c00f2091a9fd8c1bfe674eb140fe0204fc34c5e3fcc3f1d8ae6a4ed"
-    },
-    {
-      "path": "system/08_save_load.md",
-      "topic": "Save and Load",
-      "bytes": 1659,
-      "sha256": "a388337ddc996c52bba76855de9453794892a96134fe7683ec3cb594b4b9f455"
-    },
-    {
-      "path": "system/09_creative_license.md",
-      "topic": "Creative License",
-      "bytes": 1373,
-      "sha256": "74bc42508bf63127fa883b897f9300fff60ac6fe6137abf103da8bfa9a85d7e7"
-    },
-    {
-      "path": "ui/00_ui_system.md",
-      "topic": "Intelligent UI",
-      "bytes": 2037,
-      "sha256": "0ebd73beb4fa80ded8ca52c9ba2dc6483da26d48e7f4494140d30d6b518300f1"
-    },
-    {
-      "path": "ui/01_boot_and_main_menu.md",
+      "path": "ui/boot.md",
       "topic": "Boot and Main Menu",
-      "bytes": 2241,
-      "sha256": "dd90f6b1ea84d4e035d2e00ba94271f421e2bf6e60dbdf4cc0c3fc37a7c1caa0"
+      "sections": [
+        {
+          "heading": "Boot and Main Menu",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Startup",
+          "level": 2,
+          "line": 3
+        },
+        {
+          "heading": "S1 options",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "How to Play",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Game Info",
+          "level": 2,
+          "line": 34
+        }
+      ],
+      "bytes": 2313,
+      "sha256": "c51354d4c3f04dfcab7820cfa8eef043e28b38cbd9e642d424cbd8264f35b5b1"
     },
     {
-      "path": "ui/02_view_contracts.md",
+      "path": "ui/presentation.md",
+      "topic": "Presentation",
+      "sections": [
+        {
+          "heading": "Presentation",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Controls and layout",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Language and reply flow",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Disclosure",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "Flavor",
+          "level": 2,
+          "line": 29
+        }
+      ],
+      "bytes": 3551,
+      "sha256": "c056780eef70f86ecab8f7ce3a41de267f3ccce7dd73edbbd0f97d37a9bfb219"
+    },
+    {
+      "path": "ui/views.md",
       "topic": "View Contracts",
-      "bytes": 7477,
-      "sha256": "9201e47c9fe74bbfdde5512d54cdec26526a0d5935e5fa911310116ed5d18c57"
-    },
-    {
-      "path": "ui/04_save_format.md",
-      "topic": "S8 — Files and Portable Saves",
-      "bytes": 2445,
-      "sha256": "ea1b4a92e40b4c252277bd92a8432f7828a315cd134c8b7817136faeaf1761c2"
-    },
-    {
-      "path": "ui/05_example_turn.md",
-      "topic": "Worked Example — illustrative only",
-      "bytes": 1223,
-      "sha256": "fcde8a46f1a5f6d511017fcb6936bfaea71848925ed554a7eddc5a2195ad3323"
+      "sections": [
+        {
+          "heading": "View Contracts",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "S0 — Title",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "S1 — Main Menu",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "S2 — Info",
+          "level": 2,
+          "line": 13
+        },
+        {
+          "heading": "S3 — Dashboard",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "S4 — Turn Report",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "S5 — Action Menu",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "S6 — Model Completion / Release",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "S6-B — Public Reception",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "S7 — Market List",
+          "level": 2,
+          "line": 55
+        },
+        {
+          "heading": "S8 — Save / Export",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "S9 — Ending",
+          "level": 2,
+          "line": 63
+        },
+        {
+          "heading": "S10 — Dilemma",
+          "level": 2,
+          "line": 69
+        },
+        {
+          "heading": "S11 — Sub-Menu",
+          "level": 2,
+          "line": 75
+        },
+        {
+          "heading": "S12 — Project Wizard",
+          "level": 2,
+          "line": 79
+        },
+        {
+          "heading": "S13 — Data",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "S14 — Technology Tree",
+          "level": 2,
+          "line": 89
+        },
+        {
+          "heading": "S15 — Portfolio and Streams",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "S16 — Team and Interviews",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "S17 — Academic Publishing",
+          "level": 2,
+          "line": 105
+        }
+      ],
+      "bytes": 7467,
+      "sha256": "eaf2680f9c8013db3659eea0f7bebeef415dc9ffb01e0df978a22bc555b6523d"
     }
   ]
 }

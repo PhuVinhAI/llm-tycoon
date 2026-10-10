@@ -9,7 +9,7 @@ hành động tức thời (miễn phí thời gian).
 
 Tác dụng:
 Đây là danh sách "những gì người chơi được làm". Mọi yêu cầu ngoài danh sách
-này đều không hợp lệ (theo system/05_authority.md).
+này đều không hợp lệ (theo engine.md).
 
 Trách nhiệm:
 - Định nghĩa hành động chính và công thức của chúng.
