@@ -6,7 +6,6 @@ Python 3.7+; standard library only. Import the module from the execution tool. P
 
 ~~~python
 import importlib.util
-import copy
 from pathlib import Path
 
 root = Path("/actual/extracted/package")
@@ -14,7 +13,6 @@ spec = importlib.util.spec_from_file_location("tycoon", root / "runtime/state.py
 rt = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(rt)
 
-# The default session root is root / "session".
 if rt.runtime.save_path.exists() or rt.runtime.journal_path.exists():
     state = rt.load()
 else:
@@ -73,21 +71,11 @@ A section includes its subheadings and ends at the next heading of equal/higher 
 
 ## Mandatory month sequence
 
-~~~python
-candidate = copy.deepcopy(state)
-cards = rt.begin_month(candidate, {"action": "research"})
-# Commit this Events checkpoint before applying events/choices.
-# Each card retains its source, title and effect. Read/apply exact calendar effects.
-# Mark each resolved ID once in candidate["world"]["firedEvents"].
-# Emit all card texts to the player, THEN:
-rt.acknowledge_news(candidate, {card_id: exact_emitted_text})
-# Commit receipts before moving nextPhase beyond "events".
-# Continue Action / Streams / Costs / Completions / Checks in Rule order.
-# Queue and resolve any new milestones; stop at every pending player choice.
-candidate["flow"]["month"]["nextPhase"] = "report"
-resolving_clock = dict(candidate["clock"])
-rt.finish_month(candidate, structured_report)
-# Commit type="month_completed", date/turn=resolving_clock, expected current revision.
-~~~
+1. Deep-copy loaded state into a candidate. Call `begin_month(candidate, action)` with the actual action parameters and commit the Events checkpoint. Retain the returned state and revision after every commit.
+2. Apply queued source effects exactly once; record resolved IDs in `world.firedEvents`. Persist any player choice before showing it.
+3. Emit each full news card. Then call `acknowledge_news(candidate, {news_id: exact_emitted_text})` and commit receipts before advancing beyond Events.
+4. Complete Action, Streams, Costs, Completions and Checks in `rules/00_time_and_turns.md` order. Queue newly triggered milestones; resolve, emit and acknowledge them. Pause at every player choice.
+5. With all phases complete, set `flow.month.nextPhase = "report"` and retain the resolving date/turn. Call `finish_month(candidate, structured_report)`.
+6. Commit `month_completed` with the retained date/turn and latest committed revision. Render the committed report.
 
-Helpers mutate a candidate, never persist by themselves. Do not copy the example's placeholders as data. If a month is already active, resume its nextPhase rather than calling begin_month again. If a guard lists missing news, queue those rows, apply effects once, emit/acknowledge and retry. On reload, unshown news is displayed before the pending choice. Python does not observe the UI, so a receipt requires GPT's actual emitted text.
+Gameplay helpers mutate a candidate; only `commit` persists it. If a month is already active, resume its nextPhase rather than calling begin_month again. If a guard lists missing news, queue those rows, apply effects once, emit/acknowledge and retry. On reload, unshown news is displayed before the pending choice. Python does not observe the UI, so a receipt requires GPT's actual emitted text.

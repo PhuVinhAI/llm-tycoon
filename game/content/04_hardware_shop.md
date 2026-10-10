@@ -15,4 +15,4 @@
 | 🔌 Rewire the lab (once) | $4,000 | slots 4 → 8 |
 | ☁️ Cloud rental (from Jan 2017) | $1,000/mo per unit | +1000 TFLOPS/mo and +160 GB VRAM per unit, max 2 units, project months only |
 
-*(Refer to the Economy and Hardware rules for upkeep and sell-back mechanics).*
+Upkeep and selling: `rules/02_economy.md` and `rules/07_hardware.md`.

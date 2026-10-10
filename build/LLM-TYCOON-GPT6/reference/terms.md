@@ -18,7 +18,7 @@ Use this reference only when a term is unclear. Mechanical values and limits liv
 | VRAM / Inference VRAM | Memory capacity / installed memory reserved for active Products; cloud cannot sustain a Product reservation. |
 | Artifacts / Fine-Tuning | Training anomalies / additional training months to reduce those anomalies. |
 | Model / Q / Release | A completed Project's result; frozen overall evaluation; Open-source, License or Product deployment. Shelved means no release yet. |
-| Benchmark / SOTA | A dated evaluation metric / its historical rival result. SOTA Hype is earned at completion under Model Projects. |
+| Benchmark / SOTA | A dated evaluation metric / the best dated rival result. Completion stores historical SOTA; release recomputes current SOTA under `rules/08_model_projects.md`. |
 | Income Stream / User Logs | A Product's recurring payments / data created when its stream expires normally. |
 | Employee / Candidate | A hired staff record / one persisted interview option. Effects apply only as specified by Employees. |
 | Contract / Paper | A client-work commitment / a publication commitment tied to an eligible completed model. |

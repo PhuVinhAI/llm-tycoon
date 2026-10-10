@@ -1,6 +1,6 @@
 # Paper Dilemmas
 
-Triggered mid-paper (month 1 of 2). Flavor direction determined by `draw_dilemma(state, 'paper')`:
+Timing and rewards: `rules/14_papers.md`. Select X with `draw_dilemma(state, 'paper')`.
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|

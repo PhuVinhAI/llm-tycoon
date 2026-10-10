@@ -13,8 +13,6 @@
 | CODE | Code Completion | Suggesting source code |
 | LLM (general) | Large Language Model | General purpose text generation |
 
-(The **LLM (general)** task is initially exclusive to The LLM Project, but unlocks for standard projects after the first LLM is completed.)
-
 ## Architecture × Task match matrix
 
 Values: +10 perfect · +5 good · 0 weak · −10 poor.
@@ -31,4 +29,4 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 | **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 | +5 |
 | **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
-*(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
+Task availability and domain-fit calculations: `rules/08_model_projects.md`. Target domains: `content/13_benchmarks.md`.

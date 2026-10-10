@@ -1,8 +1,6 @@
 # Project Dilemmas
 
-Triggered mid-project based on the Synergy score (see Model Projects rule). The Engine checks the Model's **Scale** to render the appropriate flavor and choices.
-
----
+Trigger timing and Synergy: `rules/08_model_projects.md`. Select the matching Scale's flavor and choices below.
 
 ## Breakthrough (Synergy ≥ 16)
 
@@ -20,7 +18,7 @@ Flavor direction determined by `Turn % 4`:
 | 1. **The Polish** (Spend extra time to perfect it) | `M (total months) +1`, `q_mod +5` |
 | 2. **The Spin-off** (Publish intermediate findings) | `Completion RP +800`, `q_mod +0` |
 
-### 2. For Massive Scales (Large, Massive, Frontier)
+### 2. For Large Scales (Large, Massive, Frontier)
 Flavor direction determined by `Turn % 4`:
 | X | Flavor direction |
 |---|---|
@@ -33,8 +31,6 @@ Flavor direction determined by `Turn % 4`:
 |---|---|
 | 1. **The Grand Polish** (Extend training to lock in these emergent capabilities) | `M (total months) +1`, `q_mod +8` |
 | 2. **The Academic Shockwave** (Publish a massive preprint to ArXiv upon project completion) | `Completion RP +2,000`, `q_mod +0` |
-
----
 
 ## Complication (Synergy ≤ 8)
 
@@ -52,7 +48,7 @@ Flavor direction determined by `Turn % 4`:
 | 1. **Accept Flaws** (Ignore it and push through) | `q_mod -8` |
 | 2. **Refactor** (Delay the project by 1 month to fix the bugs) | `M (total months) +1`, `q_mod +0` |
 
-### 2. For Massive Scales (Large, Massive, Frontier)
+### 2. For Large Scales (Large, Massive, Frontier)
 Flavor direction determined by `Turn % 4`:
 | X | Flavor direction |
 |---|---|

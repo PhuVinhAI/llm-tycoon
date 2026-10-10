@@ -1,6 +1,6 @@
 # Market Demand
 
-Demand multiplies sale income (refer to the Model Projects rule for the exact formulas).
+Release pricing: `rules/08_model_projects.md`.
 
 | Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 | 2021+ sandbox |
 |---|---|---|---|---|---|
@@ -13,6 +13,6 @@ Demand multiplies sale income (refer to the Model Projects rule for the exact fo
 | CODE | 1 | 1 | 1 | 2 | 2 |
 | LLM (general) | — | — | 2 | 3 | 3 |
 
-Event overrides (Event Calendar) apply on top of this table — e.g., the chatbot craze, the AlphaGo hype multiplier, and the post-BERT paradigm shift.
+Apply active overrides from `content/08_events_calendar.md` under `rules/11_events_and_competitions.md`.
 
 The `2021+ sandbox` column is a fixed fallback, not a forecast. Continue applying all permanent Events already fired by December 2020, but never invent later real-world market events or future technologies.

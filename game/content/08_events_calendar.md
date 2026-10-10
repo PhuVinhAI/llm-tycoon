@@ -43,7 +43,7 @@
 
 ## Dynamic Press Coverage (Milestones & Twists)
 
-These events fire exactly once per playthrough when their condition is met. The Engine acts as a tech journalist covering the Player's company.
+Each press milestone fires once per run. Render its headline as coverage of the player's company.
 
 | # | Trigger | Headline Theme | Effect |
 |---|---|---|---|
@@ -54,4 +54,4 @@ These events fire exactly once per playthrough when their condition is met. The 
 | M5 | Player combines datasets to reach **Size 5** | 📰 **Data Monopoly?** Privacy advocates raise alarms over [Company]'s massive data scraping. | Fame +100 |
 | M6 | First Model achieves **Q ≥ 55.0** | 📰 **Rising Star!** [Company] proves they are a serious contender in the AI space. | RP +1500 |
 
-*(Discount stacking and event tracking follow the Research and Events rules).*
+Discounts and event handling: `rules/03_research.md` and `rules/11_events_and_competitions.md`.

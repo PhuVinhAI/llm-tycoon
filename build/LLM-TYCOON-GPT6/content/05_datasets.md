@@ -24,8 +24,6 @@
 | SQuAD | QA | 2 | 5 | Jun 2016 (unlocked) |
 | WebText (Reddit scrape) | web-mixed | 5 | 2 | Feb 2019 (unlocked) |
 
-Common Crawl and WebText are the only base Size-5 datasets in the game, though the player can combine others to reach Size 5. The LLM Project requires a dataset (or mixture) of Combined Size 5 and Combined Quality ≥ 3.
-
 ## Collectable Domains
 
 news, social, dialogue, reviews, code, encyclopedic, web-mixed, medical, legal, math, books, logic.

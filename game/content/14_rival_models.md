@@ -1,7 +1,6 @@
 # Historical SOTA (Rival Models)
 
-When rendering the Benchmark comparison in the Model Completion Report (S6), the Game Engine must find the current SOTA Rival for each Benchmark. 
-**Rule:** Find the highest normalized score for this specific Benchmark among rows whose Date is ≤ the in-game month; ties choose the latest date. Scores are game indices, not raw metrics. Rival launch news still fires for every listed release.
+For each benchmark, use the highest normalized rival score dated no later than the resolving month; ties use the latest date. Scores are game indices. Every listed release still generates news under `rules/11_events_and_competitions.md`.
 
 | Date | Benchmark | Rival Model (Creator) | SOTA Score (/100) |
 |---|---|---|---|

@@ -87,7 +87,7 @@ Every shipped file is listed here. Read a linked document only when its topic is
 | [rules/02_economy.md](rules/02_economy.md) | Economy |
 | [rules/03_research.md](rules/03_research.md) | Research |
 | [rules/04_skills.md](rules/04_skills.md) | Skills |
-| [rules/05_reputation.md](rules/05_reputation.md) | Fame (Danh tiếng) |
+| [rules/05_reputation.md](rules/05_reputation.md) | Fame |
 | [rules/06_datasets.md](rules/06_datasets.md) | Datasets |
 | [rules/07_hardware.md](rules/07_hardware.md) | Hardware |
 | [rules/08_model_projects.md](rules/08_model_projects.md) | Model Projects |

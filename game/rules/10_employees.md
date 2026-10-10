@@ -14,5 +14,5 @@
 
 ## Effects
 
-- Each Employee's generated effects apply automatically while employed: research bonuses in the Research yield, quality bonuses in the Quality formula, compute reductions in requirement checks.
+- Each Employee's generated effects apply automatically while employed: research bonuses in the Research yield, quality bonuses averaged over training months, and optimizer multipliers in effective monthly training compute.
 - Flat RP and Dataset Quality bonuses add; Dataset Quality caps at 5. Training quality bonuses are averaged over months worked. Optimizers change monthly effective training compute, not the fixed project requirement. Use Model Projects for the exact calculation.

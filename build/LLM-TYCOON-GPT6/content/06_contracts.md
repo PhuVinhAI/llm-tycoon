@@ -14,7 +14,7 @@
 
 ## Mid-Contract Dilemmas
 
-Triggered once at monthsElapsed == floor(initialMonths / 2), for initialMonths ≥2. Draw through draw_dilemma(state, 'contract'):
+Timing and choice handling: `rules/09_contracts.md`.
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|

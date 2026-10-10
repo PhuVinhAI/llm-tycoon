@@ -1,8 +1,11 @@
 # Research Era-Aware Dilemmas
 
-This table provides the generation data for Research events. The Engine invents a research topic fitting the **Era Theme**, then applies the mathematically selected **Complication**.
+Research action and yields: `rules/01_actions.md`. Invent a short scene using the current Era Theme and the drawn Complication.
 
-**Axis 1: Era Themes (Flavor only - based on current Year)**
+## Era Themes
+
+Flavor only; select by the current year.
+
 | Years | Theme | Flavor direction |
 |---|---|---|
 | 2013–2014 | **Foundations** | Counting frequencies, word vectors, parsing Wikipedia dumps, math proofs, CPU constraints. |
@@ -11,7 +14,10 @@ This table provides the generation data for Research events. The Engine invents 
 | 2019–2020 | **Pre-training** | Scaling laws, massive datasets, tokenization edge cases, multi-node cluster optimization. |
 | 2021+ sandbox | **Scaling & Refinement** | Continue exploring pre-training, data quality, tokenization, efficiency, and already-unlocked techniques. Do not introduce real-world discoveries after December 2020. |
 
-**Axis 2: The Complication (Mechanics - selected by Y = draw_dilemma(state, 'research'))**
+## Complications
+
+Select Y with `draw_dilemma(state, 'research')`.
+
 | Y | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
 | 0 | **The Rabbit Hole** | Stick to the goal.<br>Yield: `Base RP` | Go deep into the theory.<br>Yield: `Base RP × 0.8`, `research counter +1 additional` (at R-Lv 5: replace extra counter with `Cash +$600`) |

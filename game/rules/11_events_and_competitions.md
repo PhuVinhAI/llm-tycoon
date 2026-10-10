@@ -12,7 +12,7 @@ Year-only dates mean January. Each item has a stable ID and source row. Every it
 
 Call due_events(state) after every mutation that could satisfy a threshold/release condition. Apply each effect once; mark ID in world.firedEvents **and** retain its card in the outbox. A fired flag means mechanics resolved, not that the player saw the news. Benchmark/rival/rumor news still must be marked and shown.
 
-Queue cards before leaving Events. Emit every new card **before a dilemma or month report**, showing effects. Only after emitting full text call acknowledge_news(state, ids). Context reset/import resumes unshown cards before another action. Never acknowledge silently or discard the outbox.
+Queue cards before leaving Events. Emit every new card **before a dilemma or month report**, showing effects. Only after emitting full text call `acknowledge_news(state, {news_id: exact_emitted_text})`. Context reset/import resumes unshown cards before another action. Never acknowledge silently or discard the outbox.
 
 The helper rejects leaving Events or ending a month if due sources are missing, effects unmarked, or queued news unacknowledged. Python cannot inspect the host's screen; GPT acknowledges only text actually emitted. Resolve listed IDs and retry instead of bypassing checks.
 

@@ -1,20 +1,3 @@
-<!--
-===============================================================================
-FILE: 02_tasks_and_matching.md
-MODULE: Content / Tasks and Matching
-
-Mục đích:
-Danh sách Task, ma trận độ hợp Architecture × Task, và danh sách domain hợp
-với từng Task.
-
-Tác dụng:
-Tương đương bảng Topic×Genre của Game Dev Tycoon — phần "kiến thức phải
-khám phá" của game. Giá trị dựa trên trực giác NLP thật: n-gram gợi ý từ
-tốt nhưng dịch thuật thì vô vọng; seq2seq sinh ra để dịch; pretrained
-transformer giỏi mọi thứ.
-===============================================================================
--->
-
 # Tasks and Matching
 
 ## Tasks
@@ -29,8 +12,6 @@ transformer giỏi mọi thứ.
 | QA | Question Answering | Answering questions over text |
 | CODE | Code Completion | Suggesting source code |
 | LLM (general) | Large Language Model | General purpose text generation |
-
-(The **LLM (general)** task is initially exclusive to The LLM Project, but unlocks for standard projects after the first LLM is completed.)
 
 ## Architecture × Task match matrix
 
@@ -48,18 +29,4 @@ Values: +10 perfect · +5 good · 0 weak · −10 poor.
 | **TRF** | +5 | +10 | +10 | +5 | +5 | +5 | +10 | +5 |
 | **PTRF** | +10 | +10 | +10 | +10 | +10 | +10 | +10 | +10 |
 
-*(Domain fit is now dynamically evaluated against specific Benchmarks during Model Completion. See Benchmarks table for Target Domains).*
-
-<!--
-Tiếng Việt (tóm tắt):
-7 Task: phân loại (CLS), gợi ý từ (AUTO), dịch (TRANS), chatbot (CHAT), tóm
-tắt (SUMM), hỏi–đáp (QA), gợi ý code (CODE). Dự án LLM dùng task đặc biệt
-"LLM (general)".
-
-Ma trận Architecture × Task: +10 hoàn hảo / +5 tốt / 0 yếu / −10 tệ — dựa
-trên trực giác NLP thật (n-gram giỏi gợi ý từ, BOW giỏi phân loại, seq2seq
-sinh ra để dịch, transformer giỏi gần như mọi thứ, pretrained +10 tất cả).
-
-Danh sách domain hợp từng Task (+3 khi khớp; web-mixed = 0 trừ AUTO +3 và
-TRANS −3; lệch hoàn toàn −3).
--->
+Task availability and domain-fit calculations: `rules/08_model_projects.md`. Target domains: `content/13_benchmarks.md`.

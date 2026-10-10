@@ -7,8 +7,8 @@
 
 ## Compute & Capacity
 
-- Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + active cloud units.
-- Total **VRAM** = sum of installed Hardware VRAM + active cloud units.
+- Total **TFLOPS/mo** = sum of installed Hardware TFLOPS + 1000 × active cloud units.
+- Total **VRAM** = sum of installed Hardware VRAM + 160 GB × active cloud units.
 - **Inference VRAM** = sum of reserved VRAM from active Product streams.
 - **Available VRAM** = Total VRAM − Inference VRAM.
 - During a Project, compute accumulates monthly: effective training compute accumulates under Model Projects; fine-tuning adds none.

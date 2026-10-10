@@ -1,21 +1,6 @@
-<!--
-===============================================================================
-FILE: 03_market_demand.md
-MODULE: Content / Market Demand
-
-Mục đích:
-Bảng Demand (hệ số thị trường) của từng Task theo thời kỳ.
-
-Tác dụng:
-Mô phỏng làn sóng thị trường AI thật: phân loại văn bản có giá sớm rồi bão
-hòa; dịch máy nóng lên giữa thập kỷ; chatbot bùng nổ cuối thập kỷ; code
-completion chỉ bắt đầu có giá gần 2019–20.
-===============================================================================
--->
-
 # Market Demand
 
-Demand multiplies sale income (refer to the Model Projects rule for the exact formulas).
+Release pricing: `rules/08_model_projects.md`.
 
 | Task | 2013–14 | 2015–16 | 2017–18 | 2019–20 | 2021+ sandbox |
 |---|---|---|---|---|---|
@@ -28,16 +13,6 @@ Demand multiplies sale income (refer to the Model Projects rule for the exact fo
 | CODE | 1 | 1 | 1 | 2 | 2 |
 | LLM (general) | — | — | 2 | 3 | 3 |
 
-Event overrides (Event Calendar) apply on top of this table — e.g., the chatbot craze, the AlphaGo hype multiplier, and the post-BERT paradigm shift.
+Apply active overrides from `content/08_events_calendar.md` under `rules/11_events_and_competitions.md`.
 
 The `2021+ sandbox` column is a fixed fallback, not a forecast. Continue applying all permanent Events already fired by December 2020, but never invent later real-world market events or future technologies.
-
-<!--
-Tiếng Việt (tóm tắt):
-Demand nhân vào tiền bán model: Bán bản quyền = Q × $150 × Demand; Sản phẩm
-= Q × Demand × $25/tháng. Bảng theo 4 thời kỳ (2013–14, 2015–16, 2017–18,
-2019–20) phản ánh sóng thị trường thật: CLS có giá sớm rồi bão hòa; TRANS
-nóng giữa thập kỷ; CHAT lên đỉnh 2019–20; CODE chỉ có giá từ 2019. Các sự
-kiện (cơn sốt chatbot, hype AlphaGo, cú sốc BERT) ghi đè lên bảng này. Từ
-2021 trở đi dùng cột sandbox cố định và chỉ giữ các hiệu ứng vĩnh viễn đã nổ.
--->

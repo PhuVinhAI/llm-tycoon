@@ -1,7 +1,5 @@
 # Technologies
 
-The full tree — names, costs, prerequisites, and effects — is always visible to the Player.
-
 | ID | Technology | RP cost | Requires | Grants |
 |---|---|---|---|---|
 | BTP | Basic Text Processing | owned at start | — | foundation for everything |

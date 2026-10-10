@@ -14,8 +14,8 @@
           "line": 1
         }
       ],
-      "bytes": 1240,
-      "sha256": "e66f83bdb86f34d858aea97a208f4647d76a33ec6215765d207613e8240842f9"
+      "bytes": 1143,
+      "sha256": "4c513f795ae773dc7619ee3152f80ee8cd1389ce8639c356604a0c0f37cd93a0"
     },
     {
       "path": "content/01_architectures.md",
@@ -27,8 +27,8 @@
           "line": 1
         }
       ],
-      "bytes": 1127,
-      "sha256": "a53c726edea4dc055378986594fd83caa1c6fca549b539480917d053030f310f"
+      "bytes": 763,
+      "sha256": "164540ce9d1189381067e2179fcbd7d87ef6cf0a641f6fdbde2d6f1819ee3e78"
     },
     {
       "path": "content/02_tasks_and_matching.md",
@@ -47,11 +47,11 @@
         {
           "heading": "Architecture × Task match matrix",
           "level": 2,
-          "line": 18
+          "line": 16
         }
       ],
-      "bytes": 1565,
-      "sha256": "2e57dd7e631d15597063e03b5fa15ded272f67947046bac337f61bc1a27e3ac6"
+      "bytes": 1407,
+      "sha256": "2de2e22e3ed1b0fa5757ea50320d4a447e4363c24597c158a8f7c6b3b0a03be3"
     },
     {
       "path": "content/03_market_demand.md",
@@ -63,8 +63,8 @@
           "line": 1
         }
       ],
-      "bytes": 810,
-      "sha256": "4829ba2c4150d24b5f8fe2a865cb21a023c9756346f9b60fba5191aacbbcbb52"
+      "bytes": 721,
+      "sha256": "461c442b3dd7d4391372721f72b039452cf28fb86f8be711d362adc8fc33512b"
     },
     {
       "path": "content/04_hardware_shop.md",
@@ -76,8 +76,8 @@
           "line": 1
         }
       ],
-      "bytes": 701,
-      "sha256": "b8f1560532dcf7970aba6a7e3770d0bcc3649cb982da64f3966bc1b52793e3a5"
+      "bytes": 691,
+      "sha256": "781652fcbf4c06a57e3f3a49d1b4ec5a9d30a90bae13083fd91493e3e9fd14bd"
     },
     {
       "path": "content/05_datasets.md",
@@ -101,11 +101,11 @@
         {
           "heading": "Collectable Domains",
           "level": 2,
-          "line": 29
+          "line": 27
         }
       ],
-      "bytes": 1387,
-      "sha256": "abb26fb4b9e22b4f0a68ca0e080036f83d775dc7bce89231c0e809f5ed566afb"
+      "bytes": 1165,
+      "sha256": "85232879f77991d7b15a1a084a4e9995d550eb7c3bb8b5612b672ca6be89507e"
     },
     {
       "path": "content/06_contracts.md",
@@ -127,8 +127,8 @@
           "line": 26
         }
       ],
-      "bytes": 2142,
-      "sha256": "a1728b69d117b96ec4a19123839ea2120ea3229711d20b4ab2a3bac8906f2800"
+      "bytes": 2064,
+      "sha256": "0d837779f2b111bf4b96608c88d635d27c8ee88325141020451c1a024585982a"
     },
     {
       "path": "content/07_employees.md",
@@ -140,8 +140,8 @@
           "line": 1
         }
       ],
-      "bytes": 1127,
-      "sha256": "5e66a2a63ffdf3e87335eca84f1a24dfa2ab4bdc2b40961cb85e62be8881055c"
+      "bytes": 644,
+      "sha256": "27f78868cb36cceddc6eb84aa64b90ce50ec3f90b08ac83074f1c1998cebc5e7"
     },
     {
       "path": "content/08_events_calendar.md",
@@ -168,8 +168,8 @@
           "line": 44
         }
       ],
-      "bytes": 5679,
-      "sha256": "a1017dae1368b41a261bfceba5b5d1e4b638b99195110403b9364a552a4d8fed"
+      "bytes": 5650,
+      "sha256": "927cc60ec456194f038c58a0469310682a5d58d5c1bbc9bdbf98a99bf0fd0373"
     },
     {
       "path": "content/09_scoring_titles.md",
@@ -192,10 +192,20 @@
           "heading": "Freelance Era-Aware Dilemmas",
           "level": 1,
           "line": 1
+        },
+        {
+          "heading": "Era Themes",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Complications",
+          "level": 2,
+          "line": 17
         }
       ],
-      "bytes": 2294,
-      "sha256": "cf8807a92a9416bd9c56d93856d2618170265482938530aa090385824d5f8642"
+      "bytes": 2213,
+      "sha256": "403e914ee432c6e5a51dc546bee78b6783be5af46cc3f91f59c930886a728726"
     },
     {
       "path": "content/11_research_events.md",
@@ -205,10 +215,20 @@
           "heading": "Research Era-Aware Dilemmas",
           "level": 1,
           "line": 1
+        },
+        {
+          "heading": "Era Themes",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Complications",
+          "level": 2,
+          "line": 17
         }
       ],
-      "bytes": 2183,
-      "sha256": "52d077308e59c99b085f32f302d45e822f54ecc301aac285cb4c33c9e554a791"
+      "bytes": 2101,
+      "sha256": "f31d0b812affb14540df6ebb4425eded8659f173cc0866f9371ff6b9cfe95850"
     },
     {
       "path": "content/12_project_dilemmas.md",
@@ -222,36 +242,36 @@
         {
           "heading": "Breakthrough (Synergy ≥ 16)",
           "level": 2,
-          "line": 7
+          "line": 5
         },
         {
           "heading": "1. For Small Scales (Tiny, Base)",
           "level": 3,
-          "line": 9
+          "line": 7
         },
         {
-          "heading": "2. For Massive Scales (Large, Massive, Frontier)",
+          "heading": "2. For Large Scales (Large, Massive, Frontier)",
           "level": 3,
-          "line": 23
+          "line": 21
         },
         {
           "heading": "Complication (Synergy ≤ 8)",
           "level": 2,
-          "line": 39
+          "line": 35
         },
         {
           "heading": "1. For Small Scales (Tiny, Base)",
           "level": 3,
-          "line": 41
+          "line": 37
         },
         {
-          "heading": "2. For Massive Scales (Large, Massive, Frontier)",
+          "heading": "2. For Large Scales (Large, Massive, Frontier)",
           "level": 3,
-          "line": 55
+          "line": 51
         }
       ],
-      "bytes": 3350,
-      "sha256": "d519c9d4c2fe8047cbe88b2643e3eb1a4da093b4d31ecc39ae41576e1c6cbb0e"
+      "bytes": 3286,
+      "sha256": "8df2397408939ba5d83d2a240d648dcb0fc2fb5e46697991efc6eea796be424e"
     },
     {
       "path": "content/13_benchmarks.md",
@@ -265,16 +285,16 @@
         {
           "heading": "1. Official Benchmarks",
           "level": 2,
-          "line": 7
+          "line": 5
         },
         {
           "heading": "2. Public Reviewers (For Release)",
           "level": 2,
-          "line": 35
+          "line": 33
         }
       ],
-      "bytes": 3198,
-      "sha256": "e4bddb7f4eb23684e3820f903ef11d74cbbf6219add0325eec622e3c8feccc0c"
+      "bytes": 2781,
+      "sha256": "5a292a2ce539f4680db26df5e3df89082ac9881fb39ff5faab86d731d64e7f4f"
     },
     {
       "path": "content/14_rival_models.md",
@@ -286,8 +306,8 @@
           "line": 1
         }
       ],
-      "bytes": 3388,
-      "sha256": "eccbf1e9c2c158203c8f8908d704d434df15df5185b874fb06bb54ae8cd5cd86"
+      "bytes": 3232,
+      "sha256": "9ce11775856ebebb5bc93a2eb73f17fa39471df2e72c45c89dfba477cab7e6c8"
     },
     {
       "path": "content/15_papers.md",
@@ -299,8 +319,8 @@
           "line": 1
         }
       ],
-      "bytes": 965,
-      "sha256": "80e14587a3d038658a7426878d39de1a7ef7fa983e49dadaaacca0f520a0a198"
+      "bytes": 954,
+      "sha256": "25ff93d9acb3d1a7d4dd13426c7671d0a8de92fc81877899c62d3e7bc67e9583"
     },
     {
       "path": "engine.md",
@@ -332,8 +352,8 @@
           "line": 32
         }
       ],
-      "bytes": 4416,
-      "sha256": "18d0381ff63fd0a2fe48737363e2f9c56c55497d745754af5700436c98f482bd"
+      "bytes": 4269,
+      "sha256": "5490561b049499c2ddc3f6a2e8e5451d99ba818937b53352061921085996c89a"
     },
     {
       "path": "README.md",
@@ -365,8 +385,8 @@
           "line": 60
         }
       ],
-      "bytes": 9920,
-      "sha256": "d8c6f49d1b4e7b1fed1bb84a18de98d58eebec874128204b971eea5289aaf70a"
+      "bytes": 9905,
+      "sha256": "c4e97bcb86a05e6f402c533fb3438b269f0ca4506c44b3b7a1edc272a746f171"
     },
     {
       "path": "reference/terms.md",
@@ -378,8 +398,8 @@
           "line": 1
         }
       ],
-      "bytes": 3062,
-      "sha256": "4ac3ca348f88fbc77f61f0e96e18941c211fd0afe8b1813a745e8bfce36727cd"
+      "bytes": 3109,
+      "sha256": "89d3a5eaa426b6e8507aef6819b2fc552eb0b7442d4d87890f3e1889e1dddf0d"
     },
     {
       "path": "rules/00_time_and_turns.md",
@@ -518,15 +538,15 @@
           "line": 14
         }
       ],
-      "bytes": 662,
-      "sha256": "5f516ae9a4f4593129cde63bbfd493473ec35c12c18315eee3897ee22a80a63c"
+      "bytes": 678,
+      "sha256": "65f3eb40408b0eec988f4ea1d9977b38faa3c52018c75bcfe827245e971efc99"
     },
     {
       "path": "rules/05_reputation.md",
-      "topic": "Fame (Danh tiếng)",
+      "topic": "Fame",
       "sections": [
         {
-          "heading": "Fame (Danh tiếng)",
+          "heading": "Fame",
           "level": 1,
           "line": 1
         },
@@ -546,8 +566,8 @@
           "line": 19
         }
       ],
-      "bytes": 968,
-      "sha256": "d7c5effb2d076c20827b499f7648f5b07c84f75a363d0ef3b7cff95f125dcea6"
+      "bytes": 953,
+      "sha256": "df24d55b48dfc576b2bd7a94b73060c60b57722900ded67d9a8af862507007a8"
     },
     {
       "path": "rules/06_datasets.md",
@@ -579,8 +599,8 @@
           "line": 18
         }
       ],
-      "bytes": 1577,
-      "sha256": "54f0712b9afcf71c45b20c4168b3d738235a5d70a722c7ff30db6c4c1968925b"
+      "bytes": 1539,
+      "sha256": "fa2aaf4e40274fbee2f27804f724be7cf8d6fba8e2f1e5b190a3fb6ba1069596"
     },
     {
       "path": "rules/07_hardware.md",
@@ -612,8 +632,8 @@
           "line": 22
         }
       ],
-      "bytes": 1871,
-      "sha256": "65213f04d055d002e583ed48cffb5764c52b60a58e240fa03da0fde34c544928"
+      "bytes": 1889,
+      "sha256": "d9604365c8f577471e519b47f3cc3caf4711007cea074cce8330c8144cb2741e"
     },
     {
       "path": "rules/08_model_projects.md",
@@ -693,8 +713,8 @@
           "line": 20
         }
       ],
-      "bytes": 2404,
-      "sha256": "18a977e6e80bd466be9c2736ec61c996b728dc6a25d6c8f257b1926fe10df810"
+      "bytes": 2333,
+      "sha256": "60b8c6ccf572b85ab50f0c6bc9d8034195736a43907d46c8f700cd1d046d90bd"
     },
     {
       "path": "rules/10_employees.md",
@@ -721,8 +741,8 @@
           "line": 15
         }
       ],
-      "bytes": 1823,
-      "sha256": "ff29dfc2f3e13f1ab43e1fc957cb726d193ddafd3acbe96d109054c64e6cf446"
+      "bytes": 1853,
+      "sha256": "9031ea8cca8ff6f9390d83f7ff6fd638869bbf6dd73ae084d4d3ab40c7e22abf"
     },
     {
       "path": "rules/11_events_and_competitions.md",
@@ -749,8 +769,8 @@
           "line": 27
         }
       ],
-      "bytes": 2973,
-      "sha256": "f87d8df22b19f86de772dbe4819c057e2a525141cac7c8ebbc94a98926ee3770"
+      "bytes": 3001,
+      "sha256": "b6bdff067874d4865713343cd0c0fbd45835eab6b77f5f59e22fbbd2b1fd0695"
     },
     {
       "path": "rules/12_llm_project.md",
@@ -958,21 +978,21 @@
         {
           "heading": "API",
           "level": 2,
-          "line": 26
+          "line": 24
         },
         {
           "heading": "Read only what is needed",
           "level": 2,
-          "line": 65
+          "line": 63
         },
         {
           "heading": "Mandatory month sequence",
           "level": 2,
-          "line": 74
+          "line": 72
         }
       ],
-      "bytes": 6348,
-      "sha256": "dda50bc32c7ee89db2fe508c034e1149f1367af82b032cf5ccdc8d3a9f615641"
+      "bytes": 6347,
+      "sha256": "d09df6a641265142fbbe61ce31e79bf2b1871e6c56776007cc2517166825d874"
     },
     {
       "path": "scenarios/home_lab.json",

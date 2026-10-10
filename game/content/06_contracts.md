@@ -14,7 +14,7 @@
 
 ## Mid-Contract Dilemmas
 
-Triggered once at monthsElapsed == floor(initialMonths / 2), for initialMonths â‰¥2. Draw through draw_dilemma(state, 'contract'):
+Timing and choice handling: `rules/09_contracts.md`.
 
 | X | Complication | Choice 1 (Standard) | Choice 2 (The Trade-off) |
 |---|---|---|---|
@@ -22,7 +22,6 @@ Triggered once at monthsElapsed == floor(initialMonths / 2), for initialMonths â
 | 1 | **Messy Client Data** (The provided data is garbage) | Train on it anyway.<br>Yield: `Pay -20%` | Clean it manually.<br>Yield: `M +1`, `Completion Fame +50` |
 | 2 | **Integration Hell** (Legacy systems are blocking deployment) | Hack a quick fix.<br>Yield: `Normal` | Build a proper API.<br>Yield: `M +1`, `Pay +20%`, `Completion Fame +100` |
 | 3 | **Early Delivery Request** (Client needs it ASAP) | Decline.<br>Yield: `Normal` | Crunch time.<br>Yield: `Pay +10%`, `Completion Fame -150` (quality shortcuts) |
-
 
 ## Client dataset on completion
 

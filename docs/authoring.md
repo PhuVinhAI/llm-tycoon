@@ -16,7 +16,7 @@ Each fact has one authoritative location. UI/README route to it; avoid copying f
 
 ## Source and release
 
-Write canonical instructions in clear English. Optional Vietnamese maintainer notes may use HTML comments; release builds strip them. Numbered Rules/Content stay separate for targeted reads. Do not add generic ontology files, duplicate screen layouts, development examples or CLI wrappers to the game package.
+Keep `game/` limited to playable instructions, canonical data, the initial-state template and runtime helpers. Write prompt text and headings in clear English. Put design rationale and maintainer notes in `docs/`; do not add HTML comments, bilingual summaries or directory READMEs to `game/`. The generated root README is the package's sole map. Player-facing narration and labels follow the player's chosen language under `ui/presentation.md`. Numbered Rules/Content stay separate for targeted reads. Avoid duplicate mechanics, screen layouts and development examples.
 
 README routing must include the action's actual dependencies and relevant section headings. `runtime/state.py` supports exact section reads, and the generated index includes headings/line numbers. The index does not hash itself.
 

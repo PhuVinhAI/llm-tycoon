@@ -1,4 +1,4 @@
-# Fame (Danh tiếng)
+# Fame
 
 ## Scale
 

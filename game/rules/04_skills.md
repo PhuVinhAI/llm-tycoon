@@ -14,4 +14,4 @@
 ## Effects
 
 - R-Lv increases Research yield (Research rule).
-- E-Lv adds +2 × E-Lv to Model Quality (Model Projects rule).
+- Starting E-Lv adds +2 × E-Lv to Base Points (`rules/08_model_projects.md`).

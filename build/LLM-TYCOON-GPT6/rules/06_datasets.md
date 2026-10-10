@@ -13,7 +13,7 @@
 
 ## Domain fit
 
-*(Domain fit is now calculated dynamically against specific Benchmarks during the Model Completion phase. See the Model Projects rule for the Bottom-Up Quality Calculation).*
+Evaluate dataset domains against benchmark targets under `rules/08_model_projects.md`; target domains are in `content/13_benchmarks.md`.
 
 ## Usage
 
