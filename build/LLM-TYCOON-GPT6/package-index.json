@@ -1,0 +1,416 @@
+{
+  "game": "LLM TYCOON",
+  "version": "1.0.0",
+  "entrypoint": "README.md",
+  "schema": "llm-tycoon.package.v1",
+  "files": [
+    {
+      "path": "content/00_technologies.md",
+      "topic": "Technologies",
+      "bytes": 1240,
+      "sha256": "e66f83bdb86f34d858aea97a208f4647d76a33ec6215765d207613e8240842f9"
+    },
+    {
+      "path": "content/01_architectures.md",
+      "topic": "Architectures",
+      "bytes": 1127,
+      "sha256": "a53c726edea4dc055378986594fd83caa1c6fca549b539480917d053030f310f"
+    },
+    {
+      "path": "content/02_tasks_and_matching.md",
+      "topic": "Tasks and Matching",
+      "bytes": 1565,
+      "sha256": "2e57dd7e631d15597063e03b5fa15ded272f67947046bac337f61bc1a27e3ac6"
+    },
+    {
+      "path": "content/03_market_demand.md",
+      "topic": "Market Demand",
+      "bytes": 810,
+      "sha256": "4829ba2c4150d24b5f8fe2a865cb21a023c9756346f9b60fba5191aacbbcbb52"
+    },
+    {
+      "path": "content/04_hardware_shop.md",
+      "topic": "Hardware Shop",
+      "bytes": 701,
+      "sha256": "5ecbfd076ba13100f249f61c80ca18d1cb0e38fca930fe28b799ed1e469e719a"
+    },
+    {
+      "path": "content/05_datasets.md",
+      "topic": "Datasets",
+      "bytes": 1387,
+      "sha256": "abb26fb4b9e22b4f0a68ca0e080036f83d775dc7bce89231c0e809f5ed566afb"
+    },
+    {
+      "path": "content/06_contracts.md",
+      "topic": "Contracts",
+      "bytes": 1844,
+      "sha256": "35c0ebb0df97dc4da5fcb9d55ef3d41ee27efead3a6cf5c99a0f1108872972bd"
+    },
+    {
+      "path": "content/07_employees.md",
+      "topic": "Employee Archetypes",
+      "bytes": 1001,
+      "sha256": "46b7234da133f659b3f324c290c444fcead0503d056b1d23718e4c61de7ae609"
+    },
+    {
+      "path": "content/08_events_calendar.md",
+      "topic": "Event Calendar — ⚠️ engine-only, never reveal in advance",
+      "bytes": 5453,
+      "sha256": "c92ba046d49516ff3c8e52e3200a478c93118cf2503ac840d494e5721cd0fd08"
+    },
+    {
+      "path": "content/09_scoring_titles.md",
+      "topic": "Score Titles",
+      "bytes": 230,
+      "sha256": "85c8621ea79e184ace7b68a5cadff73e672b14cad5cce39d3fa9b3b6782f4925"
+    },
+    {
+      "path": "content/10_freelance_clients.md",
+      "topic": "Freelance Era-Aware Dilemmas",
+      "bytes": 2213,
+      "sha256": "913fcd8386e0d8af758cc0155cbaa8c4c451c5d6e311e9cb78f83c6a5b75a094"
+    },
+    {
+      "path": "content/11_research_events.md",
+      "topic": "Research Era-Aware Dilemmas",
+      "bytes": 2096,
+      "sha256": "1cd3159fb32befb6d4842599cc882eccac0226229a838973293c7dd09d3c43e5"
+    },
+    {
+      "path": "content/12_project_dilemmas.md",
+      "topic": "Project Dilemmas",
+      "bytes": 3316,
+      "sha256": "31a98fe89e69a377380e71114b7957ff6180afd00e760cded89713874e5bbfe8"
+    },
+    {
+      "path": "content/13_benchmarks.md",
+      "topic": "Historical Benchmarks",
+      "bytes": 2905,
+      "sha256": "ebcb8ea92f78d433d973470d0b40623d80fd6c92fea50bc296f9b8af5f907b06"
+    },
+    {
+      "path": "content/14_rival_models.md",
+      "topic": "Historical SOTA (Rival Models)",
+      "bytes": 3279,
+      "sha256": "ed67fd5da1adb505676abc42f5332a9feaa7240770616ec5072697b75d59dda2"
+    },
+    {
+      "path": "content/15_papers.md",
+      "topic": "Paper Dilemmas",
+      "bytes": 894,
+      "sha256": "0811da5f90892b6752c9b36f7f0b9f1c6ce59ce522e1c7c58d01d5e423e833f2"
+    },
+    {
+      "path": "definitions/00_player.md",
+      "topic": "Player",
+      "bytes": 751,
+      "sha256": "f4845654e5451491569b3f5f7ea4cc433c130d460c986e2b013b045891ef8acf"
+    },
+    {
+      "path": "definitions/01_company.md",
+      "topic": "Company",
+      "bytes": 904,
+      "sha256": "fac208e7ac5bda654f1f28ed66804a3fcd58b5c4c2e78cadbd6824bbc8740873"
+    },
+    {
+      "path": "definitions/02_employee.md",
+      "topic": "Employee",
+      "bytes": 720,
+      "sha256": "24acbca429ed926c086e469211084b05ba548bb6749d4c9717e48379fac95b84"
+    },
+    {
+      "path": "definitions/03_resource.md",
+      "topic": "Resource",
+      "bytes": 1220,
+      "sha256": "9eeac363a5a94cba42ff2d1d3dc626bba2812dbbbb714aa9814d46aae9cad57e"
+    },
+    {
+      "path": "definitions/04_skill.md",
+      "topic": "Skill",
+      "bytes": 745,
+      "sha256": "dd9ca2e30cb72d369bdb17abec12a96960d023ad0c16cd7558089e209f1189ba"
+    },
+    {
+      "path": "definitions/05_technology.md",
+      "topic": "Technology",
+      "bytes": 831,
+      "sha256": "53b71789daf0814c016a6e37e7a99e52e17cd662cf86d269e172e03b95819e85"
+    },
+    {
+      "path": "definitions/06_architecture.md",
+      "topic": "Architecture",
+      "bytes": 878,
+      "sha256": "2e3474279c419b547548c150f0b11864a2d7b865299bb5a2b977f14a307b92c3"
+    },
+    {
+      "path": "definitions/07_task.md",
+      "topic": "Task",
+      "bytes": 763,
+      "sha256": "00873332d04953b0e7efde8dfe5e4640e33e2bf8bac6be23171b2474fbc1439f"
+    },
+    {
+      "path": "definitions/08_dataset.md",
+      "topic": "Dataset",
+      "bytes": 770,
+      "sha256": "b979933a015e3eac367941dea99c0eee72d20184b7960b0c14cb9e84f71be381"
+    },
+    {
+      "path": "definitions/09_hardware.md",
+      "topic": "Hardware",
+      "bytes": 1033,
+      "sha256": "dd225c8ebee18d963cd55613cb81b43ae35cddf3bd2d2f5731bbffd6b04328f6"
+    },
+    {
+      "path": "definitions/10_model.md",
+      "topic": "Model",
+      "bytes": 968,
+      "sha256": "440ff0b3ca857014ecd76c055a652400bf17bb8b3f003d2645c4936e498fec7d"
+    },
+    {
+      "path": "definitions/11_project.md",
+      "topic": "Project",
+      "bytes": 1189,
+      "sha256": "620c32c1a12407840ddd1e513a0f3101a98f161a93af1b3def67b4231bda8a7c"
+    },
+    {
+      "path": "definitions/12_contract.md",
+      "topic": "Contract",
+      "bytes": 901,
+      "sha256": "5eeca185c1099776f219700a4dcb95f2a4509ac13955c14f8ff8d46605a618aa"
+    },
+    {
+      "path": "meta/01_game_info.md",
+      "topic": "Game Info",
+      "bytes": 829,
+      "sha256": "96dd3797b31fe610daa8146f4bd60d19db37764d1268542571172ae1b6cc6602"
+    },
+    {
+      "path": "README.md",
+      "topic": "🏭 LLM TYCOON — GPT-6",
+      "bytes": 13118,
+      "sha256": "c85d97dd1a2f8ee71fe5cf13040cb64ce6def63aab475acb911a3a434861fd9e"
+    },
+    {
+      "path": "rules/00_time_and_turns.md",
+      "topic": "Time and Turns",
+      "bytes": 2102,
+      "sha256": "7984bd4cbbed88cfdd32e7d1324dd5f50de7376bddb99706b37726d6f96f9ea5"
+    },
+    {
+      "path": "rules/01_actions.md",
+      "topic": "Actions",
+      "bytes": 3628,
+      "sha256": "7079f897dadb0aae78511f2bfc5486362e6361ec6bc84148a259f63667300e08"
+    },
+    {
+      "path": "rules/02_economy.md",
+      "topic": "Economy",
+      "bytes": 823,
+      "sha256": "d3f9da14cc95f94be8cb87830b887bc7875f3c8bf58464f6d2b79936f1173e88"
+    },
+    {
+      "path": "rules/03_research.md",
+      "topic": "Research",
+      "bytes": 911,
+      "sha256": "2034526355b4a79704ff219162b6b6d95624e7b5d483e9ae22d51743840a5b61"
+    },
+    {
+      "path": "rules/04_skills.md",
+      "topic": "Skills",
+      "bytes": 642,
+      "sha256": "f69d3d36acb92c6d051c2dadd4a3474d2b43954e2b23009c82f7f61171876e00"
+    },
+    {
+      "path": "rules/05_reputation.md",
+      "topic": "Fame (Danh tiếng)",
+      "bytes": 927,
+      "sha256": "7193a1a2b8bad304fd3618edd93a51f53ae9e60f5e09fdadfb9fbd0444aa9fa8"
+    },
+    {
+      "path": "rules/06_datasets.md",
+      "topic": "Datasets",
+      "bytes": 1310,
+      "sha256": "b4eb5b91fb500249138cff1e410da0c96448785db30a8fd6388956c412f99ccd"
+    },
+    {
+      "path": "rules/07_hardware.md",
+      "topic": "Hardware",
+      "bytes": 1833,
+      "sha256": "5972cbbee37bfa81c0dd7bfda5dfb4c2acbc339a89e3210c8d82eec1156de2ad"
+    },
+    {
+      "path": "rules/08_model_projects.md",
+      "topic": "Model Projects",
+      "bytes": 14214,
+      "sha256": "aaac1e39e09c5b58518b5c6f08754c629bb96c9673b91837ef257d0e84dc7f06"
+    },
+    {
+      "path": "rules/09_contracts.md",
+      "topic": "Contracts",
+      "bytes": 1995,
+      "sha256": "c7a5827b09d9ff769d19e094f21946b1c2082ce121b53ccdfddd340f078df7ff"
+    },
+    {
+      "path": "rules/10_employees.md",
+      "topic": "Employees",
+      "bytes": 1736,
+      "sha256": "7ba99f589ee2e1acb79a21b8ee35fdd96155a101da0306ecc0d4a73da3cddbc4"
+    },
+    {
+      "path": "rules/11_events_and_competitions.md",
+      "topic": "Events and Competitions",
+      "bytes": 2208,
+      "sha256": "16d114d212c6d74b9dabcf007bcc5135f9b7b59cfb2a07aaec9d639c90f3cff9"
+    },
+    {
+      "path": "rules/12_llm_project.md",
+      "topic": "The LLM Project",
+      "bytes": 2543,
+      "sha256": "7b4210ab262e72e4248471e3b6d4456f8553ca9609a48db301d5745aa5c366cb"
+    },
+    {
+      "path": "rules/13_endings_and_scoring.md",
+      "topic": "Endings and Scoring",
+      "bytes": 694,
+      "sha256": "9256ac2e06ac3c6b93f7355ed472ae599e177055a4744b93ad9f37a3e1b4dda5"
+    },
+    {
+      "path": "rules/14_papers.md",
+      "topic": "Academic Papers",
+      "bytes": 2033,
+      "sha256": "06f8186425e3effbe4e77327cdb26cdf95f523d163e7bfea0baffcd12cbe5980"
+    },
+    {
+      "path": "runtime/00_runtime_contract.md",
+      "topic": "Runtime Contract",
+      "bytes": 3873,
+      "sha256": "9b3b7464340f8646de10b0be8f52c1f2d9b7fa3d0cdaab7fdb2a8c061a3dcd40"
+    },
+    {
+      "path": "runtime/01_python_helper.md",
+      "topic": "Python Helper",
+      "bytes": 2565,
+      "sha256": "189bc64896b900793268fda19cb0c1dc7dac9a158d78c57427f5822b5bbe1801"
+    },
+    {
+      "path": "runtime/02_state_schema.md",
+      "topic": "State Schema — LLM Tycoon 1.0",
+      "bytes": 8014,
+      "sha256": "42cadba7f682c0cc905b9e2d16347ab2ea1f75120581ad411931b885f66deada"
+    },
+    {
+      "path": "runtime/llm_tycoon_runtime.py",
+      "topic": "Python state, transactions, import, export and history",
+      "bytes": 33352,
+      "sha256": "f9c7af1a1b5b056b52207c1ac5b9a591429ecd0f058162dac1db06c619ba96f0"
+    },
+    {
+      "path": "scenarios/00_home_lab.json",
+      "topic": "Machine-readable Home Lab starting state",
+      "bytes": 1708,
+      "sha256": "9f8cb5a1110e53c7589381c982225d30edf99e6b8dec41873a328d9a71c68607"
+    },
+    {
+      "path": "scenarios/00_home_lab.md",
+      "topic": "Scenario: Home Lab",
+      "bytes": 1591,
+      "sha256": "ceafee505ed0cb29c2f55d4bd824b1082cb6e34705f185a21c6f093443239ba3"
+    },
+    {
+      "path": "shared/glossary.md",
+      "topic": "Glossary",
+      "bytes": 2946,
+      "sha256": "5e7d0bf422eb1e0de043727429802ce588125d065512016d2077c9d8beec049c"
+    },
+    {
+      "path": "system/00_role.md",
+      "topic": "Role",
+      "bytes": 387,
+      "sha256": "4256c13e88a7138bfbb227233f31c3a455346aa09c040d4b742f8175e2f1456b"
+    },
+    {
+      "path": "system/01_purpose.md",
+      "topic": "Purpose",
+      "bytes": 530,
+      "sha256": "88d90b7e6b2be40a2ac0f4691bd3655dde1b1bb0af5ed491858b357bd86c408c"
+    },
+    {
+      "path": "system/02_operating_principles.md",
+      "topic": "Operating Principles",
+      "bytes": 1350,
+      "sha256": "a2c6a2fc96cfce295e3d97dcea4b69e584b774168f42e3f5e83c1ad71dcb156f"
+    },
+    {
+      "path": "system/03_workflow.md",
+      "topic": "Workflow",
+      "bytes": 1660,
+      "sha256": "fc8e87ba01d6dc4d267384ae107c8f44ff1abecbb6cf9540798f23eaa8b4b559"
+    },
+    {
+      "path": "system/04_conflict_resolution.md",
+      "topic": "Conflict Resolution",
+      "bytes": 1171,
+      "sha256": "3c1244eafed5398ce4701fe4ab2c302172aa82617b8673bbc185aebb39f9662c"
+    },
+    {
+      "path": "system/05_authority.md",
+      "topic": "Authority",
+      "bytes": 736,
+      "sha256": "36edb5106703b8ff425b6b9b8765b64e3d3a2d8fd728abec1ca64ad7e1ca7369"
+    },
+    {
+      "path": "system/06_language.md",
+      "topic": "Language",
+      "bytes": 606,
+      "sha256": "f19547b78442020c90242390a4bb8c024af74f5e32f419f9acd584cdbc6a4e21"
+    },
+    {
+      "path": "system/07_output_discipline.md",
+      "topic": "Output Discipline",
+      "bytes": 2306,
+      "sha256": "1df0f3ef2c00f2091a9fd8c1bfe674eb140fe0204fc34c5e3fcc3f1d8ae6a4ed"
+    },
+    {
+      "path": "system/08_save_load.md",
+      "topic": "Save and Load",
+      "bytes": 1659,
+      "sha256": "a388337ddc996c52bba76855de9453794892a96134fe7683ec3cb594b4b9f455"
+    },
+    {
+      "path": "system/09_creative_license.md",
+      "topic": "Creative License",
+      "bytes": 1373,
+      "sha256": "74bc42508bf63127fa883b897f9300fff60ac6fe6137abf103da8bfa9a85d7e7"
+    },
+    {
+      "path": "ui/00_ui_system.md",
+      "topic": "Intelligent UI",
+      "bytes": 2037,
+      "sha256": "0ebd73beb4fa80ded8ca52c9ba2dc6483da26d48e7f4494140d30d6b518300f1"
+    },
+    {
+      "path": "ui/01_boot_and_main_menu.md",
+      "topic": "Boot and Main Menu",
+      "bytes": 2241,
+      "sha256": "dd90f6b1ea84d4e035d2e00ba94271f421e2bf6e60dbdf4cc0c3fc37a7c1caa0"
+    },
+    {
+      "path": "ui/02_view_contracts.md",
+      "topic": "View Contracts",
+      "bytes": 7477,
+      "sha256": "9201e47c9fe74bbfdde5512d54cdec26526a0d5935e5fa911310116ed5d18c57"
+    },
+    {
+      "path": "ui/04_save_format.md",
+      "topic": "S8 — Files and Portable Saves",
+      "bytes": 2445,
+      "sha256": "ea1b4a92e40b4c252277bd92a8432f7828a315cd134c8b7817136faeaf1761c2"
+    },
+    {
+      "path": "ui/05_example_turn.md",
+      "topic": "Worked Example — illustrative only",
+      "bytes": 1223,
+      "sha256": "fcde8a46f1a5f6d511017fcb6936bfaea71848925ed554a7eddc5a2195ad3323"
+    }
+  ]
+}

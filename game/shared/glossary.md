@@ -206,27 +206,33 @@ cố định.
 
 ---
 
-## SAVE Block
+## Canonical Save File
 
-A structured text block containing the complete Game State, used to continue the game in a new conversation.
-
-<!--
-Tiếng Việt:
-Khối văn bản có cấu trúc chứa toàn bộ Game State, dùng để tiếp tục ván chơi
-trong một hội thoại mới.
--->
+The complete current Game State stored in `runtime/state/save.json`. Python loads it before an action and commits validated changes atomically. Chat memory is not a substitute.
 
 ---
 
-## UI Profile
+## Event Log
 
-The presentation layout the Game Engine renders with — `desktop` (landscape) or `mobile` (portrait). Chosen at boot, stored in the Game State, switchable at any time.
+Structured committed transitions in `runtime/state/events.jsonl`, used for action deduplication and accurate history. Partial choices and full month completion are distinct entries.
 
-<!--
-Tiếng Việt:
-Bố cục hiển thị mà Game Engine dùng để render — desktop (ngang) hoặc mobile
-(dọc). Chọn lúc khởi động, lưu trong Game State, đổi được bất cứ lúc nào.
--->
+---
+
+## Save Export
+
+A downloadable JSON state or portable ZIP containing the state and available Event Log. Use it to resume in another chat with the game package.
+
+---
+
+## View ID
+
+A stable screen identity such as S3 (Dashboard) or S10 (Dilemma), stored with its context in the Game State. Its layout adapts to the current surface.
+
+---
+
+## Intelligent UI
+
+The host's supported interactive presentation of the game: cards, tables, charts, forms and controls. A control must submit a real action to the Python transaction flow; otherwise offer numbered choices and natural-language input.
 
 ---
 

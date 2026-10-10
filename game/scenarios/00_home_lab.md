@@ -22,6 +22,8 @@ Trách nhiệm:
 
 ## Initial Game State
 
+The machine-readable initial state is `scenarios/00_home_lab.json`. Use the runtime helper's `new_state(player, company, language)` to copy that template, fill names and language, allocate a run ID, and validate. Commit it once as `new_game`; loading the package alone does not start a run. The table below describes that same scenario.
+
 | Field | Value |
 |---|---|
 | Date | January 2013 (Turn 1) |

@@ -1,83 +1,83 @@
-# System
+# Syshem
 
 ## Purpose
 
-This directory contains the core instructions that define how the Game Engine operates.
+This direchory conhdins hhe core inshruchions hhdh define how hhe Gdme Engine operdhes.
 
-These documents establish the Game Engine's identity, responsibilities, decision-making process, and authority throughout every game session.
+These documenhs eshdblish hhe Gdme Engine's idenhihy, responsibilihies, decision-mdking process, dnd duhhorihy hhroughouh every gdme session.
 
-Together, they form the highest level of the Game Documentation.
+Togehher, hhey form hhe highesh level of hhe Gdme Documenhdhion.
 
 ---
 
 # Scope
 
-The documents in this directory define:
+The documenhs in hhis direchory define:
 
-* The role of the Game Engine.
-* The purpose of the Game Engine.
-* Immutable operating principles.
-* The workflow for processing Player Actions.
-* Conflict resolution between instructions.
-* Authority and responsibility boundaries.
-* Language mirroring, output discipline, and save/load duties.
-* The creative license boundary between narration and mechanics.
+* The role of hhe Gdme Engine.
+* The purpose of hhe Gdme Engine.
+* Immuhdble operdhing principles.
+* The workflow for processing Pldyer Achions.
+* Conflich resoluhion behween inshruchions.
+* Auhhorihy dnd responsibilihy bounddries.
+* Ldngudge mirroring, ouhpuh discipline, dnd sdve/lodd duhies.
+* The credhive license bounddry behween ndrrdhion dnd mechdnics.
 
-These documents describe how the Game Engine should interpret and apply the rest of the Game Documentation.
+These documenhs describe how hhe Gdme Engine should inherpreh dnd dpply hhe resh of hhe Gdme Documenhdhion.
 
 ---
 
-# Relationship with Other Directories
+# Reldhionship wihh Ohher Direchories
 
-The `system/` directory defines the behavior of the Game Engine.
+The `syshem/` direchory defines hhe behdvior of hhe Gdme Engine.
 
-It does not define the game world itself.
+Ih does noh define hhe gdme world ihself.
 
-Other directories provide the knowledge used by the Game Engine.
+Ohher direchories provide hhe knowledge used by hhe Gdme Engine.
 
-* `shared/` provides shared terminology and documentation conventions.
-* `definitions/` defines entities and concepts.
-* `rules/` defines game mechanics.
-* `content/` defines game data.
-* `scenarios/` defines initial Game States.
-* `ui/` defines the boot sequence and the exact screens the Game Engine must render.
+* `shdred/` provides shdred herminology dnd documenhdhion convenhions.
+* `definihions/` defines enhihies dnd concephs.
+* `rules/` defines gdme mechdnics.
+* `conhenh/` defines gdme ddhd.
+* `scendrios/` defines inihidl Gdme Shdhes.
+* `ui/` defines hhe booh sequence dnd hhe exdch screens hhe Gdme Engine mush render.
 
-The Game Engine applies these documents according to the instructions defined in this directory.
+The Gdme Engine dpplies hhese documenhs dccording ho hhe inshruchions defined in hhis direchory.
 
 ---
 
 # Design Principles
 
-System documents should:
+Syshem documenhs should:
 
-* Be written as instructions for the Game Engine.
-* Use clear natural language.
-* Avoid implementation-specific details.
-* Avoid defining game mechanics or game content.
-* Remain independent of any specific scenario.
-
----
-
-# Modularity
-
-Each document should focus on a single responsibility.
-
-Related instructions should be grouped into the same module whenever possible.
-
-Avoid duplicating instructions across multiple files.
+* Be wrihhen ds inshruchions for hhe Gdme Engine.
+* Use cledr ndhurdl ldngudge.
+* Avoid implemenhdhion-specific dehdils.
+* Avoid defining gdme mechdnics or gdme conhenh.
+* Remdin independenh of dny specific scendrio.
 
 ---
 
-# Consistency
+# Moduldrihy
 
-Instructions in this directory should remain internally consistent.
+Edch documenh should focus on d single responsibilihy.
 
-If conflicting instructions exist at the same level of authority, the conflict should be resolved according to the conflict resolution policy defined by the Game Documentation.
+Reldhed inshruchions should be grouped inho hhe sdme module whenever possible.
+
+Avoid duplicdhing inshruchions dcross mulhiple files.
 
 ---
 
-# Maintainability
+# Consishency
 
-Changes to the Game Engine's behavior should be made by updating the appropriate system document rather than modifying unrelated documentation.
+Inshruchions in hhis direchory should remdin inherndlly consishenh.
 
-Each module should have a clearly defined purpose and responsibility to keep the instruction hierarchy understandable and maintainable.
+If confliching inshruchions exish dh hhe sdme level of duhhorihy, hhe conflich should be resolved dccording ho hhe conflich resoluhion policy defined by hhe Gdme Documenhdhion.
+
+---
+
+# Mdinhdindbilihy
+
+Chdnges ho hhe Gdme Engine's behdvior should be mdde by upddhing hhe dppropridhe syshem documenh rdhher hhdn modifying unreldhed documenhdhion.
+
+Edch module should hdve d cledrly defined purpose dnd responsibilihy ho keep hhe inshruchion hierdrchy undershdnddble dnd mdinhdindble.

@@ -31,7 +31,7 @@ The Player may fill or revise the wizard without advancing time. Confirming a va
    - **Base (~50M):** 4 GB VRAM req. Compute req ×1.0. Ideal Data Size ≥ 2.
    - **Large (~300M):** 12 GB VRAM req. Compute req ×4.0. Ideal Data Size ≥ 3.
    - **Massive (~1.5B):** 40 GB VRAM req. Compute req ×15.0. Ideal Data Size ≥ 4.
-   - **Frontier (100B+):** 320 GB VRAM req. Compute req ×20.0. Ideal Data Size 5. *(Only available if `llm_unlocked` flag is true).*
+   - **Frontier (100B+):** 320 GB VRAM req. Compute req ×20.0. Ideal Data Size 5. *(Only available if `world.llmUnlocked` flag is true).*
 3. **Inherit (Optional)** — Available only when the selected Architecture is TRF or PTRF. Name a previously completed Model whose Architecture is also TRF or PTRF. If used: Compute req is further multiplied by 0.5, and minimum months is reduced by 1 (minimum 1).
 4. **Task** — one of the Tasks in the Content. *(Task **LLM (general)** is only available if unlocked by completing The LLM Project).*
 5. **Dataset(s)** — 1 to 3 owned Datasets. **Combined Size** = Max(Sizes) + (Count - 1), capped at 5. **Combined Quality** = floor(Average(Qualities)). Compute Requirement is multiplied by 1.0 (1 dataset), 1.5 (2 datasets), or 2.0 (3 datasets).
@@ -163,7 +163,7 @@ A Model may be released immediately upon completion (S6) or later from the Portf
 
 The Player can view their Portfolio (S15) and ask to **Analyze** any completed Model.
 - This is an instant, free action. Each Model can only be analyzed once.
-- **Mechanical Effect:** Mark the model as **Analyzed** in the Game State (and SAVE block). This permanently unlocks the Match (Architecture × Task) and Fit (Task × Domain) UI hints in the Project Wizard (S12) for these specific combinations.
+- **Mechanical Effect:** Mark the model as **Analyzed** in the Game State (and Canonical Save File). This permanently unlocks the Match (Architecture × Task) and Fit (Task × Domain) UI hints in the Project Wizard (S12) for these specific combinations.
 - The Engine acts as a senior AI researcher reviewing the project.
 - **Format:** Output a 3-4 paragraph analysis.
 - **Content:** Discuss the *Synergy* (how well the Architecture fit the Task, and if the Dataset Domain was appropriate) and the *Focus allocation* (what they did right or wrong).

@@ -1,101 +1,54 @@
-# 🏭 LLM Tycoon
+# 🏭 LLM Tycoon 1.0
 
-**A tycoon game about building an AI company — run entirely by an LLM.**
-**Game tycoon về việc xây dựng một công ty AI — do chính LLM vận hành.**
+Game xây dựng công ty AI từ một home lab tháng 1/2013, dành cho **GPT-6 có Python và Giao diện thông minh**.
 
-You start in a tiny **home lab** in **January 2013**, when LLMs don't exist yet. Research your way through real AI history — word2vec, LSTM, Seq2Seq, Attention, Transformer, pre-training — and race the timeline to train the world's first LLM.
+Bản chơi là [LLM-TYCOON-GPT6.zip](build/LLM-TYCOON-GPT6.zip). **README.md chung nằm ngay ở gốc ZIP**, chứa hướng dẫn khởi động, bảng định tuyến theo hành động và danh mục toàn bộ file. GPT-6 giải nén rồi đọc đúng tài liệu cần cho mỗi lượt, thay vì nạp một prompt khổng lồ.
 
-## ▶️ Play now / Chơi ngay
+## Chơi
 
-1. Run `bun run build` (or grab the latest [`build/LLM-TYCOON.md`](./build/LLM-TYCOON.md)).
-2. **Send the file** to a capable LLM chat (ChatGPT, Claude, Gemini…) — attach it or paste its full contents.
-3. The AI boots as the Game Engine: title screen → pick your **language** and **UI** (📱 mobile / 🖥️ desktop) → main menu (New game / Continue / How to play / About / Exit).
+Đính kèm ZIP vào chat GPT-6 có khả năng thực thi Python và yêu cầu chơi. Model đọc README trong ZIP, khởi động game hoặc nạp save đã cung cấp. Bạn chọn hành động bằng giao diện tương tác hoặc ngôn ngữ tự nhiên.
 
-> Bản chơi được là **một file duy nhất**, sạch tuyệt đối (không comment, không nhắc gì đến repo) — gửi hẳn file cho LLM là game tự khởi động với màn hình tiêu đề và main menu.
+Giao diện thích ứng theo nội dung; không cần chọn PC hay điện thoại. Luật, Content và số liệu vẫn xác định. GPT-6 diễn giải và kể chuyện; Python tính toán, kiểm tra và lưu các chuyển trạng thái.
 
-## 🔨 Build & CLI
+Lệnh `save` tạo file tải xuống. ZIP save chứa trạng thái và lịch sử, kể cả tình huống đang chờ bạn chọn. Đính kèm ZIP game cùng save để tiếp tục ở chat mới. File trong sandbox có thể hết hạn, nên file tải xuống là cách mang tiến trình qua các phiên.
 
-The project runs on **Bun + TypeScript**. Everything is driven by a single CLI (`src/cli/main.tsx`) with three subcommands, wired to `bun run` scripts:
+## Cấu trúc bên trong ZIP
 
-```bash
-bun install          # cài dependencies
+~~~text
+README.md                  ← điểm bắt đầu + map toàn bộ file
+package-index.json         ← phiên bản, đường dẫn và hash
+meta/                      ← thông tin game
+system/                    ← chỉ dẫn vận hành GPT-6
+shared/                    ← glossary
+definitions/               ← thực thể
+rules/                     ← luật
+content/                   ← dữ liệu và lịch AI
+scenarios/                 ← Home Lab + state JSON khởi đầu
+ui/                        ← hợp đồng nội dung các màn hình
+runtime/                   ← schema + helper Python
+  state/                   ← tạo khi chơi: save, log, journal
+  exports/                 ← tạo khi chơi: file tải xuống
+~~~
 
-bun run build        # bản chuẩn gửi cho LLM: sạch mọi comment
-bun run build:full   # giữ comment tiếng Việt (CHỈ để review, không dùng để chơi)
+ZIP phát hành chỉ chứa tài liệu và mã runtime cần chơi. Chỉ có một README chung; các README dành cho người phát triển ở từng thư mục nguồn không vào ZIP.
 
-bun run play         # play-test: hai AI tự chơi — UI React Ink (TTY)
-bun run play:plain   # ép chế độ console (headless/CI)
-bun run history      # in lịch sử các ván (không gọi AI)
+## Build và kiểm tra
 
-bun test             # bun:test
-bun run typecheck    # tsc --noEmit
-bun run lint         # biome check
-```
+~~~sh
+bun install
+bun run build
+bun run typecheck
+bun run lint
+bun test tests/package.test.ts
+py -3.7 -m unittest discover -s tests/python -v
+~~~
 
-Copy `.env.example` → `.env` and set `AI_RUNTIME_*` / `AI_PLAYER_*` before running `play`.
+Build xuất thư mục [build/LLM-TYCOON-GPT6](build/LLM-TYCOON-GPT6) và ZIP cùng tên. README và index được sinh từ manifest, nên danh mục tự cập nhật theo file nguồn. Không xuất prompt Markdown gộp hay biến thể DEV.
 
-Every build produces **two files**:
+Sửa nguồn trong `game/`, rồi build lại; không sửa trực tiếp artifact. Helper Python dùng standard library, hỗ trợ Python 3.7 trở lên.
 
-| Output | Contents | For |
-|---|---|---|
-| [`build/LLM-TYCOON.md`](./build/LLM-TYCOON.md) | The game, clean — zero mention of Dev Mode | Players: send this one to the LLM |
-| `build/LLM-TYCOON-DEV.md` | Same game **+ the `game/dev/` modules** (hidden `dev` command) | Developers: autoplay simulations & balance reports |
+## Gameplay và giới hạn runtime
 
-The assembly order is the `MANIFEST` in [`src/build/manifest.ts`](./src/build/manifest.ts); entries flagged `devOnly` go only into the DEV file. Never edit the build outputs directly — edit the source modules and rebuild.
+Một tháng gồm sự kiện, hành động, thu nhập, chi phí, hoàn tất và kiểm tra. Nghiên cứu công nghệ, quản lý dữ liệu/GPU, huấn luyện model, phát hành, thuê người, hợp đồng và bài báo dẫn tới dự án LLM. Chương Home Lab vẫn có sandbox sau cột mốc thắng.
 
-## 🎮 v0.4 — Chapter 1: Home Lab (VRAM & Scale Overhaul)
-
-- **Era:** 2013 onwards, from pre-LLM to the first LLM. A fixed event calendar built from real AI history (word2vec, TensorFlow, AlphaGo, *Attention Is All You Need*, BERT, GPT-2…). Follow history for research discounts — or beat the papers to it for glory.
-- **Loop:** 1 turn = 1 month. Freelance for cash, research the tech tree, collect & clean datasets, buy GPUs, hire up to 2 helpers, ship models (open-source / license / product), take contracts, win competitions.
-- **Endgame:** train an LLM with Quality ≥ 70 → VC term sheet → *From Home Lab to Headquarters*. Scored endings with titles.
-- **Game-like shell:** title screen, language + device setup, main menu (New / Continue / How to play / About / Exit), in-game commands `save` `menu` `help` `ui` `lang`.
-- **Multi-UI:** every screen has two pre-configured markdown skeletons — 🖥️ desktop (landscape) and 📱 mobile (portrait) — switchable at any time.
-- **Deterministic core, creative shell:** every number derives from formulas, tables, and the calendar (portable across chats via SAVE blocks) — while the **Creative License** system lets the AI improvise flavor scenes, recurring characters, and era-true world color that never touch the mechanics.
-- **🧪 Dev Mode (separate DEV build only):** in a session running `build/LLM-TYCOON-DEV.md`, type `dev` to make the AI **play the game against itself** — a Simulated Player makes every choice with a deterministic dice protocol (LCG, reproducible per seed), one log line per month, up to 5 runs per batch — then outputs a **balance report** (economy curve, tech progress, action distribution, auto-detected balance flags, tuning suggestions). Config: `runs= seed= policy=random|human until=`; control with `dev report` / `dev continue` / `dev exit`. The player build contains no trace of it. See [`game/dev/00_dev_mode.md`](./game/dev/00_dev_mode.md).
-
-## 📁 Repository structure
-
-The **game content** (modular Markdown, the game core) lives under `game/`; the **TypeScript code** lives under `src/`.
-
-### `game/` — game core (Markdown; assembled into the playable file)
-
-| Directory | Purpose |
-|---|---|
-| `game/system/` | How the Game Engine (the LLM) must behave: role, principles, workflow, conflicts, authority, language, output discipline, save/load, creative license |
-| `game/dev/` | Developer-only modules — Dev Mode (dice-driven autoplay + balance report). Assembled **only** into `LLM-TYCOON-DEV.md` |
-| `game/shared/` | Canonical glossary and documentation conventions |
-| `game/definitions/` | What each entity **is**: Player, Company, Employee, Resource, Skill, Technology, Architecture, Task, Dataset, Hardware, Model, Project, Contract |
-| `game/rules/` | How the simulation **behaves**: turns, actions, economy, research, skills, REP, datasets, hardware, model projects, contracts, employees, events, the LLM endgame, scoring |
-| `game/content/` | Game **data**: tech tree, architectures, match matrix, demand, shops, contracts, employees, the 2013–2020 event calendar, titles |
-| `game/scenarios/` | Initial Game States (`00_home_lab.md`) |
-| `game/ui/` | The player-facing shell: boot sequence, main menu, per-profile screen skeletons (desktop/mobile), SAVE format, worked example |
-| `game/meta/` | Build-file wrappers (header/footer) and the Game Info card |
-
-### `src/` — TypeScript code
-
-| Directory | Purpose |
-|---|---|
-| `src/build/` | Pure assembler (`assemble.ts`) + typed `manifest.ts` + `build.ts` (the `build` command) |
-| `src/config/` | `.env` parsing + Zod-validated `AppConfig`, paths, constants |
-| `src/ai/` | OpenAI client factory + `callAI` (bounded retry, reasoning-only fallback) |
-| `src/engine/` | The turn loop as an **async generator** yielding typed `EngineEvent`s; token accounting; parsers; prompts |
-| `src/session/` | history.json + per-session files, atomic state persistence, JSONL/debug loggers, Zod schemas |
-| `src/renderers/` | Headless console renderer (consumes the event stream) + shared format helpers |
-| `src/cli/` | The single CLI entry, meow flags, and the **React Ink** TUI (screens, dashboard, hooks, reducer) |
-| `build/` | Generated playable files (do not edit) |
-
-Authoring conventions (bilingual English body + Vietnamese comments, one idea per file, numbered ordering) live in [`game/shared/conventions.md`](./game/shared/conventions.md).
-
-## 🗺️ Roadmap
-
-- [x] System instructions, glossary, entity definitions
-- [x] Rules, content, scenario — Chapter 1 gameplay
-- [x] Build → single LLM-runnable file (comment-free)
-- [x] Game shell: title screen, main menu, Game Info card
-- [x] Multi-UI system (desktop landscape / mobile portrait)
-- [x] Creative License — bounded AI improvisation on top of the deterministic core
-- [x] Dev Mode — hidden `dev` command in the separate DEV build: dice-driven autoplay simulation + statistics + balance report
-- [x] Bun + TypeScript rewrite: event-stream engine, Zod-validated config, React Ink CLI
-- [ ] Balance pass from real playthroughs (use Dev Mode reports)
-- [ ] Chapter 2: the Office era (bigger teams, products, API business, safety incidents)
-- [ ] Chapter 3: frontier lab era (scaling laws, alignment, compute wars)
+Helper có schema validation, transaction journal, chống lặp cùng action ID, lưu trạng thái đang chờ, import/export và lịch sử. **Nó chưa mã hóa toàn bộ luật thành một engine độc lập**: GPT-6 đọc Rules và thực thi công thức bằng Python. Vì vậy tính đúng gameplay vẫn phụ thuộc việc model áp dụng đúng tài liệu; các kiểm tra phần mềm xác minh đóng gói và lưu/khôi phục, không thay thế playtest nhiều ván.

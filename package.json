@@ -1,9 +1,9 @@
 {
   "name": "llm-tycoon",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "LLM Tycoon — game tycoon về xây dựng công ty AI, do chính LLM vận hành. Tài liệu game dạng module, build thành 1 file MD gửi cho LLM để chơi.",
+  "description": "LLM Tycoon 1.0 — GPT-6 game package with Intelligent UI, Python persistence and a complete file map inside the ZIP.",
   "module": "src/index.ts",
   "bin": {
     "llm-tycoon": "src/cli/main.tsx"
@@ -12,8 +12,7 @@
     "bun": ">=1.3.0"
   },
   "scripts": {
-    "build": "bun run src/cli/main.tsx build",
-    "build:full": "bun run src/cli/main.tsx build --keep-comments",
+    "build": "bun run src/build/main.ts",
     "play": "bun run src/cli/main.tsx play",
     "play:new": "bun run src/cli/main.tsx play --new",
     "play:resume": "bun run src/cli/main.tsx play --resume",

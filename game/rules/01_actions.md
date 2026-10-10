@@ -43,7 +43,7 @@ Trách nhiệm:
 - View Portfolio (check released/shelved models and active income streams).
 - Shutdown a Product (instantly cancel an active Income Stream to free up its reserved Inference VRAM; forfeits remaining income and User Logs).
 - Analyze a completed Model (ask the engine for a post-mortem review).
-- Request save, help, rules explanation, current status, or play history (`history` command).
+- Request a downloadable save, help, public Requirements, current status, or play history from the Event Log. Help follows the disclosure rules; hidden formulas and unearned synergy knowledge remain hidden.
 
 ## Commitment and cancelling
 

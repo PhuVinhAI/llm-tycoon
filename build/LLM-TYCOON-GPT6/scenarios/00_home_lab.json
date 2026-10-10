@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "game": "LLM TYCOON",
+    "version": "1.0.0",
+    "schema": "llm-tycoon.save.v1",
+    "runId": "filled-on-new-game",
+    "revision": 0,
+    "updatedAt": null,
+    "lastActionId": null,
+    "historyAvailableFrom": "2013-01"
+  },
+  "settings": {
+    "language": "filled-on-new-game",
+    "presentation": "adaptive",
+    "displayPreferences": {}
+  },
+  "view": {
+    "current": "S5",
+    "returnTo": "S5",
+    "context": {}
+  },
+  "player": {
+    "name": "filled-on-new-game",
+    "company": "filled-on-new-game"
+  },
+  "clock": {
+    "date": "2013-01",
+    "turn": 1
+  },
+  "resources": {
+    "cash": 10000,
+    "researchPoints": 0,
+    "fame": 0
+  },
+  "counters": {
+    "research": 0,
+    "models": 0
+  },
+  "technology": {
+    "owned": [
+      "BTP"
+    ]
+  },
+  "hardware": {
+    "inventory": [],
+    "cloudUnits": 0,
+    "rewired": false
+  },
+  "team": {
+    "employees": [],
+    "candidates": [],
+    "searchArchetype": null
+  },
+  "data": {
+    "datasets": [
+      {
+        "id": "D1",
+        "name": "Old blog scrape",
+        "domain": "web-mixed",
+        "size": 1,
+        "quality": 2,
+        "sourceId": null,
+        "taskId": null
+      }
+    ],
+    "sourcesUsed": [],
+    "nextDatasetId": 2
+  },
+  "models": [],
+  "streams": [],
+  "contractsDone": [],
+  "active": {
+    "project": null,
+    "contract": null,
+    "paper": null
+  },
+  "world": {
+    "firedEvents": [],
+    "effects": [],
+    "unlocks": [],
+    "competitions": [],
+    "llmUnlocked": false
+  },
+  "flow": {
+    "draft": {},
+    "month": null,
+    "pendingChoice": null,
+    "lastReport": null
+  },
+  "ending": {
+    "bankruptcy": false,
+    "winAwarded": false,
+    "lastResult": null
+  },
+  "flavor": {}
+}

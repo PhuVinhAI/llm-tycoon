@@ -3,11 +3,8 @@
  * and any embedder can import from one place without reaching into subpaths.
  */
 
-export { assemble, orderMarkdown } from './build/assemble.ts';
+export { assemblePackage } from './build/assemble.ts';
 export { runBuild } from './build/build.ts';
 export { MANIFEST } from './build/manifest.ts';
-export { type AppConfig, loadConfig, loadEnv } from './config/env.ts';
+export { zipPackage } from './build/zip.ts';
 export { PATHS } from './config/paths.ts';
-export { type RunEngineOptions, runEngine } from './engine/engine.ts';
-export type { EngineEvent, RunMode } from './engine/events.ts';
-export { runHistory, runPlain } from './renderers/plain.ts';

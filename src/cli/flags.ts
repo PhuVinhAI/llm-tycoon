@@ -29,7 +29,7 @@ export const cli = meow(
     $ llm-tycoon <lệnh> [tuỳ chọn]
 
   Lệnh
-    build            Ghép tài liệu game thành build/LLM-TYCOON.md
+    build            Đóng gói build/LLM-TYCOON-GPT6.zip
     play             Chạy play-test (mặc định) — UI React Ink
     history          In lịch sử các ván (không gọi AI)
 

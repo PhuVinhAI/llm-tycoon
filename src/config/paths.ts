@@ -29,5 +29,5 @@ export const PATHS: Readonly<Paths> = Object.freeze({
   result: join(ROOT, 'game_result.json'),
   logs: join(ROOT, 'logs'),
   history: join(ROOT, 'logs', 'history.json'),
-  gameDoc: join(ROOT, 'build', 'LLM-TYCOON.md'),
+  gameDoc: join(ROOT, 'build', 'LLM-TYCOON-GPT6', 'README.md'),
 });

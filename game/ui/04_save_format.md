@@ -1,56 +1,32 @@
-<!--
-===============================================================================
-FILE: 04_save_format.md
-MODULE: UI / Save Format (S8)
+# S8 — Files and Portable Saves
 
-Mục đích:
-Định dạng SAVE block — "file save" di động của game.
+## Canonical state
 
-Tác dụng:
-Chứa TOÀN BỘ Game State (kể cả ngôn ngữ + UI Profile đang dùng) trong một
-khối văn bản gọn; người chơi dán nó cùng Game Document vào hội thoại mới
-để chơi tiếp (system/08_save_load.md). Không phụ thuộc UI Profile.
-===============================================================================
--->
+`runtime/state/save.json` follows `runtime/02_state_schema.md`. Store JSON numbers, booleans, arrays, and null; do not encode lists as prose or use the string “none”.
 
-# S8 — SAVE Block Format
+The save includes all mechanical state, ordered Models, frozen completion results, active commitments, triggered Events and lasting effects, acquired-source history, candidate list, form draft, pending choice, and next unfinished month phase. Current-state resume never needs a transcript.
 
-```
-=== SAVE LLM-TYCOON v0.4 ===
-player: [name] | company: [name]
-settings: lang=[language] | ui=[desktop|mobile]
-date: YYYY-MM | cash: [x] | rp: [x] | fame: [x]
-counters: research=[x], models=[x]
-tech: [comma-separated IDs]
-hw: [item xN, …] | cloud: [0-2] | vram: [av]/[tot] | slots_used: [x]/[4|8] | rewired: [yes/no]
-team: [Name($Salary, Effects) | none]
-candidates: [Name($Salary, Effects) | none]
-data: [Name(domain,Size,Quality)]; … | data_sources_used: [market/free item names | none]
-models: [Name(arch=ID,scale=Tier,task=ID,data=Name{domain}+…,focus=a/b/c/d,Q=x,release=type|Shelved,completed=YYYY-MM,anz=yes/no,pub=yes/no,sota=yes/no,art=x)]; …
-streams: [Name $x/mo ×y left (Task, Q, vram=z)]; … | none
-contracts_done: [IDs | none] | active: [Cxx month i/M, pay_mod=x%, dilemma_done=yes/no | Paper on M1 month i/M, rp_mult=x, rp_bonus=x, dilemma_done=yes/no | none]
-project: [Name Arch×Task on Datasets, Scale, Inherit:x, month i/M, focus a/b/c/d, tflops_acc=x, q_mod=y, art=z, dilemma_done=yes/no | none]
-competitions: [Ex:won | Ex:open(until YYYY-MM,submitted=Model IDs|none,threshold=hidden|x)] | none
-flags: [fired events with lasting effects, discounts in force, hype windows, llm_unlocked]
-=== END SAVE ===
-```
+## Export
 
-- Every field is mandatory (use `none` where empty). The block must be self-sufficient: nothing outside it is needed to resume.
-- Preserve `models` in completion order; that order defines stable Model IDs (`M1`, `M2`, …) and the completion ordinal used by deterministic reviewer selection.
-- Always rendered exactly like this, in a code block, regardless of UI Profile or language — field names are canonical codes.
-- Output it at the end of every in-game June and December and on request (Save/Load module).
-- On load: apply `settings` first (language + UI Profile), validate everything against the Rules, list corrections, resume at the saved month's Action Menu.
+On `save`, exit, and the end of each in-game June or December:
 
-<!--
-Tiếng Việt (tóm tắt):
-SAVE block v0.4. Gồm đủ: người chơi/công ty, cài đặt, tháng, tiền, RP, Fame,
-kỹ năng + bộ đếm, công nghệ, phần cứng + slot + rewired, đội ngũ, ứng viên,
-dataset + lịch sử nguồn đã lấy, model (kể cả Scale/Focus/domain), dòng thu,
-hợp đồng/bài báo/dự án đang chạy, lịch sử nộp cuộc thi và cờ sự kiện.
+1. Finish the current transaction or checkpoint a pending choice.
+2. Use the helper to generate a portable ZIP in `runtime/exports/`.
+3. Make the actual file downloadable using the host's file-attachment/link facility.
+4. Keep the player's current view and next legal actions.
 
-Mọi trường bắt buộc (trống ghi "none"); khối phải tự đủ; luôn render đúng
-nguyên dạng trong code block bất kể profile/ngôn ngữ (tên trường là mã
-chuẩn). Xuất cuối tháng 6 và 12 trong game + khi được yêu cầu. Khi nạp:
-áp `settings` trước, kiểm tra theo Rules, liệt kê chỗ sửa, tiếp tục từ
-menu hành động của tháng đã lưu.
--->
+The portable ZIP includes `save.json`, available `events.jsonl`, and a short import README. A JSON save alone is also valid for current-state resume; earlier history is unavailable unless the log travels with it.
+
+Exports do not consume time or resources. Keep at least the latest downloadable save visible on explicit request; do not print the entire JSON each turn.
+
+## Load and import
+
+Read an uploaded file directly with Python; never make the player manually paste a block if a file is available. Require the correct schema and game version, preserve the original file, validate both structure and gameplay invariants, and resume the saved view. Reject a wrong version or corruption; do not guess a migration.
+
+Trust accumulated balances, Date, RP and completed history; do not retroactively charge reconstructed expenses. Report hard-cap repairs explicitly. Recompute derived values from stored counters/inventory according to the rules without replaying prior actions.
+
+For an explicitly requested replacement import, validate the incoming state and history first, then call `archive_current()` to export/archive the existing run. The helper's `import_save` accepts an empty runtime only, so accidental imports cannot overwrite current progress. If the active save is corrupt, preserve its directory separately before creating an empty runtime; never delete it.
+
+## Release contract
+
+This is version 1.0.0. Accept only `llm-tycoon.save.v1` saves for this release. Unsupported formats require a separate explicit development task; gameplay never guesses a conversion.

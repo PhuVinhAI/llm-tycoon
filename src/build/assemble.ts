@@ -1,62 +1,82 @@
-/**
- * assemble.ts — PURE assembly logic (no direct fs). The caller injects a
- * file-reader and directory-lister so this module is fully unit-testable and
- * the build output can be asserted byte-for-byte against a golden fixture.
- *
- * Semantics are identical to the original build.js:
- *  - read: normalise CRLF → LF.
- *  - listDir: *.md except README.md, default lexicographic sort.
- *  - clean: strip HTML comments (unless keepComments), collapse 3+ blank lines,
- *    trim ends.
- *  - assemble: `---\n\n# TITLE` banners, pieces joined by '\n\n', trailing '\n'.
- */
-
+/** Build separate files and generate the root README's complete inventory. */
+import { createHash } from 'node:crypto';
 import type { ManifestEntry } from './manifest.ts';
 
-export interface AssembleIO {
-  /** Read a repo-relative file as UTF-8. */
-  read(relPath: string): string;
-  /** List *.md in a repo-relative dir (README excluded), sorted, as relPaths. */
-  listDir(relDir: string): string[];
+export interface PackageIO {
+  read(path: string): string;
+  list(directory: string): string[];
 }
 
-export interface AssembleResult {
-  output: string;
-  fileCount: number;
+export interface PackageFile {
+  path: string;
+  content: string;
+  topic: string;
 }
 
-/** Clean one module's markdown before joining. */
-export function clean(markdown: string, keepComments: boolean): string {
-  let text = markdown;
-  if (!keepComments) text = text.replace(/<!--[\s\S]*?-->/g, '');
-  return text.replace(/\n{3,}/g, '\n\n').trim();
+export function clean(markdown: string, keepComments = false): string {
+  const body = keepComments ? markdown : markdown.replace(/<!--[\s\S]*?-->/g, '');
+  return `${body
+    .replace(/\r\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()}\n`;
 }
 
-/** Filter + sort a raw directory listing the way the build expects. */
-export function orderMarkdown(files: string[], relDir: string): string[] {
-  return files
-    .filter((f) => f.endsWith('.md') && f.toLowerCase() !== 'readme.md')
-    .sort()
-    .map((f) => `${relDir}/${f}`);
-}
-
-/** Assemble one build variant from the manifest using injected IO. */
-export function assemble(
+export function assemblePackage(
   manifest: readonly ManifestEntry[],
-  io: AssembleIO,
-  opts: { includeDev: boolean; keepComments: boolean },
-): AssembleResult {
-  const pieces: string[] = [];
-  let fileCount = 0;
+  io: PackageIO,
+  version: string,
+  keepComments = false,
+): PackageFile[] {
+  const files: PackageFile[] = [];
   for (const entry of manifest) {
-    if (entry.devOnly && !opts.includeDev) continue;
-    const files = entry.dir ? io.listDir(entry.dir) : entry.file ? [entry.file] : [];
-    if (files.length === 0) continue;
-    if (entry.title) pieces.push(`---\n\n# ${entry.title}`);
-    for (const f of files) {
-      pieces.push(clean(io.read(f), opts.keepComments));
-      fileCount++;
+    const paths = entry.directory
+      ? io
+          .list(entry.source)
+          .filter((name) => /\.(md|json|py)$/.test(name) && name !== 'README.md')
+          .sort()
+      : [''];
+    for (const name of paths) {
+      const source = name ? `${entry.source}/${name}` : entry.source;
+      const path = name ? `${entry.target}/${name}` : entry.target;
+      const raw = io.read(source).replace(/\r\n/g, '\n');
+      const content = source.endsWith('.md') ? clean(raw, keepComments) : raw;
+      const topic = source.endsWith('.md')
+        ? (content.match(/^# (.+)$/m)?.[1] ?? path)
+        : source.endsWith('.py')
+          ? 'Python state, transactions, import, export and history'
+          : 'Machine-readable Home Lab starting state';
+      files.push({ path, content, topic });
     }
   }
-  return { output: `${pieces.join('\n\n')}\n`, fileCount };
+  files.sort((a, b) => a.path.localeCompare(b.path, 'en'));
+  const readme = files.find((file) => file.path === 'README.md');
+  if (!readme) throw new Error('Package must include a root README.md');
+  const map = [
+    '\n## Complete file map\n',
+    'Every shipped file is listed here. Read a linked document only when its topic is relevant.\n',
+    '| File | Purpose |',
+    '|---|---|',
+    ...files.map((file) => `| [${file.path}](${file.path}) | ${file.topic.replace(/\|/g, '/')} |`),
+    '| [package-index.json](package-index.json) | Release version, paths, sizes and SHA-256 hashes |',
+    '\nMutable runtime paths are created during play: \x60runtime/state/save.json\x60, \x60runtime/state/events.jsonl\x60, \x60runtime/state/transaction.json\x60, and downloads in \x60runtime/exports/\x60. They are not starter saves or additional instructions.\n',
+  ];
+  readme.content += `${map.join('\n')}\n`;
+  const index = {
+    game: 'LLM TYCOON',
+    version,
+    entrypoint: 'README.md',
+    schema: 'llm-tycoon.package.v1',
+    files: files.map((file) => ({
+      path: file.path,
+      topic: file.topic,
+      bytes: Buffer.byteLength(file.content),
+      sha256: createHash('sha256').update(file.content).digest('hex'),
+    })),
+  };
+  files.push({
+    path: 'package-index.json',
+    topic: 'Release inventory',
+    content: `${JSON.stringify(index, null, 2)}\n`,
+  });
+  return files;
 }

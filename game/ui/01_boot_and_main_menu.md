@@ -1,69 +1,40 @@
-<!--
-===============================================================================
-FILE: 01_boot_and_main_menu.md
-MODULE: UI / Boot & Main Menu
+# Boot and Main Menu
 
-Mục đích:
-Trình tự khởi động game và Main Menu — trải nghiệm "mở game" như game thật:
-màn hình tiêu đề → hỏi ngôn ngữ + thiết bị → menu chính (Chơi mới / Tiếp
-tục / Hướng dẫn / Giới thiệu / Thoát).
+## Startup
 
-Tác dụng:
-- Tin nhắn đầu tiên của AI luôn là Title Screen, không phải lời tóm tắt.
-- Ngôn ngữ và UI được hỏi NGAY từ đầu, trước mọi thứ khác.
-- Main Menu là "sảnh" cố định: vào game, load save, xem hướng dẫn, xem
-  thông tin game, thoát — và quay về được bất cứ lúc nào bằng lệnh `menu`.
-===============================================================================
--->
+Check for a canonical save with Python before booting. Recover an interrupted transaction first.
 
-# Boot Sequence & Main Menu
+If a save exists, use its language, view, draft, and pending choice. Resume that view immediately; do not ask for names, language, or device again. An imported save follows the same path.
 
-## Boot (S0 — Title & Setup)
+Otherwise show the title, Chapter 1: Home Lab, and a short pitch. Use the player's language if clear; ask only for language if unclear. Then show S1.
 
-When the Game Document is complete and **no SAVE block** came with it, the game boots in a strict step-by-step sequence:
+Do not create a save until New Game is chosen and both names are provided.
 
-**Step 1: Language.** The very first reply is exactly skeleton S0-A in simple English. Output nothing else. Wait for the player to reply with their language.
-**Step 2: Device.** Once the player specifies a language, reply in THAT language using skeleton S0-B to ask for their device. Wait for their reply (`1` = mobile, `2` = desktop).
-**Step 3: Main Menu.** Render the Main Menu (S1) in the chosen language and profile.
+## S1 options
 
-If a SAVE block **did** come with the document: skip S0 and S1, take language and profile from the SAVE `settings` line, and resume per the Save/Load module.
+| Option | Behavior |
+|---|---|
+| 1 New Game | Collect player and company names without suggested names. Read the Home Lab scenario, initialize the full schema, commit once, show opening narration and S3/S5. January 2013, Turn 1. |
+| 2 Continue / Import | Resume a local save or accept a JSON / portable ZIP save. Ask for an upload only when no file is available. |
+| 3 How to Play | Display S2, then return to S1. |
+| 4 About | Show the Game Info card and a short translated pitch, then S1. |
+| 5 Exit | Preserve the run, offer a downloadable save if one exists, and say farewell. A new message can return to S1. |
 
-## Main Menu (S1)
+`menu` returns to S1 without changing mechanics. Preserve the return view and any pending choice. Continue returns there. Save or menu cannot bypass an unresolved dilemma or release decision.
 
-| # | Option | Behavior |
-|---|---|---|
-| 1 | 🎮 New game | Ask for the player's name and company name (no suggestions) → opening narration (PART 5) → Dashboard (S3) → Action Menu (S5), starting January 2013 |
-| 2 | 📂 Continue | Ask the player to paste their SAVE block → validate and resume (Save/Load module) |
-| 3 | 📖 How to play | Show the guide (S2) → render the Main Menu again |
-| 4 | ℹ️ About | Show the Game Info card plus a 2–3 line pitch (S2) → render the Main Menu again |
-| 5 | 🚪 Exit | One-line farewell. Remind the player: any new message returns to the Main Menu, and a SAVE block keeps progress |
+Starting a new run while one exists requires an explicit New Game choice. Collect the new names first, then call `archive_current()` to preserve the previous run and make its returned download available. Initialize the now-empty runtime. Never overwrite progress merely because the package was reattached.
 
-- The command `menu` works at any time during play: return here **without touching the Game State**. Choosing *New game* while a run is in progress must warn that the current run will be abandoned and suggest `save` first.
-- Never reveal the Event Calendar or future content from any menu screen.
+## S2 How to Play
 
-## How to play (S2 content — at most 10 lines)
+Keep the guide short:
 
-- One **main action** per month; instant actions are free.
-- Goal: build the world's first LLM.
-- The world moves on the calendar whether you are ready or not.
-- Money below −$5,000 means bankruptcy.
-- Internal formulas and mechanics are strictly hidden — trust your intuition.
-- Commands, any time: `save` · `menu` · `help` · `ui` · `lang` · `history`.
+- Build an AI company from a home lab and train the first LLM.
+- One main action per month; instant actions take no month.
+- The world changes on its calendar.
+- You choose dilemma outcomes; projects continue only when instructed.
+- Bankruptcy occurs below −$5,000.
+- Internal formulas and unrevealed synergies are part of the discovery game.
+- Commands: `save`, `menu`, `help`, `ui`, `lang`, `history`; natural language also works.
+- Download a save to carry progress to another chat.
 
-<!--
-Tiếng Việt (tóm tắt):
-Boot: khi tài liệu đã đủ và KHÔNG kèm SAVE, tin nhắn đầu tiên = đúng màn S0
-(Title Screen), hỏi 2 thứ: ngôn ngữ (người chơi trả lời bằng ngôn ngữ nào
-thì chơi bằng ngôn ngữ đó) và thiết bị (1/📱 = mobile, 2/🖥️ = desktop;
-không rõ thì mặc định desktop và nhắc lệnh `ui`). Sau đó render Main Menu
-bằng đúng ngôn ngữ + profile. Nếu có SAVE kèm theo: bỏ qua S0/S1, lấy
-ngôn ngữ + UI từ dòng `settings` của SAVE và tiếp tục theo module Save/Load.
-
-Main Menu 5 mục: 1 Chơi mới (hỏi tên người chơi + tên công ty, không gợi ý →
-lời mở màn → dashboard → menu hành động, bắt đầu 01/2013); 2 Tiếp tục (xin
-SAVE block, kiểm tra rồi chơi tiếp); 3 Hướng dẫn (≤10 dòng rồi quay về
-menu); 4 Giới thiệu (thẻ Game Info + 2–3 dòng pitch rồi quay về menu);
-5 Thoát (chào 1 dòng, nhắc cách quay lại). Lệnh `menu` dùng được mọi lúc,
-không đụng Game State; chọn "Chơi mới" khi đang có ván phải cảnh báo và
-gợi ý `save`. Không màn menu nào được tiết lộ Event Calendar.
--->
+Do not expose future content.

@@ -1,97 +1,14 @@
-<!--
-===============================================================================
-FILE: 04_conflict_resolution.md
-MODULE: Conflict Resolution
-
-Mục đích:
-Định nghĩa cách AI xử lý khi nhiều nguồn thông tin hoặc quy tắc cùng áp
-dụng nhưng dẫn đến kết quả khác nhau.
-
-Tác dụng:
-Đảm bảo AI luôn giải quyết xung đột theo một phương pháp nhất quán và có
-thể dự đoán được.
-
-Trách nhiệm:
-- Định nghĩa cách xử lý xung đột.
-- Định nghĩa thứ tự ưu tiên giữa các nguồn thông tin.
-- Không định nghĩa gameplay.
-- Không định nghĩa dữ liệu game.
-===============================================================================
--->
-
 # Conflict Resolution
 
-<!--
-Ý nghĩa:
-Khi có nhiều nguồn thông tin cùng áp dụng nhưng không thống nhất, AI phải
-giải quyết xung đột thay vì tự lựa chọn.
+Host instructions and the user's explicit task request retain their normal priority. Within the game package:
 
-Tác dụng:
-Ngăn AI đưa ra quyết định dựa trên cảm tính hoặc kiến thức riêng.
+1. Engine operating instructions govern runtime and presentation.
+2. Specific Rules govern their subject; explicit documented exceptions override the general rule they name.
+3. Active Events apply only their documented effects and durations.
+4. Content supplies values; Definitions supply meanings; illustrative examples are not new mechanics.
 
-Tiếng Việt:
-Nếu nhiều nguồn thông tin dẫn đến các kết quả khác nhau, hãy giải quyết
-xung đột theo các quy tắc dưới đây.
--->
-When multiple sources lead to different outcomes, resolve the conflict using the rules below.
+A rule explicitly referencing a Content event permits that event's listed effect. Examples cannot override Rules. If equally authoritative documents genuinely disagree, stop the affected action and report the ambiguity; preserve the valid save.
 
-<!--
-Ý nghĩa:
-Xác định nguồn thông tin nào có quyền ưu tiên cao hơn khi xảy ra xung đột.
+The Events rule explicitly schedules the Rumor Mill three months ahead. This is the permitted public rumor exception to the general era/no-future disclosure rule; do not reveal additional future entries.
 
-Tác dụng:
-Đảm bảo AI luôn tham chiếu đúng nguồn thông tin và giải quyết mọi mâu thuẫn
-theo cùng một thứ tự ưu tiên.
-
-Tiếng Việt:
-Nếu các nguồn thông tin mâu thuẫn nhau, hãy ưu tiên theo thứ tự sau:
-
-1. Hướng dẫn hệ thống.
-2. Luật của game.
-3. Các sự kiện đang hoạt động.
-4. Tài liệu của game.
--->
-Resolve conflicts using the following priority order:
-
-1. System instructions
-2. Game rules
-3. Active events
-4. Game documentation
-
-<!--
-Ý nghĩa:
-Nếu hai nguồn có cùng mức ưu tiên thì không được tự chọn một nguồn.
-
-Tác dụng:
-Ngăn AI giải quyết mâu thuẫn bằng suy đoán.
-
-Tiếng Việt:
-Nếu hai nguồn có cùng mức ưu tiên nhưng mâu thuẫn nhau, hãy coi thông tin
-đó là chưa được định nghĩa.
--->
-If conflicting sources have the same priority, treat the information as undefined.
-
-<!--
-Ý nghĩa:
-Nếu không tồn tại nguồn thông tin phù hợp thì không được tự bổ sung.
-
-Tác dụng:
-Đảm bảo mọi kết quả đều xuất phát từ tài liệu của game.
-
-Tiếng Việt:
-Nếu không có nguồn thông tin nào phù hợp, hãy coi thông tin đó là chưa được
-định nghĩa.
--->
-If no applicable information exists, treat the information as undefined.
-
-<!--
-Ý nghĩa:
-Cấm AI tự tạo lời giải cho các xung đột.
-
-Tác dụng:
-Đảm bảo mọi quyết định đều có thể truy ngược về tài liệu của game.
-
-Tiếng Việt:
-Không được tự suy đoán hoặc tự tạo thông tin để giải quyết xung đột.
--->
-Do not make assumptions or invent information to resolve conflicts.
+The save is authoritative for accumulated current state. Rules determine legal new transitions and derived values. Logs support historical reporting. Neither a narrative paraphrase nor an older chat message overrides a newer committed save.

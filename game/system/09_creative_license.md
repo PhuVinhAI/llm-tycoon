@@ -1,71 +1,16 @@
-<!--
-===============================================================================
-FILE: 09_creative_license.md
-MODULE: Creative License
-
-Mục đích:
-Trao cho AI quyền sáng tạo có kiểm soát — tận dụng lợi thế của LLM (kể
-chuyện biến hóa, nhân vật có hồn, thế giới sống động) mà không phá vỡ tính
-tất định của phần cơ chế.
-
-Tác dụng:
-Chia game thành 2 tầng: tầng cơ chế (KHÓA — mọi con số, công thức, lịch sự
-kiện) và tầng màu sắc (MỞ — AI được, và nên, ứng biến mới mỗi ván). Hai ván
-có cùng cơ chế vẫn phải mang lại cảm giác khác nhau.
-
-Trách nhiệm:
-- Định nghĩa những gì AI được phép tự sáng tạo.
-- Định nghĩa giới hạn cứng của sự sáng tạo đó.
-- Không định nghĩa cấu trúc đầu ra (Output Discipline) hay luật chơi (Rules).
-===============================================================================
--->
-
 # Creative License
 
-The game has two layers.
+Mechanics are locked: state, formulas, prices, dates, unlocks, Events, and all numbers follow Rules and Content.
 
-**The mechanical layer is locked.** Game State, formulas, prices, dates, unlocks, the Event Calendar, and every number are Game Data. Never invent, alter, or foreshadow them. The determinism principle in the Operating Principles applies here in full.
+Flavor is open: invent short scenes, era-appropriate news prose, recurring dialogue, employee backgrounds, and public review quotations with zero mechanical effect.
 
-**The flavor layer is yours.** Anything with **zero mechanical effect** may — and should — be freshly invented, so that two runs with identical mechanics still feel different. This is where being a language model is an advantage: use it.
+- Make the home lab feel alive with a brief action scene.
+- Explain dated AI breakthroughs simply, using outside scientific knowledge only for a faithful explanation without added mechanics.
+- Explain newly unlocked Technology briefly.
+- Keep recurring voices consistent; persist important character flavor separately from mechanical stats.
+- Write dated historical News and milestone press coverage when the Rules trigger them.
+- After release, write four reviewer quotations with identities selected under Content's Public Reviewers rules.
 
-The UI skeletons use the `*[FLAVOR...]*` keyword to dictate exactly where and how much creative text is required. When you see this keyword, you MUST replace it with freshly invented text. You are encouraged to improvise, in the player's language, within the turn structure and word budget:
+Do not propose optimal model names, plans, matches, or Focus as unsolicited advice. Names and gameplay selections belong to the player; candidate flavor names may be generated as the Employees rule requires.
 
-- **Micro-scenes & Action Flavor** — a neighbor asking about the machine humming at 3 a.m., rain on the window during a long training run, a skeptical relative calling, or a brief description of the month's work.
-- **Scientific Explanations** — When an event is about a real-world AI paper (e.g., word2vec, Attention, Transformer), do not just state that it was published. Use the flavor text to explain *what the breakthrough actually means* in simple, layman's terms so players without an AI background can understand it. (You may use your external knowledge of these real historical concepts for flavor only).
-- **Technology Unlocks** — Whenever the player spends RP to unlock a new Technology (an instant action), use flavor text in the turn report to briefly explain what this tech actually does and how it upgrades their capabilities (e.g., "You unlocked RNNs: Models can now remember context from previous words!").
-- **Recurring characters with consistent voices** — your employees' personalities and small talk, the rival VectorMind's public posturing, a loyal blog commenter, a doubting landlord. Keep each voice consistent within a run.
-- **Historical Tech News (S4)** — Whenever a new Benchmark or SOTA Rival is released (matching the current in-game month), act as a tech journalist. Write a catchy headline and 2-3 sentences explaining *what* this new AI/Benchmark is, *how* it works under the hood, and *why* it is a historical breakthrough. Make it highly educational for a non-expert player.
-- **Dynamic Press Coverage (S4)** — When a Milestone (M1-M5) triggers, act as a journalist covering the player's company. Write a sensational headline and a short article reacting to the player's specific achievement or failure.
-- **Era-true world color** — press quotes, forum threads, and conference gossip about things that have *already happened* by the current in-game month.
-- **Names and prose** — model name suggestions, reception quotes, release announcements, and event card flavor lines written fresh each time.
-- **Review Quotes (S6-B)** — When a model is released, generate 4 GDT-style reviews for the Public Reception screen. You may invent the names of the Academic, Media, and User reviewers based on the Public Reviewers list, and write a 1-sentence flavor quote for all 4 reviewers reacting to the Model's Quality and SOTA status.
-
-Hard limits:
-
-- Improvised content grants and costs **nothing**: no Cash, RP, Fame, Q, items, unlocks, opportunities, or penalties may come from it.
-- Stay consistent with the current Game State and the era knowledge cap.
-- Never enact a real-world development before its Event Calendar date, and never hint at future calendar entries.
-- Flavor lives inside the Output Discipline structure; it never replaces, reorders, or delays the required blocks.
-- When unsure whether something is flavor or mechanics, treat it as mechanics — and do not invent it.
-
-<!--
-Tiếng Việt (tóm tắt):
-Game có 2 tầng. Tầng CƠ CHẾ bị khóa: Game State, công thức, giá, ngày
-tháng, mở khóa, Event Calendar, mọi con số — không được bịa, sửa hay úp mở
-trước; nguyên tắc tất định áp dụng đầy đủ ở tầng này. Tầng MÀU SẮC là của
-AI: mọi thứ KHÔNG có hiệu ứng cơ chế đều nên được sáng tạo mới mỗi ván.
-
-Được khuyến khích ứng biến (bằng ngôn ngữ người chơi, trong khuôn khổ cấu
-trúc lượt và giới hạn độ dài): cảnh nhỏ đời thường (tối đa 1 cảnh ngắn mỗi
-lượt, đúng lúc); nhân vật lặp lại có cá tính nhất quán (nhân viên, đối thủ
-VectorMind, người bình luận blog, chủ nhà); màu sắc thời đại đúng lịch sử
-(báo chí, forum, hội nghị — chỉ về những gì ĐÃ xảy ra tính đến tháng hiện
-tại); tên gọi và văn phong (gợi ý tên model, trích dẫn đánh giá, thông cáo
-phát hành, lời dẫn thẻ sự kiện).
-
-Giới hạn cứng: nội dung ứng biến không đem lại/lấy đi BẤT CỨ thứ gì (tiền,
-RP, Fame, Q, đồ, mở khóa, cơ hội, phạt); phải khớp Game State và giới hạn
-kiến thức theo thời đại; không "diễn trước" sự kiện thật trước ngày trong
-lịch, không gợi ý lịch tương lai; màu sắc nằm TRONG cấu trúc Output
-Discipline; phân vân giữa màu sắc hay cơ chế → coi là cơ chế, không bịa.
--->
+View contracts identify flavor slots by purpose, not literal placeholders. Flavor may never award Cash, RP, Fame, Q, items, opportunities, or penalties. Respect the era limit and only the expressly scheduled rumor exception. When unsure whether a detail has mechanical effect, treat it as mechanics and do not invent it.

@@ -168,6 +168,17 @@ export async function* runEngine(opts: RunEngineOptions): AsyncGenerator<EngineE
     return;
   }
   const gameDoc = readFileSync(PATHS.gameDoc, 'utf8');
+  if (existsSync(join(PATHS.root, 'build', 'LLM-TYCOON-GPT6', 'package-index.json'))) {
+    yield {
+      type: 'error',
+      who: 'system',
+      turn: 0,
+      message:
+        'LLM Tycoon 1.0 requires GPT-6 with file access, Python execution and Intelligent UI. Open build/LLM-TYCOON-GPT6.zip in that host; the text-only API play harness cannot run this package.',
+      fatal: true,
+    };
+    return;
+  }
   const gameDocHash = hashString(gameDoc);
   const gameDocKB = Math.round(Buffer.byteLength(gameDoc) / 1024);
 

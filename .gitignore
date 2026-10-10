@@ -7,3 +7,13 @@ logs/
 # Bun keeps bun.lock tracked; ignore npm/yarn lockfiles
 package-lock.json
 yarn.lock
+
+# Generated play state is never release content
+__pycache__/
+*.pyc
+build/LLM-TYCOON-GPT6/runtime/state/
+build/LLM-TYCOON-GPT6/runtime/exports/
+build/LLM-TYCOON-GPT6/runtime/archives/
+game/runtime/state/
+game/runtime/exports/
+game/runtime/archives/

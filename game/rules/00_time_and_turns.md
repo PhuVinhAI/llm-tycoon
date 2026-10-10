@@ -34,7 +34,7 @@ Trách nhiệm:
 4. **Costs** — subtract fixed monthly costs: living, salaries, hardware upkeep, active cloud rental.
 5. **Completions** — resolve whatever finished this month: Project quality computation, Contract payment, Paper publication, and Skill level-ups. Expired Income Streams generate a new Dataset: Name = `User Logs - [Task ID]`, Domain = `user-logs`, Size & Quality = 3 (if original Q ≥ 75.0) or 2 (if Q < 75.0). Announce this data collection in the ledger.
 6. **Checks** — bankruptcy, win and lose conditions.
-7. **Report** — output per the active UI Profile's screens (UI part): event cards → month ledger → dashboard → menu.
+7. **Report** — render the adaptive view contracts (UI): event cards → month ledger → dashboard → menu.
 
 ## Committed Months (Step-by-Step)
 

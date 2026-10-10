@@ -46,7 +46,7 @@ A Resource is a quantifiable asset owned by a Company. LLM Tycoon uses four kind
 
 * Resources belong to exactly one Company.
 * Player Actions, Events, and Income Streams change Resources only as permitted by the Rules.
-* Resources are part of the Game State and appear in every SAVE Block.
+* Resources are part of the Game State and are stored in the Canonical Save File.
 
 <!--
 Tiếng Việt:
@@ -61,5 +61,5 @@ Resource là tài sản định lượng được của Company. LLM Tycoon có 
   tháng còn lại, và VRAM bị chiếm dụng.
 
 Resource thuộc về đúng một Company; chỉ thay đổi thông qua Player Action,
-Event và Income Stream theo đúng Rules; luôn xuất hiện trong SAVE Block.
+Event và Income Stream theo đúng Rules; luôn lưu trong Canonical Save File.
 -->

@@ -54,7 +54,7 @@ A Project may be associated with information such as:
 * A Project consumes months and compute.
 * A completed Project produces exactly one Model.
 * A cancelled Project produces nothing.
-* An active Project is part of the Game State and appears in the SAVE Block.
+* An active Project is part of the Game State and is stored in the Canonical Save File.
 
 <!--
 Tiếng Việt:
@@ -73,5 +73,5 @@ số tháng cam kết/đã qua; phân bổ trọng tâm (Data/Model/Training/Eva
 compute tích lũy (TFLOPS-month); cờ đã đánh giá Dilemma giữa dự án.
 
 Quan hệ: do Company thực hiện; tiêu thụ tháng và compute; hoàn thành tạo
-đúng một Model; hủy thì không tạo gì; Project đang chạy nằm trong SAVE Block.
+đúng một Model; hủy thì không tạo gì; Project đang chạy nằm trong Canonical Save File.
 -->
